@@ -5,6 +5,6 @@ export default class Hot extends Trait {
         super('HOT');
     }
     update(sprite,message) {
-        sprite.canCollide = true;
+        sprite.canTouch = true;
     }
 }

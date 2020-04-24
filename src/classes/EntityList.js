@@ -2,11 +2,17 @@ export default class EntityList{
     constructor(divisions = 15) {
         this.entities = [];
         this.divisions = divisions;
+        this.frameCount = 0;
     }
     addEntity(entity){
         this.entities.push(entity);
     }
-    render=(canvas,context)=>{
-        this.entities.forEach(entity=>entity.draw(canvas,context,this.divisions))
+    render=(canvas,context,image,spriteSheets,tint)=>{
+        let frame = Math.floor(this.frameCount/10 % 3);
+        let sprites = this.entities.map(entity=>entity.draw());
+        sprites.forEach(([x,y,name,group])=>{
+            spriteSheets[group][name]['sprites'][frame].render(canvas,context,tint,x,y,image)
+        });
+        this.frameCount++
     }
 }

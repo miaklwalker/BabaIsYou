@@ -5,7 +5,8 @@ import EntityList from "./EntityList.js";
 export default class Game {
     constructor(){
         this.timer = new Timer();
-        this.renderer = new Renderer();
+        this.gridDiminsions = 15;
+        this.renderer = new Renderer(this.gridDiminsions);
         this.entities = new EntityList();
     }
 }

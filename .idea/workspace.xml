@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="efda75ba-1cb0-4a6a-b634-94328fd4cf8b" name="Default Changelist" comment="" />
+    <list default="true" id="efda75ba-1cb0-4a6a-b634-94328fd4cf8b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/michaelwalker.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/json/sprites.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/sprites.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Block.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Block.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/EntityList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/EntityList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Layer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Renderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Renderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1arZSfPgzZ5ee7ZxXDkQRGtlN7h" />
   <component name="ProjectViewState">
@@ -15,9 +29,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="10.16.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/images" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.14.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
@@ -43,6 +59,7 @@
       <workItem from="1587508283156" duration="9786000" />
       <workItem from="1587519910560" duration="3215000" />
       <workItem from="1587524657878" duration="1373000" />
+      <workItem from="1587623122221" duration="9000000" />
     </task>
     <servers />
   </component>

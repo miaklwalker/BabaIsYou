@@ -6,17 +6,16 @@ function getColorCoords(x,y,num){
 
 
 export default class Renderer{
-    constructor(diminsions){
+    constructor(){
         this.layers = [];
         this.palette = null;
-        this.diminsions = diminsions;
     }
     changePalette(palette){
         this.palette = palette;
     }
     render(canvas,context){
         this.layers.forEach(layer=>{
-            if(layer.priority !== 0) {
+            if(layer.priority > 0) {
                 layer.callback(canvas, context, ...layer.args)
             }
         });

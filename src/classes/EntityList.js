@@ -9,9 +9,11 @@ export default class EntityList{
     }
     render=(canvas,context,image,spriteSheets,tint)=>{
         let frame = Math.floor(this.frameCount/10 % 3);
-        let sprites = this.entities.map(entity=>entity.draw());
-        sprites.forEach(([x,y,name,group])=>{
-            spriteSheets[group][name]['sprites'][frame].render(canvas,context,tint,x,y,image)
+         this.entities
+             .map(entity=>entity.draw())
+             .forEach(([x,y,name,group])=>{
+            spriteSheets[group][name]['sprites'][frame]
+                .render(canvas,context,tint,x,y,image)
         });
         this.frameCount++
     }

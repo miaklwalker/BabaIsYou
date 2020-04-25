@@ -3,6 +3,8 @@ import Renderer from "./Renderer.js";
 import EntityList from "./EntityList.js";
 import loadImage from "../asyncLoaders/loadImage.js";
 import loadJSON from "../asyncLoaders/loadJSON.js";
+import runTest from "../testFunctions/TestRunner.js";
+import {passLog} from "../testFunctions/expectFactory.js";
 
 export default class Game {
     image;
@@ -14,11 +16,15 @@ export default class Game {
         this.entities = new EntityList();
     }
     setup = async() =>{
-        const image = await loadImage('../images/spritesheet.png');
-        const spriteSpec = await loadJSON('../json/sprites.json');
-        this.image = image;
-        this.spriteSpec = spriteSpec;
-        return {image,spriteSpec};
+        if(runTest(0)) {
+            const image = await loadImage('../images/spritesheet.png');
+            const spriteSpec = await loadJSON('../json/sprites.json');
+            this.image = image;
+            this.spriteSpec = spriteSpec;
+            return {image, spriteSpec};
+        }else{
+            console.log(runTest(2));
+        }
     };
     addEntity(entity){
         this.entities.addEntity(entity);

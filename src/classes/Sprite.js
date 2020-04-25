@@ -7,12 +7,15 @@ export default class Sprite {
         this.name = name;
         this.tint = tint;
         this.palette = palette;
+        this.buffer = null;
     }
     render=(canvas, context, tint, x, y, image)=>{
-        let buffer = document.createElement('canvas');
-        let ctx = buffer.getContext('2d');
-        tint(buffer,ctx,[this.x,this.y,this.w,this.h],image,this.tint);
-        context.drawImage(buffer,x,y);
-        return buffer;
+        if(this.buffer === null){
+            let buffer = document.createElement('canvas');
+            let ctx = buffer.getContext('2d');
+            tint(buffer,ctx,[this.x,this.y,this.w,this.h],image,this.tint);
+            this.buffer = buffer;
+        }
+        context.drawImage(this.buffer,x,y);
     }
 }

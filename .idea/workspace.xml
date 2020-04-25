@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efda75ba-1cb0-4a6a-b634-94328fd4cf8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/classes/Blocks/NounBlock.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/Sprite.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/helperFunctions/parseJsonToSpritesheet.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/Blocks/OperatorBlock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/Blocks/PropertyBlock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/testFunctions/TestRunner.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/testFunctions/expectFactory.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/testFunctions/function.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/testFunctions/testWordBlocks.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/json/sprites.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/sprites.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asyncLoaders/loadJSON.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/asyncLoaders/loadJSON.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Block.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Block.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/EntityList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/EntityList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/Renderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Renderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Sprite.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Sprite.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,18 +35,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="12.14.0" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.16.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ouisi\WebstormProjects\untitled\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ouisi\WebstormProjects\untitled\src\helperFunctions" />
       <recent name="C:\Users\ouisi\WebstormProjects\untitled\src\classes" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ouisi\WebstormProjects\untitled\images" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -61,6 +65,7 @@
       <workItem from="1587524657878" duration="1373000" />
       <workItem from="1587623122221" duration="9000000" />
       <workItem from="1587698810735" duration="2938000" />
+      <workItem from="1587792214665" duration="11651000" />
     </task>
     <servers />
   </component>
@@ -76,9 +81,13 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="249" y="0" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1587773034060" />
-    <state x="844" y="5" width="870" height="1034" key="search.everywhere.popup" timestamp="1587511605983">
+    <state x="2783" y="-353" width="1170" height="974" maximized="true" key="dock-window-1" timestamp="1587792759685">
+      <screen x="2560" y="-353" width="1600" height="860" />
+    </state>
+    <state x="2783" y="-353" width="1170" height="974" maximized="true" key="dock-window-1/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1587792759685" />
+    <state x="844" y="5" width="870" height="1034" key="search.everywhere.popup" timestamp="1587802572304">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="844" y="5" width="870" height="1034" key="search.everywhere.popup/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1587511605983" />
+    <state x="844" y="5" width="870" height="1034" key="search.everywhere.popup/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1587802572304" />
   </component>
 </project>

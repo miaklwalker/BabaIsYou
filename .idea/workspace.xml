@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efda75ba-1cb0-4a6a-b634-94328fd4cf8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/classes/Blocks/OperatorBlock.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/Blocks/PropertyBlock.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/testFunctions/TestRunner.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/testFunctions/expectFactory.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/testFunctions/function.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/testFunctions/testWordBlocks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/json/level.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/michaelwalker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/michaelwalker.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/json/sprites.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/sprites.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/EntityList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/EntityList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Renderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Renderer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Sprite.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Sprite.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,18 +27,21 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ECMAScript 6" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ouisi\WebstormProjects\untitled\images" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/temp" />
       <recent name="C:\Users\ouisi\WebstormProjects\untitled\src\helperFunctions" />
       <recent name="C:\Users\ouisi\WebstormProjects\untitled\src\classes" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ouisi\WebstormProjects\untitled\images" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -71,6 +66,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="getting ready to update renderer" />
+    <option name="LAST_COMMIT_MESSAGE" value="getting ready to update renderer" />
   </component>
   <component name="WindowStateProjectService">
     <state x="830" y="294" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587517256922">

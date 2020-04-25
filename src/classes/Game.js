@@ -12,19 +12,17 @@ export default class Game {
     constructor(){
         this.timer = new Timer();
         this.gridDiminsions = 15;
-        this.renderer = new Renderer(this.gridDiminsions);
-        this.entities = new EntityList();
+        this.renderer = new Renderer(this);
+        this.entities = new EntityList(this);
     }
     setup = async() =>{
-        if(runTest(0)) {
             const image = await loadImage('../images/spritesheet.png');
             const spriteSpec = await loadJSON('../json/sprites.json');
             this.image = image;
             this.spriteSpec = spriteSpec;
+            if(runTest(0)) {runTest(2)};
             return {image, spriteSpec};
-        }else{
-            console.log(runTest(2));
-        }
+
     };
     addEntity(entity){
         this.entities.addEntity(entity);

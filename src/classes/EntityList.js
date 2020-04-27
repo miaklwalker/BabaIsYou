@@ -12,7 +12,7 @@ export default class EntityList{
          this.entities
              .map(entity=>entity.draw())
              .forEach(([x,y,name,group])=>{
-            spriteSheets[group][name]['sprites'][frame]
+            spriteSheets.words[group][name]['sprites'][frame]
                 .render(canvas,context,tint,x,y,image)
         });
         this.frameCount++

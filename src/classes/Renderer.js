@@ -1,4 +1,4 @@
-import expect from "../testFunctions/expectFactory.js";
+import Layer from "./Layer.js";
 
 export function getColorCoords(x,y,num){
     let cx = x + (num % 7 * 8 );
@@ -6,12 +6,12 @@ export function getColorCoords(x,y,num){
     return [cx, cy, 8, 8];
 }
 
-
-
 export default class Renderer{
-    constructor(){
+    constructor(game){
         this.layers = [];
         this.palette = null;
+        this.divisions = game.gridDiminsions;
+        this.cache = new Map();
     }
     changePalette(palette){
         this.palette = palette;
@@ -22,6 +22,19 @@ export default class Renderer{
                 layer.callback(canvas, context, ...layer.args)
             }
         });
+    }
+    renderImage(image,x1,y1,x2,y2){
+        this.addLayer(new Layer(1,(canvas,context)=>{
+            let xOffset = (canvas.width/this.divisions);
+            let yOffset = (canvas.height/this.divisions);
+            let nX = x1 * xOffset;
+            let nY = y1 * yOffset;
+            context.drawImage(image,
+                x2,y2,24,24,
+                nX,nY,
+                xOffset,
+                yOffset)
+        }))
     }
     sortLayer(layerA,layerB){
         if(layerA.priority > layerB.priority){
@@ -40,13 +53,13 @@ export default class Renderer{
     }
     tint=(canvas ,context ,sprite, img, index)=>{
         const [x, y, w, h] = sprite;
-        const [cx,cy] = this.palette;
+        const [cx, cy] = this.palette;
         let size = 32;
         context.clearRect(0, 0, size, size);
         context.globalCompositeOperation = 'source-over';
-        context.drawImage(img, ...getColorCoords(cx,cy,index), 0, 0, size, size);
+        context.drawImage(img, ...getColorCoords(cx, cy, index), 0, 0, size, size);
         context.globalCompositeOperation = 'destination-in';
-        context.drawImage(img, x, y, w, h, 0, 0, size,size);
+        context.drawImage(img, x, y, w, h, 0, 0, size, size);
         context.globalCompositeOperation = 'darken';
         context.drawImage(img, x, y, w, h, 0, 0, size, size);
     }

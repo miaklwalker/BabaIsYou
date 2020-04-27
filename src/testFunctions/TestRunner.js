@@ -24,9 +24,9 @@ export default function runTest(logLevel=0){
             }else{
                 FailLog(`Test ${testNumber} Failed`,'Red');
                 Log(`Expected`,'Green');
-                Log(test.expected,'Green');
+                Log(JSON.stringify(test.expected),'Green');
                 Log(`Received`,'Red');
-                Log(test.received,'Red');
+                Log(JSON.stringify(test.received),'Red');
                 testNumber++
             }
         }

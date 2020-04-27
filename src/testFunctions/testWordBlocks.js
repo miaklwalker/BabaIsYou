@@ -28,9 +28,9 @@ function makeTest(testObj,offsetX=0,offsetY=0){
 
 
 export default function testWords(spriteSheets,game){
-    let nounBlocks = makeTest(spriteSheets.noun);
-    let propBlocks = makeTest(spriteSheets.properties,9,);
-    let opBlocks = makeTest(spriteSheets.operators,7);
+    let nounBlocks = makeTest(spriteSheets.words.noun);
+    let propBlocks = makeTest(spriteSheets.words.properties,9,);
+    let opBlocks =   makeTest(spriteSheets.words.operators,7);
     nounBlocks.forEach(entity=>{
         game.addEntity(new NounBlock(...entity));
     });

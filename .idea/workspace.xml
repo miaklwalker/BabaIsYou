@@ -2,19 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efda75ba-1cb0-4a6a-b634-94328fd4cf8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/Texture.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/helperFunctions/buildTexturePack.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/testFunctions/testTextures.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/Blocks/Tile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/Blocks/Wall.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/TileList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/WallList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/json/level.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/level.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/json/sprites.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/sprites.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Blocks/NounBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/NounBlock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Blocks/OperatorBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/OperatorBlock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Blocks/PropertyBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/PropertyBlock.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/EntityList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/EntityList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/Renderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Renderer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/drawFunctions/drawGrid.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/drawFunctions/drawGrid.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Texture.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helperFunctions/buildTexturePack.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helperFunctions/buildTexturePack.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/testFunctions/TestRunner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/testFunctions/TestRunner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/testFunctions/expectFactory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/testFunctions/expectFactory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/testFunctions/function.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/testFunctions/function.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/testFunctions/testWordBlocks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/testFunctions/testWordBlocks.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,8 +45,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ECMAScript 6" />
-    <property name="javascript.nodejs.core.library.configured.version" value="12.14.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.16.0" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/GitHub/ES6-Test-Library" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
   </component>
@@ -76,6 +79,11 @@
       <workItem from="1587698810735" duration="2938000" />
       <workItem from="1587792214665" duration="11651000" />
       <workItem from="1587940747355" duration="11172000" />
+      <workItem from="1588008447814" duration="3676000" />
+      <workItem from="1588013741333" duration="17932000" />
+      <workItem from="1588038764854" duration="7608000" />
+      <workItem from="1588048813373" duration="768000" />
+      <workItem from="1588223307830" duration="63000" />
     </task>
     <task id="LOCAL-00001" summary="getting ready to update renderer">
       <created>1587856524695</created>
@@ -103,6 +111,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="249" y="0" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1587856524391" />
+    <state x="1001" y="218" key="FileChooserDialogImpl" timestamp="1588223368726">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1001" y="218" key="FileChooserDialogImpl/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1588223368726" />
     <state x="149" y="39" key="SettingsEditor" timestamp="1587949692142">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -111,10 +123,11 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="240" y="136" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1587856531096" />
-    <state x="2783" y="-353" width="1170" height="974" maximized="true" key="dock-window-1" timestamp="1587792759685">
+    <state x="2560" y="-353" width="1616" height="974" maximized="true" key="dock-window-1" timestamp="1588048831474">
       <screen x="2560" y="-353" width="1600" height="860" />
     </state>
-    <state x="2783" y="-353" width="1170" height="974" maximized="true" key="dock-window-1/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1587792759685" />
+    <state x="2560" y="-353" width="1616" height="974" maximized="true" key="dock-window-1/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1588046149684" />
+    <state x="2766" y="-200" width="1129" height="974" maximized="true" key="dock-window-1/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@2560.-353.1600.860" timestamp="1588048831474" />
     <state x="422" y="4" width="670" height="796" key="search.everywhere.popup" timestamp="1587965344684">
       <screen x="0" y="0" width="1280" height="800" />
     </state>

@@ -1,70 +1,338 @@
 {
-  "Words": {
-    "nouns": [],
-    "operators": [],
-    "properties": []
+  "sprites": {
+    "BABA": [
+      {
+        "x": 8,
+        "y": 15,
+        "name": "BABA"
+      }
+    ]
   },
   "tiles": {
-    "rock":[{"x":15,"y":13,"name":"rock"},{"x":15,"y":17,"name":"rock"},{"x":15,"y":15,"name":"rock"}],
-    "flag":[{"x":22,"y":15,"name":"flag"}],
-    "floor":[{"x":6,"y":13,"name":"floor"},
-      {"x":6,"y":15,"name":"floor"},
-      {"x":6,"y":17,"name":"floor"},
-      {"x":8,"y":13,"name":"floor"},
-      {"x":8,"y":15,"name":"floor"},
-      {"x":8,"y":17,"name":"floor"},
-      {"x":10,"y":13,"name":"floor"},
-      {"x":10,"y":15,"name":"floor"},
-      {"x":10,"y":17,"name":"floor"},
-      {"x":12,"y":13,"name":"floor"},
-      {"x":12,"y":15,"name":"floor"},
-      {"x":12,"y":17,"name":"floor"},
-      {"x":13,"y":13,"name":"floor"},
-      {"x":13,"y":15,"name":"floor"},
-      {"x":13,"y":17,"name":"floor"},
-      {"x":15,"y":13,"name":"floor"},
-      {"x":15,"y":15,"name":"floor"},
-      {"x":15,"y":17,"name":"floor"},
-      {"x":17,"y":13,"name":"floor"},
-      {"x":17,"y":15,"name":"floor"},
-      {"x":17,"y":17,"name":"floor"},
-      {"x":18,"y":13,"name":"floor"},
-      {"x":18,"y":15,"name":"floor"},
-      {"x":18,"y":17,"name":"floor"},
-      {"x":20,"y":13,"name":"floor"},
-      {"x":20,"y":15,"name":"floor"},
-      {"x":20,"y":17,"name":"floor"},
-      {"x":22,"y":13,"name":"floor"},
-      {"x":22,"y":15,"name":"floor"},
-      {"x":22,"y":17,"name":"floor"},
-      {"x":24,"y":13,"name":"floor"},
-      {"x":24,"y":15,"name":"floor"},
-      {"x":24,"y":17,"name":"floor"}],
-    "wall":[
-      {"x":6,"y":18,"name":"wall"},
-      {"x":8,"y":18,"name":"wall"},
-      {"x":10,"y":18,"name":"wall"},
-      {"x":12,"y":18,"name":"wall"},
-      {"x":15,"y":18,"name":"wall"},
-      {"x":13,"y":18,"name":"wall"},
-      {"x":17,"y":18,"name":"wall"},
-      {"x":18,"y":18,"name":"wall"},
-      {"x":20,"y":18,"name":"wall"},
-      {"x":22,"y":18,"name":"wall"},
-      {"x":24,"y":18,"name":"wall"},
-      {"x":6,"y":12,"name":"wall"},
-      {"x":8,"y":12,"name":"wall"},
-      {"x":10,"y":12,"name":"wall"},
-      {"x":12,"y":12,"name":"wall"},
-      {"x":13,"y":12,"name":"wall"},
-      {"x":15,"y":12,"name":"wall"},
-      {"x":17,"y":12,"name":"wall"},
-      {"x":18,"y":12,"name":"wall"},
-      {"x":20,"y":12,"name":"wall"},
-      {"x":22,"y":12,"name":"wall"},
-      {"x":24,"y":12,"name":"wall"}]
+    "rock": [
+      {
+        "x": 9,
+        "y": 9,
+        "name": "ROCK"
+      },
+      {
+        "x": 9,
+        "y": 10,
+        "name": "ROCK"
+      },
+      {
+        "x": 9,
+        "y": 11,
+        "name": "ROCK"
+      }
+    ],
+    "flag": [
+      {
+        "x": 22,
+        "y": 15,
+        "name": "FLAG"
+      }
+    ],
+    "floor": [
+      {
+        "x": 6,
+        "y": 9,
+        "name": "TILE"
+      },
+      {
+        "x": 6,
+        "y": 10,
+        "name": "TILE"
+      },
+      {
+        "x": 6,
+        "y": 11,
+        "name": "TILE"
+      },
+      {
+        "x": 7,
+        "y": 9,
+        "name": "TILE"
+      },
+      {
+        "x": 7,
+        "y": 10,
+        "name": "TILE"
+      },
+      {
+        "x": 7,
+        "y": 11,
+        "name": "TILE"
+      },
+      {
+        "x": 8,
+        "y": 9,
+        "name": "TILE"
+      },
+      {
+        "x": 8,
+        "y": 10,
+        "name": "TILE"
+      },
+      {
+        "x": 8,
+        "y": 11,
+        "name": "TILE"
+      },
+      {
+        "x": 9,
+        "y": 9,
+        "name": "TILE"
+      },
+      {
+        "x": 9,
+        "y": 10,
+        "name": "TILE"
+      },
+      {
+        "x": 9,
+        "y": 11,
+        "name": "TILE"
+      },
+      {
+        "x": 10,
+        "y": 9,
+        "name": "TILE"
+      },
+      {
+        "x": 10,
+        "y": 10,
+        "name": "TILE"
+      },
+      {
+        "x": 10,
+        "y": 11,
+        "name": "TILE"
+      },
+      {
+        "x": 11,
+        "y": 9,
+        "name": "TILE"
+      },
+      {
+        "x": 11,
+        "y": 10,
+        "name": "TILE"
+      },
+      {
+        "x": 11,
+        "y": 11,
+        "name": "TILE"
+      },
+      {
+        "x": 10,
+        "y": 9,
+        "name": "TILE"
+      },
+      {
+        "x": 10,
+        "y": 10,
+        "name": "TILE"
+      },
+      {
+        "x": 10,
+        "y": 11,
+        "name": "TILE"
+      },
+      {
+        "x": 11,
+        "y": 9,
+        "name": "TILE"
+      },
+      {
+        "x": 11,
+        "y": 10,
+        "name": "TILE"
+      },
+      {
+        "x": 11,
+        "y": 11,
+        "name": "TILE"
+      },
+      {
+        "x": 12,
+        "y": 9,
+        "name": "TILE"
+      },
+      {
+        "x": 12,
+        "y": 10,
+        "name": "TILE"
+      },
+      {
+        "x": 12,
+        "y": 11,
+        "name": "TILE"
+      },
+      {
+        "x": 13,
+        "y": 9,
+        "name": "TILE"
+      },
+      {
+        "x": 13,
+        "y": 10,
+        "name": "TILE"
+      },
+      {
+        "x": 13,
+        "y": 11,
+        "name": "TILE"
+      },
+      {
+        "x": 5,
+        "y": 9,
+        "name": "TILE"
+      },
+      {
+        "x": 5,
+        "y": 10,
+        "name": "TILE"
+      },
+      {
+        "x": 5,
+        "y": 11,
+        "name": "TILE"
+      }
+    ]
   },
-  "sprites": {
-    "baba":[{"x":8,"y":15,"name":"baba"}]
-  }
+  "words": {
+    "nouns": [
+      [12, 6, "FLAG"],
+      [4, 6, "BABA" ],
+      [4, 14, "WALL"],
+      [12, 14, "ROCK" ]
+    ],
+    "operators": [
+      [13, 6, "IS"],
+      [ 5, 6, "IS"],
+      [5, 14, "IS"],
+      [13, 14,"IS"]
+    ],
+    "properties": [
+      [14, 6, "WIN"],
+      [6, 6, "YOU"],
+      [6, 14, "STOP"],
+      [14, 14, "PUSH"]
+    ]
+  },
+  "wall": [
+    {
+      "x": 4,
+      "y": 8,
+      "name": "WALL"
+    },
+    {
+      "x": 5,
+      "y": 8,
+      "name": "WALL"
+    },
+    {
+      "x": 6,
+      "y": 8,
+      "name": "WALL"
+    },
+    {
+      "x": 7,
+      "y": 8,
+      "name": "WALL"
+    },
+    {
+      "x": 8,
+      "y": 8,
+      "name": "WALL"
+    },
+    {
+      "x": 9,
+      "y": 8,
+      "name": "WALL"
+    },
+    {
+      "x": 10,
+      "y": 8,
+      "name": "WALL"
+    },
+    {
+      "x": 11,
+      "y": 8,
+      "name": "WALL"
+    },
+    {
+      "x": 12,
+      "y": 8,
+      "name": "WALL"
+    },
+    {
+      "x": 13,
+      "y": 8,
+      "name": "WALL"
+    },
+    {
+      "x": 14,
+      "y": 8,
+      "name": "WALL"
+    },
+    {
+      "x": 4,
+      "y": 12,
+      "name": "WALL"
+    },
+    {
+      "x": 5,
+      "y": 12,
+      "name": "WALL"
+    },
+    {
+      "x": 6,
+      "y": 12,
+      "name": "WALL"
+    },
+    {
+      "x": 7,
+      "y": 12,
+      "name": "WALL"
+    },
+    {
+      "x": 8,
+      "y": 12,
+      "name": "WALL"
+    },
+    {
+      "x": 9,
+      "y": 12,
+      "name": "WALL"
+    },
+    {
+      "x": 10,
+      "y": 12,
+      "name": "WALL"
+    },
+    {
+      "x": 11,
+      "y": 12,
+      "name": "WALL"
+    },
+    {
+      "x": 12,
+      "y": 12,
+      "name": "WALL"
+    },
+    {
+      "x": 13,
+      "y": 12,
+      "name": "WALL"
+    },
+    {
+      "x": 14,
+      "y": 12,
+      "name": "WALL"
+    }
+  ],
+  "palettes": "base",
+  "textures": "base"
 }

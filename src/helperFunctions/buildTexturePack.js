@@ -3,7 +3,6 @@ let tiles = [
     "left",
     "bottom",
     "bottomLeft",
-    "Right",
     "right",
     "middle",
     "bottomRight",
@@ -28,7 +27,7 @@ export default function buildTexturePack(x,y){
             result[tiles[i]].push({
                 x:x + (i * 24),
                 y:y + (j * 24),
-                width:24,
+                width: 24,
                 height:24
             })
         }

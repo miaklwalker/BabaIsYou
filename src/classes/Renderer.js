@@ -1,4 +1,5 @@
 import Layer from "./Layer.js";
+import buildTexturePack from "../helperFunctions/buildTexturePack.js";
 
 export function getColorCoords(x,y,num){
     let cx = x + (num % 7 * 8 );
@@ -9,13 +10,17 @@ export function getColorCoords(x,y,num){
 export default class Renderer{
     constructor(game){
         this.layers = [];
-        this.palette = null;
+        this.palette = [488, 24, 56, 40];
+        this.texture = buildTexturePack(384, 1512);
         this.divisions = game.gridDiminsions;
         this.cache = new Map();
     }
-    changePalette(palette){
+    changePalette=(palette)=>{
         this.palette = palette;
-    }
+    };
+    changeTexture=(texture)=>{
+        this.texture = buildTexturePack(...texture);
+    };
     render(canvas,context){
         this.layers.forEach(layer=>{
             if(layer.priority > 0) {
@@ -30,7 +35,7 @@ export default class Renderer{
             let nX = x1 * xOffset;
             let nY = y1 * yOffset;
             context.drawImage(image,
-                x2,y2,24,24,
+                x2,y2,32,32,
                 nX,nY,
                 xOffset,
                 yOffset)
@@ -54,13 +59,14 @@ export default class Renderer{
     tint=(canvas ,context ,sprite, img, index)=>{
         const [x, y, w, h] = sprite;
         const [cx, cy] = this.palette;
-        let size = 32;
-        context.clearRect(0, 0, size, size);
+        let width = 480 / this.divisions;
+        let height = 480 / this.divisions;
+        context.clearRect(0, 0, width, height);
         context.globalCompositeOperation = 'source-over';
-        context.drawImage(img, ...getColorCoords(cx, cy, index), 0, 0, size, size);
+        context.drawImage(img, ...getColorCoords(cx, cy, index), 0, 0, width, height);
         context.globalCompositeOperation = 'destination-in';
-        context.drawImage(img, x, y, w, h, 0, 0, size, size);
+        context.drawImage(img, x, y, w, h, 0, 0, width, height);
         context.globalCompositeOperation = 'darken';
-        context.drawImage(img, x, y, w, h, 0, 0, size, size);
+        context.drawImage(img, x, y, w, h, 0, 0, width, height);
     }
 }

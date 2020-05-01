@@ -5,10 +5,11 @@ export default class OperatorBlock extends Block{
     constructor(x,y,name,type,id = makeUniqueId(12)) {
         super(x,y);
         this.name = name;
+        this.group ='words';
         this.type = 'operators';
         this.id = id;
     }
     draw(){
-        return [...super.draw(),this.name,this.type,this.id]
+        return [...super.draw(),this.name,this.group,this.type,this.id]
     }
 }

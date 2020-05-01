@@ -5,7 +5,7 @@ import OperatorBlock from "../classes/Blocks/OperatorBlock.js";
 
 
 function n(num){
-    return num * (480 / 15);
+    return num ;
 }
 
 
@@ -15,7 +15,7 @@ function makeTest(testObj,offsetX=0,offsetY=0){
     outer:for(let i = 0 ; i < 6 ; i++){
         for(let j = 0 ; j < 15 ; j++){
             if(keys[j+(i*15)]!==undefined) {
-                result.push([n(i+offsetX), n(j+offsetY), keys[j + (i * 15)]])
+                result.push([i+offsetX, j+offsetY, keys[j + (i * 15)]])
             }else{
                 break outer;
             }
@@ -28,9 +28,9 @@ function makeTest(testObj,offsetX=0,offsetY=0){
 
 
 export default function testWords(spriteSheets,game){
-    let nounBlocks = makeTest(spriteSheets.words.noun);
-    let propBlocks = makeTest(spriteSheets.words.properties,9,);
-    let opBlocks =   makeTest(spriteSheets.words.operators,7);
+    let nounBlocks = makeTest(spriteSheets.spriteSheets.words.noun);
+    let propBlocks = makeTest(spriteSheets.spriteSheets.words.properties,9,);
+    let opBlocks =   makeTest(spriteSheets.spriteSheets.words.operators,7);
     nounBlocks.forEach(entity=>{
         game.addEntity(new NounBlock(...entity));
     });

@@ -23,14 +23,17 @@ game.setup()
         makeLevelBuilder(game)(spriteSpec,levelSpec);
 
         game.addLayer(new Layer(1, drawBackground,['black']));
-        game.addLayer(new Layer(3, drawGrid,[[20,20]]));
+        game.addLayer(new Layer(2, drawGrid,[[20,20]]));
+        game.addLayer(new Layer(1, game.entities.render,[image,spriteSheets,tint]));
         game.addLayer(new Layer(1, game.tiles.render,[image,spriteSheets,tint]));
-        game.addLayer(new Layer(2, render,[image,spriteSheets,tint]));
-        game.addLayer(new Layer(2, game.walls.render,[image,game.renderer.texture,tint]));
+        game.addLayer(new Layer(1, game.walls.render,[image,game.renderer.texture,tint]));
+        game.addLayer(new Layer(1, render,[image,spriteSheets,tint]));
+
 
         game.timer.start()
     });
 
 game.timer.update = (deltaTime) =>{
 game.renderer.render(game_canvas,game_context);
+game.messageCenter.update();
 };

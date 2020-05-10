@@ -1,11 +1,7 @@
 import Layer from "./Layer.js";
 import buildTexturePack from "../helperFunctions/buildTexturePack.js";
+import getColorCoords from '../helperFunctions/getColorCoords.js'
 
-export function getColorCoords(x,y,num){
-    let cx = x + (num % 7 * 8 );
-    let cy = y +  (num > 6 ? Math.floor(num / 7) : 0) * 8;
-    return [cx, cy, 8, 8];
-}
 
 export default class Renderer{
     constructor(game){
@@ -56,11 +52,11 @@ export default class Renderer{
         this.layers.push(layer);
         this.layers = this.layers.sort(this.sortLayer);
     }
-    tint=(canvas ,context ,sprite, img, index,scaleX =0 , scaleY = 0)=>{
+    tint=(canvas ,context ,sprite, img, index)=>{
         const [x, y, w, h] = sprite;
         const [cx, cy] = this.palette;
-        let width = 480 / this.divisions + scaleX;
-        let height = 480 / this.divisions + scaleY;
+        let width = 480 / this.divisions;
+        let height = 480 / this.divisions;
         
         context.clearRect(0, 0, width, height);
         context.globalCompositeOperation = 'source-over';

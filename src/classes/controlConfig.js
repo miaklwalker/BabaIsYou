@@ -1,0 +1,4 @@
+class controlConfig{
+    constructor(){
+    }
+}

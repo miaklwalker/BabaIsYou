@@ -5,12 +5,11 @@ export default  class TileList extends EntityList{
         super(game)
     }
     render=(canvas,context,image,spriteSheets,tint)=>{
-        let frame = Math.floor(this.frameCount/10 % 3);
         this.entities
             .map(entity=>entity.draw())
-            .forEach(([x,y,name,group,type])=>{
+            .forEach(([x,y,name,,type])=>{
                 let spritesSheet = spriteSheets.spriteSheets;
-                let sprite = spritesSheet[type][name].sprites[frame];
+                let sprite = spritesSheet[type][name].sprites[this.frame];
                 sprite.render(
                     canvas,context,
                     tint,

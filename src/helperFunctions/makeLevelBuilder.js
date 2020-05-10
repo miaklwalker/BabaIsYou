@@ -5,25 +5,28 @@ export default function makeLevelBuilder(game){
     return (spriteSpec,levelSpec)=>{
         game.renderer.changePalette(spriteSpec.palettes[levelSpec.palettes]);
         game.renderer.changeTexture(spriteSpec.textures[levelSpec.textures]);
-        const {words,tiles,wall} = levelSpec;
-        let groups = {words,tiles};
-        for(let group in groups){
-            for(let type in groups[group]){
-                if(group !== 'tiles') {
-                    groups[group][type].forEach(sprite => game.addEntity(blockFactory(type, sprite)))
-                }else{
-                    groups[group][type].forEach(sprite => {
-                        if(type ==='floor') {
-                            game.tiles.addEntity(blockFactory(group, Object.values(sprite)))
-                        }else{
-                            game.addEntity(blockFactory(group, Object.values(sprite)))
-                        }
-                    })
-                }
-            }
+        const {words,tiles,wall,floor,sprites} = levelSpec;
+
+        //game.addEntity(blockFactory('sprites',sprites.BABA))
+        //words
+        for(let type in words){
+            words[type].forEach(sprite => game.addEntity(blockFactory(type, sprite)))
         }
-        wall.forEach(({x,y})=>{
-            game.walls.addEntity(new Wall(x,y));
+        // tiles
+        Object.keys(tiles).forEach(type=>{
+            tiles[type].forEach(sprite=>{
+                game.addEntity(blockFactory('tiles', Object.values(sprite)))
+            })
         })
+        //floors
+        floor.forEach(sprite=>{
+            game.addTile(blockFactory('tiles', Object.values(sprite)))
+        })
+        // walls
+        wall.forEach(({x,y})=>{
+            game.addWall(new Wall(x,y));
+        })
+
+
     }
 }

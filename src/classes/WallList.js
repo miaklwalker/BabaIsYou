@@ -33,15 +33,12 @@ export default  class WallList extends EntityList{
     render=(canvas,context,image,texturePack,tint)=>{
         if(this.buffer === null){
             this.buffer = makeWallSprites(texturePack);
-            console.log(this.buffer)
-            console.log(this.entities);
         }
-        let frame = Math.floor(this.frameCount/10 % 3);
 
         let walls = this.entities.map(entity=>entity.draw(this.entities));
         walls.forEach(wall=>{
-            const [x1,y1,texture,,name] = wall;
-            let toDraw = this.buffer.get(texture)[frame];
+            const [x1,y1,texture] = wall;
+            let toDraw = this.buffer.get(texture)[this.frame];
             toDraw.render(
                 canvas,context,
                 tint,

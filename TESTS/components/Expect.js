@@ -172,7 +172,9 @@ class Expect {
         return this.fail('Expected to be NaN');
     };
     toHaveBeenCalled(){
-        return this.received.mock.calls.length > 0 ? this.pass() : this.fail() ;
+        return this.received.mock.calls.length > 0 ? 
+        this.pass('expected to be called') : 
+        this.fail('expected to be called',this.received.mock.calls) ;
     }
     toHaveBeenCalledTimes(expected){
         return this.received.mock.calls.length === expected ? this.pass() : this.fail() ;

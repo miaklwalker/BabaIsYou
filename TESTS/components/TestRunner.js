@@ -29,10 +29,10 @@ export default function testRunner(logLevel = 0){
             }
         })
         if(passes === true){
-            console.log(`${suiteName} :: Passed ::`)
+            passLog(`${suiteName} :: Passed ::`)
         }else{
-            console.log(`${suiteName} :: Failed ::`)
-            messages.forEach(([passed,message])=>{if(!passed){console.log(message)}})
+            FailLog(`${suiteName} :: Failed ::`)
+            messages.forEach(([passed,message])=>{if(!passed){FailLog(message)}})
         }
         testResults[suiteName] 
     }

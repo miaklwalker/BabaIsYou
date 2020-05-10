@@ -56,11 +56,12 @@ export default class Renderer{
         this.layers.push(layer);
         this.layers = this.layers.sort(this.sortLayer);
     }
-    tint=(canvas ,context ,sprite, img, index)=>{
+    tint=(canvas ,context ,sprite, img, index,scaleX =0 , scaleY = 0)=>{
         const [x, y, w, h] = sprite;
         const [cx, cy] = this.palette;
-        let width = 480 / this.divisions;
-        let height = 480 / this.divisions;
+        let width = 480 / this.divisions + scaleX;
+        let height = 480 / this.divisions + scaleY;
+        
         context.clearRect(0, 0, width, height);
         context.globalCompositeOperation = 'source-over';
         context.drawImage(img, ...getColorCoords(cx, cy, index), 0, 0, width, height);

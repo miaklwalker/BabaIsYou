@@ -1,0 +1,26 @@
+{
+  "name": "babaisyou",
+  "version": "1.0.0",
+  "description": "'A fan made recreation of babaisyou by hempuli , with the creators permission'",
+  "main": "index.html",
+  "scripts": {
+    "test": "-r esm && npm run jest",
+    "jest": "jest test -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miaklwalker/BabaIsYou.git"
+  },
+  "keywords": [
+    "babaisyou"
+  ],
+  "author": "Michael Walker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miaklwalker/BabaIsYou/issues"
+  },
+  "homepage": "https://github.com/miaklwalker/BabaIsYou#readme",
+  "dependencies": {
+    "jest": "^26.0.1"
+  }
+}

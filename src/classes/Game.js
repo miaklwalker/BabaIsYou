@@ -3,9 +3,9 @@ import Renderer from "./Renderer.js";
 import EntityList from "./EntityList.js";
 import loadImage from "../asyncLoaders/loadImage.js";
 import loadJSON from "../asyncLoaders/loadJSON.js";
-import runTest from "../testFunctions/TestRunner.js";
 import TileList from "./TileList.js";
 import WallList from "./WallList.js";
+import runTests from "../../TESTS/__tests__/test.js";
 
 
 export default class Game {
@@ -25,7 +25,7 @@ export default class Game {
             const levelSpec = await loadJSON('../json/level.json');
             this.image = image;
             this.spriteSpec = spriteSpec;
-            if(runTest(0)) {runTest(2)}
+            runTests();
             return {image, spriteSpec,levelSpec};
 
     };

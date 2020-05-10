@@ -58,7 +58,6 @@ export default class Wall extends Block{
                     if(up)   this.neighbors.up = true;
                     if(down) this.neighbors.down = true;
                 }
-
             });
         }
         this.ran = true;

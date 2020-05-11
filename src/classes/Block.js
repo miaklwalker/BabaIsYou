@@ -14,5 +14,9 @@ export default class Block {
             trait.update(this,message);
         })
     }
+    addTrait(trait){
+        this[trait.NAME] = trait;
+        this.traits.push(trait);
+    }
 }
 

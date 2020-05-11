@@ -1,12 +1,11 @@
 export default class Sprite {
-    constructor({x,y,w,h,name},tint,palette){
+    constructor({x,y,w,h,name},tint){
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
         this.name = name;
         this.tint = tint;
-        this.palette = palette;
         this.buffer = null;
     }
     render=(canvas, context, tint, x, y, image)=>{

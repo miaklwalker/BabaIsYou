@@ -24,9 +24,10 @@ game.setup()
 
         game.addLayer(new Layer(1, drawBackground,['black']));
         game.addLayer(new Layer(2, drawGrid,[[20,20]]));
-        game.addLayer(new Layer(1, game.entities.render,[image,spriteSheets,tint]));
-        game.addLayer(new Layer(1, game.tiles.render,[image,spriteSheets,tint]));
-        game.addLayer(new Layer(1, game.walls.render,[image,game.renderer.texture,tint]));
+        game.addLayer(new Layer(1, game.entities.render,[image, spriteSheets,tint]));
+        game.addLayer(new Layer(1, game.tiles.render,   [image, spriteSheets,tint]));
+        game.addLayer(new Layer(1, game.walls.render,   [image, game.renderer.texture,tint]));
+        game.addLayer(new Layer(1, game.sprites.render, [image, spriteSheets,tint]));
         game.addLayer(new Layer(1, render,[image,spriteSheets,tint]));
 
 

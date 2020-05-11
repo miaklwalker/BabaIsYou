@@ -3,6 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="efda75ba-1cb0-4a6a-b634-94328fd4cf8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/json/level.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/level.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/json/sprites.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/sprites.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Block.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Block.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Blocks/spriteBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/spriteBlock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Controls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Controls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Sprite.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Sprite.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/SpriteList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/SpriteList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Traits/You.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Traits/You.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helperFunctions/blockFactory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helperFunctions/blockFactory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helperFunctions/makeLevelBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helperFunctions/makeLevelBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +43,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ECMAScript 6" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.0" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/GitHub/ES6-Test-Library" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
   </component>
@@ -70,6 +83,7 @@
       <workItem from="1588223307830" duration="63000" />
       <workItem from="1588312012927" duration="78000" />
       <workItem from="1588464596679" duration="22000" />
+      <workItem from="1589159265260" duration="5096000" />
     </task>
     <task id="LOCAL-00001" summary="getting ready to update renderer">
       <created>1587856524695</created>
@@ -118,11 +132,12 @@
     </state>
     <state x="240" y="136" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1587856531096" />
     <state x="480" y="177" key="Vcs.Push.Dialog.v2/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1588312066632" />
-    <state x="2560" y="-353" width="1616" height="974" maximized="true" key="dock-window-1" timestamp="1588048831474">
-      <screen x="2560" y="-353" width="1600" height="860" />
+    <state x="470" y="-792" width="1615" height="974" maximized="true" key="dock-window-1" timestamp="1589164111181">
+      <screen x="766" y="-768" width="1366" height="728" />
     </state>
     <state x="2560" y="-353" width="1616" height="974" maximized="true" key="dock-window-1/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1588046149684" />
     <state x="2766" y="-200" width="1129" height="974" maximized="true" key="dock-window-1/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@2560.-353.1600.860" timestamp="1588048831474" />
+    <state x="470" y="-792" width="1615" height="974" maximized="true" key="dock-window-1/766.-768.1366.728/1920.0.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1589164111181" />
     <state x="422" y="4" width="670" height="796" key="search.everywhere.popup" timestamp="1587965344684">
       <screen x="0" y="0" width="1280" height="800" />
     </state>

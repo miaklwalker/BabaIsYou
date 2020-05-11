@@ -2,6 +2,7 @@ import NounBlock from "../classes/Blocks/NounBlock.js";
 import PropertyBlock from "../classes/Blocks/PropertyBlock.js";
 import OperatorBlock from "../classes/Blocks/OperatorBlock.js";
 import Tile from "../classes/Blocks/Tile.js";
+import SpriteBlock from "../classes/Blocks/spriteBlock.js";
 
 
 export default function blockFactory(type,sprite){
@@ -9,7 +10,8 @@ export default function blockFactory(type,sprite){
         nouns:(sprite) =>new NounBlock(...sprite),
         operators:(sprite) => new OperatorBlock(...sprite),
         properties:(sprite) => new PropertyBlock(...sprite),
-        tiles:(sprite) => new Tile(...sprite)
+        tiles:(sprite) => new Tile(...sprite),
+        sprites:(sprite) => new SpriteBlock(...sprite)
 };
     return types[type](sprite);
 }

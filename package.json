@@ -20,7 +20,4 @@
     "url": "https://github.com/miaklwalker/BabaIsYou/issues"
   },
   "homepage": "https://github.com/miaklwalker/BabaIsYou#readme",
-  "dependencies": {
-    "jest": "^26.0.1"
-  }
 }

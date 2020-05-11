@@ -2,38 +2,22 @@
   "spriteSheets": {
   "sprites": {
       "BABA": {
-        "tint": 24,
-        "animations":{
-          "idle":{
-            "left":[],
-            "down":[],
-            "right":[
-              {
-                "name": "1",
-                "x": 0,
-                "y": 0,
-                "w": 24,
-                "h": 24
-              },
-              {
-                "name": "2",
-                "x": 24,
-                "y": 0,
-                "w": 24,
-                "h": 24
-              }
-            ],
-            "up":[]
-          
-          },
-          "run":{
-            "left":[],
-            "down":[],
-            "right":[],
-            "up":[]
-          }
-        },
+        "tint": 25,
         "sprites": [
+          {
+            "name": "idle-right-1",
+            "x": 0,
+            "y": 0,
+            "w": 24,
+            "h": 24
+          },
+          {
+            "name": "idle-right-2",
+            "x": 24,
+            "y": 0,
+            "w": 24,
+            "h": 24
+          },
           {
             "name": "run-right-1",
             "x": 48,

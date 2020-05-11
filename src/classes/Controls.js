@@ -5,8 +5,9 @@ const keys = {
     DOWN:Symbol('down'),
     RIGHT:Symbol('right'),
     LEFT:Symbol('left'),
-}
-const {UP,DOWN,RIGHT,LEFT} = keys
+    RESTART:Symbol('restart'),
+};
+const {UP,DOWN,RIGHT,LEFT,RESTART} = keys;
 
 export default class Controls { 
     constructor(){
@@ -14,16 +15,18 @@ export default class Controls {
         this[DOWN] = false;
         this[RIGHT] = false;
         this[LEFT] = false;
-        this.restart = false;
+        this[RESTART] = false;
         this.keyMap  = {
             KeyA:LEFT,
             KeyD:RIGHT,
             KeyW:UP,
-            KeyS:DOWN
+            KeyS:DOWN,
+            KeyR:RESTART,
         }
     }
     keyDown=(event)=>{
         const keyPressed = this.keyMap[event.code];
+        if(keyPressed === undefined)return;
         if(!this[keyPressed]){
             this[keyPressed] = true;
             document.dispatchEvent(

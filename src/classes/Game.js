@@ -8,6 +8,7 @@ import WallList from "./WallList.js";
 import runTests from "../../TESTS/__tests__/test.js";
 import Controls from "./Controls.js"
 import MessageCenter from "./MessageCenter.js";
+import SpriteList from "./SpriteList.js";
 
 export default class Game {
     image;
@@ -19,6 +20,7 @@ export default class Game {
         this.entities = new EntityList(this);
         this.tiles = new TileList(this);
         this.walls = new WallList(this);
+        this.sprites =  new SpriteList(this);
         this.messageCenter = new MessageCenter();
     }
     setup = async() =>{
@@ -51,5 +53,8 @@ export default class Game {
     }
     addLayer(layer){
         this.renderer.addLayer(layer);
+    }
+    addSprite(sprite){
+        this.sprites.addEntity(sprite);
     }
 }

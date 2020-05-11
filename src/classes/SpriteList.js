@@ -10,6 +10,7 @@ export default class SpriteList extends EntityList{
             .forEach(([x,y,name,,type])=>{
                 let spritesSheet = spriteSheets.spriteSheets;
                 let sprite = spritesSheet[type][name].sprites[this.frame];
+
                 sprite.render(
                     canvas,context,
                     tint,

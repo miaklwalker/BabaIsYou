@@ -12,7 +12,7 @@ export default class MessageCenter{
     }
     handleAddMessage=(event)=>{
         this.messages.push(event.detail)
-    }
+    };
     update(){
 
         this.messages.forEach(message=>{

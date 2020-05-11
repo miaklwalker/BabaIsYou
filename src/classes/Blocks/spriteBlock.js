@@ -5,12 +5,17 @@ export default class SpriteBlock extends Block{
     constructor(x,y,name,id = makeUniqueId(12)) {
         super(x,y);
         this.name = name;
-        this.group ='words';
+        this.group ='sprites';
         this.type = 'sprites';
         this.id = id;
+        this.direction='right';
+        this.action = 'idle'
     }
     draw(){
-        return [...super.draw(),this.name,this.group,this.type,this.id]
+        return [
+            ...super.draw(),
+            this.name,
+            this.group,this.type,this.id,this.direction,this.action]
     }
 
 }

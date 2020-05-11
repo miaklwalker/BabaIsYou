@@ -4,9 +4,9 @@
     <list default="true" id="efda75ba-1cb0-4a6a-b634-94328fd4cf8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/Blocks/spriteBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/spriteBlock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/MessageCenter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/MessageCenter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Controls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Controls.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/SpriteList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/SpriteList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/testFunctions/testTextures.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/testFunctions/testTextures.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +33,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ECMAScript 6" />
-    <property name="javascript.nodejs.core.library.configured.version" value="10.16.0" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.14.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
@@ -77,6 +77,7 @@
       <workItem from="1589159265260" duration="5420000" />
       <workItem from="1589165966485" duration="227000" />
       <workItem from="1589171071793" duration="481000" />
+      <workItem from="1589178758892" duration="1681000" />
     </task>
     <task id="LOCAL-00001" summary="getting ready to update renderer">
       <created>1587856524695</created>
@@ -115,10 +116,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="830" y="294" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1587517256922" />
-    <state x="374" y="0" key="CommitChangelistDialog2" timestamp="1589164549945">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="249" y="0" key="CommitChangelistDialog2" timestamp="1589226560515">
+      <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="249" y="0" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1587856524391" />
+    <state x="249" y="0" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1589226560515" />
     <state x="498" y="0" key="CommitChangelistDialog2/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1588312026033" />
     <state x="374" y="0" key="CommitChangelistDialog2/766.-768.1366.728/1920.0.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1589164549945" />
     <state x="1001" y="218" key="FileChooserDialogImpl" timestamp="1588464616988">

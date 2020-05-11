@@ -15,7 +15,16 @@ export default class SpriteBlock extends Block{
         return [
             ...super.draw(),
             this.name,
-            this.group,this.type,this.id,this.direction,this.action]
+            this.group,
+            this.type,
+            this.id,
+            this.direction,
+            this.action
+        ]
+    }
+    onMessage(message) {
+        super.onMessage(message);
+        this.direction = message.direction
     }
 
 }

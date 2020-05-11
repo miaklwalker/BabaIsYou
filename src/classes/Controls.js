@@ -1,13 +1,36 @@
 import addMessage from "../CustomEvents/addmessage.js";
 
-const keys = {
-    UP:Symbol('up'),
-    DOWN:Symbol('down'),
-    RIGHT:Symbol('right'),
-    LEFT:Symbol('left'),
-    RESTART:Symbol('restart'),
+
+const UP      = Symbol('up');
+const DOWN    = Symbol('down');
+const RIGHT   = Symbol('right');
+const LEFT    = Symbol('left');
+const RESTART = Symbol('restart');
+
+
+class KeyMap{
+    mapKey(keyCode,symbol){
+        this[keyCode] = symbol;
+    }
+}
+
+const defaultControls = new KeyMap();
+defaultControls.mapKey('KeyA',LEFT);
+defaultControls.mapKey('KeyD',RIGHT);
+defaultControls.mapKey('KeyW',UP);
+defaultControls.mapKey('KeyS',DOWN);
+defaultControls.mapKey('KeyR',RESTART);
+
+
+const dispatchMessageFromControls = (event,keyPressed) =>{
+    document.dispatchEvent(
+        addMessage({
+            to:'you',
+            from:'controls',
+            keyPressed:event.code,
+            direction:keyPressed.description
+        }));
 };
-const {UP,DOWN,RIGHT,LEFT,RESTART} = keys;
 
 export default class Controls { 
     constructor(){
@@ -16,32 +39,20 @@ export default class Controls {
         this[RIGHT] = false;
         this[LEFT] = false;
         this[RESTART] = false;
-        this.keyMap  = {
-            KeyA:LEFT,
-            KeyD:RIGHT,
-            KeyW:UP,
-            KeyS:DOWN,
-            KeyR:RESTART,
-        }
+        this.keyMap  = defaultControls;
+        this.timeout = 300;
     }
     keyDown=(event)=>{
         const keyPressed = this.keyMap[event.code];
         if(keyPressed === undefined)return;
         if(!this[keyPressed]){
             this[keyPressed] = true;
-            document.dispatchEvent(
-                addMessage({
-                    to:'you',
-                    from:'controls',
-                    keyPressed:event.code,
-                    direction:keyPressed.description
-                }
-            ));
+            dispatchMessageFromControls(event,keyPressed);
             setTimeout(() => {
                 this[keyPressed] = false;
-            }, 300);
+            }, this.timeout);
         }
-    }
+    };
     keyUp = (event)=>{
         const keyPressed = this.keyMap[event.code];
         this[keyPressed] = false;

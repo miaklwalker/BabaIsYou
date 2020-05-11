@@ -7,7 +7,8 @@ export default class SpriteList extends EntityList{
     render=(canvas,context,image,spriteSheets,tint)=>{
         this.entities
             .map(entity=>entity.draw())
-            .forEach(([x,y,name,,type])=>{
+            .forEach(([x,y,name,,type,id,direction,action])=>{
+                console.log(direction,action);
                 let spritesSheet = spriteSheets.spriteSheets;
                 let sprite = spritesSheet[type][name].sprites[this.frame];
 

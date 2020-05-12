@@ -4,9 +4,10 @@ export default class EntityList {
         this.divisions = game.gridDiminsions;
         this.frameCount = 0;
         this.frameLength = 3;
+        this.frameRate = 15
     }
     get frame(){
-        return Math.floor(this.frameCount / 19 % this.frameLength);
+        return Math.floor(this.frameCount / this.frameRate % this.frameLength);
     }
     addEntity(entity) {
         this.entities.push(entity);
@@ -21,6 +22,7 @@ export default class EntityList {
                     sprite = spritesSheet[group][type][name].sprites[this.frame]
                 } else {
                     sprite = spritesSheet[type][name].sprites[this.frame]
+
                 }
 
                 sprite.render(

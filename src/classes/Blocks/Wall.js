@@ -1,5 +1,4 @@
 import Block from "../Block.js";
-import Vector from "../Vector.js";
 
 function chooseShape({left,right,up,down}){
     let name = 'single' ;
@@ -27,25 +26,11 @@ export default class Wall extends Block{
         super(x,y);
         this.type = 'wall';
         this.name = '';
-        this.neighbors = {
-            left:false,
-            right:false,
-            up:false,
-            down:false,
-        }
         this.ran = false;
     }
     draw(others){
         this.chooseName(others);
         return [...super.draw(),this.name,undefined,this.type]
-    }
-    checkNeighbors(other){
-        const {x,y} = this.position;
-        let left = new Vector(x-1, y).same(other.position);
-        let right = new Vector(x+1 , y).same(other.position);
-        let up = new Vector(x,y-1).same(other.position);
-        let down = new Vector(x,y+1).same(other.position);
-        return [left,down,right,up];
     }
     chooseName(neighbors){
         if(this.ran === false) {

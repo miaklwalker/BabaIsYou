@@ -4,7 +4,13 @@ import Vector from "./Vector.js";
 export default class Block {
     constructor(x,y){
         this.position = new Vector(x,y);
-        this.traits = []
+        this.traits = [];
+        this.neighbors = {
+            left:false,
+            right:false,
+            up:false,
+            down:false,
+        }
     }
     draw(){
         return [this.position.x,this.position.y]
@@ -17,6 +23,14 @@ export default class Block {
     addTrait(trait){
         this[trait.NAME] = trait;
         this.traits.push(trait);
+    }
+    checkNeighbors(other){
+        const {x,y} = this.position;
+        let left = new Vector(x-1, y).same(other.position);
+        let right = new Vector(x+1 , y).same(other.position);
+        let up = new Vector(x,y-1).same(other.position);
+        let down = new Vector(x,y+1).same(other.position);
+        return [left,down,right,up];
     }
 }
 

@@ -15,10 +15,11 @@ export default class Game {
     spriteSpec;
     constructor(){
         this.timer = new Timer();
-        this.gridDiminsions = 20;
+        this.gridDiminsions = 19;
         this.renderer = new Renderer(this);
-        this.entities = new EntityList(this);
+        this.words = new EntityList(this);
         this.tiles = new TileList(this);
+        this.backgroundTiles = new TileList(this);
         this.walls = new WallList(this);
         this.sprites =  new SpriteList(this);
         this.messageCenter = new MessageCenter();
@@ -28,7 +29,7 @@ export default class Game {
             const spriteSpec = await loadJSON('../json/sprites.json');
             const levelSpec = await loadJSON('../json/level.json');
 
-            this.messageCenter.subscribe({onMessage(msg){console.log(msg)}})
+            this.messageCenter.subscribe({onMessage(msg){console.log(msg)}});
             this.image = image;
             this.spriteSpec = spriteSpec;
 
@@ -36,17 +37,20 @@ export default class Game {
 
             document.addEventListener('keydown',controls.keyDown);
             document.addEventListener('keyup',controls.keyUp);
-            document.addEventListener('addmessage',this.messageCenter.handleAddMessage)
+            document.addEventListener('addmessage',this.messageCenter.handleAddMessage);
             
             runTests();
             return {image, spriteSpec,levelSpec};
 
     };
-    addEntity(entity){
-        this.entities.addEntity(entity);
+    addWords(entity){
+        this.words.addEntity(entity);
     }
     addWall(wall){
         this.walls.addEntity(wall);
+    }
+    addBackgroundTile(bgTile){
+        this.backgroundTiles.addEntity(bgTile);
     }
     addTile(tile){
         this.tiles.addEntity(tile);

@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="efda75ba-1cb0-4a6a-b634-94328fd4cf8b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="efda75ba-1cb0-4a6a-b634-94328fd4cf8b" name="Default Changelist" comment="fine tuned json and moved around the render to make more distinct lists">
+      <change afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/json/level.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/level.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/json/sprites.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/sprites.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Blocks/spriteBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/spriteBlock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Controls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Controls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Block.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Block.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Blocks/NounBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/NounBlock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Blocks/Wall.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/Wall.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/EntityList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/EntityList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/SpriteList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/SpriteList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Traits/You.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Traits/You.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helperFunctions/buildTexturePack.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helperFunctions/buildTexturePack.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/helperFunctions/makeLevelBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helperFunctions/makeLevelBuilder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
     </list>
@@ -105,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589164550904</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="got animations and directions moving">
+      <created>1589242105150</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1589242105150</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,19 +125,21 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="getting ready to update renderer" />
     <MESSAGE value="BABA is drawn and can move;" />
-    <option name="LAST_COMMIT_MESSAGE" value="BABA is drawn and can move;" />
+    <MESSAGE value="got animations and directions moving" />
+    <MESSAGE value="fine tuned json and moved around the render to make more distinct lists" />
+    <option name="LAST_COMMIT_MESSAGE" value="fine tuned json and moved around the render to make more distinct lists" />
   </component>
   <component name="WindowStateProjectService">
     <state x="830" y="294" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587517256922">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="830" y="294" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1587517256922" />
-    <state x="249" y="0" key="CommitChangelistDialog2" timestamp="1589226560515">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="374" y="0" key="CommitChangelistDialog2" timestamp="1589266311957">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="249" y="0" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1589226560515" />
     <state x="498" y="0" key="CommitChangelistDialog2/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1588312026033" />
-    <state x="374" y="0" key="CommitChangelistDialog2/766.-768.1366.728/1920.0.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1589164549945" />
+    <state x="374" y="0" key="CommitChangelistDialog2/766.-768.1366.728/1920.0.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1589266311957" />
     <state x="1001" y="218" key="FileChooserDialogImpl" timestamp="1588464616988">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -146,6 +159,10 @@
     <state x="2560" y="-353" width="1616" height="974" maximized="true" key="dock-window-1/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1588046149684" />
     <state x="2766" y="-200" width="1129" height="974" maximized="true" key="dock-window-1/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@2560.-353.1600.860" timestamp="1588048831474" />
     <state x="1920" y="0" width="1612" height="739" maximized="true" key="dock-window-1/766.-768.1366.728/1920.0.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1589240352172" />
+    <state x="1920" y="0" width="1612" height="974" key="dock-window-2" timestamp="1589256765906">
+      <screen x="1920" y="0" width="1600" height="860" />
+    </state>
+    <state x="1920" y="0" width="1612" height="974" key="dock-window-2/766.-768.1366.728/1920.0.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1589256765906" />
     <state x="422" y="4" width="670" height="796" key="search.everywhere.popup" timestamp="1587965344684">
       <screen x="0" y="0" width="1280" height="800" />
     </state>

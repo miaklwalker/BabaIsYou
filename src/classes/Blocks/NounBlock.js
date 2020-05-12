@@ -12,4 +12,5 @@ export default class NounBlock extends Block{
     draw(){
         return [...super.draw(),this.name,this.group,this.type,this.id]
     }
+
 }

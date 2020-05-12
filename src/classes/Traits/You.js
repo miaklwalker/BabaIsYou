@@ -11,17 +11,19 @@ export default class You extends Trait {
     update(sprite,message){
         let direction = message.direction;
         this[direction] = false;
-        if(direction === 'right'){
-            sprite.position.x++
-        }
-        if(direction === 'left'){
-            sprite.position.x--
-        }
-        if(direction === 'up'){
-            sprite.position.y--
-        }
-        if(direction === 'down'){
-            sprite.position.y++
+        if(message.action === 'run') {
+            if (direction === 'right') {
+                sprite.position.x++
+            }
+            if (direction === 'left') {
+                sprite.position.x--
+            }
+            if (direction === 'up') {
+                sprite.position.y--
+            }
+            if (direction === 'down') {
+                sprite.position.y++
+            }
         }
     }
 }

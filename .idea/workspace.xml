@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efda75ba-1cb0-4a6a-b634-94328fd4cf8b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/json/sprites.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/sprites.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/Blocks/spriteBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/spriteBlock.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/Controls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Controls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/EntityList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/EntityList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/SpriteList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/SpriteList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/testFunctions/testTextures.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/testFunctions/testTextures.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Traits/You.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Traits/You.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helperFunctions/makeLevelBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helperFunctions/makeLevelBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,12 +140,12 @@
     </state>
     <state x="240" y="136" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1587856531096" />
     <state x="480" y="177" key="Vcs.Push.Dialog.v2/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1588312066632" />
-    <state x="470" y="-792" width="1615" height="974" maximized="true" key="dock-window-1" timestamp="1589165985569">
-      <screen x="766" y="-768" width="1366" height="728" />
+    <state x="1920" y="0" width="1612" height="739" maximized="true" key="dock-window-1" timestamp="1589240352172">
+      <screen x="1920" y="0" width="1600" height="860" />
     </state>
     <state x="2560" y="-353" width="1616" height="974" maximized="true" key="dock-window-1/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1588046149684" />
     <state x="2766" y="-200" width="1129" height="974" maximized="true" key="dock-window-1/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@2560.-353.1600.860" timestamp="1588048831474" />
-    <state x="470" y="-792" width="1615" height="974" maximized="true" key="dock-window-1/766.-768.1366.728/1920.0.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1589165985569" />
+    <state x="1920" y="0" width="1612" height="739" maximized="true" key="dock-window-1/766.-768.1366.728/1920.0.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1589240352172" />
     <state x="422" y="4" width="670" height="796" key="search.everywhere.popup" timestamp="1587965344684">
       <screen x="0" y="0" width="1280" height="800" />
     </state>

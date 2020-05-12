@@ -3,9 +3,10 @@ export default class EntityList {
         this.entities = [];
         this.divisions = game.gridDiminsions;
         this.frameCount = 0;
+        this.frameLength = 3;
     }
     get frame(){
-        return Math.floor(this.frameCount / 19 % 3);
+        return Math.floor(this.frameCount / 19 % this.frameLength);
     }
     addEntity(entity) {
         this.entities.push(entity);

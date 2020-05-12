@@ -8,10 +8,10 @@ export default class SpriteList extends EntityList{
         this.entities
             .map(entity=>entity.draw())
             .forEach(([x,y,name,,type,id,direction,action])=>{
-                console.log(direction,action);
                 let spritesSheet = spriteSheets.spriteSheets;
-                let sprite = spritesSheet[type][name].sprites[this.frame];
-
+                let animation = spritesSheet[type][name].animations[action][direction];
+                this.frameLength = animation.length;
+                let sprite = animation[this.frame];
                 sprite.render(
                     canvas,context,
                     tint,

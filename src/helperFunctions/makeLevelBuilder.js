@@ -8,8 +8,6 @@ export default function makeLevelBuilder(game){
         game.renderer.changePalette(spriteSpec.palettes[levelSpec.palettes]);
         game.renderer.changeTexture(spriteSpec.textures[levelSpec.textures]);
         const {words,tiles,wall,floor,sprites} = levelSpec;
-        console.log(levelSpec);
-        console.log(spriteSpec);
         let baba = blockFactory('sprites',Object.values(sprites.BABA[0]));
         baba.addTrait(new You());
         game.addSprite(baba);

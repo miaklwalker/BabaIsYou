@@ -24,7 +24,8 @@ export default class SpriteBlock extends Block{
     }
     onMessage(message) {
         super.onMessage(message);
-        this.direction = message.direction
+        this.direction = message.direction;
+        this.action = message.action;
     }
 
 }

@@ -22,13 +22,14 @@ defaultControls.mapKey('KeyS',DOWN);
 defaultControls.mapKey('KeyR',RESTART);
 
 
-const dispatchMessageFromControls = (event,keyPressed) =>{
+const dispatchMessageFromControls = (code,direction,action) =>{
     document.dispatchEvent(
         addMessage({
             to:'you',
             from:'controls',
-            keyPressed:event.code,
-            direction:keyPressed.description
+            keyPressed:code,
+            direction,
+            action,
         }));
 };
 
@@ -41,13 +42,15 @@ export default class Controls {
         this[RESTART] = false;
         this.keyMap  = defaultControls;
         this.timeout = 300;
+        this.lastPressed = ''
     }
     keyDown=(event)=>{
         const keyPressed = this.keyMap[event.code];
         if(keyPressed === undefined)return;
         if(!this[keyPressed]){
             this[keyPressed] = true;
-            dispatchMessageFromControls(event,keyPressed);
+            dispatchMessageFromControls(event.code,keyPressed.description,'run');
+            this.lastPressed = keyPressed.description;
             setTimeout(() => {
                 this[keyPressed] = false;
             }, this.timeout);
@@ -56,6 +59,13 @@ export default class Controls {
     keyUp = (event)=>{
         const keyPressed = this.keyMap[event.code];
         this[keyPressed] = false;
+        if(this.allUp()){
+            dispatchMessageFromControls(event.code,this.lastPressed,'idle')
+        }
+
+    };
+    allUp(){
+        return !this[UP] && !this[DOWN] && !this[RIGHT] && !this[LEFT];
     }
 }
 

@@ -9,6 +9,7 @@ import runTests from "../../TESTS/__tests__/test.js";
 import Controls from "./Controls.js"
 import MessageCenter from "./MessageCenter.js";
 import SpriteList from "./SpriteList.js";
+import MAIN from "../main.js";
 
 export default class Game {
     image;
@@ -43,6 +44,9 @@ export default class Game {
             return {image, spriteSpec,levelSpec};
 
     };
+    get entities(){
+        return [...this.walls.entities,...this.sprites.entities,...this.tiles.entities]
+    }
     addWords(entity){
         this.words.addEntity(entity);
     }
@@ -60,5 +64,7 @@ export default class Game {
     }
     addSprite(sprite){
         this.sprites.addEntity(sprite);
+    }
+    restart(){
     }
 }

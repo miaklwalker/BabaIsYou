@@ -17,21 +17,31 @@ export default function makeLevelBuilder(game){
 
         //words
         Object.keys(words).forEach(type=>{
-            words[type].forEach(sprite => game.addWords(blockFactory(type, sprite)))
+            words[type].forEach(sprite => {
+                let block = blockFactory(type, sprite);
+                game.messageCenter.subscribe(block);
+                game.addWords(block)
+            })
         });
         // tiles
         Object.keys(tiles).forEach(type=>{
             tiles[type].forEach(sprite=>{
-                game.addTile(blockFactory('tiles', Object.values(sprite)))
+                let tile = blockFactory('tiles', Object.values(sprite));
+                game.messageCenter.subscribe(tile);
+                game.addTile(tile);
             })
         });
         //floors
         floor.forEach(sprite=>{
-            game.addBackgroundTile(blockFactory('tiles', Object.values(sprite)))
+            let floor = blockFactory('tiles', Object.values(sprite));
+            game.messageCenter.subscribe(floor);
+            game.addBackgroundTile(floor)
         });
         // walls
         wall.forEach(({x,y})=>{
-            game.addWall(new Wall(x,y));
+            let wall = new Wall(x,y);
+            game.messageCenter.subscribe(wall);
+            game.addWall(wall);
         });
     }
 }

@@ -41,12 +41,12 @@ export default class Controls {
         this[LEFT] = false;
         this[RESTART] = false;
         this.keyMap  = defaultControls;
-        this.timeout = 300;
+        this.timeout = 150;
         this.lastPressed = ''
     }
     keyDown=(event)=>{
         const keyPressed = this.keyMap[event.code];
-        if(keyPressed === undefined)return;
+        if(keyPressed === undefined || keyPressed === RESTART)return;
         if(!this[keyPressed]){
             this[keyPressed] = true;
             dispatchMessageFromControls(event.code,keyPressed.description,'run');
@@ -59,6 +59,7 @@ export default class Controls {
     keyUp = (event)=>{
         const keyPressed = this.keyMap[event.code];
         this[keyPressed] = false;
+        if(keyPressed === undefined || keyPressed === RESTART)return;
         if(this.allUp()){
             dispatchMessageFromControls(event.code,this.lastPressed,'idle')
         }

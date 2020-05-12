@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efda75ba-1cb0-4a6a-b634-94328fd4cf8b" name="Default Changelist" comment="fine tuned json and moved around the render to make more distinct lists">
-      <change afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json/level.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/level.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json/sprites.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/sprites.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Block.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Block.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Blocks/NounBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/NounBlock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Blocks/Wall.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/Wall.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/EntityList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/EntityList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Blocks/spriteBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/spriteBlock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Controls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Controls.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helperFunctions/buildTexturePack.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helperFunctions/buildTexturePack.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/helperFunctions/makeLevelBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helperFunctions/makeLevelBuilder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
     </list>
@@ -87,6 +79,7 @@
       <workItem from="1589165966485" duration="227000" />
       <workItem from="1589171071793" duration="481000" />
       <workItem from="1589178758892" duration="1681000" />
+      <workItem from="1589311590205" duration="1644000" />
     </task>
     <task id="LOCAL-00001" summary="getting ready to update renderer">
       <created>1587856524695</created>

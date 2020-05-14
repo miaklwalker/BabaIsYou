@@ -7,29 +7,19 @@ import makeLevelBuilder from "./helperFunctions/makeLevelBuilder.js";
 import You from "./classes/Traits/You.js";
 import RuleParser from "./classes/RuleParser.js";
 import traitFactory from "./helperFunctions/traitFactory.js";
+import enforceRules from "./helperFunctions/EnforceRules.js";
+import Collider from "./classes/Collider.js";
 
 
 const game_canvas = document.getElementById('screen');
 const game_context = game_canvas.getContext('2d');
 const ruleParser =  new RuleParser();
+const collider = new Collider();
 
 
 
 
-function clearRules(entities){
-    entities.forEach(entity=>entity.traits = []);
-}
-function enforceRules(rules,entities){
-    clearRules(entities);
-    rules.forEach(({name,operator,property})=>{
-        entities.forEach(entity=>{
-            if(entity.name === name.name && operator.name === 'IS'){
-                    entity.addTrait(traitFactory(property.name))
-            }
-        })
-    });
 
-}
 
 export default function MAIN () {
         let game = new Game();
@@ -61,6 +51,7 @@ export default function MAIN () {
 
         game.timer.update = (deltaTime) => {
                 game.renderer.render(game_canvas, game_context);
+                collider.update(game.allEntities);
                 game.messageCenter.update();
         }
 }

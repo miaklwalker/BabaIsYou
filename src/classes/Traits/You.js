@@ -1,19 +1,21 @@
 import Trait from "./Trait.js";
 
+
+
+
 export default class You extends Trait {
     constructor(){
         super('YOU');
-        this.right = true;
-        this.left = true;
-        this.up = true;
-        this.down = true;
+        this.right = false;
+        this.left = false;
+        this.up = false;
+        this.down = false;
     }
     update(sprite,message) {
-        console.log(message);
-        if (message.to === 'you') {
+        if (message.to === 'you' && message.from === 'controls') {
             let direction = message.data.direction;
-            //this[direction] = false;
-            if (message.data.action === 'run') {
+            console.log(message,this.up,this.right);
+            if (message.data.action === 'run' && !this[direction]) {
                 if (direction === 'right') {
                     sprite.position.x++
                 }
@@ -27,6 +29,12 @@ export default class You extends Trait {
                     sprite.position.y++
                 }
             }
+        }else{
+                const [left,down,right,up] = message.data;
+                this.left = left;
+                this.right = right;
+                this.down = down;
+                this.up = up;
         }
     }
 }

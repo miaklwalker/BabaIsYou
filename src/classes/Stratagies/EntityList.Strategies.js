@@ -18,6 +18,9 @@ export default function chooseStrategy(strategy){
 function SpriteStrategy(spriteSheets,[x,y,name,,type,id,direction,action],frame,list){
     let spritesSheet = spriteSheets.spriteSheets;
     let animation = spritesSheet[type][name].animations[action][direction];
+    if(animation === undefined){
+        console.log(entity);
+    }
     list.frameLength = animation.length;
-    return animation[frame];
+    return animation[list.frame];
 }

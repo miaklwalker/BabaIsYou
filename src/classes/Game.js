@@ -48,7 +48,9 @@ export default class Game {
     get entities(){
         return [...this.walls.entities,...this.sprites.entities,...this.tiles.entities]
     }
-
+    get allEntities(){
+        return [...this.entities,...this.words.entities]
+    }
     addWords(entity){
         this.words.addEntity(entity);
     }
@@ -67,6 +69,5 @@ export default class Game {
     addSprite(sprite){
         this.sprites.addEntity(sprite);
     }
-    restart(){
-    }
+
 }

@@ -1,4 +1,5 @@
 import addMessage from "../CustomEvents/addmessage.js";
+import Message from "./Message.js";
 
 
 const UP      = Symbol('up');
@@ -22,15 +23,11 @@ defaultControls.mapKey('KeyS',DOWN);
 defaultControls.mapKey('KeyR',RESTART);
 
 
+
 const dispatchMessageFromControls = (code,direction,action) =>{
+
     document.dispatchEvent(
-        addMessage({
-            to:'you',
-            from:'controls',
-            keyPressed:code,
-            direction,
-            action,
-        }));
+        addMessage(new Message('you','controls',{keyPressed: code,direction,action})));
 };
 
 export default class Controls { 

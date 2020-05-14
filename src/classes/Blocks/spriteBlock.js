@@ -2,6 +2,7 @@ import makeUniqueId from "../../helperFunctions/MakeID.js";
 import Block from "../Block.js";
 
 export default class SpriteBlock extends Block{
+    YOU;
     constructor(x,y,name,id = makeUniqueId(12)) {
         super(x,y);
         this.name = name;
@@ -24,9 +25,9 @@ export default class SpriteBlock extends Block{
     }
     onMessage(message) {
         super.onMessage(message);
-        if(message.action !== 'restart') {
-            this.direction = message.direction;
-            this.action = message.action;
+        if(message.action !== 'restart' && this.YOU !== undefined ) {
+            this.direction = message.data.direction;
+            this.action = message.data.action;
         }
     }
 

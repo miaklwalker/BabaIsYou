@@ -24,8 +24,8 @@ function chooseShape({left,right,up,down}){
 export default class Wall extends Block{
     constructor(x,y) {
         super(x,y);
-        this.type = 'wall';
-        this.name = '';
+        this.type = 'WALL';
+        this.name = 'WALL';
         this.ran = false;
     }
     draw(others){
@@ -34,16 +34,7 @@ export default class Wall extends Block{
     }
     chooseName(neighbors){
         if(this.ran === false) {
-            neighbors.forEach(other => {
-                let result = this.checkNeighbors(other);
-                if(result.includes(true)){
-                    const [left,down,right,up]=result;
-                    if(left) this.neighbors.left = true;
-                    if(right)this.neighbors.right = true;
-                    if(up)   this.neighbors.up = true;
-                    if(down) this.neighbors.down = true;
-                }
-            });
+            this.updateAndFindNeighbors(neighbors);
         }
         this.ran = true;
         this.name = chooseShape(this.neighbors);

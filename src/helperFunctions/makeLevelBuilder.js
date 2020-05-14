@@ -1,6 +1,7 @@
 import blockFactory from "../helperFunctions/blockFactory.js";
 import Wall from "../classes/Blocks/Wall.js";
 import You from "../classes/Traits/You.js";
+import Push from "../classes/Traits/Push.js";
 
 export default function makeLevelBuilder(game){
     return (spriteSpec,levelSpec)=>{
@@ -11,7 +12,6 @@ export default function makeLevelBuilder(game){
 
         let baba = blockFactory('sprites',Object.values(sprites.BABA[0]));
 
-        baba.addTrait(new You());
         game.addSprite(baba);
         game.messageCenter.subscribe(baba);
 
@@ -19,6 +19,7 @@ export default function makeLevelBuilder(game){
         Object.keys(words).forEach(type=>{
             words[type].forEach(sprite => {
                 let block = blockFactory(type, sprite);
+                block.addTrait(new Push());
                 game.messageCenter.subscribe(block);
                 game.addWords(block)
             })

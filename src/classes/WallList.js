@@ -5,7 +5,7 @@ import Sprite from "./Sprite.js";
 function makeWallSprites(texturePack){
     let buffer = new Map();
     for(let texture in texturePack){
-        let temp = []
+        let temp = [];
         let i = 0 ;
         for(let set of texturePack[texture]){
             let sprite = {

@@ -5,16 +5,16 @@ export function chooseShape([left,down,right,up]){
              return 'single'
          }
         if(left  && !down && !right && !up ){
-            return 'left'
+            return 'right'
         }
         if(!left &&  down && !right && !up ){
-            return 'bottom'
+            return 'top'
         }
         if(!left && !down &&  right &&  up ){
             return'bottomLeft'
         }
         if(!left && !down && right &&  !up ){
-            return'right'
+            return'left'
         }
         if(left  && !down &&  right && !up ){
             return'middle'
@@ -26,7 +26,7 @@ export function chooseShape([left,down,right,up]){
             return'middleJoint'
         }
         if(!left && !down && !right &&  up ){
-            return'top'
+            return'bottom'
         }
         if(!left &&  down &&  right && !up ){
             return'topLeft'

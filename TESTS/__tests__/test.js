@@ -92,14 +92,14 @@ let arrs = [
 
 let result=[
     'single',
-    'left',
-    'bottom',
-    'bottomLeft',
     'right',
+    'top',
+    'bottomLeft',
+    'left',
     'middle',
     'bottomRight',
     'middleJoint',
-    'top',
+    'bottom',
     'topLeft',
     'verticalMiddle',
     'verticalMiddleRight',

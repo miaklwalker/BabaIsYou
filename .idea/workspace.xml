@@ -2,26 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efda75ba-1cb0-4a6a-b634-94328fd4cf8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/json/test.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TESTS/__tests__/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/TESTS/__tests__/test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json/level.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/level.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Block.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Block.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Blocks/NounBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/NounBlock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Blocks/OperatorBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/OperatorBlock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Blocks/PropertyBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/PropertyBlock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/json/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/test.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/Blocks/Wall.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/Wall.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Blocks/spriteBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Blocks/spriteBlock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Collider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Collider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Controls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Controls.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/MessageCenter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/MessageCenter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/RuleParser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/RuleParser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Traits/Push.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Traits/Push.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Traits/Stop.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Traits/Stop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Traits/You.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Traits/You.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/WallList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/WallList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +79,7 @@
       <workItem from="1589171071793" duration="481000" />
       <workItem from="1589178758892" duration="1681000" />
       <workItem from="1589311590205" duration="1644000" />
-      <workItem from="1589511788388" duration="12415000" />
+      <workItem from="1589511788388" duration="12791000" />
     </task>
     <task id="LOCAL-00001" summary="getting ready to update renderer">
       <created>1587856524695</created>
@@ -138,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589438676727</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Need to fix the wall name chooser">
+      <created>1589526428440</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1589526428440</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,20 +143,21 @@
     <MESSAGE value="fine tuned json and moved around the render to make more distinct lists" />
     <MESSAGE value="Paying back some technical debt;&#10;&#10;Added The Strategy Pattern to the entity list class and was able to remove several separate classes&#10;&#10;Added a Dedicated Message class for a more consistent interface;" />
     <MESSAGE value="bug fixes and good start on collision" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixes and good start on collision" />
+    <MESSAGE value="Need to fix the wall name chooser" />
+    <option name="LAST_COMMIT_MESSAGE" value="Need to fix the wall name chooser" />
   </component>
   <component name="WindowStateProjectService">
     <state x="830" y="294" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587517256922">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="830" y="294" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1587517256922" />
-    <state x="374" y="0" key="CommitChangelistDialog2" timestamp="1589438675988">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2294" y="0" key="CommitChangelistDialog2" timestamp="1589526427432">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="249" y="0" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1589226560515" />
     <state x="498" y="0" key="CommitChangelistDialog2/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1588312026033" />
     <state x="374" y="0" key="CommitChangelistDialog2/2148.-768.1366.728/3840.177.1600.860/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589438675988" />
-    <state x="2294" y="0" key="CommitChangelistDialog2/2148.-768.1366.728/3840.177.1600.860/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1589430236562" />
+    <state x="2294" y="0" key="CommitChangelistDialog2/2148.-768.1366.728/3840.177.1600.860/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1589526427432" />
     <state x="374" y="0" key="CommitChangelistDialog2/766.-768.1366.728/1920.0.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1589266311957" />
     <state x="1001" y="218" key="FileChooserDialogImpl" timestamp="1588464616988">
       <screen x="0" y="0" width="2560" height="1040" />
@@ -174,13 +167,13 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="149" y="39" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1587949692142" />
-    <state x="360" y="177" key="Vcs.Push.Dialog.v2" timestamp="1589438682119">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2280" y="177" key="Vcs.Push.Dialog.v2" timestamp="1589526437631">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="240" y="136" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1587856531096" />
     <state x="480" y="177" key="Vcs.Push.Dialog.v2/0.0.2560.1040/1192.-768.1366.728/2560.-353.1600.860@0.0.2560.1040" timestamp="1588312066632" />
     <state x="360" y="177" key="Vcs.Push.Dialog.v2/2148.-768.1366.728/3840.177.1600.860/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589438682119" />
-    <state x="2280" y="177" key="Vcs.Push.Dialog.v2/2148.-768.1366.728/3840.177.1600.860/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1589430304450" />
+    <state x="2280" y="177" key="Vcs.Push.Dialog.v2/2148.-768.1366.728/3840.177.1600.860/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1589526437631" />
     <state x="2135" y="64" width="1557" height="1014" maximized="true" key="dock-window-1" timestamp="1589511850379">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>

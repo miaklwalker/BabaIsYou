@@ -37,6 +37,10 @@ export default class Block {
     };
     updateAndFindNeighbors=(neighbors)=>{
         let matches = [];
+        this.neighbors.left =   false;
+        this.neighbors.right =  false;
+        this.neighbors.up =     false;
+        this.neighbors.down =   false;
         neighbors.forEach(other => {
             let result = this.checkNeighbors(other);
             if(result.includes(true)){

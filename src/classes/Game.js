@@ -29,7 +29,7 @@ export default class Game {
     setup = async() =>{
             const image = await loadImage('../images/spritesheet.png');
             const spriteSpec = await loadJSON('../json/sprites.json');
-            const levelSpec = await loadJSON('../json/test.json');
+            const levelSpec = await loadJSON('../json/level.json');
 
            // this.messageCenter.subscribe({onMessage(msg){console.log(msg)}});
             this.image = image;

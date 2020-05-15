@@ -1,16 +1,19 @@
 import Vector from "./Vector.js";
+import makeUniqueId from "../helperFunctions/MakeID.js";
 
 
 export default class Block {
     constructor(x,y){
         this.position = new Vector(x,y);
         this.traits = [];
+        this.id = makeUniqueId(12)
         this.neighbors = {
             left:false,
             right:false,
             up:false,
             down:false,
-        }
+        };
+        this.canCollide = false;
     }
     draw(){
         return [this.position.x,this.position.y]

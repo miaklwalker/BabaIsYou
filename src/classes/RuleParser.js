@@ -1,4 +1,6 @@
 import OperatorBlock from "./Blocks/OperatorBlock.js";
+import NounBlock from "./Blocks/NounBlock.js";
+import PropertyBlock from "./Blocks/PropertyBlock.js";
 
 let handleFilter =(word)=>{ return (other) =>{if(word.id !== other.id && !(other instanceof OperatorBlock))return other;}};
 let checkIfValid = ([left,right,up,down]) =>{
@@ -25,15 +27,20 @@ export default class RuleParser{
             property,
         })
     }
+
     parseRules(){
         this.rules = [];
         this.words.forEach(word=>{
             if(word instanceof OperatorBlock){
                 let filteredWords = this.words.filter(handleFilter(word));
+
                 let matches = word.updateAndFindNeighbors(filteredWords);
+
                 let ruleDirection = checkIfValid(Object.values(word.neighbors));
+
                 if(ruleDirection !== 'none'){
-                    let [noun,property] = matches;
+                    let noun = matches [0] instanceof NounBlock ? matches[0] : matches[1];
+                    let property = matches [1] instanceof PropertyBlock ? matches[1] : matches[0];
                     this.makeRule(noun,word,property);
                 }
             }

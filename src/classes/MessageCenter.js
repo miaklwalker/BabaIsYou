@@ -14,7 +14,6 @@ export default class MessageCenter{
         this.messages.push(event.detail)
     };
     update(){
-
         this.messages.forEach(message=>{
             this.recipients.forEach(recipient=>{
                 recipient.onMessage(message);

@@ -3,12 +3,11 @@ import Block from "../Block.js";
 
 export default class SpriteBlock extends Block{
     YOU;
-    constructor(x,y,name,id = makeUniqueId(12)) {
+    constructor(x,y,name) {
         super(x,y);
         this.name = name;
         this.group ='sprites';
         this.type = 'sprites';
-        this.id = id;
         this.direction='right';
         this.action = 'idle'
     }

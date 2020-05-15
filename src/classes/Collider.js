@@ -10,6 +10,18 @@ function* getCandidates(entities){
 }
 
 
+function collisionReducer(){
+    let temp = [false,false,false,false];
+    return(other)=>{
+        if(other === undefined)return temp;
+        if(other.includes(true)){
+            let location = other.indexOf(true);
+            temp[location] =  true;
+        }
+        return temp;
+    }
+}
+
 export default class Collider {
     constructor(){
         this.sentFalse = false;
@@ -18,14 +30,15 @@ export default class Collider {
     update(entities){
         this.found = false;
         for(let candidate of getCandidates(entities)){
-
+            let reducer = collisionReducer();
             entities.forEach(entity=>{
                 let possible = candidate.checkNeighbors(entity);
-                if(possible.includes(true)){
+                if(possible.includes(true) && entity.canCollide){
                     this.sentFalse = true;
                     this.found = true;
-                    document.dispatchEvent(addMessage(new Message('you','collider',possible)))
+                    document.dispatchEvent(addMessage(new Message('you','collider',reducer(possible))))
                 }
+                document.dispatchEvent(addMessage(new Message(entity.id,'collider',possible)))
             });
         }
         if(this.sentFalse && !this.found){
@@ -33,8 +46,7 @@ export default class Collider {
             this.sentFalse = false;
         }
     }
-    makeResults(temp,update){
-        // [ false, true, false, false]
+    onMessage(message){
 
     }
 }

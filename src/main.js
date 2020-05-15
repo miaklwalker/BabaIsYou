@@ -37,6 +37,9 @@ export default function MAIN () {
                 ruleParser.parseRules();
                 enforceRules(ruleParser.rules,game.entities);
 
+
+
+
                 game.addLayer(new Layer(1, drawBackground, ['black']));
                 game.addLayer(new Layer(0, drawGrid, [[19, 19]]));
                 game.addLayer(new Layer(1, game.words.render, args));

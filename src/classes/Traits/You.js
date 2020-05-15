@@ -14,7 +14,6 @@ export default class You extends Trait {
     update(sprite,message) {
         if (message.to === 'you' && message.from === 'controls') {
             let direction = message.data.direction;
-            console.log(message,this.up,this.right);
             if (message.data.action === 'run' && !this[direction]) {
                 if (direction === 'right') {
                     sprite.position.x++
@@ -29,7 +28,7 @@ export default class You extends Trait {
                     sprite.position.y++
                 }
             }
-        }else{
+        }else if(message.to === 'you' && message.from === 'collider'){
                 const [left,down,right,up] = message.data;
                 this.left = left;
                 this.right = right;

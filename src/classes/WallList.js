@@ -34,7 +34,6 @@ export default  class WallList extends EntityList{
         if(this.buffer === null){
             this.buffer = makeWallSprites(texturePack);
         }
-
         let walls = this.entities.map(entity=>entity.draw(this.entities));
         walls.forEach(wall=>{
             const [x1,y1,texture] = wall;

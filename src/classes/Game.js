@@ -29,9 +29,14 @@ export default class Game {
     setup = async() =>{
             const image = await loadImage('../images/spritesheet.png');
             const spriteSpec = await loadJSON('../json/sprites.json');
-            const levelSpec = await loadJSON('../json/level.json');
+            const levelSpec = await loadJSON('../json/level-1.json');
 
-           // this.messageCenter.subscribe({onMessage(msg){console.log(msg)}});
+           this.messageCenter.subscribe({onMessage(msg){
+               if(msg.from !=='collider'){
+                   console.log(msg)
+               }
+           }});
+
             this.image = image;
             this.spriteSpec = spriteSpec;
 

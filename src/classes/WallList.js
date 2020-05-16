@@ -15,7 +15,7 @@ function makeWallSprites(texturePack){
                 h:set.height,
                 name:i
             };
-            temp.push(new Sprite(sprite,7,'base'));
+            temp.push(new Sprite(sprite,8,'base'));
             i++
         }
         buffer.set(texture,temp);

@@ -3,19 +3,16 @@ import drawGrid from "./drawFunctions/drawGrid.js";
 import Layer from "./classes/Layer.js";
 import Game from "./classes/Game.js";
 import parseJsonToSpriteSheet from "./helperFunctions/parseJsonToSpritesheet.js";
-import makeLevelBuilder from "./helperFunctions/makeLevelBuilder.js";
-import You from "./classes/Traits/You.js";
+import makeLevelBuilder from "./helperFunctions/makeLevelBuilder.js";import You from "./classes/Traits/You.js";
 import RuleParser from "./classes/RuleParser.js";
-import traitFactory from "./helperFunctions/traitFactory.js";
 import enforceRules from "./helperFunctions/EnforceRules.js";
 import Collider from "./classes/Collider.js";
 
 
 const game_canvas = document.getElementById('screen');
 const game_context = game_canvas.getContext('2d');
-const ruleParser =  new RuleParser();
+let ruleParser
 const collider = new Collider();
-
 
 
 
@@ -32,11 +29,12 @@ export default function MAIN () {
                 let spriteSheets = parseJsonToSpriteSheet(spriteSpec);
                 let args = [image, spriteSheets, tint];
                 levelBuilder(spriteSpec, levelSpec);
-
+                ruleParser =  new RuleParser(enforceRules(game.entities));
                 ruleParser.addWords(game.words.entities);
                 ruleParser.parseRules();
-                enforceRules(ruleParser.rules,game.entities);
 
+
+                game.messageCenter.subscribe(ruleParser);
 
 
 

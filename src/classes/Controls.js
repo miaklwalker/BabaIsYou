@@ -29,6 +29,7 @@ const dispatchMessageFromControls = (code,direction,action) =>{
         addMessage(new Message('you','controls',{keyPressed: code,direction,action})));
 };
 
+
 export default class Controls { 
     constructor(){
         this[UP] = false;

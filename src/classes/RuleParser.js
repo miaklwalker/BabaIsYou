@@ -16,12 +16,13 @@ let checkIfValid = ([left,right,up,down]) =>{
 };
 
 export default class RuleParser{
-    constructor(){
+    constructor(callback){
         this.words = [];
         this.rules = [];
+        this.callback = callback;
     }
     makeRule(name,operator,property){
-        this.rules .push({
+        this.rules.push({
             name,
             operator,
             property,
@@ -45,6 +46,12 @@ export default class RuleParser{
                 }
             }
         })
+    }
+    onMessage({from}){
+        if(from === 'controls'){
+            this.parseRules();
+            this.callback(this.rules);
+        }
     }
     addWords(words){
         this.words.push(...words);

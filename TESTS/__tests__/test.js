@@ -10,7 +10,7 @@ import MessageCenter from '../../src/classes/MessageCenter.js'
 import makeUniqueId from '../../src/helperFunctions/MakeID.js';
 import traitFactory from "../../src/helperFunctions/traitFactory.js";
 import You from "../../src/classes/Traits/You.js";
-import {chooseShape} from "../../src/classes/Blocks/Wall.js";
+import chooseShape from "../../src/helperFunctions/chooseShape.js";
 import xyCounter from "../../src/helperFunctions/xyCounter.js";
 
 describe('getColorCordinates',

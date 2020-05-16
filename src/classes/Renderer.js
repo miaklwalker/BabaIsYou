@@ -9,7 +9,6 @@ export default class Renderer{
         this.palette = [488, 24, 56, 40];
         this.texture = buildTexturePack(384, 1512);
         this.divisions = game.gridDiminsions;
-        this.cache = new Map();
     }
     changePalette=(palette)=>{
         this.palette = palette;
@@ -57,13 +56,13 @@ export default class Renderer{
         const [cx, cy] = this.palette;
         let width = 480 / this.divisions;
         let height = 480 / this.divisions;
-        
-        context.clearRect(0, 0, width, height);
+        let endDim = [0,0,width,height];
+        context.clearRect(...endDim);
         context.globalCompositeOperation = 'source-over';
-        context.drawImage(img, ...getColorCoords(cx, cy, index), 0, 0, width, height);
+        context.drawImage(img, ...getColorCoords(cx, cy, index),...endDim);
         context.globalCompositeOperation = 'destination-in';
-        context.drawImage(img, x, y, w, h, 0, 0, width, height);
+        context.drawImage(img, x, y, w, h,...endDim);
         context.globalCompositeOperation = 'darken';
-        context.drawImage(img, x, y, w, h, 0, 0, width, height);
+        context.drawImage(img, x, y, w, h,...endDim);
     }
 }

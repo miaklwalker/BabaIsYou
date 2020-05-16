@@ -1099,7 +1099,7 @@
         ]
       },
       "TILE": {
-        "tint": 7,
+        "tint": 1,
         "palette": "ocean",
         "sprites": [
           {

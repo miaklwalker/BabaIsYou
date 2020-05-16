@@ -10,7 +10,7 @@ import MessageCenter from '../../src/classes/MessageCenter.js'
 import makeUniqueId from '../../src/helperFunctions/MakeID.js';
 import traitFactory from "../../src/helperFunctions/traitFactory.js";
 import You from "../../src/classes/Traits/You.js";
-import {chooseShape} from "../../src/classes/Blocks/Wall.js";
+import chooseShape from "../../src/helperFunctions/chooseShape.js";
 import xyCounter from "../../src/helperFunctions/xyCounter.js";
 
 describe('getColorCordinates',
@@ -28,9 +28,12 @@ expect(getColorCoords(488,24,34)).toMatchArray([536,56,8,8]),
 
 describe('buildTexturePack',
 
-expect(buildTexturePack(384,1512,0,0).single[0]).toEqual({x:384,y:1512,width:24,height:24}),
-expect(buildTexturePack(384,1512,0,9).single[0]).toEqual({x:384,y:1516.5,width:24,height:15})
-
+expect(buildTexturePack(384,1512,0,0).single[0])
+    .toEqual({x:384,y:1512,width:24,height:24}),
+expect(buildTexturePack(384,1512,0,9).single[0])
+    .toEqual({x:384,y:1516.5,width:24,height:15}),
+expect(buildTexturePack(384,1512,12,12).single[0])
+    .toEqual({x:390,y:1518,width:12,height:12})
 );
 
 const block = new Block(1,1);

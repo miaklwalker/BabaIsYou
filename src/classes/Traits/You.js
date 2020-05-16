@@ -28,7 +28,8 @@ export default class You extends Trait {
                     sprite.position.y++
                 }
             }
-        }else if(message.to === 'you' && message.from === 'collider'){
+        }
+        else if(message.to === 'you' && message.from === 'collider'){
                 const [left,down,right,up] = message.data;
                 this.left = left;
                 this.right = right;

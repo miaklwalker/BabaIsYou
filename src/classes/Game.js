@@ -15,7 +15,7 @@ import MessageCenter from "./MessageCenter.js";
 export default class Game {
     image;
     spriteSpec;
-    constructor(messageCenter){
+    constructor(){
         this.timer = new Timer();
         this.gridDiminsions = 19;
         this.renderer = new Renderer(this);
@@ -24,14 +24,19 @@ export default class Game {
         this.backgroundTiles = new EntityList(this,'TILE');
         this.walls = new WallList(this,'WALL');
         this.sprites =  new EntityList(this,'SPRITE');
-        this.messageCenter = messageCenter;
+        this.messageCenter = new MessageCenter();
     }
     setup = async() =>{
             const image = await loadImage('../images/spritesheet.png');
             const spriteSpec = await loadJSON('../json/sprites.json');
-            const levelSpec = await loadJSON('../json/level.json');
+            const levelSpec = await loadJSON('../json/level-1.json');
 
-;
+           this.messageCenter.subscribe({onMessage(msg){
+               if(msg.from !=='collider'){
+                   console.log(msg)
+               }
+           }});
+
             this.image = image;
             this.spriteSpec = spriteSpec;
 
@@ -39,7 +44,7 @@ export default class Game {
 
             document.addEventListener('keydown',controls.keyDown);
             document.addEventListener('keyup',controls.keyUp);
-
+            document.addEventListener('addmessage',this.messageCenter.handleAddMessage);
             
             runTests();
             return {image, spriteSpec,levelSpec};

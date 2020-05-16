@@ -3,8 +3,8 @@ export default class MessageCenter{
         this.messages = [];
         this.recipients = [];
     }
-    subscribe(recipient){
-        this.recipients.push(recipient);
+    subscribe(...recipient){
+        this.recipients.push(...recipient);
     }
     unsubscribe(id){
         let newList = this.recipients.filter(recipient=>recipient.id !== id);

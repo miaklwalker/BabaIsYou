@@ -19,6 +19,7 @@ export default class Block {
         return [this.position.x,this.position.y]
     }
     onMessage(message){
+        this.canCollide = false;
         this.traits.forEach(trait=>{
             trait.update(this,message);
         })

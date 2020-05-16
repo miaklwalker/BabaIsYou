@@ -29,6 +29,12 @@ const dispatchMessageFromControls = (code,direction,action) =>{
         addMessage(new Message('you','controls',{keyPressed: code,direction,action})));
 };
 
+const dispatchRestartMessage = () =>{
+    document.dispatchEvent(
+
+        addMessage(new Message('game','user','restart')));
+};
+
 export default class Controls { 
     constructor(){
         this[UP] = false;
@@ -42,7 +48,11 @@ export default class Controls {
     }
     keyDown=(event)=>{
         const keyPressed = this.keyMap[event.code];
-        if(keyPressed === undefined || keyPressed === RESTART)return;
+        if(keyPressed === undefined)return;
+        if(keyPressed === RESTART){
+            dispatchRestartMessage();
+            return
+        }
         if(!this[keyPressed]){
             this[keyPressed] = true;
             dispatchMessageFromControls(event.code,keyPressed.description,'run');

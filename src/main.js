@@ -9,20 +9,23 @@ import RuleParser from "./classes/RuleParser.js";
 import traitFactory from "./helperFunctions/traitFactory.js";
 import enforceRules from "./helperFunctions/EnforceRules.js";
 import Collider from "./classes/Collider.js";
+import MessageCenter from "./classes/MessageCenter.js";
 
 
 const game_canvas = document.getElementById('screen');
 const game_context = game_canvas.getContext('2d');
 const ruleParser =  new RuleParser();
 const collider = new Collider();
-
+const messageCenter = new MessageCenter();
+document.addEventListener('addmessage',messageCenter.handleAddMessage);
+let game;
 
 
 
 
 
 export default function MAIN () {
-        let game = new Game();
+        game = new Game(messageCenter);
         let levelBuilder = makeLevelBuilder(game);
 
         game.setup()
@@ -55,7 +58,7 @@ export default function MAIN () {
         game.timer.update = (deltaTime) => {
                 game.renderer.render(game_canvas, game_context);
                 collider.update(game.allEntities);
-                game.messageCenter.update();
+                messageCenter.update();
         }
 }
 MAIN();

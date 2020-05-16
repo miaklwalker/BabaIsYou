@@ -1,5 +1,5 @@
 import Block from "../Block.js";
-let counter = 0 ;
+
 export function chooseShape([left,down,right,up]){
          if(!left && !down && !right && !up ){
              return 'single'
@@ -68,9 +68,5 @@ export default class Wall extends Block{
         this.updateAndFindNeighbors(neighbors);
         let {left,down,right,up} = this.neighbors
         this.name = chooseShape([left,down,right,up]);
-        if(counter < 100){
-            console.log(left,down,right,up,this.name);
-            counter++
-        }
     }
 }

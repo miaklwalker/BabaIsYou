@@ -54,18 +54,27 @@ return{
         })
 
     },
-    export:(name)=>{
+    export:(name,option)=>{
         let temp = [];
-        clickedTilesSet.forEach(tile=>{
-            let [x1,y1] = tile;
-            let tileObj ={
-                x:x1/cHeight,
-                y:y1/cWidth,
-                name
-            };
-            temp.push(tileObj);
-        });
-        console.log(JSON.stringify(temp));
+        if(+option === 0) {
+            clickedTilesSet.forEach(tile => {
+                let [x1, y1] = tile;
+                let tileObj = {
+                    x: Math.round(x1 / cHeight),
+                    y: Math.round(y1 / cWidth),
+                    name
+                };
+                temp.push(tileObj);
+            });
+            console.log(JSON.stringify(temp));
+        }else{
+            clickedTilesSet.forEach(tile => {
+                let [x1, y1] = tile;
+                let tileObj = [Math.round(x1 / cHeight), Math.round(y1 / cWidth), name];
+                temp.push(tileObj);
+            });
+            console.log(JSON.stringify(temp));
+        }
     }
 }
 }

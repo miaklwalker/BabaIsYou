@@ -11,11 +11,6 @@ export default function makeLevelBuilder(game){
 
         const {words,tiles,wall,floor,sprites} = levelSpec;
 
-        let baba = blockFactory('sprites',Object.values(sprites.BABA[0]));
-
-        game.addSprite(baba);
-        game.messageCenter.subscribe(baba);
-
         Object.keys(sprites).forEach(type=>{
             sprites[type].forEach(sprite => {
                 let block = blockFactory('sprites', Object.values(sprite));

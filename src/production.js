@@ -41,6 +41,11 @@ let test = `
 
 <canvas id="screen" width=480 height=480 ></canvas>
 <input type="text" id="name"/>
+<select name="" id="select">
+    <option value="0">Object</option>
+    <option value="1">Array</option>
+</select>
+<button id="export">Export</button>
 `;
 
 let style =`

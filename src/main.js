@@ -48,23 +48,23 @@ export default function MAIN () {
 
                 let TM = TileMapper(game_canvas,game.gridDiminsions)
                 game_canvas.addEventListener('click',TM.handleClick);
-                document.addEventListener('keydown',ev=>{
-                   if(ev.code==='KeyE'){
-                           let name = document.getElementById('name');
-                           TM.export(name.value);
-                   }
+
+                document.getElementById('export').addEventListener('click',()=>{
+                           let name = document.getElementById('name').value;
+                           let output = document.getElementById('select').value;
+                           TM.export(name,output);
+
                 });
-                game.addLayer(new Layer(3,TM.render));
+                game.addLayer(new Layer(6,TM.render));
                 game.addLayer(new Layer(1, drawBackground, ['black']));
                 game.addLayer(new Layer(1, drawGrid, [game.gridDiminsions]));
-                game.addLayer(new Layer(1, game.words.render, args));
-                game.addLayer(new Layer(2, game.tiles.render, args));
-                game.addLayer(new Layer(1, game.backgroundTiles.render, args));
-                game.addLayer(new Layer(3, game.sprites.render, args));
-                game.addLayer(new Layer(1, game.walls.render, [image, game.renderer.texture, tint]));
+                game.addLayer(new Layer(3, game.words.render, args));
+                game.addLayer(new Layer(3, game.tiles.render, args));
+                game.addLayer(new Layer(2, game.backgroundTiles.render, args));
+                game.addLayer(new Layer(4, game.sprites.render, args));
+                game.addLayer(new Layer(3, game.walls.render, [image, game.renderer.texture, tint]));
 
-                console.log(game);
-                console.log(spriteSheets)
+
 
                 game.timer.start()
             });

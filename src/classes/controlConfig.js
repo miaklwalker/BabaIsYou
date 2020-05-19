@@ -1,4 +1,0 @@
-class controlConfig{
-    constructor(){
-    }
-}

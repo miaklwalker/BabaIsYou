@@ -5,6 +5,7 @@ import Push from "../classes/Traits/Push.js";
 
 export default function makeLevelBuilder(game){
     return (spriteSpec,levelSpec)=>{
+        game.gridDiminsions = levelSpec.divisions;
         game.renderer.changePalette(spriteSpec.palettes[levelSpec.palettes]);
         game.renderer.changeTexture(spriteSpec.textures[levelSpec.textures]);
 
@@ -15,6 +16,14 @@ export default function makeLevelBuilder(game){
         game.addSprite(baba);
         game.messageCenter.subscribe(baba);
 
+        Object.keys(sprites).forEach(type=>{
+            sprites[type].forEach(sprite => {
+                let block = blockFactory('sprites', Object.values(sprite));
+                block.addTrait(new Push());
+                game.messageCenter.subscribe(block);
+                game.addSprite(block)
+            })
+        });
         //words
         Object.keys(words).forEach(type=>{
             words[type].forEach(sprite => {

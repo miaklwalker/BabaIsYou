@@ -7,8 +7,7 @@ export default class MessageCenter{
         this.recipients.push(...recipient);
     }
     unsubscribe(id){
-        let newList = this.recipients.filter(recipient=>recipient.id !== id);
-        this.recipients = newList;
+        this.recipients =  this.recipients.filter(recipient=>recipient.id !== id);;
     }
     handleAddMessage=(event)=>{
         this.messages.push(event.detail)
@@ -18,7 +17,7 @@ export default class MessageCenter{
             this.recipients.forEach(recipient=>{
                 recipient.onMessage(message);
             })
-        })
+        });
         this.messages = [];
     }
 }

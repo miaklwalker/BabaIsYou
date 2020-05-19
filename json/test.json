@@ -1,179 +1,271 @@
 {
   "sprites": {
-    "BABA": [
-      {
-        "x": 6,
-        "y": 9,
-        "name": "BABA"
-      }
-    ]
+    "BABA": [{"x":0,"y":7,"name":"BABA"}],
+    "KIKI": [{"x":1,"y":7,"name":"KIKI"}],
+    "GHOST": [{"x":2,"y":7,"name":"GHOST"}],
+    "ANNIE": [{"x":3,"y":7,"name":"ANNIE"}],
+    "ROBOT": [{"x":4,"y":7,"name":"ROBOT"}],
+    "HAND": [{"x":5,"y":7,"name":"HAND"}],
+    "SKULL": [{"x":6,"y":7,"name":"SKULL"}],
+    "KNIGHT": [{"x":7,"y":7,"name":"KNIGHT"}],
+    "BAT": [{"x":8,"y":7,"name":"BAT"}],
+    "BIRD": [{"x":9,"y":7,"name":"BIRD"}],
+    "BOLT":[{"x":10,"y":7,"name":"BOLT"}],
+    "BUBBLE": [{"x":11,"y":7,"name":"BUBBLE"}],
+    "BUG": [{"x":12,"y":7,"name":"BUG"}],
+    "COG": [{"x":13,"y":7,"name":"COG"}],
+    "CRAB": [{"x":14,"y":7,"name":"CRAB"}],
+    "ROCKET": [{"x":15,"y":7,"name":"ROCKET"}],
+    "BELT": [{"x":16,"y":7,"name":"BELT"}]
   },
   "tiles": {
-    "rock": [
-      {
-        "x": 9,
-        "y": 8,
-        "name": "ROCK"
-      },
-      {
-        "x": 9,
-        "y": 9,
-        "name": "ROCK"
-      },
-      {
-        "x": 9,
-        "y": 10,
-        "name": "ROCK"
-      }
-    ],
-    "flag": [
-      {
-        "x": 12,
-        "y": 9,
-        "name": "FLAG"
-      }
-    ]
+    "ALGAE":    [{"x":0,"y":20,"name":"ALGAE"}],
+    "BOX":      [{"x":1,"y":20,"name":"BOX"}],
+    "BALL":     [{"x":2,"y":20,"name":"BALL"}],
+    "DOOR":     [{"x":3,"y":20,"name":"DOOR"}],
+    "DUST":     [{"x":4,"y":20,"name":"DUST"}],
+    "FEAR":     [{"x":5,"y":20,"name":"FEAR"}],
+    "FLAG":     [{"x":6,"y":20,"name":"FLAG"}],
+    "FLOWER":   [{"x":7,"y":20,"name":"FLOWER"}],
+    "FRUIT":    [{"x":8,"y":20,"name":"FRUIT"}],
+    "FUNGUS":   [{"x":9,"y":20,"name":"FUNGUS"}],
+    "KEY":      [{"x":10,"y":20,"name":"KEY"}],
+    "LOVE":     [{"x":11,"y":20,"name":"LOVE"}],
+    "MOON":     [{"x":12,"y":20,"name":"MOON"}],
+    "ORB":      [{"x":13,"y":20,"name":"ORB"}],
+    "PILLAR":   [{"x":14,"y":20,"name":"PILLAR"}],
+    "ROCK":     [{"x":15,"y":20,"name":"ROCK"}],
+    "ROSE":     [{"x":16,"y":20,"name":"ROSE"}],
+    "BLOSSOM":  [{"x":17,"y":20,"name":"BLOSSOM"}],
+    "STAR":     [{"x":18,"y":20,"name":"STAR"}],
+    "TILE":     [{"x":19,"y":20,"name":"TILE"}],
+    "TREE":     [{"x":20,"y":20,"name":"TREE"}],
+    "CAKE":     [{"x":21,"y":20,"name":"CAKE"}],
+    "CASH":     [{"x":22,"y":20,"name":"CASH"}],
+    "CUP":      [{"x":23,"y":20,"name":"CUP"}],
+    "GATE":     [{"x":24,"y":20,"name":"GATE"}],
+    "?":        [{"x":25,"y":20,"name":"?"}],
+    "DOT":      [{"x":26,"y":20,"name":"DOT"}],
+    "FIRE":     [{"x":27,"y":20,"name":"FIRE"}],
+    "FOLIAGE":  [{"x":28,"y":20,"name":"FOLIAGE"}],
+    "FUNGI":    [{"x":29,"y":20,"name":"FUNGI"}],
+    "!":        [{"x":0,"y":21,"name":"!"}],
+    "!?":       [{"x":1,"y":21,"name":"!?"}],
+    "SPORES":   [{"x":2,"y":21,"name":"SPORES"}],
+    "JELLY":    [{"x":3,"y":21,"name":"JELLY"}],
+    "LADDER":   [{"x":4,"y":21,"name":"LADDER"}],
+    "LEAF":     [{"x":5,"y":21,"name":"LEAF"}],
+    "FOLIAG":   [{"x":6,"y":21,"name":"FOLIAG"}],
+    "ST4R":     [{"x":7,"y":21,"name":"ST4R"}],
+    "SHIRT":    [{"x":8,"y":21,"name":"SHIRT"}],
+    "SPIKES":   [{"x":9,"y":21,"name":"SPIKES"}],
+    "STUMP":    [{"x":10,"y":21,"name":"STUMP"}],
+    "SUN":      [{"x":11,"y":21,"name":"SUN"}],
+    "TREES":    [{"x":12,"y":21,"name":"TREES"}],
+    "TREE-KEY": [{"x":13,"y":21,"name":"TREE-KEY"}],
+    "UFO":      [{"x":14,"y":21,"name":"UFO"}]
   },
   "words": {
     "nouns": [
-      [0, 0, "BABA" ],
-      [0, 1, "WALL"]
+      [0 ,9,"AB"],
+      [1 ,9,"ALGAE"],
+      [2 ,9,"ALL"],
+      [3 ,9,"ANNI"],
+      [4 ,9,"BA"],
+      [5 ,9,"BABA"],
+      [6 ,9,"BAT"],
+      [7 ,9,"BELT"],
+      [8 ,9,"BIRD"],
+      [9 ,9,"BOG"],
+      [10,9,"BOLT"],
+      [11,9,"BOX"],
+      [12,9,"BRICK"],
+      [13,9,"BUBBLE"],
+      [14,9,"BUG"],
+      [15,9,"CAKE"],
+      [16,9,"CA$H"],
+      [17,9,"CLIFF"],
+      [18,9,"CLOUD"],
+      [19,9,"COG"],
+      [20,9,"CRAB"],
+      [21,9,"CUP"],
+      [22,9,"CURSOR"],
+      [23,9,"DOOR"],
+      [24,9,"DOT"],
+      [25,9,"DUST"],
+      [26,9,"EAT"],
+      [27,9,"EMPTY"],
+      [28,9,"FEAR"],
+      [29,9,"FENCE"],
+      [0 ,10,"FIRE"  ],
+      [1 ,10,"FLAG"  ],
+      [2 ,10,"FLOWER"],
+      [3 ,10,"FOLIAGE"],
+      [4 ,10,"FOLLOW"],
+      [5 ,10,"FRUIT"],
+      [6 ,10,"FUNGI"],
+      [7 ,10,"FUNGUS"],
+      [8 ,10,"GHOST"],
+      [9,10,"GRASS"],
+      [10,10,"GROUP"],
+      [11,10,"HAND"],
+      [12,10,"HEDGE"],
+      [13,10,"HUSK"],
+      [14,10,"ICE"],
+      [15,10,"IDLE"],
+      [16,10,"IMAGE"],
+      [17,10,"JELLY"],
+      [18,10,"KEKE"],
+      [19,10,"KEY"],
+      [20,10,"LADDER"],
+      [21,10,"LEAF"],
+      [22,10,"LAVA"],
+      [23,10,"LEVEL"],
+      [24,10,"LINE"],
+      [25,10,"LOVE"],
+      [26,10,"ME"],
+      [27,10,"MOON"],
+      [28,10,"OK"],
+      [29,10,"ORB"],
+      [0  ,11,"PILLAR"  ],
+      [1  ,11,"PIPE"   ],
+      [2  ,11,"PLAY"    ],
+      [3  ,11,"POWERED" ],
+      [4  ,11,"REED"   ],
+      [5  ,11,"ROBOT"  ],
+      [6  ,11,"ROCK"   ],
+      [7  ,11,"ROCKET"  ],
+      [8  ,11,"ROSE"    ],
+      [9  ,11,"RUBBLE"  ],
+      [10 ,11,"SHIRT"  ],
+      [11 ,11,"SKULL"  ],
+      [12 ,11,"SPIKE"   ],
+      [13 ,11,"STAR"    ],
+      [14 ,11,"STATUE"  ],
+      [15 ,11,"STUMP"   ],
+      [16 ,11,"TEXT"   ],
+      [17 ,11,"TILE"   ],
+      [18 ,11,"TREE"    ],
+      [19 ,11,"SUN"    ],
+      [20 ,11,"UFO"    ],
+      [21 ,11,"VIOLET" ],
+      [22 ,11,"WALL"    ],
+      [23 ,11,"WATER"   ],
+      [24 ,11,"WITHOUT"]
     ],
     "operators": [
-      [ 1, 0, "IS"],
-      [1, 1, "IS"]
+      [0  ,13,"IS"  ],
+      [2  ,13,"HAS"   ],
+      [4  ,13,"MAKE"    ],
+      [6  ,13,"AND" ],
+      [8  ,13,"NOT"   ],
+      [10  ,13,"ON"  ],
+      [12  ,13,"NEAR"   ],
+      [14  ,13,"FACING"  ],
+      [16  ,13,"LONELY"    ]
     ],
     "properties": [
-      [2, 0, "YOU"],
-      [2, 1, "PUSH"]
+      [0 ,15,"BACK"],
+      [1 ,15,"BEST"],
+      [2 ,15,"BLUE"],
+      [3 ,15,"BONUS"],
+      [4 ,15,"CHILL"],
+      [5 ,15,"DEFEAT"],
+      [6 ,15,"DONE"],
+      [7 ,15,"DOWN"],
+      [8 ,15,"END"],
+      [9 ,15,"FALL"],
+      [10,15,"FLOAT"],
+      [11,15,"HIDE"],
+      [12,15,"HOT"],
+      [13,15,"LEFT"],
+      [14,15,"MELT"],
+      [15,15,"MORE"],
+      [16,15,"MOVE"],
+      [17,15,"OPEN"],
+      [18,15,"P1"],
+      [19,15,"P2"],
+      [20,15,"POWER"],
+      [21,15,"PULL"],
+      [22,15,"PUSH"],
+      [23,15,"RED"],
+      [24,15,"RIGHT"],
+      [25,15,"SAD"],
+      [26,15,"SAFE"],
+      [27,15,"SHIFT"],
+      [28,15,"SHUT"],
+      [29,15,"SINK"],
+      [0 ,16,"SLEEP"],
+      [1 ,16,"STICK"],
+      [2 ,16,"STOP"],
+      [3 ,16,"SWAP"],
+      [4 ,16,"TELE"],
+      [5 ,16,"UP"],
+      [6 ,16,"WEAK"],
+      [7 ,16,"WIN"],
+      [8 ,16,"WONDER"],
+      [9 ,16,"WORD"],
+      [10,16,"YOU"]
     ]
   },
   "wall": [
-
-    {
-      "x": 3,
-      "y": 3,
-      "name": "WALL"
-    },
-
-    {
-      "x": 6,
-      "y": 3,
-      "name": "WALL"
-    },
-    {
-      "x": 5,
-      "y": 3,
-      "name": "WALL"
-    },
-
-    {
-      "x": 8,
-      "y": 3,
-      "name": "WALL"
-    },
-    {
-      "x": 8,
-      "y": 4,
-      "name": "WALL"
-    },
-
-    {
-      "x": 10,
-      "y": 4,
-      "name": "WALL"
-    },
-    {
-      "x": 10,
-      "y": 3,
-      "name": "WALL"
-    },
-    {
-      "x": 11,
-      "y": 4,
-      "name": "WALL"
-    },
-
-    {
-      "x": 13,
-      "y": 3,
-      "name": "WALL"
-    },
-    {
-      "x": 14,
-      "y": 3,
-      "name": "WALL"
-    },
-
-    {
-      "x": 3,
-      "y": 6,
-      "name": "WALL"
-    },
-    {
-      "x": 4,
-      "y": 6,
-      "name": "WALL"
-    },
-    {
-      "x": 5,
-      "y": 6,
-      "name": "WALL"
-    },
-
-    {
-      "x": 8,
-      "y": 7,
-      "name": "WALL"
-    },
-    {
-      "x": 7,
-      "y": 7,
-      "name": "WALL"
-    },
-    {
-      "x": 8,
-      "y": 6,
-      "name": "WALL"
-    },
-    {
-      "x": 9,
-      "y": 11,
-      "name": "WALL"
-    },
-    {
-      "x": 10,
-      "y": 11,
-      "name": "WALL"
-    },
-    {
-      "x": 11,
-      "y": 11,
-      "name": "WALL"
-    },
-    {
-      "x": 12,
-      "y": 11,
-      "name": "WALL"
-    },
-    {
-      "x": 13,
-      "y": 11,
-      "name": "WALL"
-    },
-    {
-      "x": 14,
-      "y": 11,
-      "name": "WALL"
-    }
-  ],
+    {"x":0,"y":0,"name":"WALL"},
+    {"x":2,"y":0,"name":"WALL"},
+    {"x":3,"y":0,"name":"WALL"},
+    {"x":5,"y":0,"name":"WALL"},
+    {"x":5,"y":1,"name":"WALL"},
+    {"x":7,"y":0,"name":"WALL"},
+    {"x":7,"y":1,"name":"WALL"},
+    {"x":8,"y":1,"name":"WALL"},
+    {"x":10,"y":0,"name":"WALL"},
+    {"x":11,"y":0,"name":"WALL"},
+    {"x":13,"y":0,"name":"WALL"},
+    {"x":14,"y":0,"name":"WALL"},
+    {"x":15,"y":0,"name":"WALL"},
+    {"x":18,"y":0,"name":"WALL"},
+    {"x":18,"y":1,"name":"WALL"},
+    {"x":17,"y":1,"name":"WALL"},
+    {"x":21,"y":0,"name":"WALL"},
+    {"x":21,"y":1,"name":"WALL"},
+    {"x":20,"y":1,"name":"WALL"},
+    {"x":22,"y":1,"name":"WALL"},
+    {"x":24,"y":0,"name":"WALL"},
+    {"x":24,"y":1,"name":"WALL"},
+    {"x":27,"y":0,"name":"WALL"},
+    {"x":26,"y":0,"name":"WALL"},
+    {"x":26,"y":1,"name":"WALL"},
+    {"x":0,"y":2,"name":"WALL"},
+    {"x":0,"y":3,"name":"WALL"},
+    {"x":0,"y":4,"name":"WALL"},
+    {"x":2,"y":2,"name":"WALL"},
+    {"x":2,"y":3,"name":"WALL"},
+    {"x":2,"y":4,"name":"WALL"},
+    {"x":3,"y":3,"name":"WALL"},
+    {"x":5,"y":3,"name":"WALL"},
+    {"x":6,"y":3,"name":"WALL"},
+    {"x":6,"y":4,"name":"WALL"},
+    {"x":8,"y":3,"name":"WALL"},
+    {"x":9,"y":3,"name":"WALL"},
+    {"x":10,"y":3,"name":"WALL"},
+    {"x":9,"y":4,"name":"WALL"},
+    {"x":13,"y":3,"name":"WALL"},
+    {"x":13,"y":4,"name":"WALL"},
+    {"x":12,"y":4,"name":"WALL"},
+    {"x":13,"y":5,"name":"WALL"},
+    {"x":16,"y":3,"name":"WALL"},
+    {"x":16,"y":4,"name":"WALL"},
+    {"x":15,"y":4,"name":"WALL"},
+    {"x":17,"y":4,"name":"WALL"},
+    {"x":16,"y":5,"name":"WALL"}],
   "floor": [
     {
-      "x": 5,
-      "y": 8,
+      "x": 20,
+      "y": 4,
       "name": "TILE"
     }
   ],
   "palettes": "base",
-  "textures": "base"
+  "textures": "base",
+  "divisions": [30,30]
 }
+

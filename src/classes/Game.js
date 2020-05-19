@@ -15,7 +15,7 @@ import MessageCenter from "./MessageCenter.js";
 export default class Game {
     image;
     spriteSpec;
-    constructor(){
+    constructor(messageCenter){
         this.timer = new Timer();
         this.gridDiminsions = 19;
         this.renderer = new Renderer(this);
@@ -24,19 +24,18 @@ export default class Game {
         this.backgroundTiles = new EntityList(this,'TILE');
         this.walls = new WallList(this,'WALL');
         this.sprites =  new EntityList(this,'SPRITE');
-        this.messageCenter = new MessageCenter();
+        this.messageCenter = messageCenter;
     }
     setup = async() =>{
             const image = await loadImage('../images/spritesheet.png');
             const spriteSpec = await loadJSON('../json/sprites.json');
-            const levelSpec = await loadJSON('../json/level-1.json');
+            const levelSpec = await loadJSON('../json/test.json');
 
            this.messageCenter.subscribe({onMessage(msg){
                if(msg.from !=='collider'){
                    console.log(msg)
                }
            }});
-
             this.image = image;
             this.spriteSpec = spriteSpec;
 

@@ -24,8 +24,8 @@ export default class SpriteBlock extends Block{
     }
     onMessage(message) {
         super.onMessage(message);
+        this.direction = message.data.direction;
         if(message.action !== 'restart' && this.YOU !== undefined && message.from === 'controls' ) {
-            this.direction = message.data.direction;
             this.action = message.data.action;
         }
     }

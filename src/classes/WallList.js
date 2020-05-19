@@ -15,7 +15,7 @@ function makeWallSprites(texturePack){
                 h:set.height,
                 name:i
             };
-            temp.push(new Sprite(sprite,8,'base'));
+            temp.push(new Sprite(sprite,7,'base'));
             i++
         }
         buffer.set(texture,temp);
@@ -41,8 +41,8 @@ export default  class WallList extends EntityList{
             toDraw.render(
                 canvas,context,
                 tint,
-                x1*canvas.width/this.divisions,
-                y1*canvas.height/this.divisions,
+                x1*canvas.width/this.divisions[0],
+                y1*canvas.height/this.divisions[1],
                 image
             )
         });

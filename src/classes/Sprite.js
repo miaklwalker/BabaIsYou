@@ -1,3 +1,6 @@
+import limitedLog from "../testFunctions/limitLog.js";
+
+
 export default class Sprite {
     constructor({x,y,w,h,name},tint){
         this.x = x;

@@ -2,7 +2,7 @@ import OperatorBlock from "./Blocks/OperatorBlock.js";
 import NounBlock from "./Blocks/NounBlock.js";
 import PropertyBlock from "./Blocks/PropertyBlock.js";
 
-let handleFilter =(word)=>{ return (other) =>{if(word.id !== other.id && !(other instanceof OperatorBlock))return other;}};
+let handleFilter =(word)=>{ return (other) =>{if(word.id !== other.id )return other;}};
 let checkIfValid = ([left,right,up,down]) =>{
     if(left && right && up && down){
         return 'both'
@@ -33,17 +33,24 @@ export default class RuleParser{
         this.rules = [];
         this.words.forEach(word=>{
             if(word instanceof OperatorBlock){
+                // removes word from list of items to check
                 let filteredWords = this.words.filter(handleFilter(word));
-
                 let matches = word.updateAndFindNeighbors(filteredWords);
-
                 let ruleDirection = checkIfValid(Object.values(word.neighbors));
+                let {left,down,right,up} = matches;
+                let rulesToParse = [];
 
-                if(ruleDirection !== 'none'){
-                    let noun = matches [0] instanceof NounBlock ? matches[0] : matches[1];
-                    let property = matches [1] instanceof PropertyBlock ? matches[1] : matches[0];
-                    this.makeRule(noun,word,property);
+                if(ruleDirection === 'both'){
+                     rulesToParse.push([left,right],[up,down])
+                }else if(ruleDirection === 'left-right'){
+                     rulesToParse.push([left,right])
+                }else if( ruleDirection === 'up-down' ){
+                     rulesToParse.push([left,right],[up,down])
                 }
+
+                rulesToParse.forEach(([noun,property])=>{
+                    this.makeRule(noun,word,property);
+                })
             }
         })
     }

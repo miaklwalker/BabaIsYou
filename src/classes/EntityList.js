@@ -5,10 +5,13 @@ export default class EntityList {
     constructor(game, strategy) {
         this.strategy = chooseStrategy(strategy);
         this.entities = [];
-        this.divisions = game.gridDiminsions;
+        this._divisions = game;
         this.frameCount = 0;
         this.frameLength = 3;
-        this.frameRate = 15
+        this.frameRate = 5
+    }
+    get divisions(){
+        return this._divisions.gridDiminsions
     }
     get frame(){
         return Math.floor(this.frameCount / this.frameRate % this.frameLength);
@@ -25,8 +28,8 @@ export default class EntityList {
                 sprite.render(
                     canvas, context,
                     tint,
-                    x * canvas.width / this.divisions,
-                    y * canvas.height / this.divisions, image
+                    x * canvas.width / this.divisions[0],
+                    y * canvas.height / this.divisions[1], image
                 )
             });
         this.frameCount++

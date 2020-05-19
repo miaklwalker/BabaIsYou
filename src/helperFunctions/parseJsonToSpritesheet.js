@@ -3,7 +3,7 @@ import Sprite from "../classes/Sprite.js";
 export default function parseJsonToSpriteSheet(obj,current={},name){
     let result = {};
     if(Array.isArray(obj)){
-        current[name] = obj.map(sprite=> new Sprite(sprite,current.tint,current.palette));
+        current[name] = obj.map(sprite=> new Sprite(sprite,current.tint));
         return current[name];
     }else if(typeof obj === 'number' || typeof obj === 'string'){
         current[name] = obj;

@@ -1,37 +1,15 @@
 {
   "sprites": {
     "BABA": [
-      {
-        "x": 6,
-        "y": 9,
-        "name": "BABA"
-      }
+
     ]
   },
   "tiles": {
     "rock": [
-      {
-        "x": 9,
-        "y": 8,
-        "name": "ROCK"
-      },
-      {
-        "x": 9,
-        "y": 9,
-        "name": "ROCK"
-      },
-      {
-        "x": 9,
-        "y": 10,
-        "name": "ROCK"
-      }
+
     ],
     "flag": [
-      {
-        "x": 12,
-        "y": 9,
-        "name": "FLAG"
-      }
+
     ]
   },
   "words": {

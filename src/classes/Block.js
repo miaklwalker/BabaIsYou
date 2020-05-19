@@ -37,20 +37,32 @@ export default class Block {
         return [left,down,right,up];
     };
     updateAndFindNeighbors=(neighbors)=>{
-        let matches = [];
+        let matches = {};
         this.neighbors.left =   false;
         this.neighbors.right =  false;
         this.neighbors.up =     false;
         this.neighbors.down =   false;
         neighbors.forEach(other => {
             let result = this.checkNeighbors(other);
+
             if(result.includes(true)){
-                matches.push(other);
                 const [left,down,right,up]=result;
-                if(left) this.neighbors.left = true;
-                if(right)this.neighbors.right = true;
-                if(up)   this.neighbors.up = true;
-                if(down) this.neighbors.down = true;
+                if(left) {
+                    matches.left = other;
+                    this.neighbors.left = true
+                }
+                if(right){
+                    matches.right = other;
+                    this.neighbors.right = true
+                }
+                if(up)   {
+                    matches.up = other;
+                    this.neighbors.up = true
+                }
+                if(down) {
+                    matches.down = other;
+                    this.neighbors.down = true
+                }
             }
         });
         return matches;

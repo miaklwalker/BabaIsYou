@@ -1,6 +1,7 @@
 import Layer from "./Layer.js";
 import buildTexturePack from "../helperFunctions/buildTexturePack.js";
 import getColorCoords from '../helperFunctions/getColorCoords.js'
+import limitedLog from "../testFunctions/limitLog.js";
 
 
 export default class Renderer{
@@ -8,7 +9,10 @@ export default class Renderer{
         this.layers = [];
         this.palette = [488, 24, 56, 40];
         this.texture = buildTexturePack(384, 1512);
-        this.divisions = game.gridDiminsions;
+        this._divisions = game
+    }
+    get divisions(){
+        return this._divisions.gridDiminsions;
     }
     changePalette=(palette)=>{
         this.palette = palette;
@@ -54,15 +58,15 @@ export default class Renderer{
     tint=(canvas ,context ,sprite, img, index)=>{
         const [x, y, w, h] = sprite;
         const [cx, cy] = this.palette;
-        let width = 480 / this.divisions;
-        let height = 480 / this.divisions;
+        let width = 480 / this.divisions[0];
+        let height = 480 / this.divisions[1];
         let endDim = [0,0,width,height];
         context.clearRect(...endDim);
-        context.globalCompositeOperation = 'source-over';
-        context.drawImage(img, ...getColorCoords(cx, cy, index),...endDim);
-        context.globalCompositeOperation = 'destination-in';
-        context.drawImage(img, x, y, w, h,...endDim);
+        context.globalCompositeOperation = 'luminosity';
+        context.drawImage(img, ...getColorCoords(cx, cy, index), ...endDim);
         context.globalCompositeOperation = 'darken';
-        context.drawImage(img, x, y, w, h,...endDim);
+        context.drawImage(img, x, y, w, h, ...endDim);
+        context.globalCompositeOperation = 'destination-in';
+        context.drawImage(img, x, y, w, h, ...endDim);
     }
 }

@@ -39,7 +39,7 @@
       [12, 5, "FLAG"],
       [4, 5, "BABA" ],
       [4, 13, "WALL"],
-      [12, 13, "ROCK" ]
+      [5, 12, "ROCK" ]
     ],
     "operators": [
       [13, 5, "IS"],
@@ -50,8 +50,8 @@
     "properties": [
       [14, 5, "WIN"],
       [6, 5, "YOU"],
-      [6, 13, "STOP"],
-      [14, 13, "PUSH"]
+      [6, 13, "PUSH"],
+      [5, 14, "PUSH"]
     ]
   },
   "wall": [
@@ -309,5 +309,7 @@
     }
   ],
   "palettes": "base",
-  "textures": "base"
+  "textures": "base",
+  "divisions": [19,19]
 }
+

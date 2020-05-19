@@ -14,13 +14,15 @@ function enforceRules(rules,entities){
         rules.forEach(({name, operator, property}) => {
             entities.forEach(entity => {
                 if ((entity.name === name.name || entity.type === name.name) && operator.name === 'IS') {
-                    entity.addTrait(traitFactory(property.name))
+                    if(property.name !== undefined){
+                        entity.addTrait(traitFactory(property.name))
+                    }else{
+                        console.log(property);
+                    }
                 }
             })
         });
-
-    console.log(rules,entities);
-}
+    }
 
 export default function enforcerFactory(entities){
     return (rules) => enforceRules(rules,entities)

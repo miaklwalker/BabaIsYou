@@ -6,7 +6,7 @@ export default class Block {
     constructor(x,y){
         this.position = new Vector(x,y);
         this.traits = [];
-        this.id = makeUniqueId(12)
+        this.id = makeUniqueId(12);
         this.neighbors = {
             left:false,
             right:false,

@@ -35,8 +35,11 @@ export default class RuleParser{
             if(word instanceof OperatorBlock){
                 // removes word from list of items to check
                 let filteredWords = this.words.filter(handleFilter(word));
+
                 let matches = word.updateAndFindNeighbors(filteredWords);
+
                 let ruleDirection = checkIfValid(Object.values(word.neighbors));
+
                 let {left,down,right,up} = matches;
                 let rulesToParse = [];
 

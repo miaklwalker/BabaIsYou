@@ -19,7 +19,7 @@ function SpriteStrategy(spriteSheets,[x,y,name,,type,id,direction,action],frame,
     let spritesSheet = spriteSheets.spriteSheets;
     let animation = spritesSheet[type][name].animations[action][direction];
     if(animation === undefined){
-        console.log(entity);
+        console.log(x,y,name,type,id,direction,action);
     }
     list.frameLength = animation.length;
     return animation[list.frame];

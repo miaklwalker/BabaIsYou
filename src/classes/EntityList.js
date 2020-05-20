@@ -8,7 +8,7 @@ export default class EntityList {
         this._divisions = game;
         this.frameCount = 0;
         this.frameLength = 3;
-        this.frameRate = 5
+        this.frameRate = 15
     }
     get divisions(){
         return this._divisions.gridDiminsions

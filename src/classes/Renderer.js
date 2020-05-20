@@ -1,7 +1,6 @@
 import Layer from "./Layer.js";
 import buildTexturePack from "../helperFunctions/buildTexturePack.js";
 import getColorCoords from '../helperFunctions/getColorCoords.js'
-import limitedLog from "../testFunctions/limitLog.js";
 
 
 export default class Renderer{
@@ -51,8 +50,12 @@ export default class Renderer{
             return 0
         }
     }
-    addLayer(layer){
-        this.layers.push(layer);
+    addLayer(...layer){
+            layer.forEach(subLayer=>{
+                this.layers.push(subLayer)
+            });
+
+        //this.layers.push(layer);
         this.layers = this.layers.sort(this.sortLayer);
     }
     tint=(canvas ,context ,sprite, img, index)=>{

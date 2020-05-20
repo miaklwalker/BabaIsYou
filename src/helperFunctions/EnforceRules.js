@@ -10,6 +10,7 @@ function clearRules(entities){
 }
 
 function enforceRules(rules,entities){
+    console.log(entities);
     clearRules(entities);
         rules.forEach(({name, operator, property}) => {
             entities.forEach(entity => {
@@ -17,7 +18,7 @@ function enforceRules(rules,entities){
                     if(property.name !== undefined){
                         entity.addTrait(traitFactory(property.name))
                     }else{
-                        console.log(property);
+                        console.log(property,entity);
                     }
                 }
             })

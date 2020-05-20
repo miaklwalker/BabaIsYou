@@ -30,11 +30,14 @@ export default class You extends Trait {
             }
         }
         else if(message.to === 'you' && message.from === 'collider'){
-                const [left,down,right,up] = message.data;
-                this.left = left;
-                this.right = right;
-                this.down = down;
-                this.up = up;
+                const [left,down,right,up] = message.data.collisionData;
+                if(message.data.entity !== undefined && message.data.entity.STOP){
+                    this.left = left;
+                    this.right = right;
+                    this.down = down;
+                    this.up = up;
+                }
+
         }
     }
 }

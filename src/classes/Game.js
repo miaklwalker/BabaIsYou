@@ -5,17 +5,12 @@ import loadImage from "../asyncLoaders/loadImage.js";
 import loadJSON from "../asyncLoaders/loadJSON.js";
 import WallList from "./WallList.js";
 import runTests from "../../TESTS/__tests__/test.js";
-import Controls from "./Controls.js"
-import MessageCenter from "./MessageCenter.js";
-
-
-
-
 
 export default class Game {
     image;
     spriteSpec;
     constructor(messageCenter){
+
         this.timer = new Timer();
         this.gridDiminsions = 19;
         this.renderer = new Renderer(this);
@@ -27,25 +22,20 @@ export default class Game {
         this.messageCenter = messageCenter;
     }
     setup = async() =>{
+
             const image = await loadImage('../images/spritesheet.png');
             const spriteSpec = await loadJSON('../json/sprites.json');
-            const levelSpec = await loadJSON('../json/test.json');
+            const levelSpec = await loadJSON('../json/level-1.json');
 
-           this.messageCenter.subscribe({onMessage(msg){
-               if(msg.from !=='collider'){
-                   console.log(msg)
-               }
-           }});
+
             this.image = image;
             this.spriteSpec = spriteSpec;
 
-            const controls = new Controls();
 
-            document.addEventListener('keydown',controls.keyDown);
-            document.addEventListener('keyup',controls.keyUp);
             document.addEventListener('addmessage',this.messageCenter.handleAddMessage);
             
             runTests();
+
             return {image, spriteSpec,levelSpec};
 
     };
@@ -67,8 +57,8 @@ export default class Game {
     addTile(tile){
         this.tiles.addEntity(tile);
     }
-    addLayer(layer){
-        this.renderer.addLayer(layer);
+    addLayer(...layer){
+        this.renderer.addLayer(...layer);
     }
     addSprite(sprite){
         this.sprites.addEntity(sprite);

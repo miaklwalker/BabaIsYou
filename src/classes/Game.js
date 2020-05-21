@@ -3,64 +3,74 @@ import Renderer from "./Renderer.js";
 import EntityList from "./EntityList.js";
 import loadImage from "../asyncLoaders/loadImage.js";
 import loadJSON from "../asyncLoaders/loadJSON.js";
-import WallList from "./WallList.js";
 import runTests from "../../TESTS/__tests__/test.js";
 
 export default class Game {
     image;
     spriteSpec;
-    constructor(messageCenter){
+
+    constructor(messageCenter) {
 
         this.timer = new Timer();
         this.gridDiminsions = 19;
         this.renderer = new Renderer(this);
-        this.words = new EntityList(this,'WORD');
-        this.tiles = new EntityList(this,'TILE');
-        this.backgroundTiles = new EntityList(this,'TILE');
-        this.walls = new WallList(this,'WALL');
-        this.sprites =  new EntityList(this,'SPRITE');
+        this.words =            new EntityList(this);
+        this.tiles =            new EntityList(this);
+        this.backgroundTiles =  new EntityList(this);
+        this.walls =            new EntityList(this);
+        this.sprites =          new EntityList(this);
         this.messageCenter = messageCenter;
     }
-    setup = async() =>{
 
-            const image = await loadImage('../images/spritesheet.png');
-            const spriteSpec = await loadJSON('../json/sprites.json');
-            const levelSpec = await loadJSON('../json/level-1.json');
+    setup = async () => {
 
-
-            this.image = image;
-            this.spriteSpec = spriteSpec;
+        const image = await loadImage('../images/spritesheet.png');
+        const spriteSpec = await loadJSON('../json/sprites.json');
+        const levelSpec = await loadJSON('../json/test.json');
 
 
-            document.addEventListener('addmessage',this.messageCenter.handleAddMessage);
-            
-            runTests();
+        this.image = image;
+        this.spriteSpec = spriteSpec;
 
-            return {image, spriteSpec,levelSpec};
+        this.walls.makeTextures(this.renderer.texture);
+
+        document.addEventListener('addmessage', this.messageCenter.handleAddMessage);
+
+        runTests();
+
+        return {image, spriteSpec, levelSpec};
 
     };
-    get entities(){
-        return [...this.walls.entities,...this.sprites.entities,...this.tiles.entities]
+
+    get entities() {
+        return [...this.walls.entities, ...this.sprites.entities, ...this.tiles.entities]
     }
-    get allEntities(){
-        return [...this.entities,...this.words.entities]
+
+    get allEntities() {
+        return [...this.entities, ...this.words.entities]
     }
-    addWords(entity){
+
+    addWords(entity) {
         this.words.addEntity(entity);
     }
-    addWall(wall){
+
+    addWall(wall) {
         this.walls.addEntity(wall);
     }
-    addBackgroundTile(bgTile){
+
+    addBackgroundTile(bgTile) {
         this.backgroundTiles.addEntity(bgTile);
     }
-    addTile(tile){
+
+    addTile(tile) {
         this.tiles.addEntity(tile);
     }
-    addLayer(...layer){
+
+    addLayer(...layer) {
         this.renderer.addLayer(...layer);
     }
-    addSprite(sprite){
+
+    addSprite(sprite) {
         this.sprites.addEntity(sprite);
     }
 

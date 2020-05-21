@@ -4,10 +4,9 @@ import Block from "../Block.js";
 export default class SpriteBlock extends Block{
     YOU;
     constructor(x,y,name) {
-        super(x,y);
-        this.name = name;
+        super(x,y,name,'sprites');
+        this.strategy = 'SPRITE'
         this.group ='sprites';
-        this.type = 'sprites';
         this.direction='right';
         this.action = 'idle'
     }

@@ -22,7 +22,7 @@ export default function makeLevelBuilder(game){
         //words
         Object.keys(words).forEach(type=>{
             words[type].forEach(sprite => {
-                let block = blockFactory(type, sprite);
+                let block = blockFactory(type, Object.values(sprite));
                 block.addTrait(new Push());
                 game.messageCenter.subscribe(block);
                 game.addWords(block)
@@ -43,8 +43,8 @@ export default function makeLevelBuilder(game){
             game.addBackgroundTile(floor)
         });
         // walls
-        wall.forEach(({x,y})=>{
-            let wall = new Wall(x,y);
+        wall.forEach((sprite)=>{
+            let wall = blockFactory('wall',Object.values(sprite));
             game.messageCenter.subscribe(wall);
             game.addWall(wall);
         });

@@ -50,6 +50,7 @@ export default class Renderer{
             return 0
         }
     }
+
     addLayer(...layer){
             layer.forEach(subLayer=>{
                 this.layers.push(subLayer)

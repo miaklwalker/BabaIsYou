@@ -3,10 +3,9 @@ import Block from "../Block.js";
 
 export default class PropertyBlock extends Block{
     constructor(x,y,name) {
-        super(x,y);
-        this.name = name;
+        super(x,y,name,'properties');
+        this.strategy = 'WORD';
         this.group ='words';
-        this.type = 'properties';
     }
     draw(){
         return [...super.draw(),this.name,this.group,this.type,this.id]

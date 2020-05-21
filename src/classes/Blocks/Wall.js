@@ -3,9 +3,8 @@ import chooseShape from "../../helperFunctions/chooseShape.js";
 
 export default class Wall extends Block{
     constructor(x,y) {
-        super(x,y);
-        this.type = 'WALL';
-        this.name = 'WALL';
+        super(x,y,'WALL','WALL');
+        this.strategy = 'WALL';
         this.ran = false;
     }
     draw(others){

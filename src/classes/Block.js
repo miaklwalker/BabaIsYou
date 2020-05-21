@@ -3,10 +3,12 @@ import makeUniqueId from "../helperFunctions/MakeID.js";
 
 
 export default class Block {
-    constructor(x,y){
+    constructor(x,y,name,type){
         this.position = new Vector(x,y);
         this.traits = [];
         this.id = makeUniqueId(12);
+        this.name = name;
+        this.type = type;
         this.neighbors = {
             left:false,
             right:false,

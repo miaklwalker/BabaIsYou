@@ -1,14 +1,26 @@
 import chooseStrategy from "./Stratagies/EntityList.Strategies.js";
+import makeWallSprites from "../helperFunctions/makeWallSprites.js";
+import NounBlock from "./Blocks/NounBlock.js";
+import PropertyBlock from "./Blocks/PropertyBlock.js";
+import OperatorBlock from "./Blocks/OperatorBlock.js";
 
+
+function parseEntity(entity){
+    switch (entity) {
+        case entity instanceof NounBlock:
+        case entity instanceof PropertyBlock:
+        case entity instanceof OperatorBlock:
+    }
+}
 
 export default class EntityList {
-    constructor(game, strategy) {
-        this.strategy = chooseStrategy(strategy);
+    constructor(game) {
         this.entities = [];
         this._divisions = game;
         this.frameCount = 0;
         this.frameLength = 3;
-        this.frameRate = 15
+        this.frameRate = 12;
+        this.buffer = null;
     }
     get divisions(){
         return this._divisions.gridDiminsions
@@ -19,12 +31,16 @@ export default class EntityList {
     addEntity(entity) {
         this.entities.push(entity);
     }
+    makeTextures(texturePack){
+            this.buffer = makeWallSprites(texturePack);
+    }
     render = (canvas, context, image, spriteSheets, tint) => {
         this.entities
-            .map(entity => entity.draw())
-            .forEach((entity) => {
+            .forEach((rawEntity) => {
+                let entity = rawEntity.draw(this.entities);
+                let strategy = chooseStrategy(rawEntity.strategy);
                 let [x,y] = entity;
-                let sprite = this.strategy(spriteSheets,entity,this.frame,this);
+                let sprite = strategy(spriteSheets,entity,this.frame,this);
                 sprite.render(
                     canvas, context,
                     tint,

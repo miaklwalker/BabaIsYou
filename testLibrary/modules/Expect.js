@@ -1,42 +1,13 @@
+import mapObjToString from "./mapObjectToString.js";
+import {tests} from "./Globals.js";
 
-function mapObjToString(obj,result = {},parentKey=undefined){
-    for(let key in obj) {
-        if(obj.hasOwnProperty(key)) {
-            if (typeof obj[key] === 'object') {
-                result[key] = true;
-                mapObjToString(obj[key], result, key);
-            } else {
-                if(parentKey !== undefined ) {
-                    result[`${parentKey}.${key}`] = obj[key];
-                }else{
-                    result[`${key}`] = obj[key];
-                }
-            }
-        }
-    }
-    return result
-}
-
-function expect (received){
-    return new Expect(received);
-}
-
-expect = new Proxy(expect,{
-    apply(target,thisArg,args){
-        return target.apply(thisArg,args);
-    },
-    get(target,prop){
-        if(prop === 'extend'){
-            console.log('ran');
-            return Expect.extend
-        }
-       return Expect[prop];
-    },
-    set(){
-
-    }
-});
-
+/**
+ * @class Expect
+ * @property received - The value received ;
+ * @property isObject - When expect is created it checks if received is a object;
+ * @property _not - A private property that is only directly set with .not it negates any matchers and makes them return true when they fail;
+ * @property result - A object with two properties Message and Pass property;
+ */
 class Expect {
     constructor(received) {
         this.received = received;
@@ -49,18 +20,60 @@ class Expect {
     }
     pass(expected,received = this.received){
         this.result = {
-            message :  !this._not ? 'Passed' : {expected,received} ,
-            passed  :  !this._not ? true : false 
-        }
+            message :  !this._not ? 'Passed' : {expected, received} ,
+            passed  :  !this._not
+        };
+        tests.push(this.result);
         return this;
     }
     fail(expected,received = this.received){
         this.result = {
-            message :this._not ? 'Passed' : {expected,received},
-            passed  :this._not ? true : false
-        }
+            message : this._not ? 'Passed' : {expected, received},
+            passed  : this._not
+        };
+        tests.push(this.result);
         return this;
     }
+    /**
+     *
+     * @description Matches anything but null and undefined;
+     */
+    anything(){
+        return this.received !== undefined && this.received !== null ? this.pass('to Be Null') : this.fail('To Not be null or undefined');
+    };
+    /**
+     * @description Matches anything that was created with the given constructor;
+     * @param expected
+     * @returns {Expect}
+     */
+    any(expected){
+        return typeof this.received === typeof expected() ? this.pass(expected) : this.fail(expected);
+    };
+    /**
+     *@description Matches a received array which contains all of the elements in the expected array.
+     */
+    arrayContaining(expected){
+        if(Array.isArray(expected)){
+            return expected.map(member=>{
+                return this.received.includes(member)
+            }).includes(false) ? this.fail() : this.pass();
+        }else{
+            return this.received.includes(expected) ? this.fail(expected) : this.pass(expected);
+        }
+    };
+    /**
+     * @description Not negates the current matchers and returns its opposite;
+     */
+    get not(){
+        this._not = true;
+        return this
+    };
+    /**
+     * @description Compares primative values or checks refrenctial id , calls object.is under the hood;
+     */
+    toBe(expected){
+        return  Object.is(expected, this.received) ? this.pass(expected) : this.fail(expected);
+    };
     toEqual(expected){
         if(this.isObject){
             let e = mapObjToString(expected);
@@ -77,9 +90,6 @@ class Expect {
         }else{
             return Object.is(this.received,expected) ? this.pass(expected) : this.fail(expected);
         }
-    };
-    toBe(expected){
-        return  Object.is(expected, this.received) ? this.pass(expected) : this.fail(expected);
     };
     toHaveReturned(expected){
         if(Object.is(expected,this.received())){
@@ -99,33 +109,16 @@ class Expect {
         }
         return this.fail(expected);
     };
-    anything(){
-        return this.received !== undefined && this.received !== null ? this.pass('to Be Null') : this.fail('To Not be null or undefined');
-    };
-    arrayContaining(expected){
-        if(Array.isArray(expected)){
-            return expected.map(member=>{
-                return this.received.includes(member)
-            }).includes(false) ? this.fail() : this.pass();
-        }else{
-            return this.received.includes(expected) ? this.fail(expected) : this.pass(expected);
-        }
-    };
-    any(expected){
-        return typeof this.received === typeof expected() ? this.pass(expected) : this.fail(expected);
-    };
-    get not(){
-        this._not = true;
-        return this
-    };
     toHaveLength(expected){
-        return this.received.length === expected ? this.pass(expected): this.fail(`To have length ${expected}`);
+        return this.received.length === expected ? this.pass(expected): this.fail(`To have length ${expected}`,this.received.length);
     }
     toHaveProperty(expected){
         return Object.keys(mapObjToString(this.received)).includes(expected) ? this.pass(expected) : this.fail(expected);
     };
     toHavePropertyWithValue(expected, value) {
-        return (this.toHaveProperty(expected) && mapObjToString(this.received)[expected] === value) ?this.pass(expected) : this.fail(expected);
+        let hasProperty = this.toHaveProperty(expected).result.passed;
+        let hasValue = mapObjToString(this.received)[expected] === value;
+        return ( hasProperty && hasValue ) ? this.pass(expected) : this.fail(expected);
     };
     toBeFalsy(){
         return this.received ? this.fail('Expected a falsey value') : this.pass(' ');
@@ -155,26 +148,13 @@ class Expect {
         return !(!this.received)? this.pass() : this.fail();
     };
     toBeUndefined() {
-        return (this.received == undefined)? this.pass('expected to not be undefined') : this.fail('expected undefined');
+        return (this.received === undefined)? this.pass('expected to not be undefined') : this.fail('expected undefined');
     };
     toBeNaN () {
-        if (
-            this.toBeFalsy()
-            && this.received !== undefined
-            && this.received !== null
-            && typeof this.received !== 'boolean'
-            && typeof this.received !== 'string'
-            && this.received !== 0
-            && this.received !== false
-        ) {
-            return this.pass('Expected to not be NaN')
-        }
-        return this.fail('Expected to be NaN');
+        return isNaN(this.received) ? this.pass('expected not to be NaN') : this.fail('Expected NaN');
     };
     toHaveBeenCalled(){
-        return this.received.mock.calls.length > 0 ? 
-        this.pass('expected to be called') : 
-        this.fail('expected to be called',this.received.mock.calls) ;
+        return this.received.mock.calls.length > 0 ? this.pass() : this.fail() ;
     }
     toHaveBeenCalledTimes(expected){
         return this.received.mock.calls.length === expected ? this.pass() : this.fail() ;
@@ -183,13 +163,13 @@ class Expect {
         let calls = this.received.mock.calls;
         let passes = false;
         if(args.length === 1){
-            calls.forEach(call=>{ 
+            calls.forEach(call=>{
                 call.forEach(arg=>{
                     if(expect(arg).toBe(args[0])){passes = true}
                 })
             })
         }else{
-            calls.forEach(call=>{ 
+            calls.forEach(call=>{
                 if(expect(call).toMatchArray(args)){passes = true}
             })
         }
@@ -205,56 +185,79 @@ class Expect {
         return this.received.mock.results.length === expected ? this.pass(expected) : this.fail(expected);
     }
     toHaveLastReturned(expected){
-        return expect(this.received.mock.calls[this.received.mock.calls.length-1]).toBe(expected) ? this.pass(expected) : this.fail(expected);
+        return expect(this.received.mock.results[this.received.mock.calls.length-1].value).toBe(expected) ? this.pass(expected) : this.fail(expected);
     }
     toHaveNthReturnWith(nth,args){
         return expect(this.received.mock.results[nth-1].value).toBe(args);
     }
     toContain(expected){
-        return this.received.includes(expected) ? this.pass(expected) : this.fail(expected);
+        if(Array.isArray(expected)){
+            return this.received.includes(expected) ? this.pass(expected) : this.fail(expected);
+        }else if(typeof expected === 'set'){
+            console.log('set');
+        }
     }
     toContainEqual(expected){
-        let passes = true
+        let passes = true;
         let message;
         function checkObject(received){
             for(let key in received){
-                if(received[key] === Object){
-                    return checkObject(received[key])
-                }
-                if(expected[key] === undefined){
-                    passes = false;
-                    message = `Object with ${key}, When expected has no such key`;
-                }
-                if(expected[key]!== received[key]){
-                    passes = false;
-                    message = `${key}:${received[key]} does not match expected ${JSON.stringify(expected)}`;
+                if(received.hasOwnProperty(key)) {
+                    if (received[key] === Object) {
+                        return checkObject(received[key])
+                    }
+                    if (expected[key] === undefined) {
+                        passes = false;
+                        message = `Object with ${key}, When expected has no such key`;
+                    }
+                    if (expected[key] !== received[key]) {
+                        passes = false;
+                        message = `${key}:${received[key]} does not match expected ${JSON.stringify(expected)}`;
+                    }
                 }
             }
         }
         if(this.received instanceof Object && expected instanceof Object){
-            checkObject(this.received)
+            checkObject(this.received);
             return passes ? this.pass(message) : this.fail(message)
         }
     }
-    toMatchObject(){
-
-    }
-    toStrictlyEqual(){
-
-    }
-    toThrow(){
-
-    }
-    toBeCloseTo(expected,numDigits){
+    toBeCloseTo(expected,numDigits=1){
         const precise = ( x ) => Number.parseFloat(x).toPrecision(numDigits);
         return precise(this.received) === precise(expected) ? this.pass(expected):this.fail(expected);
     }
-    static extend = (matcher)=>{
+    static extend (matcher){
         for(let key in matcher){
             Expect.prototype[key] = matcher[key];
         }
 
     }
 }
+
+/**
+ *
+ * @param received
+ * @returns {Expect}
+ * @description The expect function used to test a value, Passing it a value will return matchers.
+ * You can use these matchers to test function and verify results
+ */
+function expect (received){
+    return new Expect(received);
+}
+
+expect = new Proxy(expect,{
+    apply(target,thisArg,args){
+        return target.apply(thisArg,args);
+    },
+    get(target,prop){
+        if(prop === 'extend'){
+            return Expect.extend
+        }
+        return Expect[prop];
+    },
+    set(){
+
+    }
+});
 
 export default expect;

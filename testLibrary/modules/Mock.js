@@ -1,5 +1,4 @@
-import keys from './globals.js'
-const MOCK = keys.MOCK;
+import {MOCK} from "./Globals.js";
 
 const Mock = {
     fn(func){
@@ -15,7 +14,7 @@ const Mock = {
                 }else{
                     return this.target;
                 }
-                },
+            },
             apply(target,thisArg,args){
                 if(this.mock.nextValue.length === 0){
                     let product = target.apply(thisArg,args);
@@ -39,4 +38,4 @@ const Mock = {
     }
 };
 
-export default Mock
+export default Mock;

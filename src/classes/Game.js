@@ -3,7 +3,7 @@ import Renderer from "./Renderer.js";
 import EntityList from "./EntityList.js";
 import loadImage from "../asyncLoaders/loadImage.js";
 import loadJSON from "../asyncLoaders/loadJSON.js";
-import runTests from "../../TESTS/__tests__/test.js";
+import startTest from "../../testLibrary/modules/startTest.js";
 
 export default class Game {
     image;
@@ -36,7 +36,7 @@ export default class Game {
 
         document.addEventListener('addmessage', this.messageCenter.handleAddMessage);
 
-        runTests();
+        startTest('../../test.spec.json',1);
 
         return {image, spriteSpec, levelSpec};
 

@@ -1,17 +1,9 @@
 import chooseStrategy from "./Stratagies/EntityList.Strategies.js";
 import makeWallSprites from "../helperFunctions/makeWallSprites.js";
-import NounBlock from "./Blocks/NounBlock.js";
-import PropertyBlock from "./Blocks/PropertyBlock.js";
-import OperatorBlock from "./Blocks/OperatorBlock.js";
 
 
-function parseEntity(entity){
-    switch (entity) {
-        case entity instanceof NounBlock:
-        case entity instanceof PropertyBlock:
-        case entity instanceof OperatorBlock:
-    }
-}
+
+
 
 export default class EntityList {
     constructor(game) {

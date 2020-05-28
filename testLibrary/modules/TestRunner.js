@@ -17,11 +17,14 @@ class TestRunner{
                 case 1 :
                     logLevelOne(results,test);
                     break;
-                case 2 :
+                case 3 :
                     logLevelTwo(results,test);
                     break;
-                default:
+                case 2 :
                     logLevelThree(results,test);
+                    break;
+                default:
+                    break;
             }
         }
     }

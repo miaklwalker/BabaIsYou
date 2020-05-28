@@ -11,11 +11,10 @@ export default function xyCounter(breakPoint){
     let y = 0;
     return ()=>{
         x++;
-        if(x%breakPoint === 0
-            && x !== 0){
+        if(x % breakPoint === 0 && x !== 0){
             y++;
-            x=0
-        }
+            x = 0
+         }
         return [x,y]
     }
 }

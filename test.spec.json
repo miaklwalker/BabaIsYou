@@ -5,6 +5,7 @@
     "../../TESTS/block.spec.js",
     "../../TESTS/makeUniqueId.spec.js",
     "../../TESTS/messageCenter.spec.js",
-    "../../TESTS/ChooseShape.spec.js"
+    "../../TESTS/ChooseShape.spec.js",
+    "../../TESTS/xyCounter.spec.js"
   ]
 }

@@ -10,7 +10,6 @@ function clearRules(entities){
 }
 
 function enforceRules(rules,entities){
-    console.log(entities);
     clearRules(entities);
         rules.forEach(({name, operator, property}) => {
             entities.forEach(entity => {

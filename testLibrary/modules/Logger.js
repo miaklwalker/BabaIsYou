@@ -22,7 +22,6 @@ export function logLevelOne(results,test){
         }
         logger(result.passed)(`
         Test: ${index}
-        Passed: ${result.passed}
         ${JSON.stringify(result.message)}
         `)
     });

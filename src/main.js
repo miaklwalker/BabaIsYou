@@ -29,7 +29,7 @@ document.addEventListener('addmessage', messageCenter.handleAddMessage);
 const handleMapper = tileMapper => ()=> {
     let name = document.getElementById('name').value;
     let output = document.getElementById('select').value;
-    TM.export(name, output);
+    tileMapper.export(name, output);
 };
 let game;
 
@@ -44,6 +44,7 @@ export default function MAIN() {
             let spriteSheets = parseJsonToSpriteSheet(spriteSpec);
             let args = [image, spriteSheets, tint];
             levelBuilder(spriteSpec, levelSpec);
+
             game.walls.makeTextures(game.renderer.texture);
 
             ruleParser = new RuleParser(enforceRules(game.entities));

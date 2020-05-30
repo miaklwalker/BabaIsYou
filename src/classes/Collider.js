@@ -34,15 +34,19 @@ export default class Collider {
                 if(possible.includes(true) && entity.canCollide){
                     this.sentFalse = true;
                     this.found = true;
-                    document.dispatchEvent(addMessage(new Message('you','collider',{collisionData:reducer(possible),entity})))
+                    this.addMessage({collisionData:reducer(possible),entity});
                 }
                 document.dispatchEvent(addMessage(new Message(entity.id,'collider',possible)))
             });
         }
         if(this.sentFalse && !this.found){
-            document.dispatchEvent(addMessage(new Message('you','collider',{collisionData:[false,false,false,false]})));
+            this.addMessage({collisionData:[false,false,false,false]});
             this.sentFalse = false;
         }
+    }
+    addMessage(message){
+        document.dispatchEvent(addMessage(new Message('you','collider',message)));
+
     }
     onMessage(message){
 

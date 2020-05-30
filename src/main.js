@@ -5,12 +5,13 @@ import Game from "./classes/Game.js";
 import parseJsonToSpriteSheet from "./helperFunctions/parseJsonToSpritesheet.js";
 import makeLevelBuilder from "./helperFunctions/makeLevelBuilder.js";
 import RuleParser from "./classes/RuleParser.js";
-import enforceRules from "./helperFunctions/EnforceRules.js";
+import enforcerFactory from "./helperFunctions/EnforceRules.js";
 import Collider from "./classes/Collider.js";
 import MessageCenter from "./classes/MessageCenter.js";
-import TileMapper from "./LevelEditor/levelEditor.js";
 import makePage from "./production.js";
 import Controls from "./classes/Controls.js";
+import tileMapperInit from "./LevelEditor/init.js";
+import Vector from "./classes/Vector.js";
 
 makePage(false);
 
@@ -26,12 +27,52 @@ document.addEventListener('keydown', controls.keyDown);
 document.addEventListener('keyup', controls.keyUp);
 document.addEventListener('addmessage', messageCenter.handleAddMessage);
 
-const handleMapper = tileMapper => ()=> {
-    let name = document.getElementById('name').value;
-    let output = document.getElementById('select').value;
-    tileMapper.export(name, output);
-};
+
 let game;
+
+class node{
+    left;
+    right;
+    down;
+    up;
+    constructor(center){
+        this.center = center;
+    }
+}
+class quadLinkedList{
+    constructor(){
+        this.center = null
+    }
+}
+
+function newCollider(allEntities){
+    let candidates = [];
+    let collideCandidates = [];
+    allEntities.forEach(entity=>{
+        if(entity.YOU){
+            candidates.push(entity);
+        }
+        if(entity.canCollide){
+            collideCandidates.push(entity);
+        }
+    });
+    console.log(collideCandidates);
+    let lists = [];
+    candidates.forEach(candidate=>{
+        let chain = new quadLinkedList(candidate);
+        let position = candidate.position;
+        let left = new Vector(-1,0).addVector(position);
+        let down = new Vector(0,1).addVector(position);
+        let right = new Vector(1,0).addVector(position);
+        let up = new Vector(0,-1).addVector(position);
+        let pool = [left,down,right,up];
+
+    });
+console.log(allEntities);
+    return candidates
+
+}
+
 
 
 export default function MAIN() {
@@ -46,18 +87,13 @@ export default function MAIN() {
             levelBuilder(spriteSpec, levelSpec);
 
             game.walls.makeTextures(game.renderer.texture);
-
-            ruleParser = new RuleParser(enforceRules(game.entities));
+            let enforcer = enforcerFactory(game.entities);
+            ruleParser = new RuleParser(enforcer);
             ruleParser.addWords(game.words.entities);
             ruleParser.parseRules();
-            enforceRules(game.entities);
             game.messageCenter.subscribe(ruleParser);
 
-
-            let TM = TileMapper(game_canvas, game.gridDiminsions);
-            game_canvas.addEventListener('click', TM.handleClick);
-            game.addLayer(new Layer(0, TM.render));
-            document.getElementById('export').addEventListener('click',handleMapper(TM));
+            tileMapperInit(game,game_canvas,5);
 
             game.addLayer(new Layer(1, drawBackground, ['black']),
                 new Layer(1, drawGrid, [game.gridDiminsions]),
@@ -68,6 +104,8 @@ export default function MAIN() {
                 new Layer(3, game.walls.render, args)
             );
 
+            enforcer(ruleParser.rules);
+            newCollider(game.allEntities);
             game.timer.start()
         });
 

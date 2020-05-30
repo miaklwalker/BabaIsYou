@@ -1,6 +1,4 @@
 import blockFactory from "../helperFunctions/blockFactory.js";
-import Wall from "../classes/Blocks/Wall.js";
-import You from "../classes/Traits/You.js";
 import Push from "../classes/Traits/Push.js";
 
 export default function makeLevelBuilder(game){
@@ -14,7 +12,6 @@ export default function makeLevelBuilder(game){
         Object.keys(sprites).forEach(type=>{
             sprites[type].forEach(sprite => {
                 let block = blockFactory('sprites', Object.values(sprite));
-                block.addTrait(new Push());
                 game.messageCenter.subscribe(block);
                 game.addSprite(block)
             })

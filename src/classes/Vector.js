@@ -6,6 +6,7 @@ export default class Vector{
     addVector(factor){
         this.addX(factor);
         this.addY(factor);
+        return this
     }
     addX(factor){
         if(factor instanceof Vector){

@@ -30,19 +30,12 @@ document.addEventListener('addmessage', messageCenter.handleAddMessage);
 
 let game;
 
-class node{
-    left;
-    right;
-    down;
-    up;
-    constructor(center){
-        this.center = center;
-    }
-}
-class quadLinkedList{
-    constructor(){
-        this.center = null
-    }
+function isCandidate(candidate){
+    let position = candidate.position;
+    let left = new Vector(-1,0).addVector(position);
+    let down = new Vector(0,1).addVector(position);
+    let right = new Vector(1,0).addVector(position);
+    let up = new Vector(0,-1).addVector(position);
 }
 
 function newCollider(allEntities){
@@ -56,19 +49,11 @@ function newCollider(allEntities){
             collideCandidates.push(entity);
         }
     });
-    console.log(collideCandidates);
-    let lists = [];
+    let list = [];
     candidates.forEach(candidate=>{
-        let chain = new quadLinkedList(candidate);
-        let position = candidate.position;
-        let left = new Vector(-1,0).addVector(position);
-        let down = new Vector(0,1).addVector(position);
-        let right = new Vector(1,0).addVector(position);
-        let up = new Vector(0,-1).addVector(position);
-        let pool = [left,down,right,up];
 
     });
-console.log(allEntities);
+
     return candidates
 
 }
@@ -105,8 +90,12 @@ export default function MAIN() {
             );
 
             enforcer(ruleParser.rules);
+
+            game.renderer.render(game_canvas, game_context);
+            collider.update(game.allEntities);
+            messageCenter.update();
             newCollider(game.allEntities);
-            game.timer.start()
+            //game.timer.start()
         });
 
     game.timer.update = (deltaTime) => {

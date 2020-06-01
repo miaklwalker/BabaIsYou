@@ -48,7 +48,10 @@ export default class Collider {
         document.dispatchEvent(addMessage(new Message('you','collider',message)));
 
     }
-    onMessage(message){
-
+    onMessage=(message)=>{
+        if(message.from === 'parser' && message.to ==='collision'){
+            this.update(message.data.entities);
+        }
     }
+
 }

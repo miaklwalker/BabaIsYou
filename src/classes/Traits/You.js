@@ -12,32 +12,22 @@ export default class You extends Trait {
         this.down = false;
     }
     update(sprite,message) {
-        if (message.to === 'you' && message.from === 'controls') {
-            let direction = message.data.direction;
-            if (message.data.action === 'run' && !this[direction]) {
-                if (direction === 'right') {
-                    sprite.position.x++
-                }
-                if (direction === 'left') {
-                    sprite.position.x--
-                }
-                if (direction === 'up') {
-                    sprite.position.y--
-                }
-                if (direction === 'down') {
-                    sprite.position.y++
-                }
-            }
-        }
-        else if(message.to === 'you' && message.from === 'collider'){
-                const [left,down,right,up] = message.data.collisionData;
-                if(message.data.entity !== undefined && message.data.entity.STOP){
-                    this.left = left;
-                    this.right = right;
-                    this.down = down;
-                    this.up = up;
-                }
+        if(message.to === sprite.id){
 
+            switch(message.data){
+                case "left":
+                    sprite.position.x -= 1;
+                    break;
+                case "right":
+                    sprite.position.x += 1;
+                    break;
+                case "up":
+                    sprite.position.y -= 1;
+                    break;
+                case "down":
+                    sprite.position.y += 1;
+                    break;
+            }
         }
     }
 }

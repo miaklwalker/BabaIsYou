@@ -14,6 +14,7 @@ import tileMapperInit from "./LevelEditor/init.js";
 
 import addMessage from "./CustomEvents/addmessage.js";
 import Message from "./classes/Message.js";
+import MovementParser from "./classes/MessageParser.js";
 
 makePage(false);
 
@@ -24,24 +25,8 @@ let ruleParser;
 let collider = new Collider();
 let messageCenter = new MessageCenter();
 let controls = new Controls();
-
-
-
-
-class MovementParser{
-    constructor(){
-        this.entities = [];
-    }
-    onMessage(msg){
-        if(msg.to === 'parser'){
-            document.dispatchEvent(addMessage(new Message('collision', 'parser',{entities:this.entities.flat(),msg},)));
-        }
-    }
-
-}
-
-
 let movementParser = new MovementParser();
+
 messageCenter.subscribe(movementParser);
 messageCenter.subscribe(collider);
 
@@ -68,7 +53,7 @@ export default function MAIN() {
             game.walls.makeTextures(game.renderer.texture);
             let enforcer = enforcerFactory(game.entities);
 
-            movementParser.entities.push(game.entities);
+            movementParser.entities.push(game.allEntities);
 
             ruleParser = new RuleParser(enforcer);
             ruleParser.addWords(game.words.entities);
@@ -78,7 +63,7 @@ export default function MAIN() {
             tileMapperInit(game,game_canvas,0);
 
             game.addLayer(new Layer(1, drawBackground, ['black']),
-                new Layer(2, drawGrid, [game.gridDiminsions]),
+                new Layer(0, drawGrid, [game.gridDiminsions]),
                 new Layer(3, game.words.render, args),
                 new Layer(3, game.tiles.render, args),
                 new Layer(2, game.backgroundTiles.render, args),
@@ -91,7 +76,6 @@ export default function MAIN() {
 
     game.timer.update = (deltaTime) => {
         game.renderer.render(game_canvas, game_context);
-       // collider.update(game.allEntities);
         messageCenter.update();
     }
 }

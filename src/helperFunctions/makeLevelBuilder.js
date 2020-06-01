@@ -4,8 +4,8 @@ import Push from "../classes/Traits/Push.js";
 export default function makeLevelBuilder(game){
     return (spriteSpec,levelSpec)=>{
         game.gridDiminsions = levelSpec.divisions;
-        game.renderer.changePalette(spriteSpec.palettes[levelSpec.palettes]);
-        game.renderer.changeTexture(spriteSpec.textures[levelSpec.textures]);
+        game.renderer.changePalette(spriteSpec["palettes"][levelSpec["palettes"]]);
+        game.renderer.changeTexture(spriteSpec["textures"][levelSpec["textures"]]);
 
         const {words,tiles,wall,floor,sprites} = levelSpec;
 

@@ -34,9 +34,9 @@ export default class Collider {
                 if(possible.includes(true) && entity.canCollide){
                     this.sentFalse = true;
                     this.found = true;
-                    this.addMessage({collisionData:reducer(possible),entity});
+                    this.addMessage({collisionData:reducer(possible),entity,entities});
                 }
-                document.dispatchEvent(addMessage(new Message(entity.id,'collider',possible)))
+                document.dispatchEvent(addMessage(new Message(entity.id,'collider',{possible,entities})))
             });
         }
         if(this.sentFalse && !this.found){

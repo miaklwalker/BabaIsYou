@@ -12,6 +12,7 @@ import makePage from "./production.js";
 import Controls from "./classes/Controls.js";
 import tileMapperInit from "./LevelEditor/init.js";
 import Vector from "./classes/Vector.js";
+import newCollider from "./classes/Collisions.js";
 
 makePage(false);
 
@@ -19,9 +20,50 @@ const game_canvas = document.getElementById('screen');
 const game_context = game_canvas.getContext('2d');
 
 let ruleParser;
-const collider = new Collider();
-const messageCenter = new MessageCenter();
-const controls = new Controls();
+let collider = new Collider();
+let messageCenter = new MessageCenter();
+let controls = new Controls();
+
+
+
+
+let movement = {
+
+}
+
+let collision = {
+    onMessage(msg){
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 document.addEventListener('keydown', controls.keyDown);
 document.addEventListener('keyup', controls.keyUp);
@@ -29,36 +71,6 @@ document.addEventListener('addmessage', messageCenter.handleAddMessage);
 
 
 let game;
-
-function isCandidate(candidate){
-    let position = candidate.position;
-    let left = new Vector(-1,0).addVector(position);
-    let down = new Vector(0,1).addVector(position);
-    let right = new Vector(1,0).addVector(position);
-    let up = new Vector(0,-1).addVector(position);
-}
-
-function newCollider(allEntities){
-    let candidates = [];
-    let collideCandidates = [];
-    allEntities.forEach(entity=>{
-        if(entity.YOU){
-            candidates.push(entity);
-        }
-        if(entity.canCollide){
-            collideCandidates.push(entity);
-        }
-    });
-    let list = [];
-    candidates.forEach(candidate=>{
-
-    });
-
-    return candidates
-
-}
-
-
 
 export default function MAIN() {
     game = new Game(messageCenter);
@@ -78,10 +90,10 @@ export default function MAIN() {
             ruleParser.parseRules();
             game.messageCenter.subscribe(ruleParser);
 
-            tileMapperInit(game,game_canvas,5);
+            tileMapperInit(game,game_canvas,0);
 
             game.addLayer(new Layer(1, drawBackground, ['black']),
-                new Layer(1, drawGrid, [game.gridDiminsions]),
+                new Layer(2, drawGrid, [game.gridDiminsions]),
                 new Layer(3, game.words.render, args),
                 new Layer(3, game.tiles.render, args),
                 new Layer(2, game.backgroundTiles.render, args),
@@ -95,7 +107,7 @@ export default function MAIN() {
             collider.update(game.allEntities);
             messageCenter.update();
             newCollider(game.allEntities);
-            //game.timer.start()
+            game.timer.start()
         });
 
     game.timer.update = (deltaTime) => {

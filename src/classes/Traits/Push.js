@@ -34,7 +34,7 @@ export default class Push extends Trait {
     update(sprite,message) {
         sprite.canCollide = true;
         if(message.to === sprite.id){
-            this.handleCollision(message.data);
+            this.handleCollision(message.data.possible);
         }
         else if(message.to === 'you' && message.data.action ==='run'){
             this.handlePush(sprite,message)

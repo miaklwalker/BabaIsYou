@@ -10,7 +10,6 @@ export default class Game {
     spriteSpec;
 
     constructor(messageCenter) {
-
         this.timer = new Timer();
         this.gridDiminsions = 19;
         this.renderer = new Renderer(this);

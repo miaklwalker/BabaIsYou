@@ -27,6 +27,8 @@ defaultControls.mapKey('KeyR',RESTART);
 const dispatchMessageFromControls = (code,direction,action) =>{
     document.dispatchEvent(
         addMessage(new Message('you','controls',{keyPressed: code,direction,action})));
+    document.dispatchEvent(
+        addMessage(new Message('parser','controls',{keyPressed: code,direction,action})));
 };
 
 

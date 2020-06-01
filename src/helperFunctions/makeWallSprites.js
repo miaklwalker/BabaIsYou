@@ -13,7 +13,7 @@ export default function makeWallSprites(texturePack){
                 h:set.height,
                 name:i
             };
-            temp.push(new Sprite(sprite,7));
+            temp.push(new Sprite(sprite,8));
             i++
         }
         buffer.set(texture,temp);

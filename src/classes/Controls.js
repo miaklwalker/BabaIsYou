@@ -16,6 +16,7 @@ class KeyMap{
 }
 
 const defaultControls = new KeyMap();
+
 defaultControls.mapKey('KeyA',LEFT);
 defaultControls.mapKey('KeyD',RIGHT);
 defaultControls.mapKey('KeyW',UP);
@@ -25,10 +26,7 @@ defaultControls.mapKey('KeyR',RESTART);
 
 
 const dispatchMessageFromControls = (code,direction,action) =>{
-    document.dispatchEvent(
-        addMessage(new Message('you','controls',{keyPressed: code,direction,action})));
-    document.dispatchEvent(
-        addMessage(new Message('parser','controls',{keyPressed: code,direction,action})));
+    document.dispatchEvent(addMessage(new Message('parser','controls',{keyPressed: code,direction,action})));
 };
 
 

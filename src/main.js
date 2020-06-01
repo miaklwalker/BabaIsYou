@@ -11,8 +11,10 @@ import MessageCenter from "./classes/MessageCenter.js";
 import makePage from "./production.js";
 import Controls from "./classes/Controls.js";
 import tileMapperInit from "./LevelEditor/init.js";
-import Vector from "./classes/Vector.js";
-import newCollider from "./classes/Collisions.js";
+
+import addMessage from "./CustomEvents/addmessage.js";
+import Message from "./classes/Message.js";
+import MovementParser from "./classes/MessageParser.js";
 
 makePage(false);
 
@@ -23,46 +25,10 @@ let ruleParser;
 let collider = new Collider();
 let messageCenter = new MessageCenter();
 let controls = new Controls();
+let movementParser = new MovementParser();
 
-
-
-
-let movement = {
-
-}
-
-let collision = {
-    onMessage(msg){
-
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+messageCenter.subscribe(movementParser);
+messageCenter.subscribe(collider);
 
 
 document.addEventListener('keydown', controls.keyDown);
@@ -79,21 +45,25 @@ export default function MAIN() {
 
     game.setup()
         .then(({image, spriteSpec, levelSpec}) => {
+
             let spriteSheets = parseJsonToSpriteSheet(spriteSpec);
             let args = [image, spriteSheets, tint];
             levelBuilder(spriteSpec, levelSpec);
 
             game.walls.makeTextures(game.renderer.texture);
             let enforcer = enforcerFactory(game.entities);
+
+            movementParser.entities.push(game.allEntities);
+
             ruleParser = new RuleParser(enforcer);
             ruleParser.addWords(game.words.entities);
             ruleParser.parseRules();
             game.messageCenter.subscribe(ruleParser);
-
+            enforcer(ruleParser.rules);
             tileMapperInit(game,game_canvas,0);
 
             game.addLayer(new Layer(1, drawBackground, ['black']),
-                new Layer(2, drawGrid, [game.gridDiminsions]),
+                new Layer(0, drawGrid, [game.gridDiminsions]),
                 new Layer(3, game.words.render, args),
                 new Layer(3, game.tiles.render, args),
                 new Layer(2, game.backgroundTiles.render, args),
@@ -101,18 +71,11 @@ export default function MAIN() {
                 new Layer(3, game.walls.render, args)
             );
 
-            enforcer(ruleParser.rules);
-
-            game.renderer.render(game_canvas, game_context);
-            collider.update(game.allEntities);
-            messageCenter.update();
-            newCollider(game.allEntities);
             game.timer.start()
         });
 
     game.timer.update = (deltaTime) => {
         game.renderer.render(game_canvas, game_context);
-        collider.update(game.allEntities);
         messageCenter.update();
     }
 }

@@ -61,10 +61,10 @@ game.setup().then(
                 new Layer(1, drawBackground, ['black']),
                 new Layer(0, drawGrid, [game.gridDiminsions]),
                 new Layer(3, game.words.render, args),
-                new Layer(3, game.tiles.render, args),
-                new Layer(2, game.backgroundTiles.render, args),
+                new Layer(2, game.tiles.render, args),
+                new Layer(1, game.backgroundTiles.render, args),
                 new Layer(4, game.sprites.render, args),
-                new Layer(3, game.walls.render, args)
+                new Layer(2, game.walls.render, args)
             );
 
             game.timer.start()

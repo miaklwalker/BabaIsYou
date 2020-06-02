@@ -11,10 +11,7 @@ import MessageCenter from "./classes/MessageCenter.js";
 import makePage from "./production.js";
 import Controls from "./classes/Controls.js";
 import tileMapperInit from "./LevelEditor/init.js";
-
-import addMessage from "./CustomEvents/addmessage.js";
-import Message from "./classes/Message.js";
-import MovementParser from "./classes/MessageParser.js";
+import MovementParser from "./classes/MovementParser.js";
 
 makePage(false);
 
@@ -35,22 +32,18 @@ document.addEventListener('keydown', controls.keyDown);
 document.addEventListener('keyup', controls.keyUp);
 document.addEventListener('addmessage', messageCenter.handleAddMessage);
 
-
-let game;
-
-export default function MAIN() {
-    game = new Game(messageCenter);
-    let levelBuilder = makeLevelBuilder(game);
-    const {tint} = game.renderer;
-
-    game.setup()
-        .then(({image, spriteSpec, levelSpec}) => {
+let game = new Game(messageCenter);
+let levelBuilder = makeLevelBuilder(game,messageCenter);
+const {tint} = game.renderer;
+game.setup().then(
+    ({image, spriteSpec, levelSpec}) => {
 
             let spriteSheets = parseJsonToSpriteSheet(spriteSpec);
             let args = [image, spriteSheets, tint];
             levelBuilder(spriteSpec, levelSpec);
 
             game.walls.makeTextures(game.renderer.texture);
+
             let enforcer = enforcerFactory(game.entities);
 
             movementParser.entities.push(game.allEntities);
@@ -58,11 +51,14 @@ export default function MAIN() {
             ruleParser = new RuleParser(enforcer);
             ruleParser.addWords(game.words.entities);
             ruleParser.parseRules();
-            game.messageCenter.subscribe(ruleParser);
+            messageCenter.subscribe(ruleParser);
+
             enforcer(ruleParser.rules);
+
             tileMapperInit(game,game_canvas,0);
 
-            game.addLayer(new Layer(1, drawBackground, ['black']),
+            game.addLayer(
+                new Layer(1, drawBackground, ['black']),
                 new Layer(0, drawGrid, [game.gridDiminsions]),
                 new Layer(3, game.words.render, args),
                 new Layer(3, game.tiles.render, args),
@@ -78,5 +74,6 @@ export default function MAIN() {
         game.renderer.render(game_canvas, game_context);
         messageCenter.update();
     }
-}
-MAIN();
+
+
+

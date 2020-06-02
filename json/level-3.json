@@ -66,11 +66,12 @@
     "UFO":      []
   },
   "words": {
-    "nouns": [],
-    "operators": [[11,17,"IS"],[6,17,"IS"],[11,7,"IS"]],
-    "properties": []
+    "nouns": [[6,16,"WALL"],[11,16,"FLAG"],[7,12,"BABA"]],
+    "operators": [[11,17,"IS"],[6,17,"IS"],[11,8,"IS"]],
+    "properties": [[6,18,"YOU"],[11,18,"STOP"],[14,10,"WIN"]]
   },
   "wall": [
+    {"x":13,"y":17,"name":"WALL"}
   ],
   "floor": [{"x":6,"y":11,"name":"TILE"},{"x":7,"y":11,"name":"TILE"},{"x":8,"y":11,"name":"TILE"},{"x":9,"y":11,"name":"TILE"},{"x":9,"y":12,"name":"TILE"},{"x":8,"y":12,"name":"TILE"},{"x":6,"y":12,"name":"TILE"},{"x":6,"y":13,"name":"TILE"},{"x":7,"y":13,"name":"TILE"},{"x":8,"y":13,"name":"TILE"},{"x":9,"y":13,"name":"TILE"}],
   "palettes": "base",

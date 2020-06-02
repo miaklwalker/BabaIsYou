@@ -48,7 +48,7 @@ export default class RuleParser{
                 }else if(ruleDirection === 'left-right'){
                      rulesToParse.push([left,right])
                 }else if( ruleDirection === 'up-down' ){
-                     rulesToParse.push([left,right],[up,down])
+                     rulesToParse.push([up,down])
                 }
 
                 rulesToParse.forEach(([noun,property])=>{

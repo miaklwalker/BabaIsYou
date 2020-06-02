@@ -9,33 +9,27 @@ export default class Game {
     image;
     spriteSpec;
 
-    constructor(messageCenter) {
-        this.timer = new Timer();
-        this.gridDiminsions = 19;
-        this.renderer = new Renderer(this);
+    constructor() {
+        this.timer =            new Timer();
+        this.gridDiminsions =   19;
+        this.renderer =         new Renderer(this);
         this.words =            new EntityList(this);
         this.tiles =            new EntityList(this);
         this.backgroundTiles =  new EntityList(this);
         this.walls =            new EntityList(this);
         this.sprites =          new EntityList(this);
-        this.messageCenter = messageCenter;
+
     }
 
     setup = async () => {
-
         const image = await loadImage('../images/spritesheet.png');
         const spriteSpec = await loadJSON('../json/sprites.json');
         const levelSpec = await loadJSON('../json/level-1.json');
 
-
         this.image = image;
         this.spriteSpec = spriteSpec;
 
-        this.walls.makeTextures(this.renderer.texture);
-
-        document.addEventListener('addmessage', this.messageCenter.handleAddMessage);
-
-        startTest('../../test.spec.json',1);
+        startTest('../../test.spec.json',3);
 
         return {image, spriteSpec, levelSpec};
 

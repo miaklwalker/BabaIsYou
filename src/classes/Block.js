@@ -9,6 +9,7 @@ export default class Block {
         this.id = makeUniqueId(12);
         this.name = name;
         this.type = type;
+        this.active = true;
         this.neighbors = {
             left:false,
             right:false,

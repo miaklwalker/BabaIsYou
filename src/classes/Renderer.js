@@ -61,7 +61,7 @@ export default class Renderer{
     tint=(canvas ,context ,sprite, img, index)=>{
         const [x, y, w, h] = sprite;
         const [cx, cy] = this.palette;
-        let width = 480 / this.divisions[0];
+        let width = 480 / this.divisions[0]+1;
         let height = 480 / this.divisions[1];
         let endDim = [0,0,width,height];
         context.clearRect(...endDim);
@@ -71,5 +71,6 @@ export default class Renderer{
         context.drawImage(img, x, y, w, h, ...endDim);
         context.globalCompositeOperation = 'destination-in';
         context.drawImage(img, x, y, w, h, ...endDim);
+
     }
 }

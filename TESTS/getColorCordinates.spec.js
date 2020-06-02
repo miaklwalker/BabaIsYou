@@ -5,14 +5,14 @@ import expect from "../testLibrary/modules/Expect.js";
 
 let test = Test(()=> {
         describe('Get Color Coordinates', () => {
-            expect(getColorCoords(488, 24, 0)).toMatchArray([488, 24, 8, 8])
-            expect(getColorCoords(488, 24, 1)).toMatchArray([496, 24, 8, 8])
-            expect(getColorCoords(488, 24, 6)).toMatchArray([536, 24, 8, 8])
-            expect(getColorCoords(488, 24, 7)).toMatchArray([488, 32, 8, 8])
-            expect(getColorCoords(488, 24, 14)).toMatchArray([488, 40, 8, 8])
-            expect(getColorCoords(488, 24, 21)).toMatchArray([488, 48, 8, 8])
-            expect(getColorCoords(488, 24, 28)).toMatchArray([488, 56, 8, 8])
-            expect(getColorCoords(488, 24, 34)).toMatchArray([536, 56, 8, 8])
+            expect(getColorCoords(488, 24, 0)).toMatchArray([ 489, 25,  6, 6])
+            expect(getColorCoords(488, 24, 1)).toMatchArray([ 497, 25,  6, 6])
+            expect(getColorCoords(488, 24, 6)).toMatchArray([ 537, 25,  6, 6])
+            expect(getColorCoords(488, 24, 7)).toMatchArray([ 489, 33,  6, 6])
+            expect(getColorCoords(488, 24, 14)).toMatchArray([489, 41,  6, 6])
+            expect(getColorCoords(488, 24, 21)).toMatchArray([489, 49,  6, 6])
+            expect(getColorCoords(488, 24, 28)).toMatchArray([489, 57,  6, 6])
+            expect(getColorCoords(488, 24, 34)).toMatchArray([537, 57,  6, 6])
         })
     }
 )

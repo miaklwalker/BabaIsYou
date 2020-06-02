@@ -22,7 +22,7 @@ export default class MovementParser{
             else if(!msg.data.results.map(entity=>entity.STOP).every(trait=>trait === undefined)){
                 return;
             }
-            else if(!msg.data.results.map(entity=>entity.PUSH).every(trait=>trait === undefined)){
+            else{
                 [...candidates,...results].forEach(entity=>{
                     document.dispatchEvent(addMessage(new Message(entity.id,'parser',direction)));
                 })

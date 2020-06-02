@@ -20,6 +20,7 @@ export default class MovementParser{
                 })
             }
             else if(!msg.data.results.map(entity=>entity.STOP).every(trait=>trait === undefined)){
+                document.dispatchEvent(addMessage(new Message('controls','parser','finished')));
                 return;
             }
             else{
@@ -27,7 +28,7 @@ export default class MovementParser{
                     document.dispatchEvent(addMessage(new Message(entity.id,'parser',direction)));
                 })
             }
-
+            document.dispatchEvent(addMessage(new Message('controls','parser','finished')));
         }
     }
 

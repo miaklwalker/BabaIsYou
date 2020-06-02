@@ -26,6 +26,7 @@ let movementParser = new MovementParser();
 
 messageCenter.subscribe(movementParser);
 messageCenter.subscribe(collider);
+messageCenter.subscribe(controls);
 
 
 document.addEventListener('keydown', controls.keyDown);

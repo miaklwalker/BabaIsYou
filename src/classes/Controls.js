@@ -39,13 +39,15 @@ export default class Controls {
         this[RESTART] = false;
         this.keyMap  = defaultControls;
         this.timeout = 150;
-        this.lastPressed = ''
+        this.lastPressed = '';
+        this.lockOut = false;
     }
     keyDown=(event)=>{
         const keyPressed = this.keyMap[event.code];
         if(keyPressed === undefined || keyPressed === RESTART)return;
-        if(!this[keyPressed]){
+        if(!this[keyPressed]&&!this.lockOut){
             this[keyPressed] = true;
+            this.lockOut = true;
             dispatchMessageFromControls(event.code,keyPressed.description,'run');
             this.lastPressed = keyPressed.description;
             setTimeout(() => {
@@ -64,6 +66,11 @@ export default class Controls {
     };
     allUp(){
         return !this[UP] && !this[DOWN] && !this[RIGHT] && !this[LEFT];
+    }
+    onMessage(message){
+        if(message.to === 'controls'){
+            this.lockOut = false;
+        }
     }
 }
 

@@ -31,5 +31,8 @@ export default class MovementParser{
             document.dispatchEvent(addMessage(new Message('controls','parser','finished')));
         }
     }
+    purge(){
+        this.entities = [];
+    }
 
 }

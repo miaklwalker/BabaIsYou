@@ -26,6 +26,11 @@ export default class EntityList {
     makeTextures(texturePack){
             this.buffer = makeWallSprites(texturePack);
     }
+    purge(){
+        this.entities = [];
+        this.entities.length = 0;
+        this.buffer = null;
+    }
     render = (canvas, context, image, spriteSheets, tint) => {
         this.entities
             .forEach((rawEntity) => {

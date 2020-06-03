@@ -29,10 +29,9 @@ export default class Game {
         this.image = image;
         this.spriteSpec = spriteSpec;
 
+
         startTest('../../test.spec.json',3);
-
         return {image, spriteSpec, levelSpec};
-
     };
 
     get entities() {

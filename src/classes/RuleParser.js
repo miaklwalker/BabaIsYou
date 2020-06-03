@@ -66,4 +66,8 @@ export default class RuleParser{
     addWords(words){
         this.words.push(...words);
     }
+    purge(){
+        this.words = [];
+        this.rules = [];
+    }
 }

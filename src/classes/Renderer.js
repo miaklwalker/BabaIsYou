@@ -54,14 +54,12 @@ export default class Renderer{
             layer.forEach(subLayer=>{
                 this.layers.push(subLayer)
             });
-
-        //this.layers.push(layer);
         this.layers = this.layers.sort(this.sortLayer);
     }
     tint=(canvas ,context ,sprite, img, index)=>{
         const [x, y, w, h] = sprite;
         const [cx, cy] = this.palette;
-        let width = 480 / this.divisions[0]+1;
+        let width = Math.ceil(480 / this.divisions[0]);
         let height = 480 / this.divisions[1];
         let endDim = [0,0,width,height];
         context.clearRect(...endDim);

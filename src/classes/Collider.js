@@ -3,8 +3,6 @@ import Message from "./Message.js";
 import Vector from "./Vector.js";
 
 export default class Collider {
-    constructor(){
-    }
     update(entities,direction){
         let candidates = entities.filter(entity=>entity.YOU !== undefined);
         let collidePool = entities.filter(entity=>entity.canCollide);

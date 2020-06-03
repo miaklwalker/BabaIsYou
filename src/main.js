@@ -18,7 +18,8 @@ makePage(false);
 const game_canvas = document.getElementById('screen');
 const game_context = game_canvas.getContext('2d');
 
-let ruleParser;
+
+
 let collider = new Collider();
 let messageCenter = new MessageCenter();
 let controls = new Controls();
@@ -36,27 +37,29 @@ document.addEventListener('addmessage', messageCenter.handleAddMessage);
 let game = new Game(messageCenter);
 let levelBuilder = makeLevelBuilder(game,messageCenter);
 const {tint} = game.renderer;
+
 game.setup().then(
     ({image, spriteSpec, levelSpec}) => {
 
             let spriteSheets = parseJsonToSpriteSheet(spriteSpec);
-            let args = [image, spriteSheets, tint];
             levelBuilder(spriteSpec, levelSpec);
-
             game.walls.makeTextures(game.renderer.texture);
+
+            let args = [image, spriteSheets, tint];
 
             let enforcer = enforcerFactory(game.entities);
 
             movementParser.entities.push(game.allEntities);
 
-            ruleParser = new RuleParser(enforcer);
+            let ruleParser = new RuleParser(enforcer);
             ruleParser.addWords(game.words.entities);
             ruleParser.parseRules();
             messageCenter.subscribe(ruleParser);
 
-            enforcer(ruleParser.rules);
-
             tileMapperInit(game,game_canvas,0);
+
+
+
 
             game.addLayer(
                 new Layer(1, drawBackground, ['black']),
@@ -74,7 +77,7 @@ game.setup().then(
     game.timer.update = (deltaTime) => {
         game.renderer.render(game_canvas, game_context);
         messageCenter.update();
-    }
+    };
 
 
 

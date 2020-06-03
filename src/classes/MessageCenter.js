@@ -1,7 +1,7 @@
 export default class MessageCenter{
     constructor(){
         this.messages = [];
-        this.queue = []
+        this.queue = [];
         this.recipients = [];
         this.sending = false;
     }
@@ -19,6 +19,11 @@ export default class MessageCenter{
         }
 
     };
+    purge(){
+        this.recipients = [];
+        this.queue = [];
+        this.messages = [];
+    }
     update(){
         this.sending = true;
         this.messages.forEach(message=>{

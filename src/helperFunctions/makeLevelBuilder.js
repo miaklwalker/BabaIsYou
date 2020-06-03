@@ -8,7 +8,7 @@ export default function makeLevelBuilder(game,messageCenter){
         game.renderer.changeTexture(spriteSpec["textures"][levelSpec["textures"]]);
 
         const {words,tiles,wall,floor,sprites} = levelSpec;
-
+        //sprites
         Object.keys(sprites).forEach(type=>{
             sprites[type].forEach(sprite => {
                 let block = blockFactory('sprites', Object.values(sprite));

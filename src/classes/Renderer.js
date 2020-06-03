@@ -13,6 +13,9 @@ export default class Renderer{
     get divisions(){
         return this._divisions.gridDiminsions;
     }
+    purge(){
+        this.layers = [];
+    }
     changePalette=(palette)=>{
         this.palette = palette;
     };
@@ -60,7 +63,7 @@ export default class Renderer{
         const [x, y, w, h] = sprite;
         const [cx, cy] = this.palette;
         let width = Math.ceil(480 / this.divisions[0]);
-        let height = 480 / this.divisions[1];
+        let height = Math.ceil(480 / this.divisions[1]);
         let endDim = [0,0,width,height];
         context.clearRect(...endDim);
         context.globalCompositeOperation = 'luminosity';

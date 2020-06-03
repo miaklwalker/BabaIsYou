@@ -21,16 +21,16 @@ export default class Game {
 
     }
 
-    setup = async () => {
+    setup = async (level) => {
         const image = await loadImage('../images/spritesheet.png');
         const spriteSpec = await loadJSON('../json/sprites.json');
-        const levelSpec = await loadJSON('../json/level-1.json');
+        const levelSpec = await loadJSON(`../json/level-${level}.json`);
 
         this.image = image;
         this.spriteSpec = spriteSpec;
 
 
-        startTest('../../test.spec.json',3);
+
         return {image, spriteSpec, levelSpec};
     };
 

@@ -44,7 +44,11 @@ export default class Controls {
     }
     keyDown=(event)=>{
         const keyPressed = this.keyMap[event.code];
-        if(keyPressed === undefined || keyPressed === RESTART)return;
+        if(keyPressed === undefined )return;
+        if( keyPressed === RESTART){
+            document.dispatchEvent(addMessage(new Message('system','controls','RESTART')));
+            return
+        }
         if(!this[keyPressed]&&!this.lockOut){
             this[keyPressed] = true;
             this.lockOut = true;

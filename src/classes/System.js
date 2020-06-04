@@ -22,7 +22,7 @@ export default class System{
             document.addEventListener('keydown', this.controls.keyDown);
             document.addEventListener('keyup', this.controls.keyUp);
             document.addEventListener('addmessage', this.messageCenter.handleAddMessage);
-            startTest('../../test.spec.json',0);
+            startTest('../../test.spec.json',1);
             this.initialized = true;
         }
         this.messageCenter.subscribe(this.movementParser);
@@ -45,7 +45,7 @@ export default class System{
     onMessage(message){
         if(message.to === 'system'){
             if(message.from === 'win'){
-                if(this.level <= 3){
+                if(this.level < 3){
                     this.level++;
                 }else{
                     alert(`You've Beat All The Levels I Have So Far!`)

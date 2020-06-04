@@ -15,7 +15,7 @@ export default class System{
         this.movementParser = new MovementParser();
 
         this.initialized = false;
-        this.level = 4
+        this.level = 1
     }
     init(){
         if(!this.initialized){
@@ -45,7 +45,13 @@ export default class System{
     onMessage(message){
         if(message.to === 'system'){
             if(message.from === 'win'){
-                this.level++;
+                if(this.level <= 3){
+                    this.level++;
+                }else{
+                    alert(`You've Beat All The Levels I Have So Far!`)
+                    this.level = 1;
+                }
+
             }
             this.restart()
         }

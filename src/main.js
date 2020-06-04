@@ -29,7 +29,6 @@ export function gameStart({image, spriteSpec, levelSpec}){
 
     let spriteSheets = parseJsonToSpriteSheet(spriteSpec);
     levelBuilder(spriteSpec, levelSpec);
-    console.log(game.renderer.texture)
     game.walls.makeTextures(game.renderer.texture);
 
     let args = [image, spriteSheets, tint];
@@ -54,7 +53,7 @@ export function gameStart({image, spriteSpec, levelSpec}){
         new Layer(4, game.sprites.render, args),
         new Layer(2, game.walls.render, args)
     );
-    console.log(system);
+
     game.timer.start()
 }
 

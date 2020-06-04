@@ -4,7 +4,7 @@
   "description": "'A fan made recreation of babaisyou by hempuli , with the creators permission'",
   "main": "index.html",
   "scripts": {
-    "test": "-r esm && npm run jest",
+    "test": "-r esm && npm run jest"
   },
   "repository": {
     "type": "git",

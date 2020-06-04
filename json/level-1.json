@@ -54,118 +54,132 @@
       [14, 13, "PUSH"]
     ]
   },
-  "wall": [
-    {
-      "x": 4,
-      "y": 7,
-      "name": "WALL"
-    },
-    {
-      "x": 5,
-      "y": 7,
-      "name": "WALL"
-    },
-    {
-      "x": 6,
-      "y": 7,
-      "name": "WALL"
-    },
-    {
-      "x": 7,
-      "y": 7,
-      "name": "WALL"
-    },
-    {
-      "x": 8,
-      "y": 7,
-      "name": "WALL"
-    },
-    {
-      "x": 9,
-      "y": 7,
-      "name": "WALL"
-    },
-    {
-      "x": 10,
-      "y": 7,
-      "name": "WALL"
-    },
-    {
-      "x": 11,
-      "y": 7,
-      "name": "WALL"
-    },
-    {
-      "x": 12,
-      "y": 7,
-      "name": "WALL"
-    },
-    {
-      "x": 13,
-      "y": 7,
-      "name": "WALL"
-    },
-    {
-      "x": 14,
-      "y": 7,
-      "name": "WALL"
-    },
-    {
-      "x": 4,
-      "y": 11,
-      "name": "WALL"
-    },
-    {
-      "x": 5,
-      "y": 11,
-      "name": "WALL"
-    },
-    {
-      "x": 6,
-      "y": 11,
-      "name": "WALL"
-    },
-    {
-      "x": 7,
-      "y": 11,
-      "name": "WALL"
-    },
-    {
-      "x": 8,
-      "y": 11,
-      "name": "WALL"
-    },
-    {
-      "x": 9,
-      "y": 11,
-      "name": "WALL"
-    },
-    {
-      "x": 10,
-      "y": 11,
-      "name": "WALL"
-    },
-    {
-      "x": 11,
-      "y": 11,
-      "name": "WALL"
-    },
-    {
-      "x": 12,
-      "y": 11,
-      "name": "WALL"
-    },
-    {
-      "x": 13,
-      "y": 11,
-      "name": "WALL"
-    },
-    {
-      "x": 14,
-      "y": 11,
-      "name": "WALL"
-    }
-  ],
+  "wall": {
+    "bricks": [
+      {
+        "x": 4,
+        "y": 7,
+        "name": "WALL"
+      },
+      {
+        "x": 5,
+        "y": 7,
+        "name": "WALL"
+      },
+      {
+        "x": 6,
+        "y": 7,
+        "name": "WALL"
+      },
+      {
+        "x": 7,
+        "y": 7,
+        "name": "WALL"
+      },
+      {
+        "x": 8,
+        "y": 7,
+        "name": "WALL"
+      },
+      {
+        "x": 9,
+        "y": 7,
+        "name": "WALL"
+      },
+      {
+        "x": 10,
+        "y": 7,
+        "name": "WALL"
+      },
+      {
+        "x": 11,
+        "y": 7,
+        "name": "WALL"
+      },
+      {
+        "x": 12,
+        "y": 7,
+        "name": "WALL"
+      },
+      {
+        "x": 13,
+        "y": 7,
+        "name": "WALL"
+      },
+      {
+        "x": 14,
+        "y": 7,
+        "name": "WALL"
+      },
+      {
+        "x": 4,
+        "y": 11,
+        "name": "WALL"
+      },
+      {
+        "x": 5,
+        "y": 11,
+        "name": "WALL"
+      },
+      {
+        "x": 6,
+        "y": 11,
+        "name": "WALL"
+      },
+      {
+        "x": 7,
+        "y": 11,
+        "name": "WALL"
+      },
+      {
+        "x": 8,
+        "y": 11,
+        "name": "WALL"
+      },
+      {
+        "x": 9,
+        "y": 11,
+        "name": "WALL"
+      },
+      {
+        "x": 10,
+        "y": 11,
+        "name": "WALL"
+      },
+      {
+        "x": 11,
+        "y": 11,
+        "name": "WALL"
+      },
+      {
+        "x": 12,
+        "y": 11,
+        "name": "WALL"
+      },
+      {
+        "x": 13,
+        "y": 11,
+        "name": "WALL"
+      },
+      {
+        "x": 14,
+        "y": 11,
+        "name": "WALL"
+      }],
+    "clouds": [],
+    "foliage": [],
+    "ice": [],
+    "snow": [],
+    "moss": [],
+    "ocean": [],
+    "cliff": [],
+    "fence": [],
+    "hedge": [],
+    "smallPipe": [],
+    "blob": [],
+    "pipe": [],
+    "base": []
+},
   "floor": [
     {
       "x": 4,

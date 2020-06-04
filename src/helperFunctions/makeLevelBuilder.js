@@ -4,7 +4,9 @@ import Push from "../classes/Traits/Push.js";
 export default function makeLevelBuilder(game,messageCenter){
     return (spriteSpec,levelSpec)=>{
         game.gridDiminsions = levelSpec.divisions;
+
         game.renderer.changePalette(spriteSpec["palettes"][levelSpec["palettes"]]);
+
         game.renderer.changeTexture(spriteSpec["textures"][levelSpec["textures"]]);
 
         const {words,tiles,wall,floor,sprites} = levelSpec;
@@ -40,10 +42,14 @@ export default function makeLevelBuilder(game,messageCenter){
             game.addBackgroundTile(floor)
         });
         // walls
-        wall.forEach((sprite)=>{
-            let wall = blockFactory('wall',Object.values(sprite));
-            messageCenter.subscribe(wall);
-            game.addWall(wall);
-        });
+        Object.keys(wall).forEach(type=>{
+           wall[type].forEach((sprite)=>{
+                let wall = blockFactory('wall',Object.values(sprite));
+                wall.texture = type;
+                messageCenter.subscribe(wall);
+                game.addWall(wall);
+            });
+        })
+
     }
 }

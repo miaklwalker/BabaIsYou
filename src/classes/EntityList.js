@@ -24,7 +24,11 @@ export default class EntityList {
         this.entities.push(entity);
     }
     makeTextures(texturePack){
-            this.buffer = makeWallSprites(texturePack);
+        let result = {}
+        for(let texture in texturePack){
+            result[texture] = makeWallSprites(texturePack[texture])
+        }
+            this.buffer = result;
     }
     purge(){
         this.entities = [];
@@ -37,7 +41,7 @@ export default class EntityList {
                 let entity = rawEntity.draw(this.entities);
                 let strategy = chooseStrategy(rawEntity.strategy);
                 let [x,y] = entity;
-                let sprite = strategy(spriteSheets,entity,this.frame,this);
+                let sprite = strategy(spriteSheets,entity,this.frame,this,rawEntity);
                 sprite.render(
                     canvas, context,
                     tint,

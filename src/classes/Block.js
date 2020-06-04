@@ -31,6 +31,9 @@ export default class Block {
         this[trait.NAME] = trait;
         this.traits.push(trait);
     }
+    isNeighbor(other){
+        return this.checkNeighbors(other).includes(true);
+    }
     checkNeighbors=(other)=>{
         const {x,y} = this.position;
         let left = new Vector(x-1, y).same(other.position);

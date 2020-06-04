@@ -2,14 +2,15 @@ import Block from "../Block.js";
 import chooseShape from "../../helperFunctions/chooseShape.js";
 
 export default class Wall extends Block{
+    texture;
     constructor(x,y) {
         super(x,y,'WALL','WALL');
         this.strategy = 'WALL';
-        this.ran = false;
+
     }
     draw(others){
         this.chooseName(others);
-        return [...super.draw(),this.name,undefined,this.type]
+        return [...super.draw(),this.name,this.texture,this.type]
     }
     chooseName(neighbors){
         this.updateAndFindNeighbors(neighbors);

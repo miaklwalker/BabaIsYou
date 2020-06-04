@@ -7,7 +7,7 @@ export default class Push extends Trait {
     update(sprite,message) {
         sprite.canCollide = true;
         if(message.to === sprite.id){
-            switch(message.data){
+            switch(message.data.direction){
                 case "left":
                     sprite.position.x -= 1;
                     break;

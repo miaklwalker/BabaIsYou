@@ -9,11 +9,15 @@ export default class Win extends Trait {
         this.left = true;
         this.up = true;
         this.down = true;
+        this.ran = false
     }
     update(sprite,message) {
         sprite.canCollide = true;
-        if(message.to === sprite.id){
-            document.dispatchEvent(addMessage(new Message('system','win','YOU WIN')))
+        if(message.to === sprite.id && !this.ran ){
+            if(message.data.msg.data.candidates.map(candidate=>sprite.isNeighbor(candidate)).includes(true)){
+                this.ran = true;
+                document.dispatchEvent(addMessage(new Message('system','win','YOU WIN')))
+            }
         }
     }
 }

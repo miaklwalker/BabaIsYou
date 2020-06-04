@@ -6,7 +6,10 @@ export default function chooseStrategy(strategy){
         case 'TILE':
             return (spriteSheets,[,,name,,type],frame)=>spriteSheets.spriteSheets[type][name].sprites[frame];
         case 'WALL':
-            return (spriteSheets,[,,texture],frame,list)=>list.buffer.get(texture)[list.frame];
+            return (spriteSheets,[,,texture],frame,list,sprite)=>{
+                return list.buffer[sprite.texture].get(texture)[list.frame]
+                //list.buffer.get(texture)[list.frame]
+            };
         case 'SPRITE':
             return (spriteSheets,[x,y,name,,type,id,direction,action],frame,list)=>{
             let spritesSheet = spriteSheets.spriteSheets;

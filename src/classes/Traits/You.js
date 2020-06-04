@@ -13,8 +13,7 @@ export default class You extends Trait {
     }
     update(sprite,message) {
         if(message.to === sprite.id){
-
-            switch(message.data){
+            switch(message.data.direction){
                 case "left":
                     sprite.position.x -= 1;
                     break;

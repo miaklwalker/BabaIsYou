@@ -19,8 +19,8 @@ export default class Renderer{
     changePalette=(palette)=>{
         this.palette = palette;
     };
-    changeTexture=(texture)=>{
-        this.texture = buildTexturePack(...texture);
+    addTexture=(texture)=>{
+        this.texture = texture
     };
     render(canvas,context){
         this.layers.forEach(layer=>{

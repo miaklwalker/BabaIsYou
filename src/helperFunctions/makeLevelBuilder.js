@@ -1,13 +1,18 @@
 import blockFactory from "../helperFunctions/blockFactory.js";
 import Push from "../classes/Traits/Push.js";
+import buildTexturePack from "./buildTexturePack.js";
 
 export default function makeLevelBuilder(game,messageCenter){
     return (spriteSpec,levelSpec)=>{
         game.gridDiminsions = levelSpec.divisions;
 
+
+        let textureMap = {}
+            Object.keys(spriteSpec.textures).forEach(texture=> textureMap[texture] = buildTexturePack(...spriteSpec.textures[texture]))
+
         game.renderer.changePalette(spriteSpec["palettes"][levelSpec["palettes"]]);
 
-        game.renderer.changeTexture(spriteSpec["textures"][levelSpec["textures"]]);
+        game.renderer.addTexture(textureMap);
 
         const {words,tiles,wall,floor,sprites} = levelSpec;
         //sprites

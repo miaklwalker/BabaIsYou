@@ -16,7 +16,7 @@ export default class MovementParser{
             let{results,candidates,direction} = msg.data;
             if(results.length === 0){
                 candidates.forEach(entity=>{
-                    document.dispatchEvent(addMessage(new Message(entity.id,'parser',direction)));
+                    document.dispatchEvent(addMessage(new Message(entity.id,'parser',{direction})));
                 })
             }
             else if(!msg.data.results.map(entity=>entity.STOP).every(trait=>trait === undefined)){
@@ -25,7 +25,7 @@ export default class MovementParser{
             }
             else{
                 [...candidates,...results].forEach(entity=>{
-                    document.dispatchEvent(addMessage(new Message(entity.id,'parser',direction)));
+                    document.dispatchEvent(addMessage(new Message(entity.id,'parser',{direction,msg})));
                 })
             }
             document.dispatchEvent(addMessage(new Message('controls','parser','finished')));

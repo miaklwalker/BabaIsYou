@@ -210,7 +210,8 @@
     ]
   },
   "wall": {
-    "bricks":[
+    "bricks":[] ,
+    "clouds": [
       {"x":0,"y":0,"name":"WALL"},
       {"x":2,"y":0,"name":"WALL"},
       {"x":3,"y":0,"name":"WALL"},
@@ -258,8 +259,7 @@
       {"x":16,"y":4,"name":"WALL"},
       {"x":15,"y":4,"name":"WALL"},
       {"x":17,"y":4,"name":"WALL"},
-      {"x":16,"y":5,"name":"WALL"}] ,
-    "clouds": [],
+      {"x":16,"y":5,"name":"WALL"}],
     "foliage": [],
     "ice": [],
     "snow": [],
@@ -269,7 +269,8 @@
     "fence": [],
     "hedge": [],
     "smallPipe": [],
-    "blob": [],
+    "blob": [
+    ],
     "pipe": [],
     "base": []
   }
@@ -283,6 +284,6 @@
   ],
   "palettes": "base",
   "textures": "base",
-  "divisions": [30,30]
+  "divisions": [50,50]
 }
 

@@ -23,10 +23,10 @@ export default class EntityList {
     addEntity(entity) {
         this.entities.push(entity);
     }
-    makeTextures(texturePack){
+    makeTextures({texture,colorMap}){
         let result = {}
-        for(let texture in texturePack){
-            result[texture] = makeWallSprites(texturePack[texture])
+        for(let single in texture){
+            result[single] = makeWallSprites(texture[single],colorMap[single]);
         }
             this.buffer = result;
     }

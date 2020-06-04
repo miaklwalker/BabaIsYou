@@ -3,9 +3,10 @@ import chooseShape from "../../helperFunctions/chooseShape.js";
 
 export default class Wall extends Block{
     texture;
-    constructor(x,y) {
+    constructor(x,y,tint) {
         super(x,y,'WALL','WALL');
         this.strategy = 'WALL';
+        this.tint = tint;
 
     }
     draw(others){

@@ -29,7 +29,7 @@ export function gameStart({image, spriteSpec, levelSpec}){
 
     let spriteSheets = parseJsonToSpriteSheet(spriteSpec);
     levelBuilder(spriteSpec, levelSpec);
-    game.walls.makeTextures(game.renderer.texture);
+    game.walls.makeTextures(game.renderer);
 
     let args = [image, spriteSheets, tint];
 

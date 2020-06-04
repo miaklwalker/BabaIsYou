@@ -7,7 +7,8 @@ export default class Renderer{
     constructor(game){
         this.layers = [];
         this.palette = [488, 24, 56, 40];
-        this.texture = buildTexturePack(384, 1512);
+        this.texture = null;
+        this.colorMap = null;
         this._divisions = game
     }
     get divisions(){

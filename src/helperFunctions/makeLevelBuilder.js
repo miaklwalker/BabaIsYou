@@ -8,11 +8,13 @@ export default function makeLevelBuilder(game,messageCenter){
 
 
         let textureMap = {}
+        let colors = {};
+            Object.keys(levelSpec.wall).forEach(type=>colors[type] = levelSpec.wall[type].tint);
             Object.keys(spriteSpec.textures).forEach(texture=> textureMap[texture] = buildTexturePack(...spriteSpec.textures[texture]))
 
         game.renderer.changePalette(spriteSpec["palettes"][levelSpec["palettes"]]);
-
         game.renderer.addTexture(textureMap);
+        game.renderer.colorMap = colors;
 
         const {words,tiles,wall,floor,sprites} = levelSpec;
         //sprites
@@ -48,7 +50,7 @@ export default function makeLevelBuilder(game,messageCenter){
         });
         // walls
         Object.keys(wall).forEach(type=>{
-           wall[type].forEach((sprite)=>{
+           wall[type].blocks.forEach((sprite)=>{
                 let wall = blockFactory('wall',Object.values(sprite));
                 wall.texture = type;
                 messageCenter.subscribe(wall);

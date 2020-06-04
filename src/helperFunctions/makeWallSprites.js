@@ -1,6 +1,7 @@
 import Sprite from "../classes/Sprite.js";
 
-export default function makeWallSprites(texturePack){
+export default function makeWallSprites(texturePack,tint){
+    console.log(tint);
     let buffer = new Map();
     for(let texture in texturePack){
         let temp = [];
@@ -13,7 +14,7 @@ export default function makeWallSprites(texturePack){
                 h:set.height,
                 name:i
             };
-            temp.push(new Sprite(sprite,8));
+            temp.push(new Sprite(sprite,tint));
             i++
         }
         buffer.set(texture,temp);

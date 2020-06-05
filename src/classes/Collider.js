@@ -4,11 +4,14 @@ import Vector from "./Vector.js";
 
 export default class Collider {
     update(entities,direction){
+        // All blocks the player controls
         let candidates = entities.filter(entity=>entity.YOU !== undefined);
+        // All blocks with the collision flag set
         let collidePool = entities.filter(entity=>entity.canCollide);
+        // Will have all blocks the player collides with and whatever they collide with
         let results = [];
         candidates.forEach(candidate=>{
-            let orthMap={
+            let orthogonalMap={
             left : new Vector(-1,0).addVector(candidate.position),
             right: new Vector(1,0).addVector(candidate.position),
             up  : new Vector(0,-1).addVector(candidate.position),
@@ -17,7 +20,7 @@ export default class Collider {
 
             collidePool.forEach((potential)=>{
                 let {position} = potential;
-                if(position.same(orthMap[direction])){
+                if(position.same(orthogonalMap[direction])){
                     let neighbors = potential.updateAndFindNeighbors(collidePool)[direction];
                     while(neighbors){
                         results.push(neighbors);
@@ -38,5 +41,4 @@ export default class Collider {
             this.update(message.data.entities,message.data.msg.data.direction);
         }
     }
-
 }

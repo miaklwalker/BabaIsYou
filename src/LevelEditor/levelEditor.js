@@ -66,15 +66,19 @@ return{
                 };
                 temp.push(tileObj);
             });
-            console.log(JSON.stringify(temp));
+            copyToClipboard(JSON.stringify(temp));
         }else{
             clickedTilesSet.forEach(tile => {
                 let [x1, y1] = tile;
                 let tileObj = [Math.round(x1 / cHeight), Math.round(y1 / cWidth), name];
                 temp.push(tileObj);
             });
-            console.log(JSON.stringify(temp));
+            copyToClipboard(JSON.stringify(temp));
         }
     }
 }
+}
+
+function copyToClipboard(text){
+    navigator.clipboard.writeText(text).then(()=>console.log('Copied to clipboard'))
 }

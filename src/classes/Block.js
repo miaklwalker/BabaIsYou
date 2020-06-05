@@ -9,7 +9,6 @@ export default class Block {
         this.id = makeUniqueId(12);
         this.name = name;
         this.type = type;
-        this.active = true;
         this.neighbors = {
             left:false,
             right:false,
@@ -50,7 +49,6 @@ export default class Block {
         this.neighbors.down =   false;
         neighbors.forEach(other => {
             let result = this.checkNeighbors(other);
-
             if(result.includes(true)){
                 const [left,down,right,up]=result;
                 if(left) {

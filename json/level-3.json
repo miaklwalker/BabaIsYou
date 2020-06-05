@@ -70,24 +70,67 @@
     "operators": [[11,17,"IS"],[6,17,"IS"],[11,8,"IS"]],
     "properties": [[6,18,"YOU"],[11,18,"STOP"],[14,10,"WIN"]]
   },
-  "wall":{
-    "bricks": [],
-    "clouds": [],
-    "foliage": [],
-    "ice": [],
-    "snow": [],
-    "moss": [],
-    "ocean": [],
-    "cliff": [],
-    "fence": [],
-    "hedge": [],
-    "smallPipe": [],
-    "blob": [],
-    "pipe": [],
-    "base": [
-      {"x":13,"y":17,"name":"WALL"}
-    ]
-  } ,
+  "wall": {
+    "bricks": {
+      "tint": 15,
+      "blocks": []
+    },
+    "clouds": {
+      "tint": 25,
+      "blocks": []
+    },
+    "foliage": {
+      "tint": 5,
+      "blocks": []
+    },
+    "ice": {
+      "tint": 15,
+      "blocks": []
+    },
+    "snow": {
+      "tint": 15,
+      "blocks": []
+    },
+    "moss": {
+      "tint": 15,
+      "blocks": []
+    },
+    "ocean": {
+      "tint": 15,
+      "blocks": []
+    },
+    "cliff": {
+      "tint": 15,
+      "blocks": []
+    },
+    "fence": {
+      "tint": 15,
+      "blocks": []
+    },
+    "hedge": {
+      "tint": 15,
+      "blocks": []
+    },
+    "smallPipe": {
+      "tint": 15,
+      "blocks": []
+    },
+    "blob": {
+      "tint": 15,
+      "blocks": []
+    },
+    "pipe": {
+      "tint": 15,
+      "blocks": []
+    },
+    "base": {
+      "tint": 8,
+      "blocks": [
+        {"x":13,"y":17,"name":"WALL"}
+      ]
+    }
+  },
+
   "floor": [{"x":6,"y":11,"name":"TILE"},{"x":7,"y":11,"name":"TILE"},{"x":8,"y":11,"name":"TILE"},{"x":9,"y":11,"name":"TILE"},{"x":9,"y":12,"name":"TILE"},{"x":8,"y":12,"name":"TILE"},{"x":6,"y":12,"name":"TILE"},{"x":6,"y":13,"name":"TILE"},{"x":7,"y":13,"name":"TILE"},{"x":8,"y":13,"name":"TILE"},{"x":9,"y":13,"name":"TILE"}],
   "palettes": "base",
   "textures": "base",

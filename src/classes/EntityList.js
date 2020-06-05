@@ -24,11 +24,13 @@ export default class EntityList {
         this.entities.push(entity);
     }
     makeTextures({texture,colorMap}){
-        let result = {}
+        let result = {};
         for(let single in texture){
-            result[single] = makeWallSprites(texture[single],colorMap[single]);
+            let textureToMap = texture[single];
+            let colorForMap = colorMap[single];
+            result[single] = makeWallSprites(textureToMap,colorForMap);
         }
-            this.buffer = result;
+        this.buffer = result;
     }
     purge(){
         this.entities = [];

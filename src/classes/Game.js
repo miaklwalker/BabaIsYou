@@ -25,12 +25,8 @@ export default class Game {
         const image = await loadImage('../images/spritesheet.png');
         const spriteSpec = await loadJSON('../json/sprites.json');
         const levelSpec = await loadJSON(`../json/level-${level}.json`);
-
         this.image = image;
         this.spriteSpec = spriteSpec;
-
-
-
         return {image, spriteSpec, levelSpec};
     };
 

@@ -13,9 +13,8 @@ export default class System{
         this.messageCenter = new MessageCenter();
         this.controls = new Controls();
         this.movementParser = new MovementParser();
-
         this.initialized = false;
-        this.level = 0
+        this.level = 4
     }
     init(){
         if(!this.initialized){

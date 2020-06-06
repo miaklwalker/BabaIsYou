@@ -12,9 +12,9 @@ function passLog(message){
 
 let logger = (didPass) => !didPass ? failLog : passLog;
 
-export function logLevelOne(results,test){
+export function logLevelOne(results,test,testName){
     let pass = true;
-
+    console.groupCollapsed("%c" + `Test: ${testName}`, "color:" + '#fefefe')
     console.groupCollapsed("%c" + `Test: ${test}`, "color:" + '#fefefe')
     results[test].forEach((result,index)=>{
         if(!result.passed){
@@ -25,8 +25,9 @@ export function logLevelOne(results,test){
         ${JSON.stringify(result.message)}
         `)
     });
-    console.groupEnd()
+    console.groupEnd();
     logger(pass)(` :: ${pass ? 'Passed' : 'Failed'} :: `)
+    console.groupEnd();
 }
 
 export function logLevelTwo(results,test){

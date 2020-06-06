@@ -1,7 +1,6 @@
 import Sprite from "../classes/Sprite.js";
 
 export default function makeWallSprites(texturePack,tint){
-    console.log(tint);
     let buffer = new Map();
     for(let texture in texturePack){
         let temp = [];

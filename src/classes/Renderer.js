@@ -1,5 +1,4 @@
 import Layer from "./Layer.js";
-import buildTexturePack from "../helperFunctions/buildTexturePack.js";
 import getColorCoords from '../helperFunctions/getColorCoords.js'
 
 
@@ -43,6 +42,7 @@ export default class Renderer{
                 yOffset)
         }))
     }
+
     sortLayer(layerA,layerB){
         if(layerA.priority > layerB.priority){
             return 1

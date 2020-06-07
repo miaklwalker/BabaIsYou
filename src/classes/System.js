@@ -14,7 +14,7 @@ export default class System{
         this.controls = new Controls();
         this.movementParser = new MovementParser();
         this.initialized = false;
-        this.level = 1
+        this.level = 0
     }
     init(){
         if(!this.initialized){

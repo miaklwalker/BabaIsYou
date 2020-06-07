@@ -14,7 +14,7 @@ export default class System{
         this.controls = new Controls();
         this.movementParser = new MovementParser();
         this.initialized = false;
-        this.level = 4
+        this.level = 1
     }
     init(){
         if(!this.initialized){
@@ -40,6 +40,10 @@ export default class System{
         this.messageCenter.purge();
         this.init();
         this.game.setup(this.level).then(gameStart);
+    }
+    removeEntity(id){
+        this.messageCenter.unsubscribe(id);
+
     }
     onMessage(message){
         if(message.to === 'system'){

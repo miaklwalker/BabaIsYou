@@ -11,19 +11,16 @@ class TestRunner{
         this.suites.forEach(suite=>{
             suite();
         });
-        let index = 0;
-        console.log(testName);
         for(let test in results ){
-            index++;
             switch(logLevel){
                 case 1 :
-                    logLevelOne(results,test,testName[index]);
+                    logLevelOne(results,test);
                     break;
                 case 3 :
-                    logLevelTwo(results,test,testName[index]);
+                    logLevelTwo(results,test);
                     break;
                 case 2 :
-                    logLevelThree(results,test,testName[index]);
+                    logLevelThree(results,test);
                     break;
                 default:
                     break;
@@ -32,7 +29,7 @@ class TestRunner{
     }
     describe=(description,callback)=>{
         let temp = [];
-        this.suites.push(()=>{
+        this.suites.push((SuiteName)=>{
             callback();
             tests.forEach(test=>temp.push(test));
             results[description] = temp;

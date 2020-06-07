@@ -11,7 +11,7 @@ export default test(()=>{
     let collider = new Collider();
 
     collider.addMessage = Mock.fn((message)=>{
-        console.log(message);
+
     });
 
     let baba = new Block(1,1,'BABA','SPRITE');
@@ -24,6 +24,7 @@ export default test(()=>{
 
     baba.updateAndFindNeighbors = Mock.fn(baba.updateAndFindNeighbors);
     wall.updateAndFindNeighbors = Mock.fn(wall.updateAndFindNeighbors);
+
     describe('Collider Should call add message',()=>{
         collider.update(entityOther,'down');
         expect(collider.addMessage).toHaveBeenCalled();

@@ -12,12 +12,8 @@ export default function startTestRunner(configURL, logLevel) {
             let tests = await loadTests(configURL);
             let results = await Promise.all(tests.map(test=>import(test)));
             results.forEach((spec,index)=>{
-                let testNames = [];
-                testNames.push(tests[index]);
                 spec.default();
-                return testNames;
             });
-
         }
         start()
             .then((testNames)=>testRunner.runTests(logLevel,testNames))

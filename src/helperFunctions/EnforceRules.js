@@ -13,12 +13,8 @@ function enforceRules(rules,entities){
     clearRules(entities);
         rules.forEach(({name, operator, property}) => {
             entities.forEach(entity => {
-                if ((entity.name === name.name || entity.type === name.name) && operator.name === 'IS') {
-                    if(property.name !== undefined){
+                if ((entity.name === name.name) && operator.name === 'IS') {
                         entity.addTrait(traitFactory(property.name))
-                    }else{
-                        console.log(property,entity);
-                    }
                 }
             })
         });

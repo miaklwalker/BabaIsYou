@@ -6,8 +6,8 @@ export default function chooseStrategy(strategy){
         case 'TILE':
             return (spriteSheets,[,,name,,type],frame)=>spriteSheets.spriteSheets[type][name].sprites[frame];
         case 'WALL':
-            return (spriteSheets,[,,texture],frame,list,sprite)=>{
-                return list.buffer[sprite.texture].get(texture)[list.frame]
+            return (spriteSheets,[,,alias],frame,list,sprite)=>{
+                return list.buffer[sprite.texture].get(alias)[list.frame]
             };
         case 'SPRITE':
             return (spriteSheets,[x,y,name,,type,id,direction,action],frame,list)=>{

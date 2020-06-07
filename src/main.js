@@ -42,7 +42,7 @@ export function gameStart({image, spriteSpec, levelSpec}){
     ruleParser.parseRules();
     messageCenter.subscribe(ruleParser);
 
-    tileMapperInit(game,game_canvas,5);
+    tileMapperInit(game,game_canvas,0);
 
     game.addLayer(
         new Layer(1, drawBackground, ['black']),
@@ -63,4 +63,4 @@ game.setup(system.level).then(gameStart);
         game.renderer.render(game_canvas, game_context);
         messageCenter.update();
     };
-
+console.log(system)

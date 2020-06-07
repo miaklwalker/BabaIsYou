@@ -9,7 +9,7 @@ export default class MessageCenter{
         this.recipients.push(...recipient);
     }
     unsubscribe(id){
-        this.recipients =  this.recipients.filter(recipient=>recipient.id !== id);;
+        this.recipients =  this.recipients.filter(recipient=>recipient.id !== id);
     }
     handleAddMessage=(event)=>{
         if(this.sending){

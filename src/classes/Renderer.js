@@ -61,7 +61,6 @@ export default class Renderer{
         this.layers = this.layers.sort(this.sortLayer);
     }
     tint=(canvas ,context ,sprite, img, index)=>{
-        console.count('Tint')
         const [x, y, w, h] = sprite;
         const [cx, cy] = this.palette;
         let width = Math.ceil(480 / this.divisions[0])+1;

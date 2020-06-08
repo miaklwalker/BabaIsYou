@@ -33,7 +33,7 @@ export default class Block {
     isNeighbor(other){
         return this.checkNeighbors(other).includes(true);
     }
-    checkNeighbors=(other)=>{
+    checkNeighbors=(other,checkName = false)=>{
         const {x,y} = this.position;
         let left = new Vector(x-1, y).same(other.position);
         let right = new Vector(x+1 , y).same(other.position);

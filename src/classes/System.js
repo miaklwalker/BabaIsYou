@@ -15,7 +15,7 @@ export default class System{
         this.movementParser = new MovementParser();
         this.initialized = false;
         this.restartInProgress = true;
-        this.level = 4
+        this.level = 5
     }
     init(){
         if(!this.initialized){

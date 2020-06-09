@@ -1,6 +1,8 @@
 {
   "sprites": {
-    "BABA": []
+    "BABA": [],
+    "SKULL": [{"x":3,"y":24,"name":"SKULL"},{"x":3,"y":23,"name":"SKULL"},{"x":3,"y":22,"name":"SKULL"},{"x":3,"y":21,"name":"SKULL"},{"x":3,"y":20,"name":"SKULL"},{"x":4,"y":20,"name":"SKULL"},{"x":5,"y":20,"name":"SKULL"},{"x":5,"y":19,"name":"SKULL"},{"x":5,"y":18,"name":"SKULL"},{"x":7,"y":18,"name":"SKULL"},{"x":7,"y":19,"name":"SKULL"},{"x":7,"y":20,"name":"SKULL"},{"x":8,"y":20,"name":"SKULL"},{"x":9,"y":20,"name":"SKULL"},{"x":9,"y":21,"name":"SKULL"},{"x":9,"y":22,"name":"SKULL"},{"x":9,"y":23,"name":"SKULL"},{"x":9,"y":24,"name":"SKULL"},{"x":13,"y":21,"name":"SKULL"},{"x":13,"y":22,"name":"SKULL"},{"x":13,"y":20,"name":"SKULL"},{"x":13,"y":19,"name":"SKULL"},{"x":13,"y":18,"name":"SKULL"},{"x":13,"y":17,"name":"SKULL"},{"x":13,"y":16,"name":"SKULL"},{"x":13,"y":15,"name":"SKULL"},{"x":13,"y":14,"name":"SKULL"},{"x":14,"y":14,"name":"SKULL"},{"x":15,"y":14,"name":"SKULL"},{"x":16,"y":14,"name":"SKULL"},{"x":17,"y":14,"name":"SKULL"},{"x":18,"y":14,"name":"SKULL"},{"x":19,"y":14,"name":"SKULL"},{"x":20,"y":14,"name":"SKULL"},{"x":21,"y":14,"name":"SKULL"},{"x":21,"y":15,"name":"SKULL"},{"x":21,"y":16,"name":"SKULL"},{"x":21,"y":17,"name":"SKULL"},{"x":21,"y":18,"name":"SKULL"},{"x":21,"y":19,"name":"SKULL"},{"x":21,"y":20,"name":"SKULL"},{"x":21,"y":21,"name":"SKULL"},{"x":21,"y":22,"name":"SKULL"},{"x":20,"y":22,"name":"SKULL"},{"x":19,"y":22,"name":"SKULL"},{"x":18,"y":22,"name":"SKULL"},{"x":17,"y":22,"name":"SKULL"},{"x":16,"y":22,"name":"SKULL"},{"x":15,"y":22,"name":"SKULL"},{"x":14,"y":22,"name":"SKULL"}]
+
   },
   "tiles": {
     "ALGAE":    [],
@@ -9,7 +11,7 @@
     "DOOR":     [],
     "DUST":     [],
     "FEAR":     [],
-    "FLAG":     [],
+    "FLAG":     [{"x":18,"y":20,"name":"FLAG"}],
     "FLOWER":   [],
     "FRUIT":    [],
     "FUNGUS":   [],
@@ -18,7 +20,7 @@
     "MOON":     [],
     "ORB":      [],
     "PILLAR":   [],
-    "ROCK":     [],
+    "ROCK":     [{"x":6,"y":19,"name":"ROCK"},{"x":6,"y":20,"name":"ROCK"},{"x":6,"y":21,"name":"ROCK"}],
     "ROSE":     [],
     "BLOSSOM":  [],
     "STAR":     [],
@@ -115,6 +117,5 @@
   "floor": [],
   "palettes": "base",
   "textures": "base",
-  "divisions": [15,15]
+  "divisions": [25,25]
 }
-

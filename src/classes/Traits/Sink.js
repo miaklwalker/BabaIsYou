@@ -12,10 +12,8 @@ export default class Sink extends Trait {
             let {candidates,results} = message.data.msg.data;
             console.log(results);
             if([...results,...candidates].map(candidate=>sprite.isNeighbor(candidate)).includes(true)){
-                let resultSunk = results.filter(candidate=>sprite.isNeighbor(candidate));
-                let candidateSunk = results.filter(candidate=>sprite.isNeighbor(candidate));
-                let sunk = resultSunk;
-                console.log(candidateSunk.length,resultSunk.length);
+                let sunk = [...results,...candidates].filter(candidate=>sprite.isNeighbor(candidate));
+                console.log(sunk);
                 document.dispatchEvent(addMessage(new Message('system','defeat',[sprite,sunk[sunk.length-1]])))
             }
         }

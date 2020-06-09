@@ -34,5 +34,10 @@ export default class MovementParser{
     purge(){
         this.entities = [];
     }
+    removeEntity(targetId){
+        this.entities = this.entities.filter(({id})=>{
+            return id !== targetId.id
+        })
+    }
 
 }

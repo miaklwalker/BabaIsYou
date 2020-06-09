@@ -7,11 +7,12 @@ export default class Sink extends Trait {
         super('SINK');
     }
     update(sprite,message) {
-       // sprite.canCollide = true;
+        sprite.canCollide = true;
         if(message.to === sprite.id ){
-            if(message.data.msg.data.candidates.map(candidate=>sprite.isNeighbor(candidate)).includes(true)){
-                this.ran = true;
-                document.dispatchEvent(addMessage(new Message('system','Sink','YOU WIN')))
+            let candidates = message.data.msg.data.candidates;
+            if(candidates.map(candidate=>sprite.isNeighbor(candidate)).includes(true)){
+                let sunk = candidates.filter(candidate=>sprite.isNeighbor(candidate));
+                document.dispatchEvent(addMessage(new Message('system','defeat',[sprite,sunk[0]])))
             }
         }
     }

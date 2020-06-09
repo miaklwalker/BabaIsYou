@@ -8,7 +8,6 @@ import startTest from "../../testLibrary/modules/startTest.js";
 export default class Game {
     image;
     spriteSpec;
-
     constructor() {
         this.timer =            new Timer();
         this.gridDiminsions =   19;
@@ -18,7 +17,6 @@ export default class Game {
         this.backgroundTiles =  new EntityList(this);
         this.walls =            new EntityList(this);
         this.sprites =          new EntityList(this);
-
     }
 
     setup = async (level) => {
@@ -60,6 +58,13 @@ export default class Game {
 
     addSprite(sprite) {
         this.sprites.addEntity(sprite);
+    }
+    removeEntity(id){
+        this.tiles.removeEntity(id);
+        this.sprites.removeEntity(id);
+        this.walls.removeEntity(id);
+        this.backgroundTiles.removeEntity(id);
+        this.words.removeEntity(id);
     }
 
 }

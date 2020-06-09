@@ -10,8 +10,8 @@ export default function startTestRunner(configURL, logLevel) {
     try {
         async function start (){
             let tests = await loadTests(configURL);
-            let results = await Promise.all(tests.map(test=>import(test)));
-            results.forEach((spec,index)=>{
+            let modules = await Promise.all(tests.map(test=>import(test)));
+            modules.forEach(spec=>{
                 spec.default();
             });
         }

@@ -1,5 +1,6 @@
 import {results, tests} from "./Globals.js";
 import {logLevelOne, logLevelThree, logLevelTwo} from "./Logger.js";
+import deepClone from "./deepClone.js";
 
 
 
@@ -7,8 +8,10 @@ class TestRunner{
     constructor(){
         this.suites = [];
     }
-    runTests(logLevel,testName){
-        this.suites.forEach(suite=>{
+    runTests(logLevel){
+        let tests = {};
+        let mapped = [];
+        this.suites.forEach((suite,index)=>{
             suite();
         });
         for(let test in results ){
@@ -29,7 +32,7 @@ class TestRunner{
     }
     describe=(description,callback)=>{
         let temp = [];
-        this.suites.push((SuiteName)=>{
+        this.suites.push(()=>{
             callback();
             tests.forEach(test=>temp.push(test));
             results[description] = temp;

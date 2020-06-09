@@ -14,6 +14,7 @@ export default class System{
         this.controls = new Controls();
         this.movementParser = new MovementParser();
         this.initialized = false;
+        this.restartInProgress = true;
         this.level = 4
     }
     init(){
@@ -30,33 +31,40 @@ export default class System{
         this.messageCenter.subscribe(this);
     }
     restart(){
-        this.movementParser.purge();
-        this.game.tiles.purge();
-        this.game.sprites.purge();
-        this.game.walls.purge();
-        this.game.backgroundTiles.purge();
-        this.game.words.purge();
-        this.game.renderer.purge();
-        this.messageCenter.purge();
-        this.init();
-        this.game.setup(this.level).then(gameStart);
+            this.restartInProgress = true;
+            this.movementParser.purge();
+            this.game.tiles.purge();
+            this.game.sprites.purge();
+            this.game.walls.purge();
+            this.game.backgroundTiles.purge();
+            this.game.words.purge();
+            this.game.renderer.purge();
+            this.messageCenter.purge();
+            this.init();
+            this.game.setup(this.level).then(gameStart);
+            this.restartInProgress = false;
     }
     removeEntity(id){
         this.messageCenter.unsubscribe(id);
-
+        this.movementParser.removeEntity(id)
     }
     onMessage(message){
-        if(message.to === 'system'){
+        let toSystem = message.to === 'system';
+        if(toSystem && message.from !== 'defeat'){
             if(message.from === 'win'){
                 if(this.level < 3){
                     this.level++;
                 }else{
-                    alert(`You've Beat All The Levels I Have So Far!`)
+                    alert(`You've Beat All The Levels I Have So Far!`);
                     this.level = 1;
                 }
 
             }
             this.restart()
+        }else if(toSystem){
+            let [tile,sprite] = message.data;
+            this.removeEntity(tile);
+            this.removeEntity(sprite)
         }
     }
 }

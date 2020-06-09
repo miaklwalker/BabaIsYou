@@ -5,11 +5,10 @@ import parseJsonToSpriteSheet from "./helperFunctions/parseJsonToSpritesheet.js"
 import makeLevelBuilder from "./helperFunctions/makeLevelBuilder.js";
 import RuleParser from "./classes/RuleParser.js";
 import enforcerFactory from "./helperFunctions/EnforceRules.js";
-import makePage from "./production.js";
 import tileMapperInit from "./LevelEditor/init.js";
 import System from "./classes/System.js";
 
-makePage(false);
+
 
 const game_canvas = document.getElementById('screen');
 const game_context = game_canvas.getContext('2d');
@@ -48,7 +47,7 @@ export function gameStart({image, spriteSpec, levelSpec}){
         new Layer(1, drawBackground, ['black']),
         new Layer(0, drawGrid, [game.gridDiminsions]),
         new Layer(3, game.words.render, args),
-        new Layer(2, game.tiles.render, args),
+        new Layer(3, game.tiles.render, args),
         new Layer(1, game.backgroundTiles.render, args),
         new Layer(4, game.sprites.render, args),
         new Layer(2, game.walls.render, args)
@@ -63,4 +62,4 @@ game.setup(system.level).then(gameStart);
         game.renderer.render(game_canvas, game_context);
         messageCenter.update();
     };
-console.log(system)
+console.log(system);

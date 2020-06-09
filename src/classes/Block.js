@@ -16,12 +16,14 @@ export default class Block {
             down:false,
         };
         this.canCollide = false;
+        this.canTouch = false;
     }
     draw(){
         return [this.position.x,this.position.y]
     }
     onMessage(message){
         this.canCollide = false;
+        this.canTouch = false;
         this.traits.forEach(trait=>{
             trait.update(this,message);
         })

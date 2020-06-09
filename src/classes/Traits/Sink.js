@@ -7,7 +7,7 @@ export default class Sink extends Trait {
         super('SINK');
     }
     update(sprite,message) {
-        sprite.canCollide = true;
+        sprite.canTouch = true;
         if(message.to === sprite.id ){
             let candidates = message.data.msg.data.candidates;
             if(candidates.map(candidate=>sprite.isNeighbor(candidate)).includes(true)){

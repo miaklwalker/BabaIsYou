@@ -5,22 +5,35 @@ export default class MovementParser{
     constructor(){
         this.entities = [];
     }
+    parseFromControls(msg){
+        document.dispatchEvent(addMessage(new Message(
+            'collision',
+            'parser',
+            {entities:this.entities.flat(),msg}
+        )));
+    }
+    handleNoCollisions(candidates,direction){
+        candidates.forEach(entity=>{
+            document.dispatchEvent(addMessage(new Message(entity.id,'parser',{direction})));
+        })
+    }
+    handleNoStop(){
+        document.dispatchEvent(addMessage(new Message('controls','parser','finished')));
+    }
     onMessage(msg){
         if(msg.to === 'parser' && msg.from === 'controls' && msg.data.action ==='run'){
-            document.dispatchEvent(addMessage(new Message(
-                'collision',
-                'parser',
-                {entities:this.entities.flat(),msg}
-            )));
+
+            this.parseFromControls(msg);
+
         }else if(msg.to === 'parser' && msg.from === 'collider'){
             let{results,candidates,direction} = msg.data;
+            // No Collisions.
             if(results.length === 0){
-                candidates.forEach(entity=>{
-                    document.dispatchEvent(addMessage(new Message(entity.id,'parser',{direction})));
-                })
+                this.handleNoCollisions(candidates,direction);
             }
-            else if(!msg.data.results.map(entity=>entity.STOP).every(trait=>trait === undefined)){
-                document.dispatchEvent(addMessage(new Message('controls','parser','finished')));
+            //
+            else if(results.map(entity=>entity['STOP']).some(trait=>trait !== undefined)){
+                this.handleNoStop();
                 return;
             }
             else{
@@ -28,16 +41,18 @@ export default class MovementParser{
                     document.dispatchEvent(addMessage(new Message(entity.id,'parser',{direction,msg})));
                 })
             }
-            document.dispatchEvent(addMessage(new Message('controls','parser','finished')));
+            this.handleNoStop();
         }
     }
     purge(){
         this.entities = [];
     }
     removeEntity(targetId){
-        this.entities = this.entities.filter(({id})=>{
-            return id !== targetId.id
-        })
+        let entities = this.entities[0];
+        console.log()
+       this.entities = [entities.filter(({id})=>id !== targetId.id)];
+
+
     }
 
 }

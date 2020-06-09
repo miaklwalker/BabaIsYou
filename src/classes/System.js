@@ -46,13 +46,14 @@ export default class System{
     }
     removeEntity(id){
         this.messageCenter.unsubscribe(id);
+        this.game.removeEntity(id);
         this.movementParser.removeEntity(id)
     }
     onMessage(message){
         let toSystem = message.to === 'system';
         if(toSystem && message.from !== 'defeat'){
             if(message.from === 'win'){
-                if(this.level < 3){
+                if(this.level < 4){
                     this.level++;
                 }else{
                     alert(`You've Beat All The Levels I Have So Far!`);

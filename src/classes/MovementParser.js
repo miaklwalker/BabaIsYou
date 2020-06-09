@@ -49,7 +49,7 @@ export default class MovementParser{
     }
     removeEntity(targetId){
         let entities = this.entities[0];
-        console.log()
+        console.log();
        this.entities = [entities.filter(({id})=>id !== targetId.id)];
 
 

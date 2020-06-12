@@ -1,20 +1,20 @@
-import Test from "../testLibrary/modules/Test.js";
+import {describe,expect,test,jest} from "@jest/globals";
 import xyCounter from "../src/helperFunctions/xyCounter.js";
-import {describe} from "../testLibrary/modules/TestRunner.js";
-import expect from "../testLibrary/modules/Expect.js";
 
-export default Test(()=>{
+
+
     describe('XY Counter',()=>{
-        let counter = xyCounter(10);
-        expect(counter()).toMatchArray([1,0]);
-        expect(counter()).toMatchArray([2,0]);
-        expect(counter()).toMatchArray([3,0]);
-        expect(counter()).toMatchArray([4,0]);
-        expect(counter()).toMatchArray([5,0]);
-        expect(counter()).toMatchArray([6,0]);
-        expect(counter()).toMatchArray([7,0]);
-        expect(counter()).toMatchArray([8,0]);
-        expect(counter()).toMatchArray([9,0]);
-        expect(counter()).toMatchArray([0,1]);
+        test('Works on each count',()=>{
+            let counter = xyCounter(10);
+            expect(counter()).toEqual([1,0]);
+            expect(counter()).toEqual([2,0]);
+            expect(counter()).toEqual([3,0]);
+            expect(counter()).toEqual([4,0]);
+            expect(counter()).toEqual([5,0]);
+            expect(counter()).toEqual([6,0]);
+            expect(counter()).toEqual([7,0]);
+            expect(counter()).toEqual([8,0]);
+            expect(counter()).toEqual([9,0]);
+            expect(counter()).toEqual([0,1]);
+        })
     })
-})

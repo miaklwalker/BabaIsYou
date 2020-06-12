@@ -1,13 +1,12 @@
-import Test from "../testLibrary/modules/Test.js";
-import {describe} from "../testLibrary/modules/TestRunner.js";
-import expect from "../testLibrary/modules/Expect.js";
+import {describe,expect,test,jest} from "@jest/globals";
 import makeUniqueId from "../src/helperFunctions/MakeID.js";
 
 
-let test = Test(()=>{
-    describe('Make Unique ID',()=>{
+
+describe('Make Unique ID',()=>{
+    test('outputs the correct length',()=>{
         const id = makeUniqueId(12);
         expect(id).toHaveLength(12);
     })
 });
-export default test
+

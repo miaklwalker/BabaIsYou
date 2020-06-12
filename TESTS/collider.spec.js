@@ -1,18 +1,12 @@
-import test from "../testLibrary/modules/Test.js";
+import {describe,expect,test,jest} from "@jest/globals";
 import Collider from "../src/classes/Collider.js";
-import Mock from "../testLibrary/modules/Mock.js";
-import Vector from "../src/classes/Vector.js";
-import {describe} from "../testLibrary/modules/TestRunner.js";
-import expect from "../testLibrary/modules/Expect.js";
 import Block from "../src/classes/Block.js";
 
 
-export default test(()=>{
+describe('Collider Spec',()=>{
     let collider = new Collider();
 
-    collider.addMessage = Mock.fn((message)=>{
-
-    });
+    collider.addMessage = jest.fn((message)=>{});
 
     let baba = new Block(1,1,'BABA','SPRITE');
     baba.YOU = true;
@@ -22,17 +16,19 @@ export default test(()=>{
 
     let entityOther = [baba,wall];
 
-    baba.updateAndFindNeighbors = Mock.fn(baba.updateAndFindNeighbors);
-    wall.updateAndFindNeighbors = Mock.fn(wall.updateAndFindNeighbors);
+    baba.updateAndFindNeighbors = jest.fn(baba.updateAndFindNeighbors);
+    wall.updateAndFindNeighbors = jest.fn(wall.updateAndFindNeighbors);
 
-    describe('Collider Should call add message',()=>{
+    test('Collider Should call add message',()=>{
         collider.update(entityOther,'down');
         expect(collider.addMessage).toHaveBeenCalled();
     });
 
-    describe('It should call the updateAndFindNeighbor routine on non-YOU-blocks',()=>{
+    test('It should call the updateAndFindNeighbor routine on non-YOU-blocks',()=>{
         collider.update(entityOther,'down');
         expect(baba.updateAndFindNeighbors).not.toHaveBeenCalled();
         expect(wall.updateAndFindNeighbors).toHaveBeenCalled();
-    })
+    });
+
+
 })

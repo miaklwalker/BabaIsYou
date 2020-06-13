@@ -9,7 +9,6 @@ import tileMapperInit from "./LevelEditor/init.js";
 import System from "./classes/System.js";
 
 
-
 const game_canvas = document.getElementById('screen');
 const game_context = game_canvas.getContext('2d');
 
@@ -57,9 +56,8 @@ export function gameStart({image, spriteSpec, levelSpec}){
 }
 
 game.setup(system.level).then(gameStart);
-
     game.timer.update = (deltaTime) => {
         game.renderer.render(game_canvas, game_context);
         messageCenter.update();
     };
-console.log(system);
+

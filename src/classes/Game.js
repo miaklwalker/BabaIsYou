@@ -3,7 +3,6 @@ import Renderer from "./Renderer.js";
 import EntityList from "./EntityList.js";
 import loadImage from "../asyncLoaders/loadImage.js";
 import loadJSON from "../asyncLoaders/loadJSON.js";
-import startTest from "../../testLibrary/modules/startTest.js";
 
 export default class Game {
     image;

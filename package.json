@@ -1,10 +1,11 @@
 {
   "name": "babaisyou",
   "version": "1.0.0",
-  "description": "'A fan made recreation of babaisyou by hempuli , with the creators permission'",
+  "description": "A fan made recreation of babaisyou by hempuli , with the creators permission",
   "main": "index.html",
+  "type": "module",
   "scripts": {
-    "test": "-r esm && npm run jest"
+    "test": "node --experimental-vm-modules --no-warnings node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",
@@ -19,4 +20,13 @@
     "url": "https://github.com/miaklwalker/BabaIsYou/issues"
   },
   "homepage": "https://github.com/miaklwalker/BabaIsYou#readme",
+  "devDependencies": {
+    "jest": "^26.0.1",
+    "jest-environment-jsdom-sixteen": "^1.0.3"
+  },
+  "jest": {
+    "transform": {},
+    "testEnvironment": "jest-environment-jsdom-sixteen",
+    "verbose": true
+  }
 }

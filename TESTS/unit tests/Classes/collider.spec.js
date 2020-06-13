@@ -11,7 +11,7 @@ describe('Collider Spec',()=>{
     let baba = new Block(1,1,'BABA','SPRITE');
     baba.YOU = true;
 
-    let wall = new Block(1,3,'WALL','WALL');
+    let wall = new Block(1,2,'WALL','WALL');
     wall.canCollide = true;
 
     let entityOther = [baba,wall];
@@ -29,6 +29,4 @@ describe('Collider Spec',()=>{
         expect(baba.updateAndFindNeighbors).not.toHaveBeenCalled();
         expect(wall.updateAndFindNeighbors).toHaveBeenCalled();
     });
-
-
-})
+});

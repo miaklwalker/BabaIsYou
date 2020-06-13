@@ -3,7 +3,6 @@ import Collider from "./Collider.js";
 import MessageCenter from "./MessageCenter.js";
 import Controls from "./Controls.js";
 import MovementParser from "./MovementParser.js";
-import startTest from "../../testLibrary/modules/startTest.js";
 import {gameStart} from "../main.js";
 
 export default class System{
@@ -22,7 +21,6 @@ export default class System{
             document.addEventListener('keydown', this.controls.keyDown);
             document.addEventListener('keyup', this.controls.keyUp);
             document.addEventListener('addmessage', this.messageCenter.handleAddMessage);
-            startTest('../../test.spec.json',1);
             this.initialized = true;
         }
         this.messageCenter.subscribe(this.movementParser);

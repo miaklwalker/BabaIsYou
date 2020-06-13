@@ -1,4 +1,4 @@
-import limitedLog from "../testFunctions/limitLog.js";
+
 
 
 export default class Sprite {

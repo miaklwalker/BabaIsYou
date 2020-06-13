@@ -13,7 +13,6 @@ export default class Renderer{
         return this._divisions.gridDiminsions;
     }
     purge(){
-        console.log('ran',this);
         this.layers = [];
         this.layers.length = 0;
     }

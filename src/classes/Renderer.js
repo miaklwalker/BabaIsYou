@@ -29,20 +29,6 @@ export default class Renderer{
             }
         });
     }
-    renderImage(image,x1,y1,x2,y2){
-        this.addLayer(new Layer(1,(canvas,context)=>{
-            let xOffset = (canvas.width/this.divisions);
-            let yOffset = (canvas.height/this.divisions);
-            let nX = x1 * xOffset;
-            let nY = y1 * yOffset;
-            context.drawImage(image,
-                x2,y2,32,32,
-                nX,nY,
-                xOffset,
-                yOffset)
-        }))
-    }
-
     sortLayer(layerA,layerB){
         if(layerA.priority > layerB.priority){
             return 1

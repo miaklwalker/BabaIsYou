@@ -5,7 +5,7 @@ export default class SpriteBlock extends Block{
     YOU;
     constructor(x,y,name) {
         super(x,y,name,'sprites');
-        this.strategy = 'SPRITE'
+        this.strategy = 'SPRITE';
         this.group ='sprites';
         this.direction='right';
         this.action = 'idle'

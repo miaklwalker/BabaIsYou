@@ -1,9 +1,6 @@
 import Block from "../Block.js";
 import chooseShape from "../../helperFunctions/chooseShape.js";
 
-
-
-
 export default class Wall extends Block{
     texture;
     constructor(x,y,name) {

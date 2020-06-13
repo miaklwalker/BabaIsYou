@@ -1,8 +1,6 @@
 import {describe,expect,test,jest} from "@jest/globals";
 import buildTexturePack from "../src/helperFunctions/buildTexturePack.js";
 
-
-
     describe('Make texture pack',()=>{
         test('Single',()=>{
             expect(buildTexturePack(384,1512,0,0).single[0])

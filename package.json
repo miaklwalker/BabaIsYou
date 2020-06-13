@@ -1,7 +1,7 @@
 {
   "name": "babaisyou",
   "version": "1.0.0",
-  "description": "'A fan made recreation of babaisyou by hempuli , with the creators permission'",
+  "description": "A fan made recreation of babaisyou by hempuli , with the creators permission",
   "main": "index.html",
   "type": "module",
   "scripts": {
@@ -26,6 +26,7 @@
   },
   "jest": {
     "transform": {},
-    "testEnvironment": "jest-environment-jsdom-sixteen"
+    "testEnvironment": "jest-environment-jsdom-sixteen",
+    "verbose": true
   }
 }

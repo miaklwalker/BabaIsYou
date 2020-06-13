@@ -1,5 +1,4 @@
 export default function chooseStrategy(strategy){
-
     switch(strategy){
         case 'WORD' :
             return (spriteSheets,[x, y, name, group, type],frame)=>spriteSheets.spriteSheets[group][type][name].sprites[frame];

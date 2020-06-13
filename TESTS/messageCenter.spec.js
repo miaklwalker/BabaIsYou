@@ -29,7 +29,7 @@ import MessageCenter from "../src/classes/MessageCenter.js";
             }
         }
         test('expect purge to remove all',()=>{
-            let listenerArray = Array(5)
+                Array(5)
                 .fill(0)
                 .map( slot => listenerFactory())
                 .forEach(listener=>testMessageCenter.subscribe(listener));

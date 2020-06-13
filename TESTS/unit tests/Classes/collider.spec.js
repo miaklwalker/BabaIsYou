@@ -1,6 +1,6 @@
 import {describe,expect,test,jest} from "@jest/globals";
-import Collider from "../src/classes/Collider.js";
-import Block from "../src/classes/Block.js";
+import Collider from "../../../src/classes/Collider.js";
+import Block from "../../../src/classes/Block.js";
 
 
 describe('Collider Spec',()=>{

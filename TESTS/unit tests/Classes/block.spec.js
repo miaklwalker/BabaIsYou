@@ -1,13 +1,13 @@
 import {describe,expect,test,jest} from "@jest/globals";
-import Block from "../src/classes/Block.js";
-import Vector from "../src/classes/Vector.js";
-import NounBlock from "../src/classes/Blocks/NounBlock.js";
-import OperatorBlock from "../src/classes/Blocks/OperatorBlock.js";
-import PropertyBlock from "../src/classes/Blocks/PropertyBlock.js";
-import SpriteBlock from "../src/classes/Blocks/spriteBlock.js";
-import blockFactory from "../src/helperFunctions/blockFactory.js";
-import Tile from "../src/classes/Blocks/Tile.js";
-import Wall from "../src/classes/Blocks/Wall.js";
+import Block from "../../../src/classes/Block.js";
+import Vector from "../../../src/classes/Vector.js";
+import NounBlock from "../../../src/classes/Blocks/NounBlock.js";
+import OperatorBlock from "../../../src/classes/Blocks/OperatorBlock.js";
+import PropertyBlock from "../../../src/classes/Blocks/PropertyBlock.js";
+import SpriteBlock from "../../../src/classes/Blocks/spriteBlock.js";
+import blockFactory from "../../../src/helperFunctions/blockFactory.js";
+import Tile from "../../../src/classes/Blocks/Tile.js";
+import Wall from "../../../src/classes/Blocks/Wall.js";
 
 
 describe('Block Class',()=>{

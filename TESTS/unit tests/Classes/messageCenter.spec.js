@@ -1,6 +1,6 @@
 import {describe,expect,test,jest} from "@jest/globals";
-import makeUniqueId from "../src/helperFunctions/MakeID.js";
-import MessageCenter from "../src/classes/MessageCenter.js";
+import makeUniqueId from "../../../src/helperFunctions/MakeID.js";
+import MessageCenter from "../../../src/classes/MessageCenter.js";
 
     const testMessageCenter = new MessageCenter();
     describe('Message Center Should Call update',()=>{

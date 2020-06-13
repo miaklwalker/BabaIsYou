@@ -1,5 +1,5 @@
 import {describe,expect,test,jest} from "@jest/globals";
-import chooseShape from "../src/helperFunctions/chooseShape.js";
+import chooseShape from "../../../src/helperFunctions/chooseShape.js";
 
 let arrs = [
     [false ,false ,false ,false],

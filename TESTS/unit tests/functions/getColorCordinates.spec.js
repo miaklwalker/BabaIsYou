@@ -1,5 +1,5 @@
 import {describe,expect,test,jest} from "@jest/globals";
-import getColorCoords from "../src/helperFunctions/getColorCoords.js";
+import getColorCoords from "../../../src/helperFunctions/getColorCoords.js";
 
 
 

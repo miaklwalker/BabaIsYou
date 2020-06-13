@@ -1,5 +1,5 @@
 import {describe,expect,test,jest} from "@jest/globals";
-import xyCounter from "../src/helperFunctions/xyCounter.js";
+import xyCounter from "../../../src/helperFunctions/xyCounter.js";
 
 
 

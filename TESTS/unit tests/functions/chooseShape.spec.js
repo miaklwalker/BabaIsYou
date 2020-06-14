@@ -1,7 +1,7 @@
 import {describe,expect,test,jest} from "@jest/globals";
 import chooseShape from "../../../src/helperFunctions/chooseShape.js";
 
-let arrs = [
+let testData = [
     [[false ,false ,false ,false] ,'single'],
     [[true  ,false ,false ,false] , 'right'],
     [[false ,true  ,false ,false] , 'top' ],
@@ -21,7 +21,7 @@ let arrs = [
 ];
 
     describe(`Choose Shape`,()=> {
-        test.each(arrs)('When Given %p expect to receive %p',(input,expected)=>{
+        test.each(testData)('When Given %p expect to receive %p',(input,expected)=>{
             expect(chooseShape(input)).toBe(expected);
         })
     });

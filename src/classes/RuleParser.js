@@ -21,6 +21,7 @@ export default class RuleParser{
         this.rules = [];
         this.callback = callback;
     }
+
     makeRule(name,operator,property){
         this.rules.push({
             name,
@@ -57,15 +58,18 @@ export default class RuleParser{
             }
         })
     }
+
     onMessage({from}){
         if(from === 'controls'){
             this.parseRules();
             this.callback(this.rules);
         }
     }
+
     addWords(words){
         this.words.push(...words);
     }
+
     purge(){
         this.words = [];
         this.rules = [];

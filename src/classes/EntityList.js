@@ -53,13 +53,9 @@ export default class EntityList {
             });
         this.frameCount++
     }
-    removeEntity(targetId){
-        let targets = this.entities.map(({id})=>id);
-        let index = targets.indexOf(targetId.id);
-        if(targets.includes(targetId.id)){
-            this.entities = this.entities.filter(({id})=>{
-                return id !== targetId.id
-            })
-        }
+    removeEntity=(targetId)=>{
+        let filteredEntities = this.entities.filter( entity => entity.id === targetId.id);
+        this.entities = filteredEntities
+
     }
 }

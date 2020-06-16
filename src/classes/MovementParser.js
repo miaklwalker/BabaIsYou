@@ -5,54 +5,75 @@ export default class MovementParser{
     constructor(){
         this.entities = [];
     }
-    parseFromControls(msg){
-        document.dispatchEvent(addMessage(new Message(
+    parseFromControls(msg,globalContext){
+        globalContext.dispatchEvent(addMessage(new Message(
             'collision',
             'parser',
             {entities:this.entities.flat(),msg}
         )));
     }
-    handleNoCollisions(candidates,direction){
+    handleNoCollisions(candidates,direction,globalContext){
         candidates.forEach(entity=>{
-            document.dispatchEvent(addMessage(new Message(entity.id,'parser',{direction})));
+            globalContext.dispatchEvent(
+                addMessage(
+                    new Message(
+                        entity.id,
+                        'parser',
+                        {direction}
+                        )
+                    )
+                );
         })
     }
-    handleNoStop(){
-        document.dispatchEvent(addMessage(new Message('controls','parser','finished')));
+    handleNoStop(globalContext){
+        globalContext.dispatchEvent(
+            addMessage(
+                new Message(
+                    'controls',
+                    'parser',
+                    'finished'
+                    )
+                )
+            );
     }
-    onMessage(msg){
+    onMessage(msg,globalContext=document){
         if(msg.to === 'parser' && msg.from === 'controls' && msg.data.action ==='run'){
 
-            this.parseFromControls(msg);
+            this.parseFromControls(msg,globalContext);
 
         }else if(msg.to === 'parser' && msg.from === 'collider'){
             let{results,candidates,direction} = msg.data;
             // No Collisions.
             if(results.length === 0){
-                this.handleNoCollisions(candidates,direction);
+                this.handleNoCollisions(candidates,direction,globalContext);
             }
-            //
-            else if(results.map(entity=>entity['STOP']).some(trait=>trait !== undefined)){
-                this.handleNoStop();
+
+            else if(results.map(entity=>entity.STOP).some(trait=>trait !== undefined)){
+                this.handleNoStop(globalContext);
                 return;
             }
             else{
                 [...candidates,...results].forEach(entity=>{
-                    document.dispatchEvent(addMessage(new Message(entity.id,'parser',{direction,msg})));
+                    globalContext.dispatchEvent(
+                        addMessage(
+                            new Message(
+                                entity.id,
+                                'parser',
+                                {direction,msg}
+                                )
+                            )
+                        );
                 })
             }
-            this.handleNoStop();
+            this.handleNoStop(globalContext);
         }
     }
     purge(){
         this.entities = [];
     }
     removeEntity(targetId){
-        let entities = this.entities[0];
-        console.log();
-       this.entities = [entities.filter(({id})=>id !== targetId.id)];
-
-
+        let filteredEntities = this.entities.filter( entity => entity.id === targetId.id);
+        this.entities = filteredEntities
     }
 
 }

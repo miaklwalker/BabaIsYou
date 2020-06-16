@@ -7,7 +7,6 @@ describe('Vector',()=>{
         vector = new Vector(0,0);
     })
     test('Vector should have an X and Y value',()=>{
-
         expect([vector.x,vector.y]).toEqual(expect.arrayContaining([0,0]));
     })
     describe('Should Add either a scalar or the X component from a vector', ()=> {
@@ -38,7 +37,7 @@ describe('Vector',()=>{
             expect(vector.y).toBe(1);
         })
     });
-    describe('Should Add Two Vectors together', ()=> {
+    describe('Should Add one Vector to another', ()=> {
         let otherVector = new Vector(1,2);
         test(`Add Vector `,()=>{
             vector.addVector(otherVector);
@@ -74,12 +73,18 @@ describe('Vector',()=>{
             expect(vector.y).toBe(1);
         })
     });
-    describe('Should Sub One Vector from another', ()=> {
+    describe('Should Sub One Vector from another or a scale with a scalar', ()=> {
         let otherVector = new Vector(-1,-2);
+        let scalar = -1
         test(`Subtract Vector `,()=>{
             vector.subVector(otherVector);
             expect(vector.x).toBe(1);
             expect(vector.y).toBe(2);
+        })
+        test('Subtract a Scalar',()=>{
+            vector.subVector(scalar);
+            expect(vector.x).toBe(1);
+            expect(vector.y).toBe(1);
         })
     });
     describe('Vector Division',()=>{
@@ -104,7 +109,6 @@ describe('Vector',()=>{
                 vector.addY(12);
                 vector.divY(scalar);
                 expect(vector.y).toBe(6);
-
             });
             it('can be a Vector',()=>{
                 let otherVector = new Vector(0,12);
@@ -129,10 +133,36 @@ describe('Vector',()=>{
             })
         })
     })
-    test.todo('DivY')
-    test.todo('DivVector')
-    test.todo('MultX')
-    test.todo('MultY')
-    test.todo('MultVector')
-    test.todo('Same')
+    test('Multiply X (mulX) should multiply the x value of a vector',()=>{
+        vector.addVector(1);
+        vector.mulX(5);
+        expect(vector.x).toBe(5);
+        let other = new Vector(1,1);
+        vector.mulX(other);
+        expect(vector.x).toBe(5);
+
+    })
+    test('Multiply Y (mulY) should multiply the y value of a vector',()=>{
+        vector.addVector(1);
+        vector.mulY(5);
+        expect(vector.y).toBe(5);
+        let other = new Vector(1,1);
+        vector.mulY(other);
+        expect(vector.y).toBe(5);
+    })
+    test('Multiply Vector (multVector) should either multiply a vector by a another vector or a scalar',()=>{
+        vector.addVector(1);
+        vector.mulVector(5);
+        expect(vector.x).toBe(5);
+        expect(vector.y).toBe(5);
+        let other = new Vector(1,1);
+        vector.mulVector(other);
+        expect(vector.x).toBe(5);
+        expect(vector.y).toBe(5);
+    })
+    test('Same Should return a boolean indicating if a vector has the same X Y values',()=>{
+    let other = new Vector(0,0);
+    expect(vector.same(other)).toBe(true);
+    })
+
 });

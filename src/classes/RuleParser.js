@@ -52,8 +52,8 @@ export default class RuleParser{
                      rulesToParse.push([up,down])
                 }
 
-                rulesToParse.forEach(([noun,property])=>{
-                    this.makeRule(noun,word,property);
+                rulesToParse.forEach(([first,second])=>{
+                    this.makeRule(first,word,second);
                 })
             }
         })

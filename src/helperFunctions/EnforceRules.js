@@ -1,4 +1,5 @@
 import traitFactory from "./traitFactory.js";
+import NounBlock from "../classes/Blocks/NounBlock.js";
 
 function clearRules(entities){
     entities.forEach(entity=>{
@@ -12,6 +13,8 @@ function clearRules(entities){
 function enforceRules(rules,entities){
     clearRules(entities);
         rules.forEach(({name, operator, property}) => {
+            // console.log(name instanceof NounBlock)
+            // console.log(property instanceof NounBlock)
             entities.forEach(entity => {
                 if ((entity.name === name.name) && operator.name === 'IS') {
                         entity.addTrait(traitFactory(property.name))

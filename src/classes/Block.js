@@ -9,13 +9,19 @@ export default class Block {
         this.id = makeUniqueId(12);
         this.name = name;
         this.type = type;
+        this.strategy = null;
+        this.alias = null;
         this.neighbors = {
             left:false,
             right:false,
             up:false,
             down:false,
         };
+        // forces any canCollide Blocks to Stop actions
+        this.strictCollide = false;
+        // forces a collision hierachy
         this.canCollide = false;
+        // This block wants to be notfied of collisions
         this.canTouch = false;
     }
     draw(){

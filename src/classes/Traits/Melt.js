@@ -5,6 +5,6 @@ export default class Melt extends Trait {
         super('MELT');
     }
     update(sprite,message) {
-        sprite.canCollide = true;
+        sprite.canTouch = true;
     }
 }

@@ -47,20 +47,33 @@ export default class MovementParser{
             if(results.length === 0){
                 this.handleNoCollisions(candidates,direction,globalContext);
             }
-
-            else if(results.map(entity=>entity.STOP).some(trait=>trait !== undefined)){
+            else if (results[0].canTouch){
+                let entity = results[0];
+                globalContext.dispatchEvent(
+                    addMessage(
+                        new Message(
+                            entity.id,
+                            'parser',
+                            {direction,msg}
+                            )
+                    )
+                );
+                this.handleNoCollisions(candidates,direction,globalContext);
+            }
+            else if(results.map(entity=>entity.strictCollide).some(trait=>trait)){
                 this.handleStop(globalContext);
                 return;
             }
-            else{
-                [...candidates,...results].forEach(entity=>{
+            else{[...candidates,...results].forEach(entity=>{
                     globalContext.dispatchEvent(
                         addMessage(
                             new Message(
                                 entity.id,
                                 'parser',
-                                {direction,msg}
-                                )
+                                {
+                                    direction,
+                                    msg
+                                })
                             )
                         );
                 })
@@ -72,8 +85,18 @@ export default class MovementParser{
         this.entities = [];
     }
     removeEntity(targetId){
-        let filteredEntities = this.entities.filter( entity => entity.id === targetId.id);
-        this.entities = filteredEntities
+        this.entities =  this.entities.filter( entity => entity.id === targetId.id);
     }
 
 }
+
+
+/*
+function needs to parse movement
+
+if the nearest block is canTouch , Stop and Send message to block
+if the nearest block is canCollide run collision parser and check for the StrictCollide Flag
+if strictCollide is found then run stop routine else run the canCollide routine.
+
+
+ */

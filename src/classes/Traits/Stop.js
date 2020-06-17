@@ -5,6 +5,6 @@ export default class Stop extends Trait {
         super('STOP');
     }
     update(sprite,message) {
-        sprite.canCollide = true;
+        sprite.strictCollide = true;
     }
 }

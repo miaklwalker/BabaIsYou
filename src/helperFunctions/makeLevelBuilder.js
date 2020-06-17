@@ -5,9 +5,7 @@ import buildTexturePack from "./buildTexturePack.js";
 export default function makeLevelBuilder(game,messageCenter){
     return (spriteSpec,levelSpec)=>{
         game.gridDiminsions = levelSpec.divisions;
-
-
-        let textureMap = {}
+        let textureMap = {};
         let colors = {};
             Object.keys(levelSpec.wall).forEach(type=>colors[type] = levelSpec.wall[type].tint);
             Object.keys(spriteSpec.textures).forEach(texture=> textureMap[texture] = buildTexturePack(...spriteSpec.textures[texture]))

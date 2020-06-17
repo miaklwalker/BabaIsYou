@@ -8,14 +8,14 @@ export default class Sink extends Trait {
     }
     update(sprite,message) {
         sprite.canTouch = true;
-        if(message.to === sprite.id ){
-            let {candidates,results} = message.data.msg.data;
-            console.log(results);
-            if([...results,...candidates].map(candidate=>sprite.isNeighbor(candidate)).includes(true)){
-                let sunk = [...results,...candidates].filter(candidate=>sprite.isNeighbor(candidate));
-                console.log(sunk);
-                document.dispatchEvent(addMessage(new Message('system','defeat',[sprite,sunk[sunk.length-1]])))
-            }
-        }
+        // if(message.to === sprite.id ){
+        //     let {candidates,results} = message.data.msg.data;
+        //     console.log(results);
+        //     if([...results,...candidates].map(candidate=>sprite.isNeighbor(candidate)).includes(true)){
+        //         let sunk = [...results,...candidates].filter(candidate=>sprite.isNeighbor(candidate));
+        //         console.log(sunk);
+        //         document.dispatchEvent(addMessage(new Message('system','defeat',[sprite,sunk[sunk.length-1]])))
+        //     }
+        // }
     }
 }

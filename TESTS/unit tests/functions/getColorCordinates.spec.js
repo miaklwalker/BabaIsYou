@@ -19,5 +19,5 @@ describe('Get Color Coordinates', () => {
     test.each(testData)('getColorCoords when passed %p should return %p',(input, expected)=>{
         expect(getColorCoords(...input)).toEqual(expect.arrayContaining(expected));
     });
-})
+});
 

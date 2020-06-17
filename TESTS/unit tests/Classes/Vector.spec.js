@@ -5,10 +5,10 @@ describe('Vector',()=>{
     let vector;
     beforeEach(()=>{
         vector = new Vector(0,0);
-    })
+    });
     test('Vector should have an X and Y value',()=>{
         expect([vector.x,vector.y]).toEqual(expect.arrayContaining([0,0]));
-    })
+    });
     describe('Should Add either a scalar or the X component from a vector', ()=> {
         let otherVector = new Vector(1,2);
         let scalar = 1;
@@ -16,7 +16,7 @@ describe('Vector',()=>{
             vector.addX(otherVector);
             expect(vector.x).toBe(1);
             expect(vector.y).toBe(0);
-        })
+        });
         test(`Add a scalar to vector`,()=>{
             vector.addX(scalar);
             expect(vector.x).toBe(1);

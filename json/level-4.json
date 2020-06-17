@@ -1,6 +1,6 @@
 {
   "sprites": {
-    "BABA": []
+    "BABA": [{"x":9,"y":3,"name":"BABA"}]
   },
   "tiles": {
     "ALGAE":    [],
@@ -9,7 +9,7 @@
     "DOOR":     [],
     "DUST":     [],
     "FEAR":     [],
-    "FLAG":     [],
+    "FLAG":     [{"x":5,"y":13,"name":"FLAG"}],
     "FLOWER":   [],
     "FRUIT":    [],
     "FUNGUS":   [],
@@ -18,7 +18,7 @@
     "MOON":     [],
     "ORB":      [],
     "PILLAR":   [],
-    "ROCK":     [],
+    "ROCK":     [{"x":12,"y":3,"name":"ROCK"},{"x":12,"y":5,"name":"ROCK"}],
     "ROSE":     [],
     "BLOSSOM":  [],
     "STAR":     [],
@@ -50,9 +50,9 @@
     "UFO":      []
   },
   "words": {
-    "nouns": [],
-    "operators": [],
-    "properties": []
+    "nouns": [[0,0,"BABA"],[1,0,"WALL"],[6,4,"WATER"],[13,9,"ROCK"],[13,12,"FLAG"]],
+    "operators": [[0,1,"IS"],[1,1,"IS"],[6,5,"IS"],[14,9,"IS"],[14,12,"IS"]],
+    "properties": [[0,2,"YOU"],[1,2,"STOP"],[6,6,"SINK"],[15,9,"PUSH"],[15,12,"WIN"]]
   },
   "wall": {
     "bricks": {
@@ -65,7 +65,7 @@
     },
     "foliage": {
       "tint": 15,
-      "blocks": []
+      "blocks": [{"x":4,"y":1,"name":"FOLIAGE"},{"x":5,"y":3,"name":"FOLIAGE"},{"x":4,"y":5,"name":"FOLIAGE"},{"x":3,"y":5,"name":"FOLIAGE"},{"x":0,"y":7,"name":"FOLIAGE"},{"x":1,"y":8,"name":"FOLIAGE"},{"x":1,"y":13,"name":"FOLIAGE"},{"x":2,"y":13,"name":"FOLIAGE"},{"x":2,"y":14,"name":"FOLIAGE"},{"x":1,"y":14,"name":"FOLIAGE"},{"x":20,"y":14,"name":"FOLIAGE"},{"x":20,"y":13,"name":"FOLIAGE"},{"x":21,"y":13,"name":"FOLIAGE"},{"x":18,"y":12,"name":"FOLIAGE"},{"x":20,"y":8,"name":"FOLIAGE"},{"x":19,"y":6,"name":"FOLIAGE"},{"x":16,"y":1,"name":"FOLIAGE"},{"x":16,"y":0,"name":"FOLIAGE"}]
     },
     "ice": {
       "tint": 15,
@@ -101,7 +101,7 @@
     },
     "blob": {
       "tint": 15,
-      "blocks": []
+      "blocks": [{"x":8,"y":7,"name":"WATER"},{"x":9,"y":7,"name":"WATER"},{"x":10,"y":7,"name":"WATER"},{"x":5,"y":12,"name":"WATER"},{"x":6,"y":12,"name":"WATER"},{"x":6,"y":13,"name":"WATER"},{"x":7,"y":13,"name":"WATER"},{"x":7,"y":12,"name":"WATER"},{"x":7,"y":11,"name":"WATER"},{"x":6,"y":11,"name":"WATER"},{"x":5,"y":11,"name":"WATER"}]
     },
     "pipe": {
       "tint": 15,
@@ -109,11 +109,11 @@
     },
     "base":{
       "tint": 8,
-      "blocks": []
+      "blocks": [{"x":0,"y":3,"name":"WALL"},{"x":1,"y":3,"name":"WALL"},{"x":2,"y":3,"name":"WALL"},{"x":2,"y":2,"name":"WALL"},{"x":2,"y":1,"name":"WALL"},{"x":2,"y":0,"name":"WALL"},{"x":7,"y":1,"name":"WALL"},{"x":8,"y":1,"name":"WALL"},{"x":9,"y":1,"name":"WALL"},{"x":10,"y":1,"name":"WALL"},{"x":11,"y":1,"name":"WALL"},{"x":12,"y":1,"name":"WALL"},{"x":13,"y":1,"name":"WALL"},{"x":14,"y":1,"name":"WALL"},{"x":14,"y":2,"name":"WALL"},{"x":14,"y":3,"name":"WALL"},{"x":14,"y":4,"name":"WALL"},{"x":14,"y":5,"name":"WALL"},{"x":14,"y":6,"name":"WALL"},{"x":14,"y":7,"name":"WALL"},{"x":13,"y":7,"name":"WALL"},{"x":11,"y":7,"name":"WALL"},{"x":12,"y":7,"name":"WALL"},{"x":11,"y":8,"name":"WALL"},{"x":11,"y":9,"name":"WALL"},{"x":11,"y":10,"name":"WALL"},{"x":15,"y":7,"name":"WALL"},{"x":16,"y":7,"name":"WALL"},{"x":17,"y":7,"name":"WALL"},{"x":17,"y":8,"name":"WALL"},{"x":17,"y":9,"name":"WALL"},{"x":17,"y":10,"name":"WALL"},{"x":17,"y":11,"name":"WALL"},{"x":17,"y":12,"name":"WALL"},{"x":17,"y":13,"name":"WALL"},{"x":11,"y":12,"name":"WALL"},{"x":11,"y":13,"name":"WALL"},{"x":11,"y":14,"name":"WALL"},{"x":12,"y":14,"name":"WALL"},{"x":13,"y":14,"name":"WALL"},{"x":14,"y":14,"name":"WALL"},{"x":15,"y":14,"name":"WALL"},{"x":16,"y":14,"name":"WALL"},{"x":17,"y":14,"name":"WALL"},{"x":9,"y":11,"name":"WALL"},{"x":7,"y":2,"name":"WALL"},{"x":7,"y":3,"name":"WALL"},{"x":7,"y":4,"name":"WALL"},{"x":7,"y":5,"name":"WALL"},{"x":7,"y":6,"name":"WALL"},{"x":7,"y":7,"name":"WALL"},{"x":6,"y":7,"name":"WALL"},{"x":5,"y":7,"name":"WALL"},{"x":4,"y":7,"name":"WALL"},{"x":4,"y":8,"name":"WALL"},{"x":4,"y":9,"name":"WALL"},{"x":4,"y":10,"name":"WALL"},{"x":4,"y":11,"name":"WALL"},{"x":4,"y":12,"name":"WALL"},{"x":4,"y":13,"name":"WALL"},{"x":4,"y":14,"name":"WALL"},{"x":5,"y":14,"name":"WALL"},{"x":6,"y":14,"name":"WALL"},{"x":7,"y":14,"name":"WALL"},{"x":8,"y":14,"name":"WALL"},{"x":9,"y":14,"name":"WALL"},{"x":10,"y":14,"name":"WALL"}]
     }
   },
-  "floor": [],
+  "floor": [{"x":8,"y":2,"name":"TILE"},{"x":9,"y":2,"name":"TILE"},{"x":10,"y":2,"name":"TILE"},{"x":11,"y":2,"name":"TILE"},{"x":12,"y":2,"name":"TILE"},{"x":13,"y":2,"name":"TILE"},{"x":8,"y":3,"name":"TILE"},{"x":10,"y":3,"name":"TILE"},{"x":11,"y":3,"name":"TILE"},{"x":13,"y":3,"name":"TILE"},{"x":13,"y":4,"name":"TILE"},{"x":12,"y":4,"name":"TILE"},{"x":11,"y":4,"name":"TILE"},{"x":10,"y":4,"name":"TILE"},{"x":9,"y":4,"name":"TILE"},{"x":8,"y":4,"name":"TILE"},{"x":8,"y":5,"name":"TILE"},{"x":9,"y":5,"name":"TILE"},{"x":10,"y":5,"name":"TILE"},{"x":11,"y":5,"name":"TILE"},{"x":13,"y":5,"name":"TILE"},{"x":13,"y":6,"name":"TILE"},{"x":12,"y":6,"name":"TILE"},{"x":11,"y":6,"name":"TILE"},{"x":9,"y":6,"name":"TILE"},{"x":10,"y":6,"name":"TILE"},{"x":8,"y":6,"name":"TILE"}],
   "palettes": "base",
   "textures": "base",
-  "divisions": [15,15]
+  "divisions": [22,22]
 }

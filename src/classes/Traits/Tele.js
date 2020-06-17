@@ -5,6 +5,6 @@ export default class Tele extends Trait {
         super('TELE');
     }
     update(sprite,message) {
-        sprite.canCollide = true;
+        sprite.canTouch = true;
     }
 }

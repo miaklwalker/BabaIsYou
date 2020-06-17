@@ -5,6 +5,6 @@ export default class Weak extends Trait {
         super('WEAK');
     }
     update(sprite,message) {
-        sprite.canCollide = true;
+        sprite.canTouch = true;
     }
 }

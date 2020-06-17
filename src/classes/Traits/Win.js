@@ -12,7 +12,7 @@ export default class Win extends Trait {
         this.ran = false
     }
     update(sprite,message) {
-        sprite.canCollide = true;
+        sprite.canTouch = true;
         if(message.to === sprite.id && !this.ran ){
             if(message.data.msg.data.candidates.map(candidate=>sprite.isNeighbor(candidate)).includes(true)){
                 this.ran = true;

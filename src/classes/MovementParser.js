@@ -25,7 +25,7 @@ export default class MovementParser{
                 );
         })
     }
-    handleNoStop(globalContext){
+    handleStop(globalContext){
         globalContext.dispatchEvent(
             addMessage(
                 new Message(
@@ -49,7 +49,7 @@ export default class MovementParser{
             }
 
             else if(results.map(entity=>entity.STOP).some(trait=>trait !== undefined)){
-                this.handleNoStop(globalContext);
+                this.handleStop(globalContext);
                 return;
             }
             else{
@@ -65,7 +65,7 @@ export default class MovementParser{
                         );
                 })
             }
-            this.handleNoStop(globalContext);
+            this.handleStop(globalContext);
         }
     }
     purge(){

@@ -13,13 +13,20 @@ function clearRules(entities){
 function enforceRules(rules,entities){
     clearRules(entities);
         rules.forEach(({name, operator, property}) => {
-            // console.log(name instanceof NounBlock)
-            // console.log(property instanceof NounBlock)
-            entities.forEach(entity => {
-                if ((entity.name === name.name) && operator.name === 'IS') {
-                        entity.addTrait(traitFactory(property.name))
-                }
-            })
+            if(property instanceof NounBlock){
+                entities.forEach(entity => {
+                    if ((entity.name === name.name) && operator.name === 'IS') {
+                            entity.name = property.name;
+                            console.log(entity);
+                    }
+                })
+            }else{
+                entities.forEach(entity => {
+                    if ((entity.name === name.name) && operator.name === 'IS') {
+                            entity.addTrait(traitFactory(property.name))
+                    }
+                })
+            }
         });
     }
 

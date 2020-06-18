@@ -38,9 +38,7 @@ export default class MovementParser{
     }
     onMessage(msg,globalContext=document){
         if(msg.to === 'parser' && msg.from === 'controls' && msg.data.action ==='run'){
-
             this.parseFromControls(msg,globalContext);
-
         }else if(msg.to === 'parser' && msg.from === 'collider'){
             let{results,candidates,direction} = msg.data;
             // No Collisions.

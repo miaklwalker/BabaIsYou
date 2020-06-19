@@ -1,4 +1,4 @@
-import {describe, expect, jest} from "@jest/globals";
+import {afterEach, describe, expect, jest} from "@jest/globals";
 import Controls from "../../src/classes/Controls.js";
 import MovementParser from "../../src/classes/MovementParser.js";
 import Collider from "../../src/classes/Collider.js";
@@ -8,6 +8,8 @@ import Wall from "../../src/classes/Blocks/Wall.js";
 import Stop from "../../src/classes/Traits/Stop.js";
 import MessageCenter from "../../src/classes/MessageCenter.js";
 import Message from "../../src/classes/Message.js";
+import Tile from "../../src/classes/Blocks/Tile.js";
+import Push from "../../src/classes/Traits/Push.js";
 
 function simulateKeyPress(context,code){
     let keyEvent = new KeyboardEvent('keydown',{
@@ -58,7 +60,7 @@ describe('The Main Control Chain',()=>{
     messageCenter.subscribe(mockRecipient);
 
     describe(' moveRight "Collision" ',()=>{
-        test('When Pressing Right We should collide we should recieve a message from controls',()=>{
+        test('When Pressing Right We should collide we should receive a message from controls',()=>{
 
             simulateKeyPress(document,'KeyD');
 
@@ -94,12 +96,6 @@ describe('The Main Control Chain',()=>{
         });
         test('Collider should check any block with the you property for collision',()=>{
             expect(collider.onMessage).toHaveBeenCalledTimes(2);
-            let expected = {
-                results:[],
-                candidates:[],
-                collidePool:[],
-                direction:'direction'
-            };
             messageCenter.update();
             expect(mockRecipient.onMessage).toBeCalledWith(expect.any(Message));
             expect(mockRecipient.onMessage).toHaveBeenCalledWith(expect.objectContaining({
@@ -122,15 +118,86 @@ describe('The Main Control Chain',()=>{
             }))
         });
         messageCenter.update();
-    })
+    });
 
-
-
-
-
-
-
-
-
+    describe(' MoveLeft *Push* ',()=>{
+        afterEach(()=>{
+            mockRecipient.onMessage.mockClear();
+        });
+        mockRecipient.onMessage.mockClear();
+        let rock = new Tile(0,1,'ROCK');
+        rock.addTrait(new Push());
+        messageCenter.subscribe(rock);
+        parser.entities.push(rock);
+        let firstMessage = {
+            keyPressed:'KeyA',
+            direction:'left',
+            action:'run'
+        };
+        test('When Pressing Left Control should send a message to parser with the direction pressed',()=>{
+            expect(controls.lockOut).toBe(false);
+            simulateKeyPress(document,'KeyA');
+            expect(controls.lockOut).not.toBe(false);
+            messageCenter.update();
+            expect(mockRecipient.onMessage).toHaveBeenCalledWith(expect.objectContaining({
+                to:'parser',
+                from:'controls',
+                data:firstMessage
+            }))
+        });
+        test('Movement Parser should pass the call to the collider',()=>{
+            expect(controls.lockOut).not.toBe(false);
+            messageCenter.update();
+            expect(mockRecipient.onMessage).toBeCalledWith(expect.objectContaining({
+                to:'collision',
+                from:'parser',
+                data:expect.objectContaining({
+                    entities:expect.arrayContaining([baba,wall,rock]),
+                    msg:expect.objectContaining({
+                        to:'parser',
+                        from:'controls',
+                        data:expect.anything()
+                    })
+                })
+            }));
+        });
+        test('Collider Should Pass Results Back to Movement Parser',()=>{
+            expect(controls.lockOut).not.toBe(false);
+            messageCenter.update();
+            expect(mockRecipient.onMessage)
+                .toHaveBeenCalledWith(expect.objectContaining({
+                to:'parser',
+                from:'collider',
+                data:expect.objectContaining({
+                    results:expect.arrayContaining([rock]),
+                    candidates:expect.arrayContaining([baba]),
+                    collidePool:expect.arrayContaining([wall,rock]),
+                    direction:'left'
+                })
+            }))
+        });
+        test('Movement Parser Should send a message to move',()=>{
+            expect(controls.lockOut).not.toBe(false);
+            messageCenter.update();
+            expect(mockRecipient.onMessage)
+                .toHaveBeenCalledWith(expect.objectContaining({
+                    to:rock.id,
+                    from:'parser',
+                    data:expect.anything(),
+                }
+            ));
+            messageCenter.update();
+            expect(mockRecipient.onMessage)
+                .toHaveBeenCalledWith(expect.objectContaining({
+                    to: baba.id,
+                    from: 'parser',
+                    data: expect.anything()
+                }
+            ))
+        });
+        test('Controls Should receive a reset message',()=>{
+            expect(controls.lockOut).toBe(false);
+        })
+    });
 
 });

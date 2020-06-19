@@ -8,7 +8,6 @@ const RIGHT   = Symbol('right');
 const LEFT    = Symbol('left');
 const RESTART = Symbol('restart');
 
-
 class KeyMap{
     mapKey(keyCode,symbol){
         this[keyCode] = symbol;

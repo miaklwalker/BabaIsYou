@@ -1,6 +1,25 @@
 {
   "sprites": {
-    "BABA": []
+    "sprites": {
+      "BABA": [],
+      "KIKI": [],
+      "ME":   [],
+      "ANNIE": [],
+      "ROBOT": [],
+      "GHOST": [],
+      "HAND": [],
+      "SKULL": [],
+      "KNIGHT": [],
+      "BAT": [],
+      "BIRD": [],
+      "BOLT": [],
+      "BUBBLE": [],
+      "BUG": [],
+      "COG": [],
+      "CRAB": [],
+      "ROCKET": [],
+      "BELT": []
+    }
   },
   "tiles": {
     "ALGAE":    [],
@@ -99,7 +118,11 @@
       "tint": 15,
       "blocks": []
     },
-    "blob": {
+    "Water": {
+      "tint": 15,
+      "blocks": []
+    },
+    "Lava": {
       "tint": 15,
       "blocks": []
     },

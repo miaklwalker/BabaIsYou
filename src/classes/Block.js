@@ -17,11 +17,8 @@ export default class Block {
             up:false,
             down:false,
         };
-        // forces any canCollide Blocks to Stop actions
         this.strictCollide = false;
-        // forces a collision hierachy
         this.canCollide = false;
-        // This block wants to be notfied of collisions
         this.canTouch = false;
     }
     draw(){
@@ -30,6 +27,7 @@ export default class Block {
     onMessage(message){
         this.canCollide = false;
         this.canTouch = false;
+        this.strictCollide = false;
         this.traits.forEach(trait=>{
             trait.update(this,message);
         })

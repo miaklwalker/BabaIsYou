@@ -13,8 +13,8 @@ import Wall from "../../../src/classes/Blocks/Wall.js";
 describe('Block Class',()=>{
     describe('Base Block Class',()=>{
         const block = new Block(1,1,'frank','WALL');
+
         test('that block has properties',()=>{
-            expect(block).toBeInstanceOf(Block);
             expect(block.position).toBeInstanceOf(Vector);
             expect(block.id).toHaveLength(12);
             expect(block.name).toBe('frank');
@@ -25,43 +25,51 @@ describe('Block Class',()=>{
                 up:false,
                 down:false
             });
+            expect(block.strictCollide).toBe(false);
             expect(block.canTouch).toBe(false);
             expect(block.canCollide).toBe(false);
         });
+
         test('Block Draw method returns its position as an array',()=>{
             block.draw = jest.fn(block.draw);
             block.draw();
             expect(block.draw).toHaveReturnedWith([1,1])
         });
-        let trait = {
-            update:jest.fn(),
-        };
-        test('Add trait should add a trait to ownTraits',()=>{
-            block.addTrait(trait);
-            expect(block.traits).toHaveLength(1);
+
+        describe('Test Block Traits',()=>{
+            let trait = {
+                update:jest.fn(),
+            };
+            test('Add trait should add a trait to ownTraits',()=>{
+                block.addTrait(trait);
+                expect(block.traits).toHaveLength(1);
+            });
+            test('Should Call All Own Traits when updated',()=>{
+                block.onMessage('Hello From Test');
+                expect(trait.update).toHaveBeenCalled();
+                expect(trait.update).toHaveBeenCalledWith(block,'Hello From Test')
+            });
         });
-        test('Should Call All Own Traits when updated',()=>{
-            block.onMessage('Hello From Test');
-            expect(trait.update).toHaveBeenCalled();
-            expect(trait.update).toHaveBeenCalledWith(block,'Hello From Test')
-        });
+
         test('isNeighbor should return true if block isNeighboring',()=>{
            let otherBlock = new Block(1,2);
            let anotherBlock = new Block(10,10);
            expect(block.isNeighbor(otherBlock)).toBe(true);
            expect(block.isNeighbor(anotherBlock)).not.toBe(true);
         });
+
         test('Check Neighbors should return what side a object is',()=>{
             let otherBlock = new Block(1,2);
             let expected = [false,true,false,false];
             expect(block.checkNeighbors(otherBlock)).toEqual(expect.arrayContaining(expected));
-
         });
+
         test('updateAndFindNeighbors',()=>{
             let blockL = new Block(0,1);
             let blockR = new Block(2,1);
             let blockU = new Block(1,0);
             let blockD = new Block(1,2);
+
             let others = [blockD,blockL,blockR,blockU];
             block.checkNeighbors = jest.fn(block.checkNeighbors);
             let check = block.updateAndFindNeighbors(others);

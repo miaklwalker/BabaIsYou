@@ -4,7 +4,6 @@ import MessageCenter from "../../../src/classes/MessageCenter.js";
 
     const testMessageCenter = new MessageCenter();
     describe('Message Center Should Call update',()=>{
-        test.todo('probably need to split this into separate tests')
         const id = 123123124124;
         const update = (...args) => {};
         const entity = {

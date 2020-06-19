@@ -5,7 +5,10 @@ import NounBlock from "../../../src/classes/Blocks/NounBlock.js";
 describe('Rule Parser',()=>{
     let callback = jest.fn();
     let ruleParser = new RuleParser(callback);
-    test.todo('CallBack');
+    test('Rule Parser On Message Should call the callback with internal rules property',()=>{
+        ruleParser.onMessage({from:'controls'});
+        expect(callback).toHaveBeenCalled();
+    });
     test('Make Rule should make a "rule" object and add it to rules',()=>{
         let name = 'test';
         let operator = 'is';

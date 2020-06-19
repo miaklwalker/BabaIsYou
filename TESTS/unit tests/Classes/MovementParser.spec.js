@@ -46,11 +46,4 @@ describe('Movement Parser',()=>{
         movementParser.removeEntity(1013);
         expect(movementParser.entities).toHaveLength(0);
     });
-
-    test.todo('ParseFromControls');
-    test.todo('handleNoCollisions');
-
-    test.todo('handleNoStop');
-    
-    test.todo('removeEntities');
 });

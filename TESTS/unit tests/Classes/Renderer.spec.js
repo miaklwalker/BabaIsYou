@@ -1,9 +1,6 @@
-import {describe, expect, test, jest, beforeEach, beforeAll} from "@jest/globals";
+import {describe, expect, test, jest, beforeEach} from "@jest/globals";
 import Renderer from "../../../src/classes/Renderer.js";
 import Layer from "../../../src/classes/Layer.js";
-import Sprite from "../../../src/classes/Sprite.js";
-import loadImage from "../../../src/asyncLoaders/loadImage.js";
-import loadJSON from "../../../src/asyncLoaders/loadJSON.js";
 
 describe('Renderer',()=>{
     let renderer;
@@ -80,19 +77,21 @@ describe('Renderer',()=>{
                 ]
             }
         };
+
         context.getImageData.mockReturnValue({
             data:[1,1,1,1]
         });
         context.getImageData.mockReturnValue(context.imageData);
         let sprite = [0,0,24,24];
+
         renderer.tint(canvas,context,sprite,img,25);
-        expect(context.drawImage).toHaveBeenCalledTimes(3 )
+
+        expect(context.drawImage).toHaveBeenCalledTimes(3 );
         expect(context.getImageData).toHaveBeenCalledTimes(2);
         expect(context.clearRect).toHaveBeenCalledTimes(1);
         expect(context.putImageData).toHaveBeenCalledTimes(1);
-        expect(context.globalCompositeOperation).toBe('destination-in')
-        expect(context.imageData.data).toEqual(expect.arrayContaining(
-            [
+        expect(context.globalCompositeOperation).toBe('destination-in');
+        expect(context.imageData.data).toEqual(expect.arrayContaining([
                 1.8980392156862744,
                 1.8980392156862744,
                 1.8980392156862744,
@@ -110,6 +109,7 @@ describe('Renderer',()=>{
                 0,
                 22,
             ]))
+
 
     })
 

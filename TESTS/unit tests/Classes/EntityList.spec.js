@@ -1,4 +1,4 @@
-import {describe,expect,test,jest} from "@jest/globals";
+import {describe,expect,test} from "@jest/globals";
 import EntityList from "../../../src/classes/EntityList.js";
 
 describe('EntityList',()=>{
@@ -18,7 +18,7 @@ describe('EntityList',()=>{
         expect(entityList.entities).toHaveLength(0)
     });
     test('Purge should remove all entities',()=>{
-        let entities = Array(9).fill((()=>({}))())
+        let entities = Array(9).fill((()=>({}))());
         entities.forEach(entity=>{
             entityList.addEntity(entity);
         });
@@ -27,9 +27,13 @@ describe('EntityList',()=>{
         expect(entityList.entities).toHaveLength(0);
     });
 
-    test.todo('divisions');
-    test.todo('frame');
-    test.todo('makeTextures');
-    test.todo('render')
+
+    test('Divisions should return the current levels layout',()=>{
+        expect(entityList.divisions).toEqual([20,20]);
+    });
+
+    test.todo(' The render method should update frame count and render all entities');
+    test.todo(' makeTextures');
+
 
 });

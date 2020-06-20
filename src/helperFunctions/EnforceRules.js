@@ -18,7 +18,6 @@ function enforceRules(rules,entities){
                 entities.forEach(entity => {
                     if ((entity.name === name.name) && operator.name === 'IS') {
                             entity.name = property.name;
-                            console.log(entity);
                     }
                 })
             }else if(property instanceof PropertyBlock){

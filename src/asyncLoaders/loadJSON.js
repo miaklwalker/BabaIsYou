@@ -1,3 +1,3 @@
-export default function loadJSON(url) {
-    return fetch(url).then(response => response.json());
+export default function loadJSON(url,requestFunction = fetch) {
+    return requestFunction(url).then(response => response.json());
 }

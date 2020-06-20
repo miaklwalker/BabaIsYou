@@ -1,10 +1,14 @@
-import {describe, expect, test, jest, beforeEach} from "@jest/globals";
+import {describe, expect, test, jest, beforeEach, beforeAll} from "@jest/globals";
 import Renderer from "../../../src/classes/Renderer.js";
 import Layer from "../../../src/classes/Layer.js";
+import Sprite from "../../../src/classes/Sprite.js";
+import loadImage from "../../../src/asyncLoaders/loadImage.js";
+import loadJSON from "../../../src/asyncLoaders/loadJSON.js";
 
 describe('Renderer',()=>{
     let renderer;
     let game;
+
     beforeEach(()=>{
         game = {
             gridDiminsions:[20,20]
@@ -53,8 +57,60 @@ describe('Renderer',()=>{
         renderer.addLayer(layer3);
         expect(renderer.layers).toEqual([layer2,layer3,layer1])
     });
-    test.todo('test the tint method');
 
+    test('The Tint Method',()=>{
+        // Setting up the canvas for the test;
+        let canvas = document.createElement('canvas');
+        let img = document.createElement('img');
+        img.src = '../../../images/spritesheet.png';
+        canvas.width = 24;
+        canvas.height = 24;
+        let context = {
+            drawImage:jest.fn(),
+            clearRect:jest.fn(),
+            getImageData:jest.fn(),
+            putImageData:jest.fn(),
+            globalCompositeOperation:'',
+            imageData:{
+                data:[
+                    22,22,22,22,
+                    2,2,2,2,
+                    76,76,76,76,
+                    0,0,0,0
+                ]
+            }
+        };
+        context.getImageData.mockReturnValue({
+            data:[1,1,1,1]
+        });
+        context.getImageData.mockReturnValue(context.imageData);
+        let sprite = [0,0,24,24];
+        renderer.tint(canvas,context,sprite,img,25);
+        expect(context.drawImage).toHaveBeenCalledTimes(3 )
+        expect(context.getImageData).toHaveBeenCalledTimes(2);
+        expect(context.clearRect).toHaveBeenCalledTimes(1);
+        expect(context.putImageData).toHaveBeenCalledTimes(1);
+        expect(context.globalCompositeOperation).toBe('destination-in')
+        expect(context.imageData.data).toEqual(expect.arrayContaining(
+            [
+                1.8980392156862744,
+                1.8980392156862744,
+                1.8980392156862744,
+                22,
+                0.17254901960784313,
+                0.17254901960784313,
+                0.17254901960784313,
+                22,
+                6.556862745098039,
+                6.556862745098039,
+                6.556862745098039,
+                22,
+                0,
+                0,
+                0,
+                22,
+            ]))
 
+    })
 
 });

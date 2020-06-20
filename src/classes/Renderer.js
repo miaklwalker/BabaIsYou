@@ -56,7 +56,7 @@ export default class Renderer{
         let colorData = context.getImageData(1,1,1,1);
         context.clearRect(...endDim);
         context.drawImage(img, x, y, w, h, ...endDim);
-        let spriteData = context.getImageData(...endDim)
+        let spriteData = context.getImageData(...endDim);
         let[r,g,b,a] = colorData.data;
         for(let i = 0; i < spriteData.data.length ; i+=4){
             if(    spriteData.data [i]   === 255

@@ -47,5 +47,4 @@ export default function chooseShape([left,down,right,up]){
     if(left  &&  down &&  right &&  up ){
         return'fourWay'
     }
-    return 'single';
 }

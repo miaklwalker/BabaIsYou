@@ -5,6 +5,7 @@ import NounBlock from "../../../src/classes/Blocks/NounBlock.js";
 import OperatorBlock from "../../../src/classes/Blocks/OperatorBlock.js";
 import PropertyBlock from "../../../src/classes/Blocks/PropertyBlock.js";
 import enforcerFactory from "../../../src/helperFunctions/EnforceRules.js";
+import You from "../../../src/classes/Traits/You.js";
 
 describe('Enforce Rules',()=>{
     // act
@@ -20,12 +21,13 @@ describe('Enforce Rules',()=>{
     let ruleEnforcer = enforcerFactory(entities);
     // assert
     test('Enforce Rules should remove the push trait',()=>{
-        expect(baba.PUSH).not.toBeUndefined();
+        expect(baba['PUSH']).not.toBeUndefined();
         ruleEnforcer(rules);
-        expect(baba.PUSH).toBeUndefined();
+        expect(baba['PUSH']).toBeUndefined();
     });
     test('It Should Also add the YOU trait',()=>{
         expect(baba.YOU).not.toBeUndefined();
+        expect(baba.YOU).toBeInstanceOf(You);
     });
     test('It should also be able to change a blocks name',()=>{
         you = new NounBlock(1,1,'ROCK');

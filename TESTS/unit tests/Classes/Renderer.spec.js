@@ -1,11 +1,11 @@
 import {describe, expect, test, jest, beforeEach} from "@jest/globals";
 import Renderer from "../../../src/classes/Renderer.js";
 import Layer from "../../../src/classes/Layer.js";
+import createContextMock from "../../__mocks__/context.mock.js";
 
 describe('Renderer',()=>{
     let renderer;
     let game;
-
     beforeEach(()=>{
         game = {
             gridDiminsions:[20,20]
@@ -54,7 +54,6 @@ describe('Renderer',()=>{
         renderer.addLayer(layer3);
         expect(renderer.layers).toEqual([layer2,layer3,layer1])
     });
-
     test('The Tint Method',()=>{
         // Setting up the canvas for the test;
         let canvas = document.createElement('canvas');
@@ -62,21 +61,7 @@ describe('Renderer',()=>{
         img.src = '../../../images/spritesheet.png';
         canvas.width = 24;
         canvas.height = 24;
-        let context = {
-            drawImage:jest.fn(),
-            clearRect:jest.fn(),
-            getImageData:jest.fn(),
-            putImageData:jest.fn(),
-            globalCompositeOperation:'',
-            imageData:{
-                data:[
-                    22,22,22,22,
-                    2,2,2,2,
-                    76,76,76,76,
-                    0,0,0,0
-                ]
-            }
-        };
+        let context = createContextMock();
 
         context.getImageData.mockReturnValue({
             data:[1,1,1,1]
@@ -112,5 +97,4 @@ describe('Renderer',()=>{
 
 
     })
-
 });

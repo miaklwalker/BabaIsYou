@@ -9,7 +9,7 @@ export default class Win extends Trait {
         this.left = true;
         this.up = true;
         this.down = true;
-        this.ran = false
+        this.ran = false;
     }
     update(sprite,message) {
         sprite.canTouch = true;

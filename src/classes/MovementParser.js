@@ -50,7 +50,6 @@ export default class MovementParser{
 
             else if (results[0].canTouch){
                 let entity = results[0];
-                console.log('ran')
                 globalContext.dispatchEvent(
                     addMessage(
                         new Message(

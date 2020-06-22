@@ -14,7 +14,6 @@ export default class Win extends Trait {
     update(sprite,message) {
         sprite.canTouch = true;
         if(message.to === sprite.id && !this.ran ){
-            console.log(message)
             let {candidates,results} = message.data.msg.data;
             let result = results ? results : []
             let candidatesPool = [...candidates,...result]

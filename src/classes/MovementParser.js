@@ -40,13 +40,17 @@ export default class MovementParser{
         if(msg.to === 'parser' && msg.from === 'controls' && msg.data.action ==='run'){
             this.parseFromControls(msg,globalContext);
         }else if(msg.to === 'parser' && msg.from === 'collider'){
+
             let{results,candidates,direction} = msg.data;
             // No Collisions.
+
             if(results.length === 0){
                 this.handleNoCollisions(candidates,direction,globalContext);
             }
+
             else if (results[0].canTouch){
                 let entity = results[0];
+                console.log('ran')
                 globalContext.dispatchEvent(
                     addMessage(
                         new Message(

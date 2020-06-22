@@ -95,7 +95,9 @@ describe('Traits',()=>{
         sprite.addTrait(new Win());
         messageCenter.handleAddMessage = jest.fn(messageCenter.handleAddMessage);
         document.addEventListener('addmessage',messageCenter.handleAddMessage);
-        let candidate = [new SpriteBlock(2,1,"FRANK")];
+        let other = new SpriteBlock(1,1,"FRANK");
+        other.addTrait(new You())
+        let candidate = [other];
         let messageData = {
             msg:{
                 data:{

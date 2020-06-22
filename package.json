@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules --no-warnings node_modules/jest/bin/jest.js",
-    "coverage": "npm test --coverage"
+    "watch": "node --experimental-vm-modules --no-warnings node_modules/jest/bin/jest.js --watch"
   },
   "repository": {
     "type": "git",

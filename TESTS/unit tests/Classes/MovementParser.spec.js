@@ -22,12 +22,9 @@ describe('Movement Parser',()=>{
             }
         };
         movementParser.parseFromControls = jest.fn(movementParser.parseFromControls);
-        let executionContext =  {
-            dispatchEvent:jest.fn(),
-        };
-        movementParser.onMessage(msg,executionContext);
-        expect(movementParser.parseFromControls).toHaveBeenCalledWith(msg,executionContext);
-        expect(executionContext.dispatchEvent).toHaveBeenCalled();
+        movementParser.onMessage(msg);
+        expect(movementParser.parseFromControls).toHaveBeenCalledWith(msg);
+
         })
     });
 

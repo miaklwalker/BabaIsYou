@@ -10,7 +10,7 @@ export default class Wall extends Block{
     }
     draw(others){
         this.chooseName(others);
-        return [...super.draw(),this.alias,this.texture,this.type]
+        return [...super.draw(),this.texture]
     }
     chooseName(neighbors){
         let others = this.updateAndFindNeighbors(neighbors);

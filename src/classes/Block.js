@@ -7,10 +7,16 @@ export default class Block {
         this.position = new Vector(x,y);
         this.traits = [];
         this.id = makeUniqueId(12);
+        // draw values
         this.name = name;
+        this.group = null;
         this.type = type;
-        this.strategy = null;
         this.alias = null;
+
+        this.strategy = null;
+
+
+        // flags
         this.neighbors = {
             left:false,
             right:false,
@@ -22,12 +28,23 @@ export default class Block {
         this.canTouch = false;
     }
     draw(){
-        return [this.position.x,this.position.y]
+        return [
+            this.position.x,
+            this.position.y,
+            this.name,
+            this.group,
+            this.type,
+            this.alias,
+
+        ]
     }
-    onMessage(message){
+    resetFlags(){
         this.canCollide = false;
         this.canTouch = false;
         this.strictCollide = false;
+    }
+    onMessage(message){
+        this.resetFlags();
         this.traits.forEach(trait=>{
             trait.update(this,message);
         })

@@ -11,15 +11,7 @@ export default class SpriteBlock extends Block{
         this.action = 'idle'
     }
     draw(){
-        return [
-            ...super.draw(),
-            this.name,
-            this.group,
-            this.type,
-            this.id,
-            this.direction,
-            this.action
-        ]
+        return [...super.draw(), this.direction, this.action]
     }
     onMessage(message) {
         super.onMessage(message);

@@ -7,7 +7,5 @@ export default class PropertyBlock extends Block{
         this.strategy = 'WORD';
         this.group ='words';
     }
-    draw(){
-        return [...super.draw(),this.name,this.group,this.type,this.id]
-    }
+
 }

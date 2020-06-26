@@ -1,5 +1,5 @@
-import chooseClass from "./ChooseStrategy.js";
-import blockFactory from "./blockFactory.js";
+import chooseClass from "../helperFunctions/ChooseStrategy.js";
+import blockFactory from "../helperFunctions/blockFactory.js";
 
 
 export default class Entity {
@@ -12,7 +12,7 @@ export default class Entity {
             let {x, y} = this.block.position;
             let sprite = [x,y,name];
             let newBlock = chooseClass(name);
-            this.block = blockFactory(newBlock,sprite)
+            this.block = blockFactory(newBlock,sprite);
         }
     }
     get strategy(){

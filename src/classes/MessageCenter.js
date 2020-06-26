@@ -1,15 +1,15 @@
 export default class MessageCenter{
-    constructor(){
+    constructor(masterList){
         this.messages = [];
         this.queue = [];
-        this.recipients = [];
+        this.recipients = masterList;
         this.sending = false;
     }
     subscribe(...recipient){
-        this.recipients.push(...recipient);
+        //this.recipients.push(...recipient);
     }
     unsubscribe(id){
-        this.recipients =  this.recipients.filter(recipient=>recipient.id !== id);
+        this.recipients =  this.recipients.removeEntity(id);
     }
     handleAddMessage=(event)=>{
         if(this.sending){
@@ -27,7 +27,7 @@ export default class MessageCenter{
     update(){
         this.sending = true;
         this.messages.forEach(message=>{
-            this.recipients.forEach(recipient=>{
+            this.recipients.Blocks.forEach(recipient=>{
                 recipient.onMessage(message);
             })
         });

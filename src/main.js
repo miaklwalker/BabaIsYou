@@ -18,7 +18,7 @@ let system = new System();
 let {game, messageCenter, movementParser} = system;
 system.init();
 
-let levelBuilder = makeLevelBuilder(game,messageCenter);
+let levelBuilder = makeLevelBuilder(game,system.masterList);
 const {tint} = game.renderer;
 
 

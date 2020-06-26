@@ -4,12 +4,14 @@ import MessageCenter from "./MessageCenter.js";
 import Controls from "./Controls.js";
 import MovementParser from "./MovementParser.js";
 import {gameStart} from "../main.js";
+import MasterList from "./MasterList.js";
 
 export default class System{
     constructor(){
         this.game = new Game();
+        this.masterList = new MasterList();
         this.collider= new Collider();
-        this.messageCenter = new MessageCenter();
+        this.messageCenter = new MessageCenter(this.masterList);
         this.controls = new Controls();
         this.movementParser = new MovementParser();
         this.initialized = false;

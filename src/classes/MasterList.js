@@ -23,7 +23,7 @@ export default class masterList{
             callBack(key,value);
         })
     }
-    getBlocks(){
+    get Blocks(){
         let temp = [];
         this.entities.forEach(([key,value])=>{
             temp.push(value);

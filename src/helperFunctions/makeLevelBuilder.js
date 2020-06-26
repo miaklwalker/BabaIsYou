@@ -1,13 +1,11 @@
 import blockFactory from "../helperFunctions/blockFactory.js";
 import Push from "../classes/Traits/Push.js";
 import buildTexturePack from "./buildTexturePack.js";
-import MasterList from "./MasterList.js";
-
-let masterList = new MasterList();
 
 
 
-export default function makeLevelBuilder(game,messageCenter){
+
+export default function makeLevelBuilder(game,masterList){
     return (spriteSpec,levelSpec)=>{
         game.gridDiminsions = levelSpec.divisions;
 
@@ -26,68 +24,63 @@ export default function makeLevelBuilder(game,messageCenter){
 
         const {words,tiles,wall,floor,sprites} = levelSpec;
         //sprites
-        makeSprites(sprites,messageCenter,game);
+        makeSprites(sprites,masterList,game);
         //words
-        makeWords(words,messageCenter,game);
+        makeWords(words,masterList,game);
         // tiles
-        makeTiles(tiles,messageCenter,game);
+        makeTiles(tiles,masterList,game);
         //floors
-        makeFloor(floor,messageCenter,game);
+        makeFloor(floor,masterList,game);
         // walls
-        makeWalls(wall,messageCenter,game);
+        makeWalls(wall,masterList,game);
 
     }
 }
 
-function makeWalls(wall,messageCenter,game){
+function makeWalls(wall,masterList,game){
     Object.keys(wall).forEach(type=>{
         wall[type].blocks.forEach((sprite)=>{
             let wall = blockFactory('wall',Object.values(sprite));
             wall.texture = type;
-            messageCenter.subscribe(wall);
             game.addWall(wall);
             masterList.addEntiity(wall.id,wall);
         });
     })
 }
-function makeFloor(floors,messageCenter,game){
+function makeFloor(floors,masterList,game){
     floors.forEach(sprite=>{
         let floor = blockFactory('tiles', Object.values(sprite));
-        messageCenter.subscribe(floor);
         game.addBackgroundTile(floor);
         masterList.addEntiity(floor.id,floor);
     });
 }
-function makeTiles(tiles,messageCenter,game){
+function makeTiles(tiles,masterList,game){
     Object.keys(tiles).forEach(type=>{
         tiles[type].forEach(sprite=>{
             let tile = blockFactory('tiles', Object.values(sprite));
-            messageCenter.subscribe(tile);
             game.addTile(tile);
             masterList.addEntiity(tile.id,tile);
+            masterList.changeEntity(tile.id,"ROCK");
         })
     });
 }
-function makeWords(words,messageCenter,game){
+function makeWords(words,masterList,game){
     Object.keys(words).forEach(type=>{
         words[type].forEach(sprite => {
             let block = blockFactory(type, Object.values(sprite));
             block.addTrait(new Push());
-            messageCenter.subscribe(block);
             game.addWords(block);
             masterList.addEntiity(block.id,block);
             masterList.getEntity(block.id).isWord = true;
         })
     });
 }
-function makeSprites(sprites,messageCenter,game){
+function makeSprites(sprites,masterList,game){
     Object.keys(sprites).forEach(type=>{
         sprites[type].forEach(sprite => {
             let block = blockFactory('sprites', Object.values(sprite));
-            messageCenter.subscribe(block);
             game.addSprite(block);
             masterList.addEntiity(block.id,block);
-            masterList.changeEntity(block.id,"ROCK");
         })
     });
     console.log(masterList);

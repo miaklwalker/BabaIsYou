@@ -1,15 +1,20 @@
+import makeUniqueId from "../helperFunctions/MakeID.js";
+
 export default class MessageCenter{
     constructor(masterList){
         this.messages = [];
         this.queue = [];
         this.recipients = masterList;
         this.sending = false;
+        this.psuedoID = makeUniqueId;
     }
     subscribe(...recipient){
-        //this.recipients.push(...recipient);
+        recipient.forEach(listener=>{
+            this.recipients.addEntity(this.psuedoID(12),listener)
+        })
     }
     unsubscribe(id){
-        this.recipients =  this.recipients.removeEntity(id);
+       // this.recipients =  this.recipients.removeEntity(id);
     }
     handleAddMessage=(event)=>{
         if(this.sending){

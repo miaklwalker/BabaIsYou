@@ -4,7 +4,7 @@ export default class masterList{
     constructor(){
         this.entities = new Map();
     }
-    addEntiity(id,entity){
+    addEntity(id, entity){
         this.entities.set(id,new Entity(entity));
     }
     removeEntity(id){
@@ -19,14 +19,14 @@ export default class masterList{
         return this.entities.get(id);
     }
     blockLoop(callBack){
-        let blocks = this.entities.forEach(([key,value])=>{
+        let blocks = this.entities.forEach((key,value)=>{
             callBack(key,value);
         })
     }
     get Blocks(){
         let temp = [];
-        this.entities.forEach(([key,value])=>{
-            temp.push(value);
+        this.entities.forEach((key,value)=>{
+            temp.push(key);
         });
         return temp;
     }

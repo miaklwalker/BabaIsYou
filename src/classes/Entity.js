@@ -6,6 +6,7 @@ export default class Entity {
     constructor(block,word = false){
         this.block = block;
         this.isWord = word;
+        this.recievesMessage = false;
     };
     changeBlockType(name){
         if(!this.isWord) {
@@ -14,6 +15,9 @@ export default class Entity {
             let newBlock = chooseClass(name);
             this.block = blockFactory(newBlock,sprite);
         }
+    }
+    onMessage(message){
+        this.block.onMessage(message);
     }
     get strategy(){
         return this.block.strategy;

@@ -1,3 +1,5 @@
+const prevID = [];
+
 const NUMBER = 'NUMBER';
 const LOWER = 'LOWER';
 const UPPER = 'UPPER';
@@ -41,5 +43,12 @@ export default function makeUniqueId(length,idConfigString = 4){
         ID+=chooseChar(pickNumber(charTypes[strategy[idConfigString]()]));
         i++
     }
-    return ID;
+    if(prevID.includes(ID)){
+        console.log("Wow Found a duplicate");
+        return makeUniqueId(length,idConfigString);
+    }else{
+        prevID.push(ID);
+        return ID;
+    }
+
 }

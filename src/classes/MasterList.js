@@ -15,17 +15,21 @@ export default class masterList{
         entity.changeBlockType(name);
         this.entities.set(id,entity);
     }
+    changeEntityFlag(id,flag,value){
+        let updatedEntity = this.entities.get(id)[flag] = value;
+        this.entities.set(id,updatedEntity);
+    }
     getEntity(id){
         return this.entities.get(id);
     }
-    blockLoop(callBack){
-        let blocks = this.entities.forEach((key,value)=>{
+    forEach(callBack){
+         this.entities.forEach((key,value)=>{
             callBack(key,value);
-        })
+         })
     }
     get Blocks(){
         let temp = [];
-        this.entities.forEach((key,value)=>{
+        this.entities.forEach((key)=>{
             temp.push(key);
         });
         return temp;

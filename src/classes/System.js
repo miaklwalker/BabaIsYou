@@ -13,7 +13,7 @@ export default class System{
         this.collider= new Collider();
         this.messageCenter = new MessageCenter(this.masterList);
         this.controls = new Controls();
-        this.movementParser = new MovementParser();
+        this.movementParser = new MovementParser(this.masterList);
         this.initialized = false;
         this.restartInProgress = true;
         this.level = 1

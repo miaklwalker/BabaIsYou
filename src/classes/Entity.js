@@ -6,7 +6,8 @@ export default class Entity {
     constructor(block,word = false){
         this.block = block;
         this.isWord = word;
-        this.recievesMessage = false;
+        this.useMessage = true;
+        this.useCollision = true;
     };
     changeBlockType(name){
         if(!this.isWord) {
@@ -15,6 +16,9 @@ export default class Entity {
             let newBlock = chooseClass(name);
             this.block = blockFactory(newBlock,sprite);
         }
+    }
+    get id (){
+        return this.block.id;
     }
     onMessage(message){
         this.block.onMessage(message);

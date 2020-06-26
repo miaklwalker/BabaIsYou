@@ -1,21 +1,18 @@
 import addMessage from "../CustomEvents/addmessage.js";
 import Message from "./Message.js";
-import Vector from "./Vector.js";
 import makeOrthagonalMap from "../helperFunctions/makeOrthagonalMap.js";
 
 
 
 export default class Collider {
     update(entities,direction){
-        // All blocks the player controls
+        console.log(entities);
         let candidates = entities.filter(entity=>entity.YOU !== undefined);
-        // All blocks with the collision flag set
         let collidePool = entities.filter(entity=>(
             entity.strictCollide ||
             entity.canCollide    ||
             entity.canTouch
         ));
-        // Will have all blocks the player collides with and whatever they collide with
         let results = {};
         candidates.forEach(candidate=>{
             let orthogonalMap = makeOrthagonalMap(candidate);

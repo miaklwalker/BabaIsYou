@@ -1,15 +1,19 @@
 import addMessage from "../CustomEvents/addmessage.js";
 import Message from "./Message.js";
+import makeUniqueId from "../helperFunctions/MakeID.js";
+import Entity from "./Entity.js";
 
 export default class MovementParser{
-    constructor(){
-        this.entities = [];
+    constructor(masterList){
+        this.masterList = masterList;
+        this.entities = masterList.Blocks;
     }
     parseFromControls(msg){
+
         this.sendMessage(
             'collision',
             'parser',
-            {entities:this.entities.flat(),msg}
+            {entities:blocks,msg}
         );
     }
     handleNoCollisions(candidates,direction){
@@ -39,6 +43,7 @@ export default class MovementParser{
     }
     handleMessageFromCollider(msg){
         let{results,candidates,direction} = msg.data;
+        console.log(msg);
         // No Collisions.
         if(results.length === 0){
             this.handleNoCollisions(candidates,direction);
@@ -60,8 +65,10 @@ export default class MovementParser{
     }
     notifyAll(recipients,direction,msg){
         recipients.forEach(entity=>{
-            this.sendMessage(entity.id, 'parser',
-                {direction, msg})
+            if(entity["useCollision"]){
+                this.sendMessage(entity.id, 'parser',
+                    {direction, msg})
+            }
         })
     }
     onMessage(msg){
@@ -74,7 +81,16 @@ export default class MovementParser{
     purge(){
         this.entities = [];
     }
+    addEntity(entity){
+        if(this.masterList.has(entity.id)){
+            this.masterList.changeEntityFlag(entity.id,'useCollision',true);
+        }else{
+            let id = makeUniqueId(12);
+            let wrappedEntity = new Entity(entity);
+            this.masterList.addEntity(wrappedEntity);
+        }
+    }
     removeEntity(targetId){
-        this.entities =  this.entities.filter( entity => entity.id === targetId.id);
+        this.masterList.changeEntityFlag(targetId,'useCollision',false)
     }
 }

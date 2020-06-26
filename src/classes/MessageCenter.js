@@ -1,4 +1,5 @@
 import makeUniqueId from "../helperFunctions/MakeID.js";
+import Entity from "./Entity.js";
 
 export default class MessageCenter{
     constructor(masterList){
@@ -10,11 +11,15 @@ export default class MessageCenter{
     }
     subscribe(...recipient){
         recipient.forEach(listener=>{
-            this.recipients.addEntity(this.psuedoID(12),listener)
+            let entity = new Entity(listener);
+            entity.useMessage = true;
+            entity.useCollision = false;
+            let id =  this.psuedoID(12);
+            this.recipients.addEntity(id,listener)
         })
     }
     unsubscribe(id){
-       // this.recipients =  this.recipients.removeEntity(id);
+        this.recipients.changeEntityFlag(id,'useMessages',false);
     }
     handleAddMessage=(event)=>{
         if(this.sending){
@@ -25,15 +30,16 @@ export default class MessageCenter{
 
     };
     purge(){
-        this.recipients = [];
         this.queue = [];
         this.messages = [];
     }
     update(){
         this.sending = true;
         this.messages.forEach(message=>{
-            this.recipients.Blocks.forEach(recipient=>{
-                recipient.onMessage(message);
+            this.recipients.forEach(recipient=>{
+                if(recipient['useMessage']) {
+                    recipient.onMessage(message);
+                };
             })
         });
         this.messages = [];

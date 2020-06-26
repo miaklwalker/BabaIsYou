@@ -25,7 +25,7 @@ function spriteStrategy(spriteSheets,[x, y, name, group, type, alias,direction, 
 function tileStrategy(spriteSheets,[x, y, name, group, type, alias],frame){
     return spriteSheets.spriteSheets[type][name].sprites[frame];
 }
-function wallStrategy(spriteSheets,[x, y, name, group, type, alias, texture],frame,list,sprite){
+function wallStrategy(spriteSheets,[x, y, name, group, type, alias, texture],frame,list){
     return list.buffer[texture].get(alias)[list.frame]
 }
 

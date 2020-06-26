@@ -43,7 +43,7 @@ export default class EntityList {
                 let entity = rawEntity.draw(this.entities);
                 let strategy = chooseStrategy(rawEntity.strategy);
                 let [x,y] = entity;
-                let sprite = strategy(spriteSheets,entity,this.frame,this,rawEntity);
+                let sprite = strategy(spriteSheets,entity,this.frame,this);
                 sprite.render(
                     canvas, context,
                     tint,

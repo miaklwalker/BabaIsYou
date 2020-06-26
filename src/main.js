@@ -61,3 +61,4 @@ game.setup(system.level).then(gameStart);
         messageCenter.update();
     };
 
+console.log(system);

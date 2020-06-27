@@ -42,24 +42,24 @@ function makeWalls(wall,masterList,game){
         wall[type].blocks.forEach((sprite)=>{
             let wall = blockFactory('wall',Object.values(sprite));
             wall.texture = type;
-            game.addWall(wall);
             masterList.addEntity(wall.id,wall);
+            game.addForeground(wall.id);
         });
     })
 }
 function makeFloor(floors,masterList,game){
     floors.forEach(sprite=>{
         let floor = blockFactory('tiles', Object.values(sprite));
-        game.addBackgroundTile(floor);
         masterList.addEntity(floor.id,floor);
+        game.addBackground(floor.id);
     });
 }
 function makeTiles(tiles,masterList,game){
     Object.keys(tiles).forEach(type=>{
         tiles[type].forEach(sprite=>{
             let tile = blockFactory('tiles', Object.values(sprite));
-            game.addTile(tile);
             masterList.addEntity(tile.id,tile);
+            game.addForeground(tile.id);
         })
     });
 }
@@ -68,9 +68,10 @@ function makeWords(words,masterList,game){
         words[type].forEach(sprite => {
             let block = blockFactory(type, Object.values(sprite));
             block.addTrait(new Push());
-            game.addWords(block);
             masterList.addEntity(block.id,block);
-            masterList.getEntity(block.id).isWord = true;
+            ///masterList.changeEntityFlag(block.id,"isWord",true);
+            masterList.getEntity(block.id)['isWord'] = true;
+            game.addForeground(block.id);
         })
     });
 }
@@ -78,8 +79,8 @@ function makeSprites(sprites,masterList,game){
     Object.keys(sprites).forEach(type=>{
         sprites[type].forEach(sprite => {
             let block = blockFactory('sprites', Object.values(sprite));
-            game.addSprite(block);
             masterList.addEntity(block.id,block);
+            game.addForeground(block.id);
         })
     });
 }

@@ -6,7 +6,6 @@ import makeOrthagonalMap from "../helperFunctions/makeOrthagonalMap.js";
 
 export default class Collider {
     update(entities,direction){
-        console.log(entities);
         let candidates = entities.filter(entity=>entity.YOU !== undefined);
         let collidePool = entities.filter(entity=>(
             entity.strictCollide ||

@@ -6,8 +6,8 @@ import makeWallSprites from "../helperFunctions/makeWallSprites.js";
 
 
 export default class EntityList {
-    constructor(game) {
-        this.entities = [];
+    constructor(game,flags) {
+        this.entities = game.masterList.allOfFlags([...flags,'useRender']);
         this._divisions = game;
         this.frameCount = 0;
         this.frameLength = 3;

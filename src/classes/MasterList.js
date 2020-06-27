@@ -27,6 +27,33 @@ export default class masterList{
             callBack(key,value);
          })
     }
+    map(callback){
+        let temp = [];
+        this.entities.forEach((entity,key)=>{
+            temp.push(callback(entity,key))
+        });
+        return temp;
+    }
+    filter(callback){
+        let temp = [];
+        this.entities.forEach((entity,key)=>{
+            if(callback(entity,key)){
+                temp.push(entity)
+            }
+        });
+        return temp;
+    }
+    allOfFlags(...flags){
+        return this.filter(entity=>{
+            let chosen = false;
+            flags.forEach(flag=>{
+                if(entity[flag] === true){
+                   chosen = true;
+                }
+            });
+            return chosen;
+        })
+    }
     get Blocks(){
         let temp = [];
         this.entities.forEach((key)=>{

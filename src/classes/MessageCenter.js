@@ -12,8 +12,10 @@ export default class MessageCenter{
     subscribe(...recipient){
         recipient.forEach(listener=>{
             let entity = new Entity(listener);
+
             entity.useMessage = true;
             entity.useCollision = false;
+
             let id =  this.psuedoID(12);
             this.recipients.addEntity(id,listener)
         })

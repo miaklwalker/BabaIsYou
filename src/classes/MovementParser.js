@@ -9,11 +9,17 @@ export default class MovementParser{
         this.entities = masterList.Blocks;
     }
     parseFromControls(msg){
-
+        let blocksWithCollision = this.masterList
+            .filter(entity=>{
+           return entity.useCollision;
+            })
+            .map(entity=>{
+                return entity.block
+            });
         this.sendMessage(
             'collision',
             'parser',
-            {entities:blocks,msg}
+            {entities:blocksWithCollision,msg}
         );
     }
     handleNoCollisions(candidates,direction){
@@ -59,16 +65,15 @@ export default class MovementParser{
             return;
         }
         else{
+            console.log('General Collision');
             this.notifyAll([...candidates,...results],direction,msg)
         }
         this.handleStop();
     }
     notifyAll(recipients,direction,msg){
         recipients.forEach(entity=>{
-            if(entity["useCollision"]){
                 this.sendMessage(entity.id, 'parser',
                     {direction, msg})
-            }
         })
     }
     onMessage(msg){
@@ -77,9 +82,6 @@ export default class MovementParser{
         }else if(msg.to === 'parser' && msg.from === 'collider') {
             this.handleMessageFromCollider(msg);
         }
-    }
-    purge(){
-        this.entities = [];
     }
     addEntity(entity){
         if(this.masterList.has(entity.id)){

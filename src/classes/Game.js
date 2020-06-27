@@ -7,15 +7,13 @@ import loadJSON from "../asyncLoaders/loadJSON.js";
 export default class Game {
     image;
     spriteSpec;
-    constructor() {
+    constructor(masterList) {
         this.timer =            new Timer();
         this.gridDiminsions =   19;
+        this.masterList =       masterList;
+        this.foreGround =       new EntityList(this,"isForeground");
+        this.backGround =       new EntityList(this,"isBackground");
         this.renderer =         new Renderer(this);
-        this.words =            new EntityList(this);
-        this.tiles =            new EntityList(this);
-        this.backgroundTiles =  new EntityList(this);
-        this.walls =            new EntityList(this);
-        this.sprites =          new EntityList(this);
     }
 
     setup = async (level) => {
@@ -34,36 +32,16 @@ export default class Game {
     get allEntities() {
         return [...this.entities, ...this.words.entities]
     }
-
-    addWords(entity) {
-        this.words.addEntity(entity);
+    addForeground(id){
+        this.masterList.getEntity(id).isForeground = true;
     }
-
-    addWall(wall) {
-        this.walls.addEntity(wall);
+    addBackground(id){
+        this.masterList.getEntity(id).isBackground = true;
     }
-
-    addBackgroundTile(bgTile) {
-        this.backgroundTiles.addEntity(bgTile);
-    }
-
-    addTile(tile) {
-        this.tiles.addEntity(tile);
-    }
-
     addLayer(...layer) {
         this.renderer.addLayer(...layer);
     }
 
-    addSprite(sprite) {
-        this.sprites.addEntity(sprite);
-    }
-    removeEntity(id){
-        this.tiles.removeEntity(id);
-        this.sprites.removeEntity(id);
-        this.walls.removeEntity(id);
-        this.backgroundTiles.removeEntity(id);
-        this.words.removeEntity(id);
-    }
+
 
 }

@@ -8,8 +8,8 @@ import MasterList from "./MasterList.js";
 
 export default class System{
     constructor(){
-        this.game = new Game();
         this.masterList = new MasterList();
+        this.game = new Game(this.masterList);
         this.collider= new Collider();
         this.messageCenter = new MessageCenter(this.masterList);
         this.controls = new Controls();
@@ -32,7 +32,6 @@ export default class System{
     }
     restart(){
             this.restartInProgress = true;
-            this.movementParser.purge();
             this.game.tiles.purge();
             this.game.sprites.purge();
             this.game.walls.purge();

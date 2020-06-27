@@ -27,7 +27,7 @@ export function gameStart({image, spriteSpec, levelSpec}){
 
     let spriteSheets = parseJsonToSpriteSheet(spriteSpec);
     levelBuilder(spriteSpec, levelSpec);
-    game.walls.makeTextures(game.renderer);
+    game.foreGround.makeTextures(game.renderer);
 
     let args = [image, spriteSheets, tint];
 
@@ -45,6 +45,8 @@ export function gameStart({image, spriteSpec, levelSpec}){
     game.addLayer(
         new Layer(1, drawBackground, ['black']),
         new Layer(0, drawGrid, [game.gridDiminsions]),
+        new Layer(4, game.foreGround.render, args),
+        new Layer(3, game.backGround.render, args),
         new Layer(3, game.words.render, args),
         new Layer(3, game.tiles.render, args),
         new Layer(1, game.backgroundTiles.render, args),

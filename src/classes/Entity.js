@@ -3,9 +3,9 @@ import blockFactory from "../helperFunctions/blockFactory.js";
 
 
 export default class Entity {
-    constructor(block,word = false){
+    constructor(block){
         this.block = block;
-        this.isWord = word;
+        this.isWord = false;
         this.isForeground = false;
         this.isBackground = false;
         this.isRendered = true;

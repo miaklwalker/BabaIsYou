@@ -16,8 +16,8 @@ export default class masterList{
         this.entities.set(id,entity);
     }
     changeEntityFlag(id,flag,value){
-        let updatedEntity = this.entities.get(id)[flag] = value;
-        this.entities.set(id,updatedEntity);
+        let updatedEntity = this.entities.get(id)
+        updatedEntity[flag] = value;
     }
     getEntity(id){
         return this.entities.get(id);
@@ -44,7 +44,7 @@ export default class masterList{
         return temp;
     }
     allOfFlags(...flags){
-        return this.filter(entity=>{
+        let entities = this.filter(entity=>{
             let chosen = false;
             flags.forEach(flag=>{
                 if(entity[flag] === true){
@@ -52,7 +52,8 @@ export default class masterList{
                 }
             });
             return chosen;
-        })
+        });
+        return entities;
     }
     get Blocks(){
         let temp = [];

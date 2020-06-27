@@ -69,8 +69,8 @@ function makeWords(words,masterList,game){
             let block = blockFactory(type, Object.values(sprite));
             block.addTrait(new Push());
             masterList.addEntity(block.id,block);
-            ///masterList.changeEntityFlag(block.id,"isWord",true);
-            masterList.getEntity(block.id)['isWord'] = true;
+            masterList.changeEntityFlag(block.id,"isWord",true);
+            masterList.changeEntityFlag(block.id,"useRules",true);
             game.addForeground(block.id);
         })
     });

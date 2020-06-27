@@ -26,17 +26,13 @@ export default class Game {
     };
 
     get entities() {
-        return [...this.walls.entities, ...this.sprites.entities, ...this.tiles.entities]
-    }
-
-    get allEntities() {
-        return [...this.entities, ...this.words.entities]
+        return [...this.masterList.allOfFlags('useRender')]
     }
     addForeground(id){
-        this.masterList.getEntity(id).isForeground = true;
+        this.masterList.changeEntityFlag(id,'isForeground',true);
     }
     addBackground(id){
-        this.masterList.getEntity(id).isBackground = true;
+        this.masterList.changeEntityFlag(id,'isBackground',true);
     }
     addLayer(...layer) {
         this.renderer.addLayer(...layer);

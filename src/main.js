@@ -31,12 +31,10 @@ export function gameStart({image, spriteSpec, levelSpec}){
 
     let args = [image, spriteSheets, tint];
 
-    let enforcer = enforcerFactory(game.entities);
-
-    movementParser.entities.push(game.allEntities);
+    let enforcer = enforcerFactory(system.masterList.allOfFlags('useRules'));
 
     let ruleParser = new RuleParser(enforcer);
-    ruleParser.addWords(game.words.entities);
+    ruleParser.addWords(system.masterList.allOfFlags('isWord'));
     ruleParser.parseRules();
     messageCenter.subscribe(ruleParser);
 
@@ -47,11 +45,6 @@ export function gameStart({image, spriteSpec, levelSpec}){
         new Layer(0, drawGrid, [game.gridDiminsions]),
         new Layer(4, game.foreGround.render, args),
         new Layer(3, game.backGround.render, args),
-        new Layer(3, game.words.render, args),
-        new Layer(3, game.tiles.render, args),
-        new Layer(1, game.backgroundTiles.render, args),
-        new Layer(4, game.sprites.render, args),
-        new Layer(2, game.walls.render, args)
     );
 
     game.timer.start()

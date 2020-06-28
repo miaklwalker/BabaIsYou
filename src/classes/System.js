@@ -16,7 +16,7 @@ export default class System{
         this.controls = new Controls();
         this.initialized = false;
         this.restartInProgress = true;
-        this.level = 4
+        this.level = 1
     }
     init(){
         if(!this.initialized){

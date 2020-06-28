@@ -3,6 +3,7 @@ import Entity from "./Entity.js";
 export default class masterList{
     constructor(){
         this.entities = new Map();
+        this.calculated = new Map();
     }
     addEntity(id, entity){
         this.entities.set(id,new Entity(entity));
@@ -24,11 +25,10 @@ export default class masterList{
     }
     purge(){
         this.entities = new Map();
+        this.calculated = new Map();
     }
     forEach(callBack){
-         this.entities.forEach((key,value)=>{
-            callBack(key,value);
-         })
+         this.entities.forEach(callBack)
     }
     map(callback){
         let temp = [];
@@ -47,16 +47,21 @@ export default class masterList{
         return temp;
     }
     allOfFlags(...flags){
-        let entities = this.filter(entity=>{
-            let chosen = false;
-            flags.forEach(flag=>{
-                if(entity[flag] === true){
-                   chosen = true;
-                }
+        if(this.calculated.has(flags)){
+            return this.calculated.get(flags);
+        }else{
+            let entities = this.filter(entity=>{
+                let chosen = false;
+                flags.forEach(flag=>{
+                    if(entity[flag] === true){
+                        chosen = true;
+                    }
+                });
+                return chosen;
             });
-            return chosen;
-        });
-        return entities.map(entity=>entity.block);
+            this.calculated.set(flags,entities);
+            return entities.map(entity=>entity.block);
+        }
     }
     get Blocks(){
         let temp = [];

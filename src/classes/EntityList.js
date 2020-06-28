@@ -2,15 +2,12 @@ import chooseStrategy from "./Stratagies/EntityList.Strategies.js";
 import makeWallSprites from "../helperFunctions/makeWallSprites.js";
 
 
-
-
-
 export default class EntityList {
     constructor(game,flag) {
         this.flag = flag;
         this._divisions = game;
         this.frameCount = 0;
-        this.frameLength = 3;
+        this.frame_length = 2;
         this.frameRate = 12;
         this.buffer = null;
     }
@@ -21,7 +18,7 @@ export default class EntityList {
         return this._divisions.gridDiminsions
     }
     get frame(){
-        return Math.floor(this.frameCount / this.frameRate % this.frameLength);
+        return Math.floor((this.frameCount / this.frameRate) % this.frame_length);
     }
     addEntity(entity) {
         this.entities.push(entity);
@@ -35,17 +32,13 @@ export default class EntityList {
         }
         this.buffer = result;
     }
-    purge(){
-        this.entities = [];
-        this.entities.length = 0;
-        this.buffer = null;
-    }
     render = (canvas, context, image, spriteSheets, tint) => {
         this.entities
             .forEach((member) => {
                 if(member.isRendered && member[this.flag]){
                     let {block:rawEntity}= member;
-                    let entity = rawEntity.draw(this.entities);
+                    let isRendered = this.entities.allOfFlags("isRendered");
+                    let entity = rawEntity.draw(isRendered);
                     let strategy = chooseStrategy(rawEntity.strategy);
                     let [x,y] = entity;
                     let sprite = strategy(spriteSheets,entity,this.frame,this);
@@ -57,12 +50,6 @@ export default class EntityList {
                     )
                 }
             });
-
         this.frameCount++
-    }
-    removeEntity=(targetId)=>{
-        let filteredEntities = this.entities.filter( entity => entity.id === targetId.id);
-        this.entities = filteredEntities
-
     }
 }

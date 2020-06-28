@@ -49,7 +49,6 @@ export default class MovementParser{
     }
     handleMessageFromCollider(msg){
         let{results,candidates,direction} = msg.data;
-        console.log(msg);
         // No Collisions.
         if(results.length === 0){
             this.handleNoCollisions(candidates,direction);
@@ -65,7 +64,6 @@ export default class MovementParser{
             return;
         }
         else{
-            console.log('General Collision');
             this.notifyAll([...candidates,...results],direction,msg)
         }
         this.handleStop();

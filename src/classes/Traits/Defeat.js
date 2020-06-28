@@ -5,6 +5,7 @@ export default class Defeat extends Trait {
         super('DEFEAT');
     }
     update(sprite,message) {
-        sprite.canCollide = true;
+        sprite.canTouch = true;
+
     }
 }

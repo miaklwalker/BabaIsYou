@@ -15,13 +15,13 @@ const game_context = game_canvas.getContext('2d');
 
 
 let system = new System();
-let {game, messageCenter, movementParser} = system;
+let {game, messageCenter} = system;
+
 system.init();
 
 let levelBuilder = makeLevelBuilder(game,system.masterList);
+
 const {tint} = game.renderer;
-
-
 
 export function gameStart({image, spriteSpec, levelSpec}){
 
@@ -30,12 +30,13 @@ export function gameStart({image, spriteSpec, levelSpec}){
     game.foreGround.makeTextures(game.renderer);
 
     let args = [image, spriteSheets, tint];
+    let useRules = system.masterList.allOfFlags('useRules');
+    let enforcer = enforcerFactory(useRules);
 
-    let enforcer = enforcerFactory(system.masterList.allOfFlags('useRules'));
+    let ruleParser = new RuleParser(enforcer,system.masterList);
 
-    let ruleParser = new RuleParser(enforcer);
-    ruleParser.addWords(system.masterList.allOfFlags('isWord'));
     ruleParser.parseRules();
+
     messageCenter.subscribe(ruleParser);
 
     tileMapperInit(game,game_canvas,5);
@@ -43,6 +44,7 @@ export function gameStart({image, spriteSpec, levelSpec}){
     game.addLayer(
         new Layer(1, drawBackground, ['black']),
         new Layer(0, drawGrid, [game.gridDiminsions]),
+        new Layer(5, game.topLevel.render,   args),
         new Layer(4, game.foreGround.render, args),
         new Layer(3, game.backGround.render, args),
     );

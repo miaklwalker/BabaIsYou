@@ -11,6 +11,7 @@ export default class Game {
         this.timer =            new Timer();
         this.gridDiminsions =   19;
         this.masterList =       masterList;
+        this.topLevel   =       new EntityList(this,'isTopLevel');
         this.foreGround =       new EntityList(this,"isForeground");
         this.backGround =       new EntityList(this,"isBackground");
         this.renderer =         new Renderer(this);
@@ -28,6 +29,9 @@ export default class Game {
     get entities() {
         return [...this.masterList.allOfFlags('useRender')]
     }
+    addTopLevel(id){
+        this.masterList.changeEntityFlag(id,'isTopLevel',true);
+    }
     addForeground(id){
         this.masterList.changeEntityFlag(id,'isForeground',true);
     }
@@ -37,7 +41,4 @@ export default class Game {
     addLayer(...layer) {
         this.renderer.addLayer(...layer);
     }
-
-
-
 }

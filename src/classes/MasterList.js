@@ -22,6 +22,9 @@ export default class masterList{
     getEntity(id){
         return this.entities.get(id);
     }
+    purge(){
+        this.entities = new Map();
+    }
     forEach(callBack){
          this.entities.forEach((key,value)=>{
             callBack(key,value);
@@ -53,7 +56,7 @@ export default class masterList{
             });
             return chosen;
         });
-        return entities;
+        return entities.map(entity=>entity.block);
     }
     get Blocks(){
         let temp = [];

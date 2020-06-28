@@ -70,7 +70,7 @@ function makeWords(words,masterList,game){
             block.addTrait(new Push());
             masterList.addEntity(block.id,block);
             masterList.changeEntityFlag(block.id,"isWord",true);
-            masterList.changeEntityFlag(block.id,"useRules",true);
+            masterList.changeEntityFlag(block.id,"useRules",false);
             game.addForeground(block.id);
         })
     });
@@ -80,7 +80,7 @@ function makeSprites(sprites,masterList,game){
         sprites[type].forEach(sprite => {
             let block = blockFactory('sprites', Object.values(sprite));
             masterList.addEntity(block.id,block);
-            game.addForeground(block.id);
+            game.addTopLevel(block.id);
         })
     });
 }

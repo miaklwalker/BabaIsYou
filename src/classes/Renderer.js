@@ -7,10 +7,10 @@ export default class Renderer{
         this.layers = [];
         this.palette = [488, 24, 56, 40];
         this.texture = null;
-        this._divisions = game
+        this.game = game
     }
     get divisions(){
-        return this._divisions.gridDiminsions;
+        return this.game.gridDiminsions;
     }
     purge(){
         this.layers = [];
@@ -77,7 +77,7 @@ export default class Renderer{
                 spriteData.data [i+3] = a
             }
         }
-        context.putImageData(spriteData,0,0)
+        context.putImageData(spriteData,0,0);
         context.globalCompositeOperation = 'destination-in';
         context.drawImage(img, x, y, w, h, ...endDim);
     }

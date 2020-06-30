@@ -5,13 +5,19 @@ import makeOrthagonalMap from "../helperFunctions/makeOrthagonalMap.js";
 
 
 export default class Collider {
-    update(entities,direction){
-        let candidates = entities.filter(entity=>entity.YOU !== undefined);
-        let collidePool = entities.filter(entity=>(
+    addMessage(message){
+        document.dispatchEvent(addMessage(new Message('parser','collider',message)))
+    }
+    getCollisionPool(entities){
+        return entities.filter(entity=>(
             entity.strictCollide ||
             entity.canCollide    ||
             entity.canTouch
         ));
+    }
+    update(entities,direction){
+        let candidates = entities.filter(entity=>entity.YOU !== undefined);
+        let collidePool = this.getCollisionPool(entities);
         let results = {};
         candidates.forEach(candidate=>{
             let orthogonalMap = makeOrthagonalMap(candidate);
@@ -30,9 +36,6 @@ export default class Collider {
             })
         });
         this.addMessage({results:Object.values(results),candidates,collidePool,direction});
-    }
-    addMessage(message){
-        document.dispatchEvent(addMessage(new Message('parser','collider',message)))
     }
     onMessage=(message)=>{
         if(message.from === 'parser' && message.to ==='collision'){

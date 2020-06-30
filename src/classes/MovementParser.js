@@ -8,14 +8,13 @@ export default class MovementParser{
         this.masterList = masterList;
         this.entities = masterList.Blocks;
     }
+    getBlocksWithCollision(){
+        return this.masterList
+            .filter(entity=>entity.useCollision)
+            .map(entity=>entity.block);
+    }
     parseFromControls(msg){
-        let blocksWithCollision = this.masterList
-            .filter(entity=>{
-           return entity.useCollision;
-            })
-            .map(entity=>{
-                return entity.block
-            });
+        let blocksWithCollision = this.getBlocksWithCollision();
         this.sendMessage(
             'collision',
             'parser',
@@ -47,6 +46,7 @@ export default class MovementParser{
             'finished'
         )
     }
+    //todo Still need to fix the push overlap touch bug.
     handleMessageFromCollider(msg){
         let{results,candidates,direction} = msg.data;
         // No Collisions.
@@ -86,8 +86,7 @@ export default class MovementParser{
             this.masterList.changeEntityFlag(entity.id,'useCollision',true);
         }else{
             let id = makeUniqueId(12);
-            let wrappedEntity = new Entity(entity);
-            this.masterList.addEntity(wrappedEntity);
+            this.masterList.addEntity(id,entity);
         }
     }
     removeEntity(targetId){

@@ -11,10 +11,6 @@ export default class MessageCenter{
     }
     subscribe(...recipient){
         recipient.forEach(listener=>{
-            let entity = new Entity(listener);
-
-            entity.useMessage = true;
-            entity.useCollision = false;
 
             let id =  this.psuedoID(12);
             this.recipients.addEntity(id,listener);
@@ -23,6 +19,7 @@ export default class MessageCenter{
             this.recipients.changeEntityFlag(id,'useRules',false);
             this.recipients.changeEntityFlag(id,'useCollision',false);
             this.recipients.changeEntityFlag(id,'useRender',false);
+
         })
     }
     unsubscribe(id){
@@ -34,7 +31,6 @@ export default class MessageCenter{
         }else{
             this.messages.push(event.detail)
         }
-
     };
     purge(){
         this.queue = [];

@@ -12,8 +12,6 @@ import System from "./classes/System.js";
 const game_canvas = document.getElementById('screen');
 const game_context = game_canvas.getContext('2d');
 
-
-
 let system = new System();
 let {game, messageCenter} = system;
 
@@ -53,7 +51,7 @@ export function gameStart({image, spriteSpec, levelSpec}){
 }
 
 game.setup(system.level).then(gameStart);
-    game.timer.update = (deltaTime) => {
+    game.timer.update = () => {
         game.renderer.render(game_canvas, game_context);
         messageCenter.update();
     };

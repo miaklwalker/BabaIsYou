@@ -1,32 +1,60 @@
-import {describe,expect,test,jest} from "@jest/globals";
+import {describe,expect,test,jest,it} from "@jest/globals";
 import Collider from "../../../src/classes/Collider.js";
 import Block from "../../../src/classes/Block.js";
+import SpriteBlock from "../../../src/classes/Blocks/spriteBlock.js";
+import You from "../../../src/classes/Traits/You.js";
 
-
-describe('Collider Spec',()=>{
+describe(`Collider Class Spec`,()=>{
     let collider = new Collider();
+    describe("Collider.getCollision Pool",()=>{
+        it("Returns back all entities that can collide",()=>{
+            let entityOne = new Block(1,1,"WALL","BLOCK");
+            entityOne.canCollide = true;
 
-    collider.addMessage = jest.fn((message)=>{});
+            let entityTwo = new Block(1,2,"WALL","BLOCK");
+            entityTwo.strictCollide = true;
 
-    let baba = new Block(1,1,'BABA','SPRITE');
-    baba.YOU = true;
+            let entityThree = new Block(1,3,"TILE","TILE");
+            entityThree.canTouch = true;
 
-    let wall = new Block(1,2,'WALL','WALL');
-    wall.canCollide = true;
+            let entityFour = new Block(1,4,"WALL","BLOCK");
 
-    let entityOther = [baba,wall];
+            let entities = [entityTwo,entityOne,entityThree,entityFour];
 
-    baba.updateAndFindNeighbors = jest.fn(baba.updateAndFindNeighbors);
-    wall.updateAndFindNeighbors = jest.fn(wall.updateAndFindNeighbors);
+            let collidePool = collider.getCollisionPool(entities);
 
-    test('Collider Should call add message',()=>{
-        collider.update(entityOther,'down');
-        expect(collider.addMessage).toHaveBeenCalled();
+            expect(collidePool).toHaveLength(3);
+            expect(collidePool).toEqual(
+                    expect.arrayContaining(
+                            [
+                                entityOne,
+                                entityTwo,
+                                entityThree
+                            ]
+                    )
+            )
+        })
     });
 
-    test('It should call the updateAndFindNeighbor routine on non-YOU-blocks',()=>{
-        collider.update(entityOther,'down');
-        expect(baba.updateAndFindNeighbors).not.toHaveBeenCalled();
-        expect(wall.updateAndFindNeighbors).toHaveBeenCalled();
-    });
+    describe.skip(`Collider.update `,()=>{
+        let canTouch = block => block.canTouch = true;
+        let canCollide = block => block.canCollide = true;
+        let strictCollide = block => block.strictCollide = true;
+
+        let actor = new Block(1,1,"BABA","Sprite");
+        actor.addTrait(new You());
+        let tile = new Block(1,2,"TILE","TILE");
+        let wall = new Block(1,3,"WALL","WALL");
+        let rock = new Block(1,4,"ROCK","TILE");
+
+
+
+
+    })
+
+
+
+
 });
+
+

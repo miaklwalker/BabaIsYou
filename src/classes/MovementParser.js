@@ -1,7 +1,7 @@
 import addMessage from "../CustomEvents/addmessage.js";
 import Message from "./Message.js";
 import makeUniqueId from "../helperFunctions/MakeID.js";
-import Entity from "./Entity.js";
+
 
 export default class MovementParser{
     constructor(masterList){

@@ -35,8 +35,9 @@ export default class Collider {
                 }
             })
         });
-        this.addMessage({results:Object.values(results),candidates,collidePool,direction});
+        this.addMessage({results:Object.values(results),candidates,direction});
     }
+
     onMessage=(message)=>{
         if(message.from === 'parser' && message.to ==='collision'){
             let direction = message.data.msg.data.direction;

@@ -30,10 +30,24 @@ describe('Block Class',()=>{
             expect(block.canCollide).toBe(false);
         });
 
-        test('Block Draw method returns its position as an array',()=>{
-            block.draw = jest.fn(block.draw);
-            block.draw();
-            expect(block.draw).toHaveReturnedWith([1,1])
+        describe('When the draw method is called Block returns',()=>{
+            let drawCall = block.draw();
+            test('Its position as in the first two indices',()=>{
+                expect(drawCall[0]).toBe(block.position.x);
+                expect(drawCall[1]).toBe(block.position.y);
+            });
+            test('Its name in the third indices',()=>{
+               expect(drawCall[2]).toBe(block.name);
+            });
+            test('Its Group in the fourth indices',()=>{
+                expect(drawCall[3]).toBe(block.group);
+            });
+            test('Its Type to be in the fifth indices',()=>{
+                expect(drawCall[4]).toBe(block.type);
+            });
+            test(`It's alias to be in the sixth indices`,()=>{
+                expect(drawCall[5]).toBe(block.alias);
+            })
         });
 
         describe('Test Block Traits',()=>{
@@ -91,34 +105,15 @@ describe('Block Class',()=>{
 
 
     });
-    describe('Noun Block',()=>{
-        let testBlock = new NounBlock(1,1,'FRANK');
-        testBlock.id = 'FRANK';
-        testBlock.draw = jest.fn(testBlock.draw);
-        testBlock.draw();
-        expect(testBlock.draw).toHaveReturnedWith([1,1,'FRANK','words','noun','FRANK'])
-    });
-    describe('Operator Block',()=>{
-        let testBlock = new OperatorBlock(1,1,'FRANK');
-        testBlock.id = 'FRANK';
-        testBlock.draw = jest.fn(testBlock.draw);
-        testBlock.draw();
-        expect(testBlock.draw).toHaveReturnedWith([1,1,'FRANK','words','operators','FRANK'])
-    });
-    describe('Property Block',()=>{
-        let testBlock = new PropertyBlock(1,1,'FRANK');
-        testBlock.id = 'FRANK';
-        testBlock.draw = jest.fn(testBlock.draw);
-        testBlock.draw();
-        expect(testBlock.draw).toHaveReturnedWith([1,1,'FRANK','words','properties','FRANK'])
-    });
+
     describe('Sprite Block',()=>{
         let testBlock = new SpriteBlock(1,1,'FRANK');
         test('sprite block draw Method',()=>{
             testBlock.id = 'FRANK';
             testBlock.draw = jest.fn(testBlock.draw);
             testBlock.draw();
-            expect(testBlock.draw).toHaveReturnedWith([1,1,'FRANK','sprites','sprites','FRANK','right','idle'])
+            const{position:{x,y},name,group,type,alias,action,direction}=testBlock;
+            expect(testBlock.draw).toHaveReturnedWith([x,y,name,group,type,alias,direction,action])
         });
         test('Sprite Block update method',()=>{
             let testMessage = {

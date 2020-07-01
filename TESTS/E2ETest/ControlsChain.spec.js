@@ -18,7 +18,7 @@ function simulateKeyPress(context,code){
     context.dispatchEvent(keyEvent);
 }
 
-describe('The Main Control Chain',()=>{
+describe.skip('The Main Control Chain',()=>{
     // Setting the individual Components for the system
     let controls = new Controls();
     let messageCenter = new MessageCenter();

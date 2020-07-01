@@ -3,9 +3,11 @@ import Entity from "./Entity.js";
 export default class masterList{
     constructor(){
         this.entities = new Map();
+        this.buffer = new Map();
     }
     addEntity(id, entity){
         this.entities.set(id,new Entity(entity));
+        this.invalidateBuffer();
     }
     removeEntity(id){
         this.entities.delete(id)
@@ -14,10 +16,15 @@ export default class masterList{
         let entity =this.entities.get(id);
         entity.changeBlockType(name);
         this.entities.set(id,entity);
+        this.invalidateBuffer();
     }
     changeEntityFlag(id,flag,value){
-        let updatedEntity = this.entities.get(id)
+        let updatedEntity = this.entities.get(id);
         updatedEntity[flag] = value;
+        this.invalidateBuffer();
+    }
+    invalidateBuffer(){
+        this.buffer = new Map();
     }
     getEntity(id){
         return this.entities.get(id);
@@ -46,6 +53,10 @@ export default class masterList{
         return temp;
     }
     allOfFlags(...flags){
+        let flagTest = flags.join();
+        if(this.buffer.has(flagTest)){
+            return this.buffer.get(flagTest);
+        }else{
             let entities = this.filter(entity=>{
                 let chosen = false;
                 flags.forEach(flag=>{
@@ -55,7 +66,10 @@ export default class masterList{
                 });
                 return chosen;
             });
-            return entities.map(entity=>entity.block);
+            let mapped = entities.map(entity=>entity.block);
+            this.buffer.set(flagTest,mapped);
+            return mapped;
+        }
     }
     get Blocks(){
         let temp = [];

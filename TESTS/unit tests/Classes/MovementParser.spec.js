@@ -13,7 +13,7 @@ describe('Movement Parser',()=>{
         // - with no collisions
         // - with a block containing a stop
         // - collisions with no stop
-    test('From controls path',()=>{
+    test.skip('From controls path',()=>{
         let msg = {
             to:'parser',
             from:'controls',
@@ -28,14 +28,14 @@ describe('Movement Parser',()=>{
         })
     });
 
-    test('Purge Should remove all entities from movement parser',()=>{
+    test.skip('Purge Should remove all entities from movement parser',()=>{
         movementParser.entities.push({foo:'Bar'});
         movementParser.purge()
         expect(movementParser.entities).toHaveLength(0);
 
     });
 
-    test('Remove entity should remove a specified entity from list',()=>{
+    test.skip('Remove entity should remove a specified entity from list',()=>{
         let entity = {
             id:1013,
         };

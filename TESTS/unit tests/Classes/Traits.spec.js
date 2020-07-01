@@ -20,7 +20,7 @@ import MessageCenter from "../../../src/classes/MessageCenter.js";
 import Message from "../../../src/classes/Message.js";
 import addMessage from "../../../src/CustomEvents/addmessage.js";
 
-describe('Traits',()=>{
+describe.skip('Traits',()=>{
     let messageCenter,id,sprite;
     messageCenter = new MessageCenter();
     sprite = new SpriteBlock(1,1,"BABA");

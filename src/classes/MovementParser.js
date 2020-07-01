@@ -56,6 +56,7 @@ export default class MovementParser{
         else if (results[0].canTouch){
             let entity = results[0];
             let id = entity.id;
+            console.log(results);
             this.sendMessage(id,'parser', {direction,msg});
             this.handleNoCollisions(candidates,direction);
         }

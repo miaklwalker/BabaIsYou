@@ -62,7 +62,8 @@ export default class Block {
         let right = new Vector(x+1 , y).same(other.position);
         let up = new Vector(x,y-1).same(other.position);
         let down = new Vector(x,y+1).same(other.position);
-        return [left,down,right,up];
+        let overlap = new Vector(x,y).same(other.position) && other !== this;
+        return [left,down,right,up,overlap];
     };
     updateAndFindNeighbors=(neighbors)=>{
         let matches = {};
@@ -73,7 +74,7 @@ export default class Block {
         neighbors.forEach(other => {
             let result = this.checkNeighbors(other);
             if(result.includes(true)){
-                const [left,down,right,up]=result;
+                const [left,down,right,up,overlap]=result;
                 if(left) {
                     matches.left = other;
                     this.neighbors.left = true
@@ -89,6 +90,9 @@ export default class Block {
                 if(down) {
                     matches.down = other;
                     this.neighbors.down = true
+                }
+                if(overlap){
+                    matches.overlap = other;
                 }
             }
         });

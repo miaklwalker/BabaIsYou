@@ -35,7 +35,15 @@ export default class Collider {
                 }
             })
         });
-        this.addMessage({results:Object.values(results),candidates,direction});
+        // Check for overlaps
+        let overlaps = [];
+        Object.values(results).forEach(block=>{
+            let hasOverlaps = block.updateAndFindNeighbors(collidePool)["overlap"];
+           if(hasOverlaps){
+               overlaps.push(hasOverlaps);
+           }
+        });
+        this.addMessage({results:Object.values(results),overlaps,candidates,direction});
     }
 
     onMessage=(message)=>{

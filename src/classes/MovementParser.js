@@ -48,7 +48,7 @@ export default class MovementParser{
     }
     //todo Still need to fix the push overlap touch bug.
     handleMessageFromCollider(msg){
-        let{results,candidates,direction} = msg.data;
+        let{results,candidates,direction,overlaps} = msg.data;
         // No Collisions.
         if(results.length === 0){
             this.handleNoCollisions(candidates,direction);
@@ -56,8 +56,8 @@ export default class MovementParser{
         else if (results[0].canTouch){
             let entity = results[0];
             let id = entity.id;
-            console.log(results);
             this.sendMessage(id,'parser', {direction,msg});
+            this.notifyAll(overlaps,direction,msg);
             this.handleNoCollisions(candidates,direction);
         }
         else if(results.map(entity=>entity.strictCollide).some(trait=>trait)){

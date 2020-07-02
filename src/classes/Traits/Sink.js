@@ -8,14 +8,21 @@ export default class Sink extends Trait {
     }
     update(sprite,message) {
         sprite.canTouch = true;
+
         if(message.to === sprite.id ){
-            let {candidates,results} = message.data.msg.data;
-            let toCheck = [...results,...candidates]
-            if(toCheck.map(candidate=>sprite.isNeighbor(candidate)).includes(true)){
-                let sunk = [...results,...candidates].filter(candidate=>sprite.isNeighbor(candidate));
-                console.log(sunk);
-                document.dispatchEvent(addMessage(new Message('system','defeat',[sprite,sunk[0]])))
-            }
+            const {results,overlaps,candidates} = message.data.msg.data;
+            let toCheck = [...results,...overlaps,...candidates];
+            console.log(toCheck);
+            toCheck.forEach(entity=>{
+                if(entity.position.same(sprite.position)){
+                    console.log(entity.name);
+                    document.dispatchEvent(addMessage(new Message('system','defeat',entity.id)))
+                }else{
+                    console.log(entity.name);
+                    console.log(sprite.position);
+                    console.log(entity.position);
+                }
+            })
         }
     }
 }

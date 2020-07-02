@@ -16,7 +16,7 @@ export default class System{
         this.controls = new Controls();
         this.initialized = false;
         this.restartInProgress = true;
-        this.level = 1
+        this.level = 4;
     }
     init(){
         if(!this.initialized){
@@ -53,9 +53,8 @@ export default class System{
             }
             this.restart()
         }else if(toSystem){
-            let [tile,sprite] = message.data;
-            this.removeEntity(tile.id);
-            this.removeEntity(sprite.id);
+            let id = message.data;
+            this.removeEntity(id);
         }
     }
 }

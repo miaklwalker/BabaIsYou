@@ -9,9 +9,7 @@ export default class MovementParser{
         this.entities = masterList.Blocks;
     }
     getBlocksWithCollision(){
-        return this.masterList
-            .filter(entity=>entity.useCollision)
-            .map(entity=>entity.block);
+        return this.masterList.allOfFlags("useCollision");
     }
     parseFromControls(msg){
         let blocksWithCollision = this.getBlocksWithCollision();
@@ -22,48 +20,57 @@ export default class MovementParser{
         );
     }
     handleNoCollisions(candidates,direction){
+        // If there is no collision send a message with direction to all candidates for movement
         candidates.forEach(entity=>{
             let id = entity.id;
-            this.sendMessage(id, 'parser', {direction})
+            this.sendMessage(
+                id,
+                'parser',
+                {direction},
+                false)
             }
         )
     }
-    sendMessage(to,from,message){
+    sendMessage(to,from,message,priority){
         document.dispatchEvent(
             addMessage(
                 new Message(
                     to,
                     from,
                     message
-                )
+                ),
+                priority,
             )
         )
     }
     handleStop(){
+        // If no blocks need to move the controls should reset allowing another player input
         this.sendMessage(
             'controls',
             'parser',
             'finished'
         )
     }
-    //todo Still need to fix the push overlap touch bug.
     handleMessageFromCollider(msg){
         let{results,candidates,direction,overlaps} = msg.data;
         // No Collisions.
         if(results.length === 0){
             this.handleNoCollisions(candidates,direction);
         }
+        // Touch
         else if (results[0].canTouch){
             let entity = results[0];
             let id = entity.id;
-            this.sendMessage(id,'parser', {direction,msg});
+            this.sendMessage(id,'parser', {direction,msg},false);
             this.notifyAll(overlaps,direction,msg);
             this.handleNoCollisions(candidates,direction);
         }
+        // Strict Collide
         else if(results.map(entity=>entity.strictCollide).some(trait=>trait)){
             this.handleStop();
             return;
         }
+        // General Collision
         else{
             this.notifyAll([...candidates,...results],direction,msg)
         }
@@ -71,8 +78,12 @@ export default class MovementParser{
     }
     notifyAll(recipients,direction,msg){
         recipients.forEach(entity=>{
-                this.sendMessage(entity.id, 'parser',
-                    {direction, msg})
+                this.sendMessage(
+                    entity.id,
+                    'parser',
+                    {direction, msg},
+                    true
+                    )
         })
     }
     onMessage(msg){

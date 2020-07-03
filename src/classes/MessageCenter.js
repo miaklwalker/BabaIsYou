@@ -29,7 +29,11 @@ export default class MessageCenter{
         if(this.sending){
             this.queue.push(event.detail)
         }else{
-            this.messages.push(event.detail)
+            if(!event.detail["priority"]) {
+                this.messages.push(event.detail)
+            }else{
+                this.messages.unshift(event.detail)
+            }
         }
     };
     purge(){
@@ -42,7 +46,7 @@ export default class MessageCenter{
             this.recipients.forEach(recipient=>{
                 if(recipient['useMessage']) {
                     recipient.onMessage(message);
-                };
+                }
             })
         });
         this.messages = [];

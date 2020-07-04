@@ -18,7 +18,11 @@ function defeatImplement(entity,self,contrary,direction){
                     };
                     let correctedPosition = additiveForce[direction];
                     correctedPosition.addVector(entity.position);
-                    if(correctedPosition.same(self.position)){
+                    if(
+                        (correctedPosition.same(self.position)||
+                        entity.position.same(self.position)) &&
+                        entity[contrary] === undefined
+                    ){
                         return [entity.id,self.id];
                     }
                 })));

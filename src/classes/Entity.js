@@ -6,12 +6,16 @@ export default class Entity {
     constructor(block){
         this.block = block;
         this.isWord = false;
+
         this.isTopLevel = false;
         this.isForeground = false;
+
         this.isBackground = false;
         this.isRendered = true;
+
         this.useMessage = true;
         this.useCollision = true;
+
         this.useRules = true;
     };
     changeBlockType(name){

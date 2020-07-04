@@ -25,11 +25,12 @@ export function gameStart({image, spriteSpec, levelSpec}){
 
     let spriteSheets = parseJsonToSpriteSheet(spriteSpec);
     levelBuilder(spriteSpec, levelSpec);
+
     game.foreGround.makeTextures(game.renderer);
+    game.backGround.makeTextures(game.renderer);
 
     let args = [image, spriteSheets, tint];
-    let useRules = system.masterList.allOfFlags('useRules');
-    let enforcer = enforcerFactory(useRules);
+    let enforcer = enforcerFactory(system.masterList);
 
     let ruleParser = new RuleParser(enforcer,system.masterList);
 
@@ -49,11 +50,9 @@ export function gameStart({image, spriteSpec, levelSpec}){
 
     game.timer.start()
 }
-
 game.setup(system.level).then(gameStart);
     game.timer.update = () => {
         game.renderer.render(game_canvas, game_context);
         messageCenter.update();
     };
 
-console.log(system);

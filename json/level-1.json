@@ -55,58 +55,6 @@
     ]
   },
   "wall": {
-    "bricks": {
-      "tint": 15,
-      "blocks": []
-    },
-    "clouds": {
-      "tint": 15,
-      "blocks": []
-    },
-    "foliage": {
-      "tint": 15,
-      "blocks": []
-    },
-    "ice": {
-      "tint": 15,
-      "blocks": []
-    },
-    "snow": {
-      "tint": 15,
-      "blocks": []
-    },
-    "moss": {
-      "tint": 15,
-      "blocks": []
-    },
-    "ocean": {
-      "tint": 15,
-      "blocks": []
-    },
-    "cliff": {
-      "tint": 15,
-      "blocks": []
-    },
-    "fence": {
-      "tint": 15,
-      "blocks": []
-    },
-    "hedge": {
-      "tint": 15,
-      "blocks": []
-    },
-    "smallPipe": {
-      "tint": 15,
-      "blocks": []
-    },
-    "blob": {
-      "tint": 15,
-      "blocks": []
-    },
-    "pipe": {
-      "tint": 15,
-      "blocks": []
-    },
     "base":{
       "tint": 8,
       "blocks": [
@@ -243,8 +191,6 @@
           "tint": 5
         }]
     }
-
-
 },
   "floor": [
     {

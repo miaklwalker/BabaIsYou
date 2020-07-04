@@ -11,17 +11,23 @@ function clearRules(entities){
     });
 }
 
-function enforceRules(rules,entities){
-    clearRules(entities);
+function enforceRules(rules,masterList){
+    let useRules = masterList.allOfFlags("useRules");
+    clearRules(useRules);
         rules.forEach(({name, operator, property}) => {
             if(property instanceof NounBlock){
-                entities.forEach(entity => {
-                    if ((entity.name === name.name) && operator.name === 'IS') {
-                            entity.name = property.name;
+                let temp = [];
+                useRules.forEach(block=>{
+                    if(block.name === name.name){
+
+                        temp.push(block.id);
                     }
-                })
+                });
+                temp.forEach(id=>{
+                    masterList.changeEntity(id,property.name);
+                });
             }else if(property instanceof PropertyBlock){
-                entities.forEach(entity => {
+                useRules.forEach(entity => {
                     if ((entity.name === name.name) && operator.name === 'IS') {
                             entity.addTrait(traitFactory(property.name))
                     }

@@ -15,8 +15,7 @@ export default class System{
         this.movementParser =   new MovementParser(this.masterList);
         this.controls = new Controls();
         this.initialized = false;
-        this.restartInProgress = true;
-        this.level = 1;
+        this.level = 0;
     }
     init(){
         if(!this.initialized){
@@ -31,12 +30,10 @@ export default class System{
         this.messageCenter.subscribe(this);
     }
     restart(){
-            this.restartInProgress = true;
             this.masterList.purge();
             this.game.renderer.purge();
             this.init();
             this.game.setup(this.level).then(gameStart);
-            this.restartInProgress = false;
     }
     removeEntity(id){
         this.masterList.removeEntity(id);

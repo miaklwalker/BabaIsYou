@@ -13,10 +13,9 @@ export default function makeLevelBuilder(game,masterList){
 
         let colors = {};
 
-            Object.keys(levelSpec.wall)
-                .forEach(type=>colors[type] = levelSpec.wall[type].tint);
-            Object.keys(spriteSpec['textures'])
-                .forEach(texture=> textureMap[texture] = buildTexturePack(...spriteSpec.textures[texture]))
+        let wallColors = Object.keys(levelSpec.wall);
+            wallColors.forEach(type=>colors[type] = levelSpec.wall[type].tint)
+            wallColors.forEach(texture=> textureMap[texture] = buildTexturePack(...spriteSpec.textures[texture]));
 
         game.renderer.changePalette(spriteSpec["palettes"][levelSpec["palettes"]]);
         game.renderer.addTexture(textureMap);

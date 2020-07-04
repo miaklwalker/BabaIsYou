@@ -7,6 +7,7 @@ export default class Wall extends Block{
         super(x,y,name,'WALL');
         this.strategy = 'WALL';
         this.alias = 'single';
+        this.texture = "base";
     }
     draw(others){
         this.chooseName(others);

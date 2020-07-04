@@ -10,10 +10,12 @@ export default class masterList{
         this.invalidateBuffer();
     }
     removeEntity(id){
-        this.entities.delete(id)
+        this.entities.delete(id);
+        this.invalidateBuffer();
     }
     changeEntity(id,name){
-        let entity =this.entities.get(id);
+        let entity = this.entities.get(id);
+
         entity.changeBlockType(name);
         this.entities.set(id,entity);
         this.invalidateBuffer();
@@ -31,7 +33,7 @@ export default class masterList{
     }
     purge(){
         this.entities = new Map();
-        this.calculated = new Map();
+        this.buffer = new Map();
     }
     forEach(callBack){
          this.entities.forEach(callBack)

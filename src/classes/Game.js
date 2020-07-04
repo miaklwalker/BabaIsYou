@@ -7,15 +7,14 @@ import loadJSON from "../asyncLoaders/loadJSON.js";
 export default class Game {
     image;
     spriteSpec;
-    constructor() {
+    constructor(masterList) {
         this.timer =            new Timer();
         this.gridDiminsions =   19;
+        this.masterList =       masterList;
+        this.topLevel   =       new EntityList(this,'isTopLevel');
+        this.foreGround =       new EntityList(this,"isForeground");
+        this.backGround =       new EntityList(this,"isBackground");
         this.renderer =         new Renderer(this);
-        this.words =            new EntityList(this);
-        this.tiles =            new EntityList(this);
-        this.backgroundTiles =  new EntityList(this);
-        this.walls =            new EntityList(this);
-        this.sprites =          new EntityList(this);
     }
 
     setup = async (level) => {
@@ -28,42 +27,18 @@ export default class Game {
     };
 
     get entities() {
-        return [...this.walls.entities, ...this.sprites.entities, ...this.tiles.entities]
+        return [...this.masterList.allOfFlags('useRender')]
     }
-
-    get allEntities() {
-        return [...this.entities, ...this.words.entities]
+    addTopLevel(id){
+        this.masterList.changeEntityFlag(id,'isTopLevel',true);
     }
-
-    addWords(entity) {
-        this.words.addEntity(entity);
+    addForeground(id){
+        this.masterList.changeEntityFlag(id,'isForeground',true);
     }
-
-    addWall(wall) {
-        this.walls.addEntity(wall);
+    addBackground(id){
+        this.masterList.changeEntityFlag(id,'isBackground',true);
     }
-
-    addBackgroundTile(bgTile) {
-        this.backgroundTiles.addEntity(bgTile);
-    }
-
-    addTile(tile) {
-        this.tiles.addEntity(tile);
-    }
-
     addLayer(...layer) {
         this.renderer.addLayer(...layer);
     }
-
-    addSprite(sprite) {
-        this.sprites.addEntity(sprite);
-    }
-    removeEntity(id){
-        this.tiles.removeEntity(id);
-        this.sprites.removeEntity(id);
-        this.walls.removeEntity(id);
-        this.backgroundTiles.removeEntity(id);
-        this.words.removeEntity(id);
-    }
-
 }

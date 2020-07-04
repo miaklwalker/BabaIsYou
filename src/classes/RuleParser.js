@@ -1,6 +1,5 @@
 import OperatorBlock from "./Blocks/OperatorBlock.js";
-import NounBlock from "./Blocks/NounBlock.js";
-import PropertyBlock from "./Blocks/PropertyBlock.js";
+
 
 let handleFilter =(word)=>{ return (other) =>{if(word.id !== other.id )return other;}};
 let checkIfValid = ([left,right,up,down]) =>{
@@ -16,12 +15,14 @@ let checkIfValid = ([left,right,up,down]) =>{
 };
 
 export default class RuleParser{
-    constructor(callback){
-        this.words = [];
+    constructor(callback,masterList){
+        this.masterList = masterList;
         this.rules = [];
         this.callback = callback;
     }
-
+    get words (){
+        return this.masterList.allOfFlags("isWord");
+    }
     makeRule(name,operator,property){
         this.rules.push({
             name,
@@ -29,7 +30,6 @@ export default class RuleParser{
             property,
         })
     }
-
     parseRules(){
         this.rules = [];
         this.words.forEach(word=>{
@@ -58,20 +58,10 @@ export default class RuleParser{
             }
         })
     }
-
     onMessage({from}){
         if(from === 'controls'){
             this.parseRules();
             this.callback(this.rules);
         }
-    }
-
-    addWords(words){
-        this.words.push(...words);
-    }
-
-    purge(){
-        this.words = [];
-        this.rules = [];
     }
 }

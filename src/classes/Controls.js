@@ -2,11 +2,14 @@ import addMessage from "../CustomEvents/addmessage.js";
 import Message from "./Message.js";
 
 
-const UP      = Symbol('up');
-const DOWN    = Symbol('down');
-const RIGHT   = Symbol('right');
-const LEFT    = Symbol('left');
-const RESTART = Symbol('restart');
+const directions = {
+    UP:Symbol('up'),
+    DOWN:Symbol('down'),
+    LEFT:Symbol('left'),
+    RIGHT:Symbol('right'),
+    RESTART:Symbol('restart'),
+};
+
 
 class KeyMap{
     mapKey(keyCode,symbol){
@@ -16,11 +19,11 @@ class KeyMap{
 
 const defaultControls = new KeyMap();
 
-defaultControls.mapKey('KeyA',LEFT);
-defaultControls.mapKey('KeyD',RIGHT);
-defaultControls.mapKey('KeyW',UP);
-defaultControls.mapKey('KeyS',DOWN);
-defaultControls.mapKey('KeyR',RESTART);
+defaultControls.mapKey('KeyA',directions.LEFT);
+defaultControls.mapKey('KeyD',directions.RIGHT);
+defaultControls.mapKey('KeyW',directions.UP);
+defaultControls.mapKey('KeyS',directions.DOWN);
+defaultControls.mapKey('KeyR',directions.RESTART);
 
 
 
@@ -31,11 +34,11 @@ const dispatchMessageFromControls = (code,direction,action) =>{
 
 export default class Controls { 
     constructor(){
-        this[UP] = false;
-        this[DOWN] = false;
-        this[RIGHT] = false;
-        this[LEFT] = false;
-        this[RESTART] = false;
+        this[directions.UP] = false;
+        this[directions.DOWN] = false;
+        this[directions.RIGHT] = false;
+        this[directions.LEFT] = false;
+        this[directions.RESTART] = false;
         this.keyMap  = defaultControls;
         this.timeout = 150;
         this.lastPressed = '';
@@ -44,7 +47,7 @@ export default class Controls {
     keyDown=(event)=>{
         const keyPressed = this.keyMap[event.code];
         if(keyPressed === undefined )return;
-        if( keyPressed === RESTART){
+        if( keyPressed === directions.RESTART){
             document.dispatchEvent(addMessage(new Message('system','controls','RESTART')));
             return
         }
@@ -61,13 +64,14 @@ export default class Controls {
     keyUp = (event)=>{
         const keyPressed = this.keyMap[event.code];
         this[keyPressed] = false;
-        if(keyPressed === undefined || keyPressed === RESTART)return;
+        if(keyPressed === undefined || keyPressed === directions.RESTART)return;
         if(this.allUp()){
             dispatchMessageFromControls(event.code,this.lastPressed,'idle')
         }
 
     };
     allUp(){
+        const {UP,LEFT,RIGHT,DOWN} = directions;
         return !this[UP] && !this[DOWN] && !this[RIGHT] && !this[LEFT];
     }
     onMessage(message){

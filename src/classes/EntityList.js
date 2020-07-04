@@ -2,60 +2,54 @@ import chooseStrategy from "./Stratagies/EntityList.Strategies.js";
 import makeWallSprites from "../helperFunctions/makeWallSprites.js";
 
 
-
-
-
 export default class EntityList {
-    constructor(game) {
-        this.entities = [];
+    constructor(game,flag) {
+        this.flag = flag;
         this._divisions = game;
         this.frameCount = 0;
-        this.frameLength = 3;
+        this.frame_length = 2;
         this.frameRate = 12;
         this.buffer = null;
+    }
+    get entities(){
+    return this._divisions.masterList
     }
     get divisions(){
         return this._divisions.gridDiminsions
     }
     get frame(){
-        return Math.floor(this.frameCount / this.frameRate % this.frameLength);
+        return Math.floor((this.frameCount / this.frameRate) % this.frame_length);
     }
     addEntity(entity) {
         this.entities.push(entity);
     }
-    makeTextures({texture,colorMap}){
+    makeTextures({texture:textures,colorMap}){
         let result = {};
-        for(let single in texture){
-            let textureToMap = texture[single];
-            let colorForMap = colorMap[single];
-            result[single] = makeWallSprites(textureToMap,colorForMap);
+        for(let texture in textures){
+            let textureToMap = textures[texture];
+            let colorForMap = colorMap[texture];
+            result[texture] = makeWallSprites(textureToMap,colorForMap);
         }
         this.buffer = result;
     }
-    purge(){
-        this.entities = [];
-        this.entities.length = 0;
-        this.buffer = null;
-    }
     render = (canvas, context, image, spriteSheets, tint) => {
         this.entities
-            .forEach((rawEntity) => {
-                let entity = rawEntity.draw(this.entities);
-                let strategy = chooseStrategy(rawEntity.strategy);
-                let [x,y] = entity;
-                let sprite = strategy(spriteSheets,entity,this.frame,this,rawEntity);
-                sprite.render(
-                    canvas, context,
-                    tint,
-                    x * canvas.width / this.divisions[0],
-                    y * canvas.height / this.divisions[1], image
-                )
+            .forEach((member) => {
+                if(member.isRendered && member[this.flag]){
+                    let {block:rawEntity}= member;
+                    let isRendered = this.entities.allOfFlags("isRendered");
+                    let entity = rawEntity.draw(isRendered);
+                    let strategy = chooseStrategy(rawEntity.strategy);
+                    let [x,y] = entity;
+                    let sprite = strategy(spriteSheets,entity,this.frame,this);
+                    sprite.render(
+                        canvas, context,
+                        tint,
+                        x * canvas.width / this.divisions[0],
+                        y * canvas.height / this.divisions[1], image
+                    )
+                }
             });
         this.frameCount++
-    }
-    removeEntity=(targetId)=>{
-        let filteredEntities = this.entities.filter( entity => entity.id === targetId.id);
-        this.entities = filteredEntities
-
     }
 }

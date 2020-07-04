@@ -16,7 +16,7 @@ describe('Renderer',()=>{
         expect(renderer.layers).toHaveLength(0);
         expect(renderer.palette).toEqual(expect.arrayContaining([488,24,56,40]));
         expect(renderer.texture).toBeNull();
-        expect(renderer._divisions).toEqual(game);
+        expect(renderer.game).toEqual(game);
     });
     test('Getter Method " divisions "',()=>{
         expect(renderer.divisions).toEqual(expect.arrayContaining([20,20]));

@@ -1,36 +1,50 @@
 import addMessage from "../CustomEvents/addmessage.js";
 import Message from "./Message.js";
+import makeUniqueId from "../helperFunctions/MakeID.js";
+
 
 export default class MovementParser{
-    constructor(){
-        this.entities = [];
+    constructor(masterList){
+        this.masterList = masterList;
+        this.entities = masterList.Blocks;
+    }
+    getBlocksWithCollision(){
+        return this.masterList.allOfFlags("useCollision");
     }
     parseFromControls(msg){
+        let blocksWithCollision = this.getBlocksWithCollision();
         this.sendMessage(
             'collision',
             'parser',
-            {entities:this.entities.flat(),msg}
+            {entities:blocksWithCollision,msg}
         );
     }
     handleNoCollisions(candidates,direction){
+        // If there is no collision send a message with direction to all candidates for movement
         candidates.forEach(entity=>{
             let id = entity.id;
-            this.sendMessage(id, 'parser', {direction})
+            this.sendMessage(
+                id,
+                'parser',
+                {direction},
+                false)
             }
         )
     }
-    sendMessage(to,from,message){
+    sendMessage(to,from,message,priority){
         document.dispatchEvent(
             addMessage(
                 new Message(
                     to,
                     from,
                     message
-                )
+                ),
+                priority,
             )
         )
     }
     handleStop(){
+        // If no blocks need to move the controls should reset allowing another player input
         this.sendMessage(
             'controls',
             'parser',
@@ -38,21 +52,25 @@ export default class MovementParser{
         )
     }
     handleMessageFromCollider(msg){
-        let{results,candidates,direction} = msg.data;
+        let{results,candidates,direction,overlaps} = msg.data;
         // No Collisions.
         if(results.length === 0){
             this.handleNoCollisions(candidates,direction);
         }
+        // Touch
         else if (results[0].canTouch){
             let entity = results[0];
             let id = entity.id;
-            this.sendMessage(id,'parser', {direction,msg});
+            this.sendMessage(id,'parser', {direction,msg},false);
+            this.notifyAll(overlaps,direction,msg);
             this.handleNoCollisions(candidates,direction);
         }
+        // Strict Collide
         else if(results.map(entity=>entity.strictCollide).some(trait=>trait)){
             this.handleStop();
             return;
         }
+        // General Collision
         else{
             this.notifyAll([...candidates,...results],direction,msg)
         }
@@ -60,8 +78,12 @@ export default class MovementParser{
     }
     notifyAll(recipients,direction,msg){
         recipients.forEach(entity=>{
-            this.sendMessage(entity.id, 'parser',
-                {direction, msg})
+                this.sendMessage(
+                    entity.id,
+                    'parser',
+                    {direction, msg},
+                    true
+                    )
         })
     }
     onMessage(msg){
@@ -71,10 +93,15 @@ export default class MovementParser{
             this.handleMessageFromCollider(msg);
         }
     }
-    purge(){
-        this.entities = [];
+    addEntity(entity){
+        if(this.masterList.has(entity.id)){
+            this.masterList.changeEntityFlag(entity.id,'useCollision',true);
+        }else{
+            let id = makeUniqueId(12);
+            this.masterList.addEntity(id,entity);
+        }
     }
     removeEntity(targetId){
-        this.entities =  this.entities.filter( entity => entity.id === targetId.id);
+        this.masterList.changeEntityFlag(targetId,'useCollision',false)
     }
 }

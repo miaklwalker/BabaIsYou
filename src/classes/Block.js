@@ -7,10 +7,16 @@ export default class Block {
         this.position = new Vector(x,y);
         this.traits = [];
         this.id = makeUniqueId(12);
+        // draw values
         this.name = name;
+        this.group = null;
         this.type = type;
-        this.strategy = null;
         this.alias = null;
+
+        this.strategy = null;
+
+
+        // flags
         this.neighbors = {
             left:false,
             right:false,
@@ -22,12 +28,23 @@ export default class Block {
         this.canTouch = false;
     }
     draw(){
-        return [this.position.x,this.position.y]
+        return [
+            this.position.x,
+            this.position.y,
+            this.name,
+            this.group,
+            this.type,
+            this.alias,
+
+        ]
     }
-    onMessage(message){
+    resetFlags(){
         this.canCollide = false;
         this.canTouch = false;
         this.strictCollide = false;
+    }
+    onMessage(message){
+        this.resetFlags();
         this.traits.forEach(trait=>{
             trait.update(this,message);
         })
@@ -45,7 +62,8 @@ export default class Block {
         let right = new Vector(x+1 , y).same(other.position);
         let up = new Vector(x,y-1).same(other.position);
         let down = new Vector(x,y+1).same(other.position);
-        return [left,down,right,up];
+        let overlap = new Vector(x,y).same(other.position) && other !== this;
+        return [left,down,right,up,overlap];
     };
     updateAndFindNeighbors=(neighbors)=>{
         let matches = {};
@@ -56,7 +74,7 @@ export default class Block {
         neighbors.forEach(other => {
             let result = this.checkNeighbors(other);
             if(result.includes(true)){
-                const [left,down,right,up]=result;
+                const [left,down,right,up,overlap]=result;
                 if(left) {
                     matches.left = other;
                     this.neighbors.left = true
@@ -72,6 +90,9 @@ export default class Block {
                 if(down) {
                     matches.down = other;
                     this.neighbors.down = true
+                }
+                if(overlap){
+                    matches.overlap = other;
                 }
             }
         });

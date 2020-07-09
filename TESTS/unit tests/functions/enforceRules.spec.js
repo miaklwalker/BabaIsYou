@@ -7,7 +7,7 @@ import PropertyBlock from "../../../src/classes/Blocks/PropertyBlock.js";
 import enforcerFactory from "../../../src/helperFunctions/EnforceRules.js";
 import You from "../../../src/classes/Traits/You.js";
 
-describe('Enforce Rules',()=>{
+describe.skip('Enforce Rules',()=>{
     // act
     let baba = new SpriteBlock(1,1,'BABA');
     let _baba = new NounBlock(1,1,"BABA");

@@ -2,7 +2,7 @@ import Trait from "./Trait.js";
 import addMessage from "../../CustomEvents/addmessage.js";
 import Message from "../Message.js";
 import defeatImplement from "../../helperFunctions/implementDefeat.js";
-
+//done
 export default class Defeat extends Trait {
     constructor(){
         super('DEFEAT');

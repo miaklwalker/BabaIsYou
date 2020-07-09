@@ -1,6 +1,6 @@
 import Trait from "./Trait.js";
 import defeatImplement from "../../helperFunctions/implementDefeat.js";
-
+//done
 export default class Melt extends Trait {
     constructor(){
         super('MELT');

@@ -1,5 +1,5 @@
 import Trait from "./Trait.js";
-
+//done
 export default class Hot extends Trait {
     constructor(){
         super('HOT');

@@ -15,7 +15,7 @@ export default class Win extends Trait {
         sprite.canTouch = true;
         if(message.to === sprite.id && !this.ran ){
             let {candidates,results} = message.data.msg.data;
-            let result = results ? results : []
+            let result = results ? results : [];
             let candidatesPool = [...candidates,...result]
                 .filter(potential=>potential.YOU)
                 .map(potential=>potential.position.same(sprite.position))

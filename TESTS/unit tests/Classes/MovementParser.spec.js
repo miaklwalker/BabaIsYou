@@ -1,7 +1,7 @@
 import {describe, expect, test, jest, beforeEach} from "@jest/globals";
 import MovementParser from "../../../src/classes/MovementParser.js";
 
-describe('Movement Parser',()=>{
+describe.skip('Movement Parser',()=>{
     let movementParser = new MovementParser();
     beforeEach(()=>{
         movementParser = new MovementParser();
@@ -30,7 +30,7 @@ describe('Movement Parser',()=>{
 
     test.skip('Purge Should remove all entities from movement parser',()=>{
         movementParser.entities.push({foo:'Bar'});
-        movementParser.purge()
+        movementParser.purge();
         expect(movementParser.entities).toHaveLength(0);
 
     });

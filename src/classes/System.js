@@ -42,7 +42,7 @@ export default class System{
         let toSystem = message.to === 'system';
         if( toSystem && message.from !== 'defeat'){
             if(message.from === 'win'){
-                if(this.level < 4){
+                if(this.level < 5){
                     this.level++;
                 }else{
                     this.level = 1;

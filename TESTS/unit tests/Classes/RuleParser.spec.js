@@ -2,7 +2,7 @@ import {describe,expect,test,jest} from "@jest/globals";
 import RuleParser from "../../../src/classes/RuleParser.js";
 import NounBlock from "../../../src/classes/Blocks/NounBlock.js";
 
-describe('Rule Parser',()=>{
+describe.skip('Rule Parser',()=>{
     let callback = jest.fn();
     let ruleParser = new RuleParser(callback);
     test.todo('Rule Parser On Message Should call the callback with internal rules property',()=>{

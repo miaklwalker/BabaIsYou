@@ -72,7 +72,7 @@ export default class MovementParser{
         }
         // General Collision
         else{
-            this.notifyAll([...candidates,...results],direction,msg)
+            this.notifyAll([...candidates,...results,...overlaps],direction,msg)
         }
         this.handleStop();
     }

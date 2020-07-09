@@ -1,118 +1,19 @@
 {
   "sprites": {
-    "BABA": [],
+    "BABA": [{"x":6,"y":23,"name":"BABA"}],
     "SKULL": [{"x":3,"y":24,"name":"SKULL"},{"x":3,"y":23,"name":"SKULL"},{"x":3,"y":22,"name":"SKULL"},{"x":3,"y":21,"name":"SKULL"},{"x":3,"y":20,"name":"SKULL"},{"x":4,"y":20,"name":"SKULL"},{"x":5,"y":20,"name":"SKULL"},{"x":5,"y":19,"name":"SKULL"},{"x":5,"y":18,"name":"SKULL"},{"x":7,"y":18,"name":"SKULL"},{"x":7,"y":19,"name":"SKULL"},{"x":7,"y":20,"name":"SKULL"},{"x":8,"y":20,"name":"SKULL"},{"x":9,"y":20,"name":"SKULL"},{"x":9,"y":21,"name":"SKULL"},{"x":9,"y":22,"name":"SKULL"},{"x":9,"y":23,"name":"SKULL"},{"x":9,"y":24,"name":"SKULL"},{"x":13,"y":21,"name":"SKULL"},{"x":13,"y":22,"name":"SKULL"},{"x":13,"y":20,"name":"SKULL"},{"x":13,"y":19,"name":"SKULL"},{"x":13,"y":18,"name":"SKULL"},{"x":13,"y":17,"name":"SKULL"},{"x":13,"y":16,"name":"SKULL"},{"x":13,"y":15,"name":"SKULL"},{"x":13,"y":14,"name":"SKULL"},{"x":14,"y":14,"name":"SKULL"},{"x":15,"y":14,"name":"SKULL"},{"x":16,"y":14,"name":"SKULL"},{"x":17,"y":14,"name":"SKULL"},{"x":18,"y":14,"name":"SKULL"},{"x":19,"y":14,"name":"SKULL"},{"x":20,"y":14,"name":"SKULL"},{"x":21,"y":14,"name":"SKULL"},{"x":21,"y":15,"name":"SKULL"},{"x":21,"y":16,"name":"SKULL"},{"x":21,"y":17,"name":"SKULL"},{"x":21,"y":18,"name":"SKULL"},{"x":21,"y":19,"name":"SKULL"},{"x":21,"y":20,"name":"SKULL"},{"x":21,"y":21,"name":"SKULL"},{"x":21,"y":22,"name":"SKULL"},{"x":20,"y":22,"name":"SKULL"},{"x":19,"y":22,"name":"SKULL"},{"x":18,"y":22,"name":"SKULL"},{"x":17,"y":22,"name":"SKULL"},{"x":16,"y":22,"name":"SKULL"},{"x":15,"y":22,"name":"SKULL"},{"x":14,"y":22,"name":"SKULL"}]
 
   },
   "tiles": {
-    "ALGAE":    [],
-    "BOX":      [],
-    "BALL":     [],
-    "DOOR":     [],
-    "DUST":     [],
-    "FEAR":     [],
     "FLAG":     [{"x":18,"y":20,"name":"FLAG"}],
-    "FLOWER":   [],
-    "FRUIT":    [],
-    "FUNGUS":   [],
-    "KEY":      [],
-    "LOVE":     [],
-    "MOON":     [],
-    "ORB":      [],
-    "PILLAR":   [],
-    "ROCK":     [{"x":6,"y":19,"name":"ROCK"},{"x":6,"y":20,"name":"ROCK"},{"x":6,"y":21,"name":"ROCK"}],
-    "ROSE":     [],
-    "BLOSSOM":  [],
-    "STAR":     [],
-    "TILE":     [],
-    "TREE":     [],
-    "CAKE":     [],
-    "CASH":     [],
-    "CUP":      [],
-    "GATE":     [],
-    "?":        [],
-    "DOT":      [],
-    "FIRE":     [],
-    "FOLIAGE":  [],
-    "FUNGI":    [],
-    "!":        [],
-    "!?":       [],
-    "SPORES":   [],
-    "JELLY":    [],
-    "LADDER":   [],
-    "LEAF":     [],
-    "FOLIAG":   [],
-    "ST4R":     [],
-    "SHIRT":    [],
-    "SPIKES":   [],
-    "STUMP":    [],
-    "SUN":      [],
-    "TREES":    [],
-    "TREE-KEY": [],
-    "UFO":      []
+    "ROCK":     [{"x":6,"y":19,"name":"ROCK"},{"x":6,"y":20,"name":"ROCK"},{"x":6,"y":21,"name":"ROCK"}]
   },
   "words": {
-    "nouns": [],
-    "operators": [],
-    "properties": []
+    "nouns": [[0,0,"FLAG"],[0,1,"BABA"],[15,16,"SKULL"],[2,16,"ROCK"]],
+    "operators": [[1,0,"IS"],[1,1,"IS"],[15,17,"IS"],[3,16,"IS"]],
+    "properties": [[2,0,"WIN"],[2,1,"YOU"],[15,18,"DEFEAT"],[4,16,"PUSH"]]
   },
   "wall": {
-    "bricks": {
-      "tint": 15,
-      "blocks": []
-    },
-    "clouds": {
-      "tint": 15,
-      "blocks": []
-    },
-    "foliage": {
-      "tint": 15,
-      "blocks": []
-    },
-    "ice": {
-      "tint": 15,
-      "blocks": []
-    },
-    "snow": {
-      "tint": 15,
-      "blocks": []
-    },
-    "moss": {
-      "tint": 15,
-      "blocks": []
-    },
-    "ocean": {
-      "tint": 15,
-      "blocks": []
-    },
-    "cliff": {
-      "tint": 15,
-      "blocks": []
-    },
-    "fence": {
-      "tint": 15,
-      "blocks": []
-    },
-    "hedge": {
-      "tint": 15,
-      "blocks": []
-    },
-    "smallPipe": {
-      "tint": 15,
-      "blocks": []
-    },
-    "blob": {
-      "tint": 15,
-      "blocks": []
-    },
-    "pipe": {
-      "tint": 15,
-      "blocks": []
-    },
-    "base":{
-      "tint": 8,
-      "blocks": []
-    }
   },
   "floor": [],
   "palettes": "base",

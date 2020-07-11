@@ -1,0 +1,38 @@
+{
+  "sprites": {
+    "BABA": [{"x":3,"y":8,"name":"BABA"}]
+  },
+  "tiles": {
+    "rock": [{"x":6,"y":6,"name":"ROCK"},{"x":7,"y":6,"name":"ROCK"},{"x":8,"y":6,"name":"ROCK"},{"x":6,"y":8,"name":"ROCK"},{"x":7,"y":8,"name":"ROCK"},{"x":6,"y":10,"name":"ROCK"},{"x":6,"y":12,"name":"ROCK"},{"x":8,"y":12,"name":"ROCK"},{"x":6,"y":14,"name":"ROCK"},{"x":7,"y":14,"name":"ROCK"}],
+    "flag": [{"x":7,"y":18,"name":"FLAG"},{"x":7,"y":16,"name":"FLAG"},{"x":8,"y":16,"name":"FLAG"},{"x":8,"y":14,"name":"FLAG"},{"x":7,"y":12,"name":"FLAG"},{"x":7,"y":10,"name":"FLAG"}]},
+  "words": {
+    "nouns": [
+      [0, 0, "FLAG" ],
+      [1, 0, "BABA" ],
+      [2, 0, "WALL" ],
+      [3, 0, "ROCK" ]
+    ],
+    "operators": [
+      [0, 1, "IS"],
+      [1, 1, "IS"],
+      [2, 1, "IS"],
+      [3, 1, "IS"]
+    ],
+    "properties": [
+      [0, 2, "WIN"],
+      [1, 2, "YOU"],
+      [2, 2, "STOP"],
+      [3, 2, "PUSH"]
+    ]
+  },
+  "wall": {
+    "base":{
+      "tint": 8,
+      "blocks": [{"x":8,"y":18,"name":"WALL"},{"x":8,"y":10,"name":"WALL"},{"x":8,"y":8,"name":"WALL"},{"x":8,"y":4,"name":"WALL"},{"x":7,"y":4,"name":"WALL"},{"x":6,"y":4,"name":"WALL"}]}
+  },
+  "floor": [],
+  "palettes": "base",
+  "textures": "base",
+  "divisions": [19,19]
+}
+

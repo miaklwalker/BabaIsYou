@@ -69,7 +69,6 @@ export default class MovementParser{
                 }
             }
         }
-
         if(results.length === 0){
             this.handleNoCollisions(candidates,direction);
         }
@@ -80,16 +79,20 @@ export default class MovementParser{
             observables.forEach(item=>collision.add(item));
             collision.sortStack(direction);
             let {command,toMove} = parseStack(collision);
-            console.log(command,toMove);
             if(command === STOP){
                 this.handleStop();
             }
             else{
                 let temp = [...candidates];
+                temp.forEach(entity=>{
+                    this.sendMessage(entity.id,'parser',{direction,msg},true);
+                })
+                temp = [];
                 for(let i = 0 ; i < toMove ;i++){
                     let entity = observables[i];
                     temp.push(entity);
                 }
+
                 this.notifyAll(temp,direction,msg);
             }
         }

@@ -30,7 +30,6 @@ export default function parseStack (collision){
             overlap
         }
     });
-    console.log(mapTags);
         for (let i = 0; i < mapTags.length; i++) {
             let item = mapTags[i];
             let {name,overlap} = item;

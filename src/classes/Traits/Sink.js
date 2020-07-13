@@ -1,7 +1,4 @@
 import Trait from "./Trait.js";
-import addMessage from "../../CustomEvents/addmessage.js";
-import Message from "../Message.js";
-import Vector from "../Vector.js";
 import defeatImplement from "../../helperFunctions/implementDefeat.js";
 
 

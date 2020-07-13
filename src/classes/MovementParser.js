@@ -59,6 +59,7 @@ export default class MovementParser{
     }
     handleMessageFromCollider(msg){
         const {results,candidates,direction,overlaps} = msg.data;
+        overlaps.forEach(item=>item.overlap = true);
         if(results.length === 0){
             this.handleNoCollisions(candidates,direction);
         }

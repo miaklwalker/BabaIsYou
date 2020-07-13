@@ -26,6 +26,7 @@ export default class Block {
         this.strictCollide = false;
         this.canCollide = false;
         this.canTouch = false;
+        this.overlap = false;
     }
     draw(){
         return [

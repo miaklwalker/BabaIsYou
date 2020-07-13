@@ -12,6 +12,16 @@ export default function parseStack (collision){
     const C = "CanCollide";
     const T = "CanTouch";
 
+    /*
+    Command; [MOVE,CHECK,STOP,UNDEFINED]
+    NAME: [C,T,S]
+    Overlap: [true,false]
+
+        if(overlap)
+            switch name
+                if command
+
+     */
     let mapTags = collision.map(item=>{
         let name;
         let id = item.id;
@@ -29,24 +39,13 @@ export default function parseStack (collision){
             id
         }
     });
-
-    if(mapTags.length === 0){
-        command = MOVE;
-    }
-    else {
         for (let i = 0; i < mapTags.length; i++) {
             let item = mapTags[i];
-            let {name} = item;
-            let overlapFlag = false;
-            mapTags.forEach(({position,id})=>{
-                if(position.same(item.position) && item.id !== id){
-                    overlapFlag = true;
-                }
-            });
+            let {name,overlap} = item;
+
             if (name === S) {
                 if(command === CHECK){
                     command = MOVE;
-
                     break;
                 }else{
                     command = STOP;
@@ -54,38 +53,44 @@ export default function parseStack (collision){
                     break;
                 }
             }
+
             else if (name === T) {
-                if (command === undefined) {
-                    toMove++;
-                    command = CHECK;
-                }
-                else if (command === CHECK) {
-                    if(overlapFlag){
+                if (command === CHECK) {
+                    if(overlap){
                         toMove++
                     }
                     command = MOVE;
                     break;
                 }
-                else {
+                else if(command === MOVE){
+                    if(overlap === undefined){
+                        command = CHECK;
+                    }
+                    toMove++;
+                }else{
                     toMove++;
                     command = CHECK;
                 }
             }
+
             else if (name === C) {
                 if(command === CHECK) {
-                    command = CHECK;
-                    break;
+                    if(overlap){
+                        toMove++
+                    }
+                    command = MOVE;
+                }else{
+                    toMove++;
+                    command = MOVE;
                 }
-                toMove++;
-                command = MOVE;
+
             }
+
         }
-    }
-
     command = command === CHECK ? MOVE : command;
-
     return {
         command,
         toMove
     };
 }
+

@@ -6,9 +6,10 @@ import parseStack from "../../../src/helperFunctions/parseStack.js";
 const STOP = "STOP";
 const MOVE = "MOVE";
 
-function makeBlock ( type ){
+function makeBlock ( type , x, y, overlap = false){
     let block = new Block(1,1,"block","block");
     block[type]=true;
+    block.overlap = overlap;
     return block;
 }
 
@@ -20,7 +21,6 @@ describe("Parse Stack Spec",()=>{
 
     describe("Should be something of a finite state",()=>{
         let tests = [
-            [[],MOVE      ,0,[]],
             [[S],STOP     ,0,[[1,1]]],
             [[T],MOVE     ,1,[[1,1]]],
             [[C],MOVE     ,1,[[1,1]]],
@@ -37,12 +37,15 @@ describe("Parse Stack Spec",()=>{
             [[C,T,C],MOVE ,2,[[1,1],[1,2],[1,3]]],
             [[C,C,T],MOVE ,3,[[1,1],[1,2],[1,3]]],
             [[T,T],MOVE   ,1,[[1,1],[1,2]]],
-            [[T,S],MOVE   ,1,[[1,1],[1,2]]]
+            [[T,S],MOVE   ,1,[[1,1],[1,2]]],
+            [[C,T],MOVE   ,2,[[1,1,true],[1,1,true]]],
+            [[C,T,S],STOP ,0,[[1,1,true],[1,1,true],[1,2]]],
+            [[C,T,C],MOVE ,3,[[1,1,true],[1,1,true],[1,2]]],
         ];
         test.each(tests)(" %p  expect -> command: %s , move: %i ",(names,cmd,toMv,positions)=>{
             let stack = new CollisionStack();
             names
-            .map((name,index)=>makeBlock(name,positions[index][0],positions[index][1]))
+            .map((name,index)=>makeBlock(name,positions[index][0],positions[index][1],positions[index][2]))
             .forEach(entity=>stack.add(entity));
 
             const {command,toMove} = parseStack(stack);

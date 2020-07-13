@@ -1,173 +1,113 @@
-import {describe,expect,test,jest} from "@jest/globals";
+import {describe, expect, test, jest, it, beforeEach} from "@jest/globals";
 import Block from "../../../src/classes/Block.js";
 import Vector from "../../../src/classes/Vector.js";
-import NounBlock from "../../../src/classes/Blocks/NounBlock.js";
-import OperatorBlock from "../../../src/classes/Blocks/OperatorBlock.js";
-import PropertyBlock from "../../../src/classes/Blocks/PropertyBlock.js";
-import SpriteBlock from "../../../src/classes/Blocks/spriteBlock.js";
-import blockFactory from "../../../src/helperFunctions/blockFactory.js";
-import Tile from "../../../src/classes/Blocks/Tile.js";
-import Wall from "../../../src/classes/Blocks/Wall.js";
 
 
-describe('Block Class',()=>{
-    describe('Base Block Class',()=>{
-        const block = new Block(1,1,'frank','WALL');
 
-        test('that block has properties',()=>{
-            expect(block.position).toBeInstanceOf(Vector);
-            expect(block.id).toHaveLength(12);
-            expect(block.name).toBe('frank');
-            expect(block.type).toBe('WALL');
-            expect(block.neighbors).toEqual({
-                left:false,
-                right:false,
-                up:false,
-                down:false
-            });
-            expect(block.strictCollide).toBe(false);
-            expect(block.canTouch).toBe(false);
-            expect(block.canCollide).toBe(false);
-        });
-
-        describe('When the draw method is called Block returns',()=>{
-            let drawCall = block.draw();
-            test('Its position as in the first two indices',()=>{
-                expect(drawCall[0]).toBe(block.position.x);
-                expect(drawCall[1]).toBe(block.position.y);
-            });
-            test('Its name in the third indices',()=>{
-               expect(drawCall[2]).toBe(block.name);
-            });
-            test('Its Group in the fourth indices',()=>{
-                expect(drawCall[3]).toBe(block.group);
-            });
-            test('Its Type to be in the fifth indices',()=>{
-                expect(drawCall[4]).toBe(block.type);
-            });
-            test(`It's alias to be in the sixth indices`,()=>{
-                expect(drawCall[5]).toBe(block.alias);
-            })
-        });
-
-        describe('Test Block Traits',()=>{
+describe("Block Class Spec",()=>{
+    let x = 5;
+    let y = 5; 
+    let name = "BABA";
+    let type = "Sprite";
+    let block = new Block(x,y,name,type);
+    beforeEach(()=>{
+        block = new Block(x,y,name,type) 
+    })
+    describe("Constructor",()=>{
+        /*
+        The Constructor for this class has 
+        4 Parameters X, Y, Name, Type
+        These are a one to one correlation 
+        with the object they represent
+        */
+       it("Should produce an object with these traits",()=>{
+         expect(block.name).toEqual(name);
+         expect(block.type).toEqual(type);
+         expect(block.position).toEqual(expect.any(Vector));
+         expect(block.traits).toHaveLength(0);
+         expect(block.id).toMatch(/([A-Z]{12})/g);
+         expect(block.group).toBeNull();
+         expect(block.alias).toBeNull();
+         expect(block.strategy).toBeNull();
+         expect(block.neighbors).toEqual({
+            left:false,
+            right:false,
+            up:false,
+            down:false
+         });
+         expect(block.strictCollide).toBeFalsy();
+         expect(block.canCollide).toBeFalsy();
+         expect(block.canTouch).toBeFalsy();
+       })
+    })
+    describe("Draw Function",()=>{
+        it("Should return an array of properties",()=>{
+            let group = null;
+            let alias = null;
+            expect(block.draw()).toEqual(
+                expect.arrayContaining([
+                    x,y,name,group,type,alias
+                ]))
+        })
+    })
+    describe("Reset Flags",()=>{
+        block.canCollide = true;
+        block.strictCollide = true;
+        block.canTouch = true;
+        block.resetFlags();
+        it("Should reset the blocks collision flags",()=>{
+            expect(block.canCollide).toBeFalsy();
+            expect(block.strictCollide).toBeFalsy();
+            expect(block.canTouch).toBeFalsy();
+        })
+    });
+    describe("Add Trait",()=>{
+        it("Should add a trait to the block both by name and to the traits array",()=>{
             let trait = {
-                update:jest.fn(),
-            };
-            test('Add trait should add a trait to ownTraits',()=>{
-                block.addTrait(trait);
-                expect(block.traits).toHaveLength(1);
-            });
-            test('Should Call All Own Traits when updated',()=>{
-                block.onMessage('Hello From Test');
-                expect(trait.update).toHaveBeenCalled();
-                expect(trait.update).toHaveBeenCalledWith(block,'Hello From Test')
-            });
+                NAME:"test",
+                update:jest.fn()
+            }
+            block.addTrait(trait);
+            expect(block.traits).toHaveLength(1);
         });
-
-        test('isNeighbor should return true if block isNeighboring',()=>{
-           let otherBlock = new Block(1,2);
-           let anotherBlock = new Block(10,10);
-           expect(block.isNeighbor(otherBlock)).toBe(true);
-           expect(block.isNeighbor(anotherBlock)).not.toBe(true);
-        });
-
-        test('Check Neighbors should return what side a object is',()=>{
-            let otherBlock = new Block(1,2);
-            let expected = [false,true,false,false];
-            expect(block.checkNeighbors(otherBlock)).toEqual(expect.arrayContaining(expected));
-        });
-
-        test('updateAndFindNeighbors',()=>{
-            let blockL = new Block(0,1);
-            let blockR = new Block(2,1);
-            let blockU = new Block(1,0);
-            let blockD = new Block(1,2);
-
-            let others = [blockD,blockL,blockR,blockU];
-            block.checkNeighbors = jest.fn(block.checkNeighbors);
-            let check = block.updateAndFindNeighbors(others);
-            expect(block.checkNeighbors).toBeCalledTimes(4);
-            expect(check).toEqual({
-                left:blockL,
-                right:blockR,
-                up:blockU,
-                down:blockD,
-            });
-            expect(block.neighbors).toEqual({
-                left:true,
-                right:true,
-                up:true,
-                down:true,
-            })
-
+    });
+    describe("On Message",()=>{
+        let trait, message;
+        beforeEach(()=>{
+            block.resetFlags = jest.fn(block.resetFlags);
+            trait = {
+                NAME:"test",
+                update:jest.fn()
+            }
+            block.addTrait(trait);
+            message = "test";
+            block.onMessage(message)
         })
 
-
-    });
-
-    describe('Sprite Block',()=>{
-        let testBlock = new SpriteBlock(1,1,'FRANK');
-        test('sprite block draw Method',()=>{
-            testBlock.id = 'FRANK';
-            testBlock.draw = jest.fn(testBlock.draw);
-            testBlock.draw();
-            const{position:{x,y},name,group,type,alias,action,direction}=testBlock;
-            expect(testBlock.draw).toHaveReturnedWith([x,y,name,group,type,alias,direction,action])
-        });
-        test('Sprite Block update method',()=>{
-            let testMessage = {
-                to:"YOU",
-                from:'controls',
-                data:{
-                    action:'run',
-                    direction:'right'
-                }
-            };
-            testBlock.YOU = true;
-            testBlock.onMessage(testMessage);
-            expect(testBlock.direction).toBe('right');
-            expect(testBlock.action).toBe('run');
+        it("Should reset the blocks flags before messaging",()=>{
+            expect(block.resetFlags).toHaveBeenCalled(); 
         })
-
-
+        it("Should call each traits update method with itself and the message",()=>{
+            expect(trait.update).toBeCalledWith(block,message)
+        })
     });
-    describe('Wall Block',()=>{
-        let block = new Wall(1,1,'WALL');
-        test('ChooseName',()=>{
-            let others = [
-                new Wall(1,2,"WALL"),
-                new Wall(0,1,"WALL"),
-                new Wall(2,1,"WALL"),
-                new Wall(1,0,"WALL"),
+    describe("Check Neighbors",()=>{
+        let leftBlock = new Block(4,5,"BABA","SPRITE");
+        let rightBlock = new Block(6,5,"BABA","SPRITE");
+        let upBlock = new Block(5,4,"BABA","SPRITE");
+        let downBlock = new Block(5,6,"BABA","SPRITE");
+        let overlapBlock = new Block(5,5,"BABA","SPRITE");
+
+        let data = [
+            [leftBlock,[true,false,false,false,false]],
+            [rightBlock,[false,false,true,false,false]],
+            [upBlock,[false,false,false,true,false]],
+            [downBlock,[false,true,false,false,false]],
+            [overlapBlock,[false,false,false,false,true]]
             ];
-            block.checkNeighbors = jest.fn(block.checkNeighbors);
-            block.chooseName(others);
-            expect(block.checkNeighbors).toBeCalledTimes(4);
-            expect(block.neighbors).toEqual({
-                left:true,
-                right:true,
-                up:true,
-                down:true,
-            });
-            expect(block.alias).toBe('fourWay');
+        it.each(data)("Should Be able to check all four sides of the block",(blockToTest,results)=>{
+            expect(block.checkNeighbors(blockToTest)).toEqual(results);
         })
     });
-    describe('Block Factory',()=>{
-        let sprite = [1,1,'FRANK'];
-        let nouns = blockFactory('nouns',sprite);
-        let operators = blockFactory('operators',sprite);
-        let properties = blockFactory('properties',sprite);
-        let tiles = blockFactory('tiles',sprite);
-        let sprites = blockFactory('sprites',sprite);
-        let walls = blockFactory('wall',sprite);
-        expect(nouns).toBeInstanceOf(NounBlock);
-        expect(operators).toBeInstanceOf(OperatorBlock);
-        expect(properties).toBeInstanceOf(PropertyBlock);
-        expect(tiles).toBeInstanceOf(Tile);
-        expect(sprites).toBeInstanceOf(SpriteBlock);
-        expect(walls).toBeInstanceOf(Wall)
-    });
-});
 
-
+})

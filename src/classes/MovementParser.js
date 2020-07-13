@@ -60,13 +60,25 @@ export default class MovementParser{
     handleMessageFromCollider(msg){
         const {results,candidates,direction,overlaps} = msg.data;
         overlaps.forEach(item=>item.overlap = true);
+        for(let i = 0 ; i < overlaps.length; i++){
+            let candidate = results[i];
+            for(let j = 0 ; j < results.length;j++){
+                let potential =  results[j];
+                if(potential.position.same(candidate.position)){
+                    potential.overlap = true;
+                }
+            }
+        }
+
         if(results.length === 0){
             this.handleNoCollisions(candidates,direction);
         }
         else{
             let collision = new CollisionStack();
             let observables = [...results,...overlaps];
+
             observables.forEach(item=>collision.add(item));
+            collision.sortStack(direction);
             let {command,toMove} = parseStack(collision);
             console.log(command,toMove);
             if(command === STOP){
@@ -80,34 +92,6 @@ export default class MovementParser{
                 }
                 this.notifyAll(temp,direction,msg);
             }
-        }
-        this.handleStop();
-    }
-    handleMessageFromCollider1(msg){
-        let{results,candidates,direction,overlaps} = msg.data;
-        let collision = new CollisionStack();
-        [...results,...overlaps].forEach(item=>collision.add(item));
-        let {command,toMove} = parseStack(collision);
-        // No Collisions.
-        if(results.length === 0){
-            this.handleNoCollisions(candidates,direction);
-        }
-        //Touch
-        else if (results[0].canTouch){
-            let entity = results[0];
-            let id = entity.id;
-            this.sendMessage(id,'parser', {direction,msg},false);
-            this.notifyAll(overlaps,direction,msg);
-            this.handleNoCollisions(candidates,direction);
-        }
-        // Strict Collide
-        else if(results.map(entity=>entity.strictCollide).some(trait=>trait)){
-            this.handleStop();
-            return;
-        }
-        // General Collision
-        else{
-            this.notifyAll([...candidates,...results,...overlaps],direction,msg)
         }
         this.handleStop();
     }

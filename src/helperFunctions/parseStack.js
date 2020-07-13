@@ -3,7 +3,6 @@ const MOVE = "MOVE";
 const CHECK = "CHECK";
 
 export default function parseStack (collision){
-
     let command;
     let toMove = 0;
     let checked = 0;
@@ -12,20 +11,11 @@ export default function parseStack (collision){
     const C = "CanCollide";
     const T = "CanTouch";
 
-    /*
-    Command; [MOVE,CHECK,STOP,UNDEFINED]
-    NAME: [C,T,S]
-    Overlap: [true,false]
-
-        if(overlap)
-            switch name
-                if command
-
-     */
     let mapTags = collision.map(item=>{
         let name;
         let id = item.id;
         let position = item.position;
+        let overlap = item.overlap
         if(item.strictCollide){
             name = S;
         }else if(item.canCollide){
@@ -36,9 +26,11 @@ export default function parseStack (collision){
         return {
             name,
             position,
-            id
+            id,
+            overlap
         }
     });
+    console.log(mapTags);
         for (let i = 0; i < mapTags.length; i++) {
             let item = mapTags[i];
             let {name,overlap} = item;
@@ -63,7 +55,7 @@ export default function parseStack (collision){
                     break;
                 }
                 else if(command === MOVE){
-                    if(overlap === undefined){
+                    if(!overlap){
                         command = CHECK;
                     }
                     toMove++;
@@ -85,7 +77,6 @@ export default function parseStack (collision){
                 }
 
             }
-
         }
     command = command === CHECK ? MOVE : command;
     return {

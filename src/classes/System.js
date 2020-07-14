@@ -15,7 +15,7 @@ export default class System{
         this.movementParser =   new MovementParser(this.masterList);
         this.controls = new Controls();
         this.initialized = false;
-        this.level = 1;
+        this.level = 4;
     }
     init(){
         if(!this.initialized){
@@ -50,9 +50,11 @@ export default class System{
             }
             this.restart()
         }else if(toSystem){
-            let id = message.data();
+            let id = message.data;
             if(Array.isArray(id)){
                 id.forEach(i=>this.removeEntity(i))
+            }else{
+                this.removeEntity(id)
             }
         }
     }

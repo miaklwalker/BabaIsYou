@@ -38,7 +38,8 @@ export default class Collider {
         // Check for overlaps
         let overlaps = [];
         Object.values(results).forEach(block=>{
-            let hasOverlaps = block.updateAndFindNeighbors(collidePool)["overlap"];
+            let results = block.updateAndFindNeighbors(collidePool);
+            let hasOverlaps = results["overlap"];
            if(hasOverlaps){
                overlaps.push(hasOverlaps);
            }

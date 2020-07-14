@@ -75,7 +75,6 @@ export default class MovementParser{
         else{
             let collision = new CollisionStack();
             let observables = [...results,...overlaps];
-
             observables.forEach(item=>collision.add(item));
             collision.sortStack(direction);
             let {command,toMove} = parseStack(collision);

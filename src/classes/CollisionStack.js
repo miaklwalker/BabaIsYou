@@ -78,7 +78,7 @@ function left (a,b){
     }
 
 }
-function up (a,b){
+function down (a,b){
     let y1 = a.position.y;
     let y2 = b.position.y;
 
@@ -91,7 +91,7 @@ function up (a,b){
     }
 
 }
-function down (a,b){
+function up (a,b){
     let y1 = a.position.y;
     let y2 = b.position.y;
 

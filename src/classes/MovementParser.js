@@ -59,13 +59,29 @@ export default class MovementParser{
     }
     handleMessageFromCollider(msg){
         const {results,candidates,direction,overlaps} = msg.data;
+
         overlaps.forEach(item=>item.overlap = true);
+
         for(let i = 0 ; i < overlaps.length; i++){
-            let candidate = results[i];
+            let candidate = overlaps[i];
             for(let j = 0 ; j < results.length;j++){
                 let potential =  results[j];
                 if(potential.position.same(candidate.position)){
                     potential.overlap = true;
+                }
+            }
+        }
+        for(let i = 0 ; i < results.length ; i++){
+            let a = results[i];
+            for (let j = 0 ; j < results.length ; j++){
+                if(j !== i ){
+                    let b = results[j];
+                    let overlap = a.position.same(b.position);
+                    if(overlap){
+                        a.overlap = true;
+                        b.overlap = true;
+                    }
+
                 }
             }
         }
@@ -85,7 +101,7 @@ export default class MovementParser{
                 let temp = [...candidates];
                 temp.forEach(entity=>{
                     this.sendMessage(entity.id,'parser',{direction,msg},true);
-                })
+                });
                 temp = [];
                 for(let i = 0 ; i < toMove ;i++){
                     let entity = observables[i];

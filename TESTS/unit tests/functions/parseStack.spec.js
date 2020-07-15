@@ -43,6 +43,7 @@ describe("Parse Stack Spec",()=>{
             [[T,C,S],STOP ,0,[[1,1,true],[1,1,true],[1,2]]],
             [[C,T,C],MOVE ,3,[[1,1,true],[1,1,true],[1,2]]],
             [[T,C,C],MOVE ,3,[[1,1,true],[1,1,true],[1,2]]],
+            [[C,T,T,T,S],MOVE,2,[[1,1],[1,2],[1,3],[1,4],[1,5]]]
         ];
         test.each(tests)(" %p  expect -> command: %s , move: %i ",(names,cmd,toMv,positions)=>{
             let stack = new CollisionStack();

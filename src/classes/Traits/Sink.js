@@ -18,15 +18,20 @@ export default class Sink extends Trait {
             const direction = message.data.direction;
             let {candidates,results,overlaps} = message.data.msg.data;
             let result = results ? results : [];
-            let candidatesPool = [...candidates,...result,...overlaps]
+            let entities = [...candidates,...result,...overlaps]
+            let candidatesPool = entities
                 .map(potential=>makeOrthagonalMap(potential)[direction])
-                .map(potential=>potential.same(sprite.position))
+                .map(potential=>potential.same(sprite.position));
+            let collisionPool = entities.filter((item,index)=>{
+                if(candidatesPool[index]){
+                    return item;
+                }
+            });
             if(candidatesPool.includes(true)) {
                 this.ran = true;
-                document.dispatchEvent(addMessage(new Message('system', 'defeat', sprite.id)))
-                candidatesPool.forEach(({id})=>{
-                    console.log(id)
-                    document.dispatchEvent(addMessage(new Message('system','defeat',id)))
+                document.dispatchEvent(addMessage(new Message('system', 'defeat', sprite.id)));
+                collisionPool.forEach(({id})=>{
+                    document.dispatchEvent(addMessage(new Message('system', 'defeat', id)))
                 })
             }
         }

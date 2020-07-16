@@ -1,30 +1,33 @@
+import makeOrthagonalMap from "./makeOrthagonalMap.js";
 import addMessage from "../CustomEvents/addmessage.js";
 import Message from "../classes/Message.js";
-import Vector from "../classes/Vector.js";
-import makeOrthagonalMap from "./makeOrthagonalMap.js";
 
-export default function defeatImplement(entity,self,contrary,direction,condition){
-    let hasContrary = contrary ? entity[contrary] === undefined : true;
-    let hasCondition = condition ? entity[condition] !== undefined : true;
-    console.log(entity);
-    console.log(self);
-    console.log(contrary);
-    console.log(direction);
-    console.log(condition);
-    // document.dispatchEvent(
-    //     addMessage(
-    //         new Message(
-    //             'system',
-    //             'defeat',
-    //             ()=>{
-    //                 let position = entity.position;
-    //                 let correctedPosition= makeOrthagonalMap(position)[direction];
-    //                 if((correctedPosition.same(self.position)||
-    //                     entity.position.same(self.position)) &&
-    //                     hasContrary &&
-    //                     hasCondition){
-    //                     return [entity.id,self.id];
-    //                 }
-    //             })));
+export default function defeat (message,sprite,config) {
+    const {removeSelf,removePlayer,condition,contrary} = config
+    const direction = message.data.direction;
+    let {candidates,results,overlaps} = message.data.msg.data;
+    let result = results ? results : [];
+    let entities = [...candidates,...result,...overlaps]
+    let candidatesPool = entities
+        .map(potential=>makeOrthagonalMap(potential)[direction])
+        .map(potential=>potential.same(sprite.position));
+    let collisionPool = entities.filter((item,index)=>{
+        if(candidatesPool[index]){
+            return item;
+        }
+    });
+    let triggered = candidatesPool.includes(true);
 
+    if(condition)
+
+    if(triggered) {
+        if(removeSelf){
+            document.dispatchEvent(addMessage(new Message('system', 'defeat', sprite.id)));
+        }
+        if(removePlayer){
+            collisionPool.forEach(({id})=>{
+                document.dispatchEvent(addMessage(new Message('system', 'defeat', id)))
+            })
+        }
+    }
 }

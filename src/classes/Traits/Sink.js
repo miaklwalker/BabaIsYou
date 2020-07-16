@@ -1,5 +1,6 @@
 import Trait from "./Trait.js";
 import defeat from "../../helperFunctions/implementDefeat.js";
+import DefeatConfig from "../DefeatConfig.js";
 
 
 
@@ -13,7 +14,7 @@ export default class Sink extends Trait {
     update(sprite,message) {
         sprite.canTouch = true;
         if(message.to === sprite.id ) {
-            defeat(message, sprite)
+            defeat(message, sprite,new DefeatConfig(undefined,"FLOAT"))
         }
     }
 }

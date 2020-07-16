@@ -1,4 +1,4 @@
-class defeatConfig {
+export default class DefeatConfig {
     constructor(condition,contrary){
         this.condition = condition;
         this.contrary = contrary;

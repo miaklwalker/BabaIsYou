@@ -3,6 +3,7 @@ import addMessage from "../../CustomEvents/addmessage.js";
 import Message from "../Message.js";
 import defeatImplement from "../../helperFunctions/implementDefeat.js";
 import defeat from "../../helperFunctions/implementDefeat.js";
+import DefeatConfig from "../DefeatConfig.js";
 //done
 export default class Defeat extends Trait {
     constructor(){
@@ -11,7 +12,9 @@ export default class Defeat extends Trait {
     update(sprite,message) {
         sprite.canTouch = true;
         if(message.to === sprite.id ){
-            defeat(message,sprite,true,false)
+            let config = new DefeatConfig(undefined,undefined);
+            config.removeSelf = false;
+            defeat(message,sprite,config);
         };
     }
 }

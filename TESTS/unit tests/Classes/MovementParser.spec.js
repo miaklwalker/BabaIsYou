@@ -1,46 +1,48 @@
 import {describe, expect, test, jest, beforeEach} from "@jest/globals";
 import MovementParser from "../../../src/classes/MovementParser.js";
 
-describe.skip('Movement Parser',()=>{
-    let movementParser = new MovementParser();
+describe('Movement Parser',()=>{
+    let masterList,movementParser;
     beforeEach(()=>{
-        movementParser = new MovementParser();
+       masterList = {
+           Blocks:[],
+           allOfFlags: jest.fn()
+       };
+       movementParser = new MovementParser(masterList);
     });
-    describe('Testing onMessage',()=>{
-        // There are 5 happy paths to test
-        // from controls
-        // from collider
-        // - with no collisions
-        // - with a block containing a stop
-        // - collisions with no stop
-    test.skip('From controls path',()=>{
-        let msg = {
-            to:'parser',
-            from:'controls',
-            data:{
-                action:'run'
-            }
-        };
-        movementParser.parseFromControls = jest.fn(movementParser.parseFromControls);
-        movementParser.onMessage(msg);
-        expect(movementParser.parseFromControls).toHaveBeenCalledWith(msg);
-
+    describe("getBlocksWithCollision",()=>{
+        test("allOfFlags is called with useCollision",()=>{
+            movementParser.getBlocksWithCollision();
+            expect(masterList.allOfFlags)
+                .toHaveBeenCalledWith("useCollision");
         })
-    });
-
-    test.skip('Purge Should remove all entities from movement parser',()=>{
-        movementParser.entities.push({foo:'Bar'});
-        movementParser.purge();
-        expect(movementParser.entities).toHaveLength(0);
 
     });
+    describe("parseFromControls",()=>{
+        test(" Calls Send Message with msg and entities",()=>{
+            masterList.allOfFlags.mockReturnValue("Test Value");
+            movementParser.sendMessage = jest.fn();
+            movementParser.parseFromControls("Test Message");
+            expect(movementParser.sendMessage)
+                .toHaveBeenCalledWith(
+                    'collision',
+                    'parser',
+                    {
+                        entities:"Test Value",
+                        msg:"Test Message"
+                    }
+                )
+        })
+    })
+    test.todo(`
+    handleNoCollision
+    sendMessage
+    handleStop
+    handleMessageFromCollider
+    notifyAll
+    onMessage
+    addEntity
+    removeEntity
+    `)
 
-    test.skip('Remove entity should remove a specified entity from list',()=>{
-        let entity = {
-            id:1013,
-        };
-        movementParser.entities.push(entity);
-        movementParser.removeEntity(1013);
-        expect(movementParser.entities).toHaveLength(0);
-    });
 });

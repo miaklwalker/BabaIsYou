@@ -26,7 +26,9 @@ export default class MovementParser{
         );
     }
     handleNoCollisions(candidates,direction){
-        // If there is no collision send a message with direction to all candidates for movement
+        // If there is no collision send a
+        // message with direction to all candidates
+        // for movement
         candidates.forEach(entity=>{
             let id = entity.id;
             this.sendMessage(
@@ -59,9 +61,7 @@ export default class MovementParser{
     }
     handleMessageFromCollider(msg){
         const {results,candidates,direction,overlaps} = msg.data;
-
         overlaps.forEach(item=>item.overlap = true);
-
         for(let i = 0 ; i < overlaps.length; i++){
             let candidate = overlaps[i];
             for(let j = 0 ; j < results.length;j++){
@@ -107,7 +107,6 @@ export default class MovementParser{
                     let entity = observables[i];
                     temp.push(entity);
                 }
-
                 this.notifyAll(temp,direction,msg);
             }
         }

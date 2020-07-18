@@ -12,12 +12,12 @@ export default function defeat (message,sprite,config) {
     let candidatesPool = entities
         .map(potential=>makeOrthagonalMap(potential)[direction])
         .map(potential=>potential.same(sprite.position));
+    console.log(entities);
     let collisionPool = entities.filter((item,index)=>{
         let hasCondition = condition ? item[condition] : false;
         if(
             candidatesPool[index] &&
-            item[contrary] === undefined &&
-            hasCondition
+            item[contrary] === undefined && !hasCondition
         ){
             return item;
         }
@@ -26,7 +26,8 @@ export default function defeat (message,sprite,config) {
 
 
 
-
+    console.log(collisionPool);
+    console.log(triggered);
     if(triggered && collisionPool.length > 0) {
         if(removeSelf){
             document.dispatchEvent(addMessage(new Message('system', 'defeat', sprite.id)));

@@ -14,6 +14,7 @@ export default class Sink extends Trait {
     update(sprite,message) {
         sprite.canTouch = true;
         if(message.to === sprite.id ) {
+            console.log("Sink");
             defeat(message, sprite,new DefeatConfig(undefined,"FLOAT"))
         }
     }

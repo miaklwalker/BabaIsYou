@@ -1,4 +1,4 @@
-import {describe, expect, test, jest, it, beforeEach} from "@jest/globals";
+import {describe, expect, jest, it, beforeEach} from "@jest/globals";
 import Block from "../../../src/classes/Block.js";
 import Vector from "../../../src/classes/Vector.js";
 
@@ -12,14 +12,8 @@ describe("Block Class Spec",()=>{
     let block = new Block(x,y,name,type);
     beforeEach(()=>{
         block = new Block(x,y,name,type) 
-    })
+    });
     describe("Constructor",()=>{
-        /*
-        The Constructor for this class has 
-        4 Parameters X, Y, Name, Type
-        These are a one to one correlation 
-        with the object they represent
-        */
        it("Should produce an object with these traits",()=>{
          expect(block.name).toEqual(name);
          expect(block.type).toEqual(type);
@@ -39,7 +33,7 @@ describe("Block Class Spec",()=>{
          expect(block.canCollide).toBeFalsy();
          expect(block.canTouch).toBeFalsy();
        })
-    })
+    });
     describe("Draw Function",()=>{
         it("Should return an array of properties",()=>{
             let group = null;
@@ -49,7 +43,7 @@ describe("Block Class Spec",()=>{
                     x,y,name,group,type,alias
                 ]))
         })
-    })
+    });
     describe("Reset Flags",()=>{
         block.canCollide = true;
         block.strictCollide = true;
@@ -66,7 +60,7 @@ describe("Block Class Spec",()=>{
             let trait = {
                 NAME:"test",
                 update:jest.fn()
-            }
+            };
             block.addTrait(trait);
             expect(block.traits).toHaveLength(1);
         });
@@ -78,15 +72,15 @@ describe("Block Class Spec",()=>{
             trait = {
                 NAME:"test",
                 update:jest.fn()
-            }
+            };
             block.addTrait(trait);
             message = "test";
             block.onMessage(message)
-        })
+        });
 
         it("Should reset the blocks flags before messaging",()=>{
             expect(block.resetFlags).toHaveBeenCalled(); 
-        })
+        });
         it("Should call each traits update method with itself and the message",()=>{
             expect(trait.update).toBeCalledWith(block,message)
         })
@@ -109,5 +103,4 @@ describe("Block Class Spec",()=>{
             expect(block.checkNeighbors(blockToTest)).toEqual(results);
         })
     });
-
-})
+});

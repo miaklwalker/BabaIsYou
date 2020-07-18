@@ -1,5 +1,6 @@
 import chooseClass from "../helperFunctions/ChooseStrategy.js";
 import blockFactory from "../helperFunctions/blockFactory.js";
+import makeUniqueId from "../helperFunctions/MakeID.js";
 
 
 export default class Entity {
@@ -27,7 +28,13 @@ export default class Entity {
         }
     }
     get id (){
-        return this.block.id;
+        if(this.block.id){
+            return this.block.id;
+        }else{
+         let id = makeUniqueId(12);
+         this.block.id = id;
+         return id;
+        }
     }
     onMessage(message){
         this.block.onMessage(message);

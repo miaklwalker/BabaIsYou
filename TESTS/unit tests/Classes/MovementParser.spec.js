@@ -104,6 +104,13 @@ describe('Movement Parser',()=>{
             movementParser.handleMessageFromCollider(message);
             expect(movementParser.handleStop).toHaveBeenCalled();
         });
-        test.todo("Need to test the else case")
+        test("ELSE: STOP 0  Command",()=>{
+            let stopBlock = new Block(1,1,"WALL");
+            stopBlock.strictCollide = true;
+            message.data.results.push(stopBlock);
+            movementParser.handleStop = jest.fn();
+            movementParser.handleMessageFromCollider(message);
+            expect(movementParser.handleStop).toHaveBeenCalled()
+        });
     });
 });

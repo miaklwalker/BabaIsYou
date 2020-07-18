@@ -24,6 +24,7 @@
   "devDependencies": {
     "canvas": "^2.6.1",
     "jest": "^26.0.1",
+    "@jest/globals": "^26.1.0",
     "jest-environment-jsdom-sixteen": "^1.0.3"
   },
   "jest": {

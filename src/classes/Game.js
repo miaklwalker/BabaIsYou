@@ -26,9 +26,6 @@ export default class Game {
         return {image, spriteSpec, levelSpec};
     };
 
-    get entities() {
-        return [...this.masterList.allOfFlags('useRender')]
-    }
     addTopLevel(id){
         this.masterList.changeEntityFlag(id,'isTopLevel',true);
     }

@@ -3,7 +3,6 @@ import addMessage from "../CustomEvents/addmessage.js";
 import Message from "../classes/Message.js";
 
 export default function defeat (message,sprite,config) {
-    let skip = false;
     const {removeSelf,removePlayer,condition,contrary} = config;
     const direction = message.data.direction;
     let {candidates,results,overlaps} = message.data.msg.data;
@@ -12,7 +11,7 @@ export default function defeat (message,sprite,config) {
     let candidatesPool = entities
         .map(potential=>makeOrthagonalMap(potential)[direction])
         .map(potential=>potential.same(sprite.position));
-    console.log(entities);
+
     let collisionPool = entities.filter((item,index)=>{
         let hasCondition = condition ? item[condition] : false;
         if(
@@ -24,10 +23,6 @@ export default function defeat (message,sprite,config) {
     });
     let triggered = candidatesPool.includes(true);
 
-
-
-    console.log(collisionPool);
-    console.log(triggered);
     if(triggered && collisionPool.length > 0) {
         if(removeSelf){
             document.dispatchEvent(addMessage(new Message('system', 'defeat', sprite.id)));

@@ -12,7 +12,7 @@ export default class Defeat extends Trait {
     update(sprite,message) {
         sprite.canTouch = true;
         if(message.to === sprite.id ){
-            let config = new DefeatConfig(undefined,"YOU");
+            let config = new DefeatConfig("YOU",undefined);
             config.removeSelf = false;
             defeat(message,sprite,config);
         };

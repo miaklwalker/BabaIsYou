@@ -9,7 +9,7 @@ function checkTouching (entities,sprite,direction){
 }
 function checkCondition (condition,contrary,candidatePool){
     return (item,index) => {
-        let hasCondition = condition ? item[condition] : false;
+        let hasCondition = condition ? item[condition] : true;
         if(candidatePool[index] && !item[contrary] && hasCondition){
             return item;
         }

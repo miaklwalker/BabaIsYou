@@ -16,7 +16,11 @@ function checkCondition (condition,contrary,candidatePool){
     }
 }
 
-export default function defeat (message,sprite,config) {
+function dispatch (id){
+    document.dispatchEvent(addMessage(new Message('system', 'defeat', id)));
+}
+
+export default function defeat (message,sprite,config,action = dispatch) {
     const {removeSelf,removePlayer,condition,contrary} = config;
     const direction = message.data.direction;
     let {candidates,results,overlaps} = message.data.msg.data;
@@ -33,11 +37,11 @@ export default function defeat (message,sprite,config) {
 
     if(triggered && collisionPool.length > 0) {
         if(removeSelf){
-            document.dispatchEvent(addMessage(new Message('system', 'defeat', sprite.id)));
+            dispatch(sprite.id);
         }
         if(removePlayer){
             collisionPool.forEach(({id})=>{
-                document.dispatchEvent(addMessage(new Message('system', 'defeat', id)))
+                dispatch(id);
             })
         }
     }

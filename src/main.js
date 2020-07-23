@@ -1,11 +1,10 @@
 import drawBackground from "./drawFunctions/drawBackground.js";
-import drawGrid from "./drawFunctions/drawGrid.js";
 import Layer from "./classes/Layer.js";
 import parseJsonToSpriteSheet from "./helperFunctions/parseJsonToSpritesheet.js";
 import makeLevelBuilder from "./helperFunctions/makeLevelBuilder.js";
 import RuleParser from "./classes/RuleParser.js";
 import enforcerFactory from "./helperFunctions/EnforceRules.js";
-import tileMapperInit from "./LevelEditor/init.js";
+
 import System from "./classes/System.js";
 
 
@@ -38,11 +37,9 @@ export function gameStart({image, spriteSpec, levelSpec}){
 
     messageCenter.subscribe(ruleParser);
 
-    tileMapperInit(game,game_canvas,5);
 
     game.addLayer(
         new Layer(1, drawBackground, ['black']),
-        new Layer(0, drawGrid, [game.gridDiminsions]),
         new Layer(5, game.topLevel.render,   args),
         new Layer(4, game.foreGround.render, args),
         new Layer(3, game.backGround.render, args),

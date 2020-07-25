@@ -12,26 +12,25 @@ const game_canvas = document.getElementById('screen');
 const game_context = game_canvas.getContext('2d');
 
 let system = new System();
-let {game, messageCenter} = system;
-
+let {game, messageCenter, masterList} = system;
+const {renderer} = game;
 system.init();
 
-let levelBuilder = makeLevelBuilder(game,system.masterList);
+let levelBuilder = makeLevelBuilder(game,masterList);
 
-const {tint} = game.renderer;
+const {tint} = renderer;
 
 export function gameStart({image, spriteSpec, levelSpec}){
 
     let spriteSheets = parseJsonToSpriteSheet(spriteSpec);
     levelBuilder(spriteSpec, levelSpec);
 
-    game.foreGround.makeTextures(game.renderer);
-    game.backGround.makeTextures(game.renderer);
+    game.foreGround.makeTextures(renderer);
+    game.backGround.makeTextures(renderer);
 
     let args = [image, spriteSheets, tint];
-    let enforcer = enforcerFactory(system.masterList);
 
-    let ruleParser = new RuleParser(enforcer,system.masterList);
+    let ruleParser = new RuleParser(enforcerFactory(masterList),masterList);
 
     ruleParser.parseRules();
 

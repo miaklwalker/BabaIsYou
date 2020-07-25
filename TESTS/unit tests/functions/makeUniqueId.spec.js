@@ -12,13 +12,13 @@ let testData = [
     [2,/([a-z]{12})/gi],
     [3,/([a-z]{12})/g],
     [4,/([A-Z]{12})/g]
-]
+];
 
 describe('Make Unique ID',()=>{
     test('outputs the correct length',()=>{
         const id = makeUniqueId(12);
         expect(id).toHaveLength(12);
-    })
+    });
     test.each(testData)('Given %p expect a id string matching %p',(configString,regMatcher)=>{
         expect(makeUniqueId(12,configString)).toMatch(regMatcher);
     })

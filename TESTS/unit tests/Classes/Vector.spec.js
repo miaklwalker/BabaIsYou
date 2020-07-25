@@ -30,7 +30,7 @@ describe('Vector',()=>{
             vector.addY(otherVector);
             expect(vector.x).toBe(0);
             expect(vector.y).toBe(2);
-        })
+        });
         test(`Add a scalar to vector`,()=>{
             vector.addY(scalar);
             expect(vector.x).toBe(0);
@@ -52,7 +52,7 @@ describe('Vector',()=>{
             vector.subX(otherVector);
             expect(vector.x).toBe(1);
             expect(vector.y).toBe(0);
-        })
+        });
         test(`Subtract a scalar from vector`,()=>{
             vector.subX(scalar);
             expect(vector.x).toBe(1);
@@ -66,7 +66,7 @@ describe('Vector',()=>{
             vector.subY(otherVector);
             expect(vector.x).toBe(0);
             expect(vector.y).toBe(2);
-        })
+        });
         test(`Subtract a scalar from vector`,()=>{
             vector.subY(scalar);
             expect(vector.x).toBe(0);
@@ -75,12 +75,12 @@ describe('Vector',()=>{
     });
     describe('Should Sub One Vector from another or a scale with a scalar', ()=> {
         let otherVector = new Vector(-1,-2);
-        let scalar = -1
+        let scalar = -1;
         test(`Subtract Vector `,()=>{
             vector.subVector(otherVector);
             expect(vector.x).toBe(1);
             expect(vector.y).toBe(2);
-        })
+        });
         test('Subtract a Scalar',()=>{
             vector.subVector(scalar);
             expect(vector.x).toBe(1);
@@ -90,7 +90,7 @@ describe('Vector',()=>{
     describe('Vector Division',()=>{
         describe('divX should divide a vector',()=>{
             it('can be a scalar',()=>{
-                let scalar = 2
+                let scalar = 2;
                 vector.addX(12);
                 vector.divX(scalar);
                 expect(vector.x).toBe(6);
@@ -102,10 +102,10 @@ describe('Vector',()=>{
                 vector.divX(otherVector);
                 expect(vector.x).toBe(12);
             })
-        })
+        });
         describe('divY should divide a vector',()=>{
             it('can be a scalar',()=>{
-                let scalar = 2
+                let scalar = 2;
                 vector.addY(12);
                 vector.divY(scalar);
                 expect(vector.y).toBe(6);
@@ -116,10 +116,10 @@ describe('Vector',()=>{
                 vector.divY(otherVector);
                 expect(vector.y).toBe(12);
             })
-        })
+        });
         describe('divVector should divide a vector',()=>{
             it('can be a scalar',()=>{
-                let scalar = 2
+                let scalar = 2;
                 vector.addVector(12);
                 vector.divVector(scalar);
                 expect(vector.x).toBe(6);
@@ -132,7 +132,7 @@ describe('Vector',()=>{
                 expect(vector.x).toBe(12);
             })
         })
-    })
+    });
     test('Multiply X (mulX) should multiply the x value of a vector',()=>{
         vector.addVector(1);
         vector.mulX(5);
@@ -141,7 +141,7 @@ describe('Vector',()=>{
         vector.mulX(other);
         expect(vector.x).toBe(5);
 
-    })
+    });
     test('Multiply Y (mulY) should multiply the y value of a vector',()=>{
         vector.addVector(1);
         vector.mulY(5);
@@ -149,7 +149,7 @@ describe('Vector',()=>{
         let other = new Vector(1,1);
         vector.mulY(other);
         expect(vector.y).toBe(5);
-    })
+    });
     test('Multiply Vector (multVector) should either multiply a vector by a another vector or a scalar',()=>{
         vector.addVector(1);
         vector.mulVector(5);
@@ -159,7 +159,7 @@ describe('Vector',()=>{
         vector.mulVector(other);
         expect(vector.x).toBe(5);
         expect(vector.y).toBe(5);
-    })
+    });
     test('Same Should return a boolean indicating if a vector has the same X Y values',()=>{
     let other = new Vector(0,0);
     expect(vector.same(other)).toBe(true);

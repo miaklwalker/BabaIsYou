@@ -6,6 +6,7 @@ export default class Wall extends Block{
     constructor(x,y,name) {
         super(x,y,name,'WALL');
         this.strategy = 'WALL';
+        // noinspection JSUnusedGlobalSymbols
         this.alias = 'single';
         this.texture = "base";
     }
@@ -16,7 +17,11 @@ export default class Wall extends Block{
     chooseName(neighbors){
         let others = this.updateAndFindNeighbors(neighbors);
         for(let direction in others){
-            if(others[direction].name !== this.name){
+            if(
+                others[direction].name !== this.name ||
+                !(others[direction] instanceof Wall)
+
+            ){
                 this.neighbors[direction] = false;
             }
         }

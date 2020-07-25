@@ -4,7 +4,6 @@
  *
  * @export
  * @param {*} breakPoint sets the increment point for x in the x y counter
- * @returns ()=>[x++,y++];
  */
 export default function xyCounter(breakPoint){
     let x = 0;

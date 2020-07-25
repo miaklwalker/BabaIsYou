@@ -9,27 +9,6 @@ export default class CollisionStack {
         this.stack[this.count] = node;
         this.count++
     }
-    iter(callback){
-        for(let i = 0 ; i < this.count; i++){
-            callback(this.stack[i],i,this.stack);
-        }
-    }
-    subtract(){
-        this.count--;
-        const temp = this.stack[this.count];
-        delete this.stack[this.count];
-        return temp;
-    }
-    takeFromFront(){
-        let index = this.count-1;
-        let result = this.stack[0];
-        for(let i = 0 ; i < index ; i++){
-            this.stack[i] = this.stack[i+1];
-        }
-        delete this.stack[index];
-        this.count --;
-        return result;
-    }
     map(callback) {
         let temp = [];
         for(let i = 0 ; i < this.count ; i++){
@@ -50,7 +29,7 @@ const sorts = {
     down,
     right,
     up,
-}
+};
 
 function right (a,b){
     let x1 = a.position.x;

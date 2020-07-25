@@ -37,11 +37,11 @@ export default function defeat (message,sprite,config,action = dispatch) {
 
     if(triggered && collisionPool.length > 0) {
         if(removeSelf){
-            dispatch(sprite.id);
+            action(sprite.id);
         }
         if(removePlayer){
             collisionPool.forEach(({id})=>{
-                dispatch(id);
+                action(id);
             })
         }
     }

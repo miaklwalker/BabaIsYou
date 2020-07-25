@@ -4,7 +4,7 @@ export default class Pull extends Trait {
     constructor(){
         super('PULL');
     }
-    update(sprite,message) {
+    update(sprite) {
         sprite.canCollide = true;
     }
 }

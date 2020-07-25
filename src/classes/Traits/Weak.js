@@ -4,7 +4,7 @@ export default class Weak extends Trait {
     constructor(){
         super('WEAK');
     }
-    update(sprite,message) {
+    update(sprite) {
         sprite.canTouch = true;
     }
 }

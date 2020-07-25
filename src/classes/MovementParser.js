@@ -5,9 +5,7 @@ import CollisionStack from "./CollisionStack.js";
 import parseStack from "../helperFunctions/parseStack.js";
 
 const STOP = "STOP";
-const MOVE = "MOVE";
-const CHECK = "CHECK";
-const FINISH = "FINISH";
+
 
 export default class MovementParser{
     constructor(masterList){
@@ -58,9 +56,6 @@ export default class MovementParser{
             'parser',
             'finished'
         )
-    }
-    handleCommand(){
-
     }
     handleMessageFromCollider(msg){
         const {results,candidates,direction,overlaps} = msg.data;
@@ -139,8 +134,5 @@ export default class MovementParser{
             let id = makeUniqueId(12);
             this.masterList.addEntity(id,entity);
         }
-    }
-    removeEntity(targetId){
-        this.masterList.changeEntityFlag(targetId,'useCollision',false)
     }
 }

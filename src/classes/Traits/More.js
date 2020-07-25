@@ -4,7 +4,7 @@ export default class More extends Trait {
     constructor(){
         super('MORE');
     }
-    update(sprite,message) {
+    update(sprite) {
         sprite.canCollide = true;
     }
 }

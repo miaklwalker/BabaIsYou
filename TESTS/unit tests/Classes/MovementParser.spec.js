@@ -79,7 +79,7 @@ describe('Movement Parser',()=>{
         test("Overlaps are automatically marked overlaps",()=>{
            let blockA = new Block(1,1,"FLAG");
            message.data.overlaps.push(blockA);
-           movementParser.handleMessageFromCollider(message)
+           movementParser.handleMessageFromCollider(message);
            expect(blockA.overlap).toBe(true);
         });
         test("Results Should get marked overlap",()=>{
@@ -98,7 +98,7 @@ describe('Movement Parser',()=>{
             movementParser.handleMessageFromCollider(message);
             expect(blockA.overlap).toBe(true);
             expect(blockB.overlap).toBe(true);
-        })
+        });
         test("results.length = 0 handleNoStop",()=>{
             movementParser.handleStop = jest.fn(movementParser.handleStop);
             movementParser.handleMessageFromCollider(message);

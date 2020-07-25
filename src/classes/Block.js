@@ -15,7 +15,6 @@ export default class Block {
 
         this.strategy = null;
 
-
         // flags
         this.neighbors = {
             left:false,
@@ -23,6 +22,7 @@ export default class Block {
             up:false,
             down:false,
         };
+        this.neighborsCache = new Map();
         this.strictCollide = false;
         this.canCollide = false;
         this.canTouch = false;
@@ -35,8 +35,7 @@ export default class Block {
             this.name,
             this.group,
             this.type,
-            this.alias,
-
+            this.alias
         ]
     }
     resetFlags(){
@@ -46,6 +45,9 @@ export default class Block {
     }
     onMessage(message){
         this.resetFlags();
+        if(message.from === "controls"){
+            this.neighborsCache.clear();
+        }
         this.traits.forEach(trait=>{
             trait.update(this,message);
         })
@@ -54,50 +56,59 @@ export default class Block {
         this[trait.NAME] = trait;
         this.traits.push(trait);
     }
-    isNeighbor(other){
-        return this.checkNeighbors(other).includes(true);
-    }
+
     checkNeighbors=(other)=>{
         const {x,y} = this.position;
-        let left = new Vector(x-1, y).same(other.position);
-        let right = new Vector(x+1 , y).same(other.position);
-        let up = new Vector(x,y-1).same(other.position);
-        let down = new Vector(x,y+1).same(other.position);
+        let left = new Vector(x-1, y)
+            .same(other.position);
+        let right = new Vector(x+1 , y)
+            .same(other.position);
+        let up = new Vector(x,y-1)
+            .same(other.position);
+        let down = new Vector(x,y+1)
+            .same(other.position);
         let overlap = new Vector(x,y).same(other.position) && other !== this;
         return [left,down,right,up,overlap];
     };
     updateAndFindNeighbors=(neighbors)=>{
-        let matches = {};
-        this.neighbors.left =   false;
-        this.neighbors.right =  false;
-        this.neighbors.up =     false;
-        this.neighbors.down =   false;
-        neighbors.forEach(other => {
-            let result = this.checkNeighbors(other);
-            if(result.includes(true)){
-                const [left,down,right,up,overlap]=result;
-                if(left) {
-                    matches.left = other;
-                    this.neighbors.left = true
+        let hasMatches = this.neighborsCache.get("hasMatches");
+        if(hasMatches){
+            return hasMatches;
+        }else{
+            let matches = {};
+            this.neighbors.left =   false;
+            this.neighbors.right =  false;
+            this.neighbors.up =     false;
+            this.neighbors.down =   false;
+            neighbors.forEach(other => {
+                let result = this.checkNeighbors(other);
+                if(result.includes(true)){
+                    const [left,down,right,up,overlap]=result;
+                    if(left) {
+                        matches.left = other;
+                        this.neighbors.left = true
+                    }
+                    if(right){
+                        matches.right = other;
+                        this.neighbors.right = true
+                    }
+                    if(up)   {
+                        matches.up = other;
+                        this.neighbors.up = true
+                    }
+                    if(down) {
+                        matches.down = other;
+                        this.neighbors.down = true
+                    }
+                    if(overlap){
+                        matches.overlap = other;
+                    }
                 }
-                if(right){
-                    matches.right = other;
-                    this.neighbors.right = true
-                }
-                if(up)   {
-                    matches.up = other;
-                    this.neighbors.up = true
-                }
-                if(down) {
-                    matches.down = other;
-                    this.neighbors.down = true
-                }
-                if(overlap){
-                    matches.overlap = other;
-                }
-            }
-        });
-        return matches;
+            });
+            this.neighborsCache.set("hasMatches",matches);
+            return matches;
+        }
+
     }
 }
 

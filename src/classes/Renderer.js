@@ -1,5 +1,4 @@
-import Layer from "./Layer.js";
-import getColorCoords from '../helperFunctions/getColorCoords.js'
+import getColorCoords from '../helperFunctions/getColorCoords.js';
 
 
 export default class Renderer{

@@ -23,9 +23,13 @@ defaultControls.mapKey('KeyA',directions.LEFT);
 defaultControls.mapKey('KeyD',directions.RIGHT);
 defaultControls.mapKey('KeyW',directions.UP);
 defaultControls.mapKey('KeyS',directions.DOWN);
+// Arrow Controls
+defaultControls.mapKey("ArrowRight",directions.RIGHT);
+defaultControls.mapKey("ArrowLeft",directions.LEFT);
+defaultControls.mapKey("ArrowUp",directions.UP);
+defaultControls.mapKey("ArrowDown",directions.DOWN);
+// Restart
 defaultControls.mapKey('KeyR',directions.RESTART);
-
-
 
 const dispatchMessageFromControls = (code,direction,action) =>{
     document.dispatchEvent(addMessage(new Message('parser','controls',{keyPressed: code,direction,action})));
@@ -39,6 +43,7 @@ export default class Controls {
         this[directions.RIGHT] = false;
         this[directions.LEFT] = false;
         this[directions.RESTART] = false;
+
         this.keyMap  = defaultControls;
         this.timeout = 150;
         this.lastPressed = '';

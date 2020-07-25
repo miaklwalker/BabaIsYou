@@ -5,7 +5,6 @@ const CHECK = "CHECK";
 export default function parseStack (collision){
     let command;
     let toMove = 0;
-    let checked = 0;
 
     const S = "Strict";
     const C = "CanCollide";
@@ -15,7 +14,7 @@ export default function parseStack (collision){
         let name;
         let id = item.id;
         let position = item.position;
-        let overlap = item.overlap
+        let overlap = item.overlap;
         if(item.strictCollide){
             name = S;
         }else if(item.canCollide){
@@ -46,6 +45,7 @@ export default function parseStack (collision){
             }
 
             else if (name === T) {
+                // noinspection JSUnusedAssignment
                 if (command === CHECK) {
                     if(overlap){
                         toMove++
@@ -53,18 +53,21 @@ export default function parseStack (collision){
                     command = MOVE;
                     break;
                 }
-                else if(command === MOVE){
-                    if(!overlap){
-                        command = CHECK;
-                    }
-                    toMove++;
-                }else{
-                    toMove++;
-                    command = CHECK;
+                else { // noinspection JSUnusedAssignment
+                    if(command === MOVE){
+                                        if(!overlap){
+                                            command = CHECK;
+                                        }
+                                        toMove++;
+                                    }else{
+                                        toMove++;
+                                        command = CHECK;
+                                    }
                 }
             }
 
             else if (name === C) {
+                // noinspection JSUnusedAssignment,JSUnusedAssignment,JSUnusedAssignment
                 if(command === CHECK) {
                     if(overlap){
                         toMove++

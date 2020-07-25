@@ -15,7 +15,6 @@ export default class masterList{
     }
     changeEntity(id,name){
         let entity = this.entities.get(id);
-
         entity.changeBlockType(name);
         this.entities.set(id,entity);
         this.invalidateBuffer();
@@ -28,9 +27,7 @@ export default class masterList{
     invalidateBuffer(){
         this.buffer = new Map();
     }
-    getEntity(id){
-        return this.entities.get(id);
-    }
+
     purge(){
         this.entities = new Map();
         this.buffer = new Map();
@@ -74,10 +71,15 @@ export default class masterList{
         }
     }
     get Blocks(){
-        let temp = [];
-        this.entities.forEach((key)=>{
-            temp.push(key);
-        });
-        return temp;
+        if(this.buffer.has("blocks")){
+            return this.buffer.get("blocks")
+        }else{
+            let temp = [];
+            this.entities.forEach((key)=>{
+                temp.push(key);
+            });
+            this.buffer.set("blocks",temp);
+            return temp;
+        }
     }
 }

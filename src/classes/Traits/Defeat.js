@@ -1,7 +1,4 @@
 import Trait from "./Trait.js";
-import addMessage from "../../CustomEvents/addmessage.js";
-import Message from "../Message.js";
-import defeatImplement from "../../helperFunctions/implementDefeat.js";
 import defeat from "../../helperFunctions/implementDefeat.js";
 import DefeatConfig from "../DefeatConfig.js";
 //done
@@ -15,6 +12,6 @@ export default class Defeat extends Trait {
             let config = new DefeatConfig("YOU",undefined);
             config.removeSelf = false;
             defeat(message,sprite,config);
-        };
+        }
     }
 }

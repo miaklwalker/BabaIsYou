@@ -4,7 +4,7 @@ export default class Move extends Trait {
     constructor(){
         super('MOVE');
     }
-    update(sprite,message) {
+    update(sprite) {
         sprite.canCollide = true;
     }
 }

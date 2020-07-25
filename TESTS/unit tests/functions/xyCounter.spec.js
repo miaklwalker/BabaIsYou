@@ -17,4 +17,4 @@ import xyCounter from "../../../src/helperFunctions/xyCounter.js";
             expect(counter()).toEqual([9,0]);
             expect(counter()).toEqual([0,1]);
         })
-    })
+    });

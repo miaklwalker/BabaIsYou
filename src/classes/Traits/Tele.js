@@ -4,7 +4,7 @@ export default class Tele extends Trait {
     constructor(){
         super('TELE');
     }
-    update(sprite,message) {
+    update(sprite) {
         sprite.canTouch = true;
     }
 }

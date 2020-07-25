@@ -24,7 +24,7 @@ describe('Sprite',()=>{
         let tintFn = jest.fn();
         let canvas = document.createElement('canvas');
         let context = createContextMock();
-        let testImage = document.createElement('canvas')
+        let testImage = document.createElement('canvas');
         sprite.render(canvas,context,tintFn,1,1,testImage);
         expect(context.drawImage).toHaveBeenCalled();
         expect(tintFn).toHaveBeenCalledWith(

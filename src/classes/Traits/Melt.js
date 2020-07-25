@@ -14,6 +14,6 @@ export default class Melt extends Trait {
             toCheck.forEach(entity=>{
                 defeatImplement(entity,sprite,undefined,direction,"HOT");
             })
-        };
+        }
     }
 }

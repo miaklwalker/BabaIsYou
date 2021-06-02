@@ -4,7 +4,6 @@ import parseJsonToSpriteSheet from "./helperFunctions/parseJsonToSpritesheet.js"
 import makeLevelBuilder from "./helperFunctions/makeLevelBuilder.js";
 import RuleParser from "./classes/RuleParser.js";
 import enforcerFactory from "./helperFunctions/EnforceRules.js";
-
 import System from "./classes/System.js";
 
 
@@ -12,8 +11,10 @@ const game_canvas = document.getElementById('screen');
 const game_context = game_canvas.getContext('2d');
 
 let system = new System();
+
 let {game, messageCenter, masterList} = system;
 const {renderer} = game;
+
 system.init();
 
 let levelBuilder = makeLevelBuilder(game,masterList);

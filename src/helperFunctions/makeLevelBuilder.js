@@ -1,7 +1,8 @@
 import blockFactory from "../helperFunctions/blockFactory.js";
 import Push from "../classes/Traits/Push.js";
 import buildTexturePack from "./buildTexturePack.js";
-
+import createBorder from "./createBorder.js";
+import Sprite from "../classes/Sprite.js";
 
 
 
@@ -32,8 +33,19 @@ export default function makeLevelBuilder(game,masterList){
         makeFloor(floor,masterList,game);
         // walls
         makeWalls(wall,masterList,game);
+        // creates the walls around the edge;
+        buildBorder(createBorder(game.gridDiminsions),masterList,game);
 
     }
+}
+function buildBorder (border,masterList,game) {
+    border.forEach(sprite=>{
+        let edge = blockFactory("tiles",Object.values(sprite));
+        edge.isRendered = false;
+        edge.strictCollide = true;
+        edge.resetFlags = ()=>{};
+        masterList.addEntity(edge.id,edge);
+    })
 }
 
 function makeWalls(wall,masterList,game){

@@ -4,7 +4,6 @@ export default class PropertyBlock extends Block{
     constructor(x,y,name) {
         super(x,y,name,'properties');
         this.strategy = 'WORD';
-        // noinspection JSUnusedGlobalSymbols
         this.group ='words';
     }
 

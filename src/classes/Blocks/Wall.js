@@ -6,7 +6,6 @@ export default class Wall extends Block{
     constructor(x,y,name) {
         super(x,y,name,'WALL');
         this.strategy = 'WALL';
-        // noinspection JSUnusedGlobalSymbols
         this.alias = 'single';
         this.texture = "base";
     }

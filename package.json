@@ -22,10 +22,11 @@
   },
   "homepage": "https://github.com/miaklwalker/BabaIsYou#readme",
   "devDependencies": {
-    "canvas": "^2.6.1",
-    "jest": "^26.0.1",
     "@jest/globals": "^26.1.0",
-    "jest-environment-jsdom-sixteen": "^1.0.3"
+    "canvas": "^2.8.0",
+    "jest": "^26.0.1",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
+    "nodemon": "^2.0.7"
   },
   "jest": {
     "transform": {},

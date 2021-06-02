@@ -1,7 +1,7 @@
 import Trait from "./Trait.js";
 import defeat from "../../helperFunctions/implementDefeat.js";
 import DefeatConfig from "../DefeatConfig.js";
-//done
+
 export default class Defeat extends Trait {
     constructor(){
         super('DEFEAT');

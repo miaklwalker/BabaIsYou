@@ -1,30 +1,76 @@
-/*body{*/
-/*    background-color:black;*/
-/*}*/
-/*body{*/
-/*     display:flex;*/
-/*     flex-direction: column;*/
-/*     background:black;*/
-/*     color:white;*/
-/*     text-align: center;*/
-/*     font-family: sans-serif;*/
-/* }*/
-/*header{*/
-/*    height:10vh;*/
-/*    display: flex;*/
-/*    align-content: center;*/
-/*    justify-content: center;*/
-/*    font-size: 32pt;*/
-/*}*/
-/*.container{*/
-/*    display: flex;*/
+@media only screen and (min-width: 601px) {
 
-/*}*/
-/*canvas{*/
-/*    border:3px white dashed;*/
-/*}*/
 
-*{
-    padding:0;
-    margin:0;
+}
+@media only screen and (max-width: 600px) {
+    body{
+        display: grid;
+        background: black;
+        grid-template-areas:
+                ". . ."
+                ". canvas ."
+                ". . ."
+                ". controller .";
+        grid-template-columns: 2% 1fr 2%;
+        grid-template-rows: 5% 1fr 5vh 20%;
+        justify-content: center;
+    }
+    canvas#screen{
+        grid-area: canvas;
+        width: 95vw;
+        height:95vw;
+    }
+    .controller{
+        visibility: visible;
+        grid-area: controller;
+        display: flex;
+        margin-top: 2% ;
+        align-content: space-between;
+        justify-content: space-evenly;
+    }
+    .d-pad{
+        display: grid;
+        justify-content: space-around;
+        width: 30%;
+        grid-template-areas:
+                "  . up . "
+                " left .  right "
+                "  . down .  ";
+        grid-auto-rows: auto;
+        grid-auto-columns: auto;
+    }
+    #KeyR{
+        height: 50%;
+        width:30vw;
+        margin: 7% 0 20% 0 ;
+        background: #f55252;
+        border-radius: 10%;
+    }
+    .arrow{
+        --arrow-size: 25px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0
+        var(--arrow-size)
+        calc(var(--arrow-size) * 1.5774)
+        var(--arrow-size);
+        border-color: transparent transparent #c2c2c2 transparent;
+    }
+    .left{
+        grid-area: left;
+        transform: rotate(270deg);
+    }
+    .right{
+        grid-area: right;
+        transform: rotate(90deg);
+    }
+    .up{
+        grid-area: up;
+    }
+    .down{
+        grid-area: down;
+        transform: rotate(180deg);
+    }
+    
 }

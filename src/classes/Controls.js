@@ -17,6 +17,8 @@ class KeyMap{
     }
 }
 
+
+
 const defaultControls = new KeyMap();
 
 defaultControls.mapKey('KeyA',directions.LEFT);
@@ -50,6 +52,9 @@ export default class Controls {
         this.lockOut = false;
     }
     keyDown=(event)=>{
+        if(event instanceof MouseEvent){
+            event = {code:event.target.id}
+        }
         const keyPressed = this.keyMap[event.code];
         if(keyPressed === undefined )return;
         if( keyPressed === directions.RESTART){
@@ -67,6 +72,9 @@ export default class Controls {
         }
     };
     keyUp = (event)=>{
+        if(event instanceof MouseEvent){
+            event = {code:event.target.id}
+        }
         const keyPressed = this.keyMap[event.code];
         this[keyPressed] = false;
         if(keyPressed === undefined || keyPressed === directions.RESTART)return;

@@ -24,7 +24,6 @@ export default class Win extends Trait {
                 .map(potential=>potential.same(sprite.position))
                 .includes(true);
             if(candidatesPool) {
-                console.log("win");
                 this.ran = true;
                 document.dispatchEvent(addMessage(new Message('system', 'win', 'YOU WIN')))
             }

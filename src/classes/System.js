@@ -6,6 +6,9 @@ import MovementParser from "./MovementParser.js";
 import {gameStart} from "../main.js";
 import MasterList from "./MasterList.js";
 
+let keys =  ["KeyA","KeyW","KeyS","KeyD","KeyR"].map(id=>document.getElementById(id))
+
+
 export default class System{
     constructor(){
         this.masterList =       new MasterList();
@@ -15,10 +18,16 @@ export default class System{
         this.movementParser =   new MovementParser(this.masterList);
         this.controls = new Controls();
         this.initialized = false;
-        this.level = 1;
+        this.level = 5;
     }
     init(){
         if(!this.initialized){
+            keys.forEach(key=>{
+                    key.addEventListener("mousedown",this.controls.keyDown);
+                    key.addEventListener("mouseup",this.controls.keyUp);
+                    key.addEventListener("touchstart",this.controls.keyDown);
+                    key.addEventListener("touchend",this.controls.keyUp);
+                })
             document.addEventListener('keydown', this.controls.keyDown);
             document.addEventListener('keyup', this.controls.keyUp);
             document.addEventListener('addmessage', this.messageCenter.handleAddMessage);

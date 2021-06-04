@@ -53,7 +53,9 @@ export default class Controls {
     }
     keyDown=(event)=>{
         if(event instanceof MouseEvent){
-            event = {code:event.target.id}
+            let code = event.target.id
+            event.target.parentElement.classList.add(code)
+            event = {code}
         }
         const keyPressed = this.keyMap[event.code];
         if(keyPressed === undefined )return;
@@ -73,7 +75,12 @@ export default class Controls {
     };
     keyUp = (event)=>{
         if(event instanceof MouseEvent){
-            event = {code:event.target.id}
+            let code = event.target.id
+            let classList = event.target.parentElement.classList
+            setTimeout(()=>{
+                classList.remove(code)
+            },100)
+            event = {code}
         }
         const keyPressed = this.keyMap[event.code];
         this[keyPressed] = false;

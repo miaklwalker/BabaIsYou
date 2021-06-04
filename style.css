@@ -1,48 +1,68 @@
 @media only screen and (min-width: 601px) {
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        display: flex;
+        width: 95vw;
+        height: 95vh;
+        justify-content: center;
+        margin-top:1.5% ;
+        background-color: black;
+    }
+    .controller{
+        display: none;
+    }
+    canvas{
+        border: white dashed 2px;
 
+    }
 
 }
 @media only screen and (max-width: 600px) {
     body{
-        display: grid;
+        display: flex;
+        flex-direction: column;
         background: black;
-        grid-template-areas:
-                ". . ."
-                ". canvas ."
-                ". . ."
-                ". controller .";
-        grid-template-columns: 2% 1fr 2%;
-        grid-template-rows: 5% 1fr 5vh 20%;
-        justify-content: center;
     }
     canvas#screen{
-        grid-area: canvas;
         width: 95vw;
         height:95vw;
     }
     .controller{
+        position: relative;
         visibility: visible;
-        grid-area: controller;
         display: flex;
         margin-top: 2% ;
         align-content: space-between;
         justify-content: space-evenly;
     }
+    .d-pad.KeyD{
+        background: linear-gradient(270deg, hsla(0, 0%, 29%, 1) 0%, hsla(0, 0%, 50%, 1) 50%);
+    }
+    .d-pad.KeyA{
+        background: linear-gradient(90deg, hsla(0, 0%, 29%, 1) 0%, hsla(0, 0%, 50%, 1) 50%);
+    }
+    .d-pad.KeyS{
+        background: linear-gradient(0deg, hsla(0, 0%, 29%, 1) 0%, hsla(0, 0%, 50%, 1) 50%);
+    }
+    .d-pad.KeyW{
+        background: linear-gradient(180deg, hsla(0, 0%, 29%, 1) 0%, hsla(0, 0%, 50%, 1) 50%);
+    }
     .d-pad{
-        display: grid;
-        justify-content: space-around;
-        width: 30%;
-        grid-template-areas:
-                "  . up . "
-                " left .  right "
-                "  . down .  ";
-        grid-auto-rows: auto;
-        grid-auto-columns: auto;
+        background: gray;
+        position: absolute;
+        left: 5%;
+        top:50%;
+        width: 45vw;
+        height:45vw;
+        border-radius: 50%;
     }
     #KeyR{
-        height: 50%;
-        width:30vw;
-        margin: 7% 0 20% 0 ;
+        height: 5vh;
+        width: 30vw;
+        margin: 7% 0 20% 20% ;
         background: #f55252;
         border-radius: 10%;
     }
@@ -58,19 +78,28 @@
         border-color: transparent transparent #c2c2c2 transparent;
     }
     .left{
-        grid-area: left;
-        transform: rotate(270deg);
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        transform: translateY(-50%) rotate(270deg);
     }
     .right{
-        grid-area: right;
-        transform: rotate(90deg);
+        position: absolute;
+        top: 50%;
+        right: 5%;
+        transform: translateY(-50%) rotate(90deg);
     }
     .up{
-        grid-area: up;
+        position: absolute;
+        top: 9%;
+        left: 50%;
+        transform: translateX(-50%);
     }
     .down{
-        grid-area: down;
-        transform: rotate(180deg);
+        position: absolute;
+        bottom: 9%;
+        left: 50%;
+        transform: translateX(-50%) rotate(180deg);
     }
     
 }

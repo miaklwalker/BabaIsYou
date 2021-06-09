@@ -25,7 +25,15 @@ export default class Win extends Trait {
                 .includes(true);
             if(candidatesPool) {
                 this.ran = true;
-                document.dispatchEvent(addMessage(new Message('system', 'win', 'YOU WIN')))
+                document.dispatchEvent(
+                    addMessage(
+                        new Message(
+                            'system',
+                            'win',
+                            'YOU WIN'
+                        )
+                    )
+                )
             }
         }
     }

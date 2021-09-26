@@ -26,9 +26,11 @@ export default class EntityList {
     makeTextures({texture:textures,colorMap}){
         let result = {};
         for(let texture in textures){
-            let textureToMap = textures[texture];
-            let colorForMap = colorMap[texture];
-            result[texture] = makeWallSprites(textureToMap,colorForMap);
+            if(textures.hasOwnProperty(texture)) {
+                let textureToMap = textures[texture];
+                let colorForMap = colorMap[texture];
+                result[texture] = makeWallSprites(textureToMap, colorForMap);
+            }
         }
         this.buffer = result;
     }
@@ -46,7 +48,8 @@ export default class EntityList {
                         canvas, context,
                         tint,
                         x * canvas.width / this.divisions[0],
-                        y * canvas.height / this.divisions[1], image
+                        y * canvas.height / this.divisions[1],
+                        image
                     )
                 }
             });

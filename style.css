@@ -13,10 +13,12 @@
     }
     .controller{
         display: none;
+
     }
     canvas{
         border: white dashed 2px;
-
+        height: 75vh;
+        width:75vh;
     }
 
 }

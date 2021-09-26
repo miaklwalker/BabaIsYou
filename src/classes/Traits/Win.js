@@ -16,6 +16,7 @@ export default class Win extends Trait {
         sprite.canTouch = true;
         if(message.to === sprite.id && !this.ran ){
             const direction = message.data.direction;
+            if(message.data?.msg?.data){
             let {candidates,results} = message.data.msg.data;
             let result = results ? results : [];
             let candidatesPool = [...candidates,...result]
@@ -24,6 +25,10 @@ export default class Win extends Trait {
                 .map(potential=>potential.same(sprite.position))
                 .includes(true);
             if(candidatesPool) {
+                this.ran = true;
+                document.dispatchEvent(addMessage(new Message('system', 'win', 'YOU WIN')))
+            }
+            }else{
                 this.ran = true;
                 document.dispatchEvent(addMessage(new Message('system', 'win', 'YOU WIN')))
             }
